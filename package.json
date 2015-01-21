@@ -1,0 +1,10 @@
+{
+  "name": "node-webkit menu demo",
+  "main": "index.html",
+  "window": {
+    
+    "position": "center",
+    "width": 1280,
+    "height": 720
+  }
+}
