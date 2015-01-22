@@ -1,0 +1,4 @@
+{
+    "name" : "A + B",
+    "desc" : "Write a function to calculate A + B without using + - / * %."
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "age": 0, 
+        "id": "a-plus-b",         
+        "name": "A + B", 
+        "difficulty": "Medium"
+    },
+    {
+        "age": 1,
+        "id": "wiggle-sort",
+        "name": "Wiggle Sort",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 2,
+        "id": "two-difference",
+        "name": "Two Difference",
+        "difficulty": "Medium"
+    }
+]
