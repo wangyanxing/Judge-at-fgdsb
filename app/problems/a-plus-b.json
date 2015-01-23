@@ -1,4 +1,24 @@
 {
     "name" : "A + B",
-    "desc" : "Write a function to calculate A + B without using + - / * %."
+    "discuss_link" : "http://www.fgdsb.com/2015/01/03/plus-one/",
+    "desc" : "<p>Write a function to calculate A + B without using <code>+ - / * %</code>.</p>",
+    "code_cpp" : "int plus_num(int a, int b) {\n}",
+    "code_java" : "int plus_num(int a, int b) {\n}",
+    "code_ruby" : "def plus_num(a, b)\nend",
+
+    "in_type_cpp" : ["int","int"],
+    "ret_type_cpp" : "int",
+    "out_type_cpp" : "int",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int","int"],
+    "ret_type_java" : "int",
+    "out_type_java" : "int",
+    "judge_type_java" : "equal",
+
+    "judge_type_ruby" : "equal",
+
+    "judge_call" : "plus_num",
+    "test_in" : [[1,0], [1,1], [2,1], [100,13], [100,200]],
+    "test_out" : [1, 2, 3, 113, 300]
 }

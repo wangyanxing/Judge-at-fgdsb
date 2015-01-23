@@ -13,12 +13,16 @@
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-ui-ace/ui-ace.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 
     <script src="script/bootstrap.js"></script>
     <script src="script/bootswatch.js"></script>
     <script src="script/app.js"></script>
     <script src="script/controllers.js"></script>
     <script src="script/services.js"></script>
+    <script src="script/judge.js"></script>
 
   </head>
 
@@ -26,9 +30,9 @@
     <div id="navbar" class="navbar navbar-default navbar-fixed-top" x-ng-include="'main/nav-bar.html'"></div>
     <div class="container">
       <div ng-view></div>
-      <!-- footer
+      <hr />
       <footer><div class="row" x-ng-include="'main/footer.html'"></div></footer>
-      -->
+
     </div>
   </body>
 </html>
