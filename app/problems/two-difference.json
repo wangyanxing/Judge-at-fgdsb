@@ -9,14 +9,14 @@
     "in_type_cpp" : ["vector<int>", "int"],
     "ret_type_cpp" : "vector<int>",
     "out_type_cpp" : "vector<int>",
-    "judge_type_cpp" : "abs(in_0[i][answer[0]] - in_0[i][answer[1]]) != in_1[i]",
+    "judge_type_cpp" : "out[i].size() != in_0[i].size() || abs(in_0[i][answer[0]] - in_0[i][answer[1]]) != in_1[i]",
 
     "in_type_java" : ["int[]", "int"],
     "ret_type_java" : "int[]",
     "out_type_java" : "int[]",
-    "judge_type_java" : "Math.abs(in_0[i][answer[0]] - in_0[i][answer[1]]) != in_1[i]",
+    "judge_type_java" : "out[i].length != in_0[i].length || Math.abs(in_0[i][answer[0]] - in_0[i][answer[1]]) != in_1[i]",
 
-    "judge_type_ruby" : "(in_0[i][answer[0]] - in_0[i][answer[1]]).abs != in_1[i]",
+    "judge_type_ruby" : "out[i].length != in_0[i].length || (in_0[i][answer[0]] - in_0[i][answer[1]]).abs != in_1[i]",
 
     "judge_call" : "two_dif",
     "test_in" : [
