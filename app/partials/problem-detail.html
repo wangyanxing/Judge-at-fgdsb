@@ -25,18 +25,18 @@
 </div>
 
 <div class="btn-group">
-  <a class="btn btn-warning">Submissions</a>
+  <a href="#/submissions/{{problem.id}}" class="btn btn-warning">History</a>
 </div>
 
 
 <div class="btn-group" style="margin-left: 20px">
-  <a ng-click="onSubmit()" class="btn btn-default">
+  <a ng-click="onSave()" class="btn btn-default">
     <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
   </a>
 </div>
 
 <div class="btn-group" style="margin-left: 4px">
-  <a ng-click="onSubmit()" class="btn btn-default">
+  <a ng-click="onReload()" class="btn btn-default">
     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
   </a>
 </div>

@@ -2,9 +2,6 @@ var gui = require('nw.gui');
 var fs = require('fs');
 var util = require('util');
 var exec = require('child_process').exec;
-var Nedb = require('nedb')
-    , planets = new Nedb({ filename: 'judge/db/data.db', autoload: true });
-
 
 //change directory settings per user platform
 if (process.platform === 'darwin') {
@@ -368,9 +365,11 @@ var judge_cpp = function($scope, callback, msg) {
                 }
 
                 msg('Judging');
+                var before_time = new Date().getTime();
                 // execute and judge
                 exec('judge/cpp/out',
                     function (error, stdout, stderr) {
+                        var runtime = new Date().getTime() - before_time;
                         if (error !== null) {
                             var ret = { "result" : "Runtime Error", "details" : error };
                             callback(ret);
@@ -378,7 +377,7 @@ var judge_cpp = function($scope, callback, msg) {
                         }
                         var results = stdout.trim();
                         if(results == "Accepted") {
-                            var ret = { "result" : "Accepted"};
+                            var ret = { "result" : "Accepted", "runtime": runtime};
                             callback(ret);
                         } else {
                             var res = results.split(";");
@@ -423,9 +422,11 @@ var judge_java = function($scope, callback, msg) {
                 }
 
                 msg('Judging');
+                var before_time = new Date().getTime();
                 // execute and judge
                 exec('java -cp judge/java judge/src',
                     function (error, stdout, stderr) {
+                        var runtime = new Date().getTime() - before_time;
                         if (error !== null) {
                             var ret = { "result" : "Runtime Error", "details" : error };
                             callback(ret);
@@ -433,7 +434,7 @@ var judge_java = function($scope, callback, msg) {
                         }
                         var results = stdout.trim();
                         if(results == "Accepted") {
-                            var ret = { "result" : "Accepted"};
+                            var ret = { "result" : "Accepted", "runtime": runtime};
                             callback(ret);
                         } else {
                             var res = results.split(";");
@@ -460,8 +461,10 @@ var judge_ruby = function($scope, callback, msg) {
 
         // judge
         msg('Judging');
+        var before_time = new Date().getTime();
         exec('ruby judge/ruby/src.rb',
             function (error, stdout, stderr) {
+                var runtime = new Date().getTime() - before_time;
                 if(stderr != undefined && stderr != "") {
                     // Compile error
                     var errors = stderr.replace(new RegExp('judge/ruby/src.rb:', 'g'), '');
@@ -479,7 +482,7 @@ var judge_ruby = function($scope, callback, msg) {
 
                 var results = stdout.trim();
                 if(results == "Accepted") {
-                    var ret = { "result" : "Accepted"};
+                    var ret = { "result" : "Accepted", "runtime": runtime};
                     callback(ret);
                 } else {
                     var res = results.split(";");

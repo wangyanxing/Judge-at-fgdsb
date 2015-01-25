@@ -1,5 +1,6 @@
 {
     "name" : "A + B",
+    "id" : "a-plus-b",
     "discuss_link" : "http://www.fgdsb.com/2015/01/03/plus-one/",
     "desc" : "<p>Write a function to calculate A + B without using <code>+ - / * %</code>.</p>",
     "code_cpp" : "int plus_num(int a, int b) {\n}",

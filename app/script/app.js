@@ -15,6 +15,10 @@ fgdsbApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'partials/problems.html',
             controller: 'ProblemListCtrl'
         }).
+        when('/submissions/:problemId', {
+            templateUrl: 'partials/submissions.html',
+            controller: 'SubmissionsCtrl'
+        }).
         when('/problems/:problemId', {
             templateUrl: 'partials/problem-detail.html',
             controller: 'ProblemDetailCtrl'

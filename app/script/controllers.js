@@ -10,9 +10,70 @@ fgdsbControllers.controller('ProblemListCtrl', ['$scope', 'Problem',
         $scope.orderProp = 'age';
     }]);
 
+fgdsbControllers.controller('SubmissionsCtrl', ['$scope', '$q', '$routeParams', 'Problem',
+
+    function($scope, $q, $routeParams, Problem) {
+        var id = $routeParams.problemId;
+        $scope.onClear = function() {
+            bootbox.dialog({
+                message: "Do you really want to delete all submissions for this problem?",
+                title: "Clear Submissions",
+                buttons: {
+                    success: {
+                        label: "No",
+                        className: "btn-success",
+                        callback: function() {
+                        }
+                    },
+                    danger: {
+                        label: "Yes",
+                        className: "btn-danger",
+                        callback: function() {
+                            clear_submissions($q, $scope.problem.id).then(function (){
+                                // update
+                                $scope.subs = [];
+                            });
+                        }
+                    }
+                }
+            });
+        };
+
+        $scope.problem = Problem.get({problemId: $routeParams.problemId, 'foo':new Date().getTime()}, function(problem) {
+            get_submissions($q, id).then(function (data) {
+                $scope.subs = data;
+                for(var i = 0; i < data.length; ++i) {
+                    $scope.subs[i].reltime = moment($scope.subs[i].subtime, "YYYY-MM-DD HH:mm:ss").fromNow();
+                }
+            }, function () {
+                //console.log('no submission');
+            });
+        });
+    }]);
+
 fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Problem',
     function($scope, $routeParams, Problem) {
 
+        var modes = {
+            "C++" : "ace/mode/c_cpp",
+            "Java" : "ace/mode/java",
+            "Ruby" : "ace/mode/ruby",
+            "Python" : "ace/mode/python"
+        };
+        var codes = {
+            "C++" : "code_cpp",
+            "Java" : "code_java",
+            "Ruby" : "code_ruby",
+            "Python" : "code_python"
+        };
+        var judge_funcs = {
+            "C++" : judge_cpp,
+            "Java" : judge_java,
+            "Ruby" : judge_ruby,
+            "Python" : judge_python
+        };
+
+        $scope.last_autosave = new Date().getTime();
         $scope.languages = [
             'C++',
             'Java',
@@ -22,8 +83,25 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
         $scope.cur_lang = 'C++';
 
         $scope.problem = Problem.get({problemId: $routeParams.problemId, 'foo':new Date().getTime()}, function(problem) {
-            $scope.$editor.setValue(problem['code_cpp']);
-            $scope.$editor.clearSelection();
+
+            get_last_language($scope.problem['id'], function(last_lang) {
+                $scope.cur_lang = last_lang;
+
+                get_autosave($scope.problem['id'], $scope.cur_lang, function(data) {
+                    if(!last_lang || last_lang == '') last_lang = "C++";
+                    if($("#cur-lang").text() != $scope.cur_lang) {
+                        $("#cur-lang").text($scope.cur_lang);
+                        $scope.$editor.getSession().setMode(modes[$scope.cur_lang]);
+                    }
+
+                    if(data && data != '') {
+                        $scope.$editor.setValue(data);
+                    } else {
+                        $scope.$editor.setValue(problem[codes[$scope.cur_lang]]);
+                    }
+                    $scope.$editor.clearSelection();
+                });
+            });
         });
 
         $scope.aceLoaded = function(_editor) {
@@ -31,6 +109,15 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             _editor.setFontSize(14);
             _editor.setHighlightActiveLine(false);
             _editor.$blockScrolling = Infinity;
+
+            _editor.commands.addCommand({
+                name: 'SaveCommand',
+                bindKey: {win: 'Ctrl-S',  mac: 'Command-S'},
+                exec: function(editor) {
+                    update_autosave($scope.problem['id'], $scope.cur_lang, $scope.$editor.getValue());
+                },
+                readOnly: true // false if this command should not apply in readOnly mode
+            });
 
             $('#error-msg-panel').hide();
             $('#submission-ret-panel').hide();
@@ -44,36 +131,40 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             $scope.cur_lang = lang;
 
             $("#cur-lang").text(lang);
-            var modes = {
-                "C++" : "ace/mode/c_cpp",
-                "Java" : "ace/mode/java",
-                "Ruby" : "ace/mode/ruby",
-                "Python" : "ace/mode/python"
-            };
-            var codes = {
-                "C++" : "code_cpp",
-                "Java" : "code_java",
-                "Ruby" : "code_ruby",
-                "Python" : "code_python"
-            };
+
             $scope.$editor.getSession().setMode(modes[lang]);
-            $scope.$editor.setValue($scope.problem[codes[lang]]);
+
+            get_autosave($scope.problem['id'], $scope.cur_lang, function(data){
+                if(data && data != '') {
+                    $scope.$editor.setValue(data);
+                } else {
+                    $scope.$editor.setValue($scope.problem[codes[$scope.cur_lang]]);
+                }
+                $scope.$editor.clearSelection();
+            });
+        };
+
+        $scope.onSave = function(e) {
+            update_autosave($scope.problem['id'], $scope.cur_lang, $scope.$editor.getValue());
+        };
+
+        $scope.onReload = function(e) {
+            $scope.$editor.setValue($scope.problem[codes[$scope.cur_lang]]);
             $scope.$editor.clearSelection();
         };
 
         $scope.onSubmit = function(e) {
+            update_autosave($scope.problem['id'], $scope.cur_lang, $scope.$editor.getValue());
+
             $('#error-msg-panel').hide();
             $('#submission-ret-panel').show();
 
-            var judge_funcs = {
-                "C++" : judge_cpp,
-                "Java" : judge_java,
-                "Ruby" : judge_ruby,
-                "Python" : judge_python
-            };
             var judge_f = judge_funcs[$scope.cur_lang];
 
             judge_f($scope, function(ret){
+
+                add_submission($scope.problem['id'], $scope.$editor.getValue(), $scope.cur_lang, ret['result'], ret['runtime']);
+
                 if (ret['result'] == 'Accepted') {
                     $('#judge-ret').css('color', '#398439');
                 } else {

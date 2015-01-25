@@ -2808,8 +2808,9 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #333333;
-  background-color: #e7e7e7;
+  background-color: #ffffff;
   border-color: #cccccc;
+  border-radius: 9px;
 }
 .btn-default:hover,
 .btn-default:focus,
