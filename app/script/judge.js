@@ -32,6 +32,10 @@ try {
 
 ///////////////////////////////////////////////////////////////////////////
 
+var beginsWith = function(needle, haystack){
+    return (haystack.substr(0, needle.length) == needle);
+}
+
 var generate_cpp = function(problem, solution) {
     var out_file = "#include \"common.h\"\n\n";
     out_file += solution + "\n\n";
@@ -80,6 +84,8 @@ var generate_cpp = function(problem, solution) {
 
     // judge
     out_file += "\n" + indent;
+    out_file += "auto start = chrono::steady_clock::now();\n"
+    out_file += "\n" + indent;
     out_file += "for(int i = 0; i < num_test; ++i) {\n";
     out_file += indent2;
 
@@ -125,7 +131,10 @@ var generate_cpp = function(problem, solution) {
     out_file += "}\n";
 
     // last
-    out_file += indent + "cout << \"Accepted\" << endl;\n"
+    out_file += indent + "auto elapsed = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start);\n";
+    out_file += indent + "cout << \"Accepted;\";\n"
+    out_file += indent + "cout << elapsed.count() << endl;\n";
+
     out_file += indent + "return 0;\n"
     out_file += "}\n"
     return out_file;
@@ -184,6 +193,8 @@ var generate_java = function(problem, solution) {
 
     // judge
     out_file += "\n" + indent;
+    out_file += "long startTime = System.currentTimeMillis();\n";
+    out_file += "\n" + indent;
     out_file += "for(int i = 0; i < num_test; ++i) {\n";
     out_file += indent2;
 
@@ -230,7 +241,9 @@ var generate_java = function(problem, solution) {
     out_file += "}\n";
 
     // last
-    out_file += indent + "System.out.println(\"Accepted\");\n"
+    out_file += indent + "long estimatedTime = System.currentTimeMillis() - startTime;\n";
+    out_file += indent + "System.out.print(\"Accepted;\");\n"
+    out_file += indent + "System.out.println(estimatedTime);\n"
     out_file += "}\n"
 
     out_file += "}\n";
@@ -288,6 +301,8 @@ var generate_ruby = function(problem, solution) {
 
     // judge
     out_file += "\n" + indent;
+    out_file += "start_time = Time.now\n";
+    out_file += "\n" + indent;
     out_file += "(0...num_test).each do |i|\n";
     out_file += indent2;
 
@@ -331,7 +346,8 @@ var generate_ruby = function(problem, solution) {
     out_file += "end\n";
 
     // last
-    out_file += indent + "puts('Accepted')\n"
+    out_file += indent + "runtime = (Time.now - start_time) * 1000.0\n";
+    out_file += indent + "puts('Accepted;' + runtime.to_i.to_s)\n"
 
     return out_file;
 };
@@ -365,19 +381,17 @@ var judge_cpp = function($scope, callback, msg) {
                 }
 
                 msg('Judging');
-                var before_time = new Date().getTime();
                 // execute and judge
                 exec('judge/cpp/out',
                     function (error, stdout, stderr) {
-                        var runtime = new Date().getTime() - before_time;
                         if (error !== null) {
                             var ret = { "result" : "Runtime Error", "details" : error };
                             callback(ret);
                             return;
                         }
                         var results = stdout.trim();
-                        if(results == "Accepted") {
-                            var ret = { "result" : "Accepted", "runtime": runtime};
+                        if (beginsWith('Accepted', results)) {
+                            var ret = { "result" : "Accepted", "runtime": results.split(";")[1]};
                             callback(ret);
                         } else {
                             var res = results.split(";");
@@ -422,19 +436,17 @@ var judge_java = function($scope, callback, msg) {
                 }
 
                 msg('Judging');
-                var before_time = new Date().getTime();
                 // execute and judge
                 exec('java -cp judge/java judge/src',
                     function (error, stdout, stderr) {
-                        var runtime = new Date().getTime() - before_time;
                         if (error !== null) {
                             var ret = { "result" : "Runtime Error", "details" : error };
                             callback(ret);
                             return;
                         }
                         var results = stdout.trim();
-                        if(results == "Accepted") {
-                            var ret = { "result" : "Accepted", "runtime": runtime};
+                        if (beginsWith('Accepted', results)) {
+                            var ret = { "result" : "Accepted", "runtime": results.split(";")[1]};
                             callback(ret);
                         } else {
                             var res = results.split(";");
@@ -461,10 +473,8 @@ var judge_ruby = function($scope, callback, msg) {
 
         // judge
         msg('Judging');
-        var before_time = new Date().getTime();
         exec('ruby judge/ruby/src.rb',
             function (error, stdout, stderr) {
-                var runtime = new Date().getTime() - before_time;
                 if(stderr != undefined && stderr != "") {
                     // Compile error
                     var errors = stderr.replace(new RegExp('judge/ruby/src.rb:', 'g'), '');
@@ -481,8 +491,8 @@ var judge_ruby = function($scope, callback, msg) {
                 }
 
                 var results = stdout.trim();
-                if(results == "Accepted") {
-                    var ret = { "result" : "Accepted", "runtime": runtime};
+                if (beginsWith('Accepted', results)) {
+                    var ret = { "result" : "Accepted", "runtime": results.split(";")[1]};
                     callback(ret);
                 } else {
                     var res = results.split(";");
