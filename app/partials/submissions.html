@@ -1,0 +1,52 @@
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+<div>
+  <div class="row" style="margin-top: 20px;margin-bottom: 20px">
+    <div class="col-lg-6">
+      <div class="bs-component" style="font-size: 30px; vertical-align: middle;">
+        <a href="#/problems/{{problem.id}}">{{problem.name}}</a> / Submissions
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="pull-right" data-toggle="tooltip" data-placement="left" title="Clear all submissions">
+        <a ng-click="onClear()" class="btn btn-default" >
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+    <table class="table table-striped table-hover" style="font-size:15px;">
+      <thead>
+        <tr>
+          <th>Submit Time</th>
+          <th>Language</th>
+          <th>Result</th>
+          <th>Run Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="submission in subs">
+          <td>{{submission.reltime}}</td>
+          <td>{{submission.language}}</td>
+
+          <td ng-if="submission.status != 'Accepted' "><a href="#/subdetail/{{submission.sid}}" style="color:#ed432f"><strong>{{submission.status}}</strong></a></td>
+          <td ng-if="submission.status == 'Accepted' "><a href="#/subdetail/{{submission.sid}}" style="color:#398439"><strong>{{submission.status}}</strong></a></td>
+
+          <td ng-if="submission.status != 'Accepted' ">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </td>
+          <td ng-if="submission.status == 'Accepted' ">{{submission.runtime}} ms</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  </div>

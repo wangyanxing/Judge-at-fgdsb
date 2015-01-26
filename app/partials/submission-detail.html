@@ -1,0 +1,107 @@
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+<div>
+  <div class="row" style="margin-top: 20px;margin-bottom: 20px">
+    <div class="col-lg-6">
+      <div class="bs-component" style="font-size: 23px; vertical-align: middle;">
+        <a href="#/problems/{{problem.id}}">{{problem.name}}</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="pull-right">
+        <div style="margin-left: 14px; font-size: 20px; font-weight: bold;">
+          {{submission.language}} /
+          <span ng-if="submission.status != 'Accepted' " style="margin-left: 5px; color: #ed432f; font-size: 20px">{{submission.status}}</span>
+          <span ng-if="submission.status == 'Accepted' " style="margin-left: 5px; color: #398439; font-size: 20px">{{submission.status}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="error-msg-panel" class="panel panel-default">
+  <div id="error-msg-div" class="panel-body">
+    <code id="error-msg"></code>
+  </div>
+
+  <div id="ac-msg-div" class="panel-body">
+    <p id="ac-msg"></p>
+  </div>
+
+  <div id="wrong-answer-div">
+    <table style="margin-left:8px; margin-top:8px; margin-bottom:8px;
+     font-size: 15px; border-spacing: 5px; white-space: pre; border-collapse: separate;">
+      <tbody>
+      <tr>
+        <td class="pad-left">Passed Tests:</td>
+        <td id="ret_wa_tests" class="line-wrap" style="padding-left: 10px;font-weight: bold"></td>
+      </tr>
+      <tr>
+        <td class="pad-left">Input:</td>
+        <td id="ret_wa_input" class="line-wrap" style="padding-left: 10px;font-weight: bold"></td>
+      </tr>
+      <tr>
+        <td class="pad-left">Output:</td>
+        <td id="ret_wa_output" class="line-wrap" style="padding-left: 10px;font-weight: bold; color:#ed432f"></td>
+      </tr>
+      <tr>
+        <td class="pad-left">Expected:</td>
+        <td id="ret_wa_expected" class="line-wrap" style="padding-left: 10px;font-weight: bold; color:#398439"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="btn-group">
+        <a href="#/submissions/{{submission.id}}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Back to history">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a ng-click="onEdit()" class="btn btn-default" style="margin-left: 5px">Edit</a>
+      </div>
+      <div class="btn-group">
+        <a ng-click="onDelete()" class="btn btn-default" style="margin-left: 5px;">Delete</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="pull-right">
+        <p style="font-size: 15px; padding-top: 3px;">{{submission.subtime}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div >
+    <style type="text/css" media="screen">
+      .ace_editor {
+        margin-left: 14px;
+        margin-right: 14px;
+        margin-top: 23px;
+        width: 97.8%;
+        height: 400px;
+        border: 1px lightgray solid;
+      }
+    </style>
+
+    <div ui-ace="{
+      theme: 'textmate',
+      mode: 'c_cpp',
+      showPrintMargin: false,
+      useSoftTabs: true,
+      onLoad: aceLoaded
+    }"></div>
+
+    <script src="script/ace.js" type="text/javascript" charset="utf-8"></script>
+  </div>
+</div>
+
