@@ -16,5 +16,11 @@
         "id": "two-difference",
         "name": "Two Difference",
         "difficulty": "Medium"
+    },
+    {
+        "age": 3,
+        "id": "fence-painter",
+        "name": "Fence Painter",
+        "difficulty": "Medium"
     }
 ]

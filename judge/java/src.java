@@ -2,32 +2,39 @@ package judge;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
+import tests.*;
 
 public class src {
-int plus_num(int a, int b) {
-    return a+b;
+int num_colors(int n, int k) {
+    if(n <= 0 || k <= 0) return 0;
+    int prev_prev = k, prev = k * k;
+    for (int i = 0; i < n - 1; ++i) {
+        int old_dif = prev;
+        prev = (k - 1) * (prev_prev + prev);
+        prev_prev = old_dif;
+    }
+    return prev_prev;
 }
 
 public static void main (String[] args) throws java.lang.Exception {
-    final int num_test = 5;
-    src s = new src();
-    int[] in_0 = {1,1,2,100,100};
-    int[] in_1 = {0,1,1,13,200};
-    int[] in_org_0 = {1,1,2,100,100};
-    int[] in_org_1 = {0,1,1,13,200};
-    int[] out = {1,2,3,113,300};
 
-    for(int i = 0; i < num_test; ++i) {
-        int answer = s.plus_num(in_0[i],in_1[i]);
-        if(answer != out[i]) {
-            System.out.printf("%d / %d;", i+1, num_test);
-            String outs = common.to_string(in_org_0[i]) + ", " + common.to_string(in_org_1[i]);
+    src s = new src();
+
+    long startTime = System.currentTimeMillis();
+
+    for(int i = 0; i < fence_painter.num_test; ++i) {
+        int answer = s.num_colors(fence_painter.in_0[i],fence_painter.in_1[i]);
+        if(answer != fence_painter.out[i]) {
+            System.out.printf("%d / %d;", i+1, fence_painter.num_test);
+            String outs = common.to_string(fence_painter.in_org_0[i]) + ", " + common.to_string(fence_painter.in_org_1[i]);
             System.out.print(outs + ";");
             System.out.print(common.to_string(answer) + ";");
-            System.out.println(common.to_string(out[i]));
+            System.out.println(common.to_string(fence_painter.out[i]));
             return;
         }
     }
-    System.out.println("Accepted");
+    long estimatedTime = System.currentTimeMillis() - startTime;
+    System.out.print("Accepted;");
+    System.out.println(estimatedTime);
 }
 }

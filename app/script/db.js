@@ -5,7 +5,7 @@ db.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS autosave (id UNIQUE NOT NULL PRIMARY KEY, cpp text, ruby text, python text, java text, scala text, csharp text, objc text, swift text, js text, lua text, last_lang)');
 });
 db.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS submission (id, code text, subtime DATETIME, language, runtime int, status)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS submission (sid INTEGER PRIMARY KEY AUTOINCREMENT, id, code text, subtime DATETIME, language, runtime int, status, detail text)');
 });
 
 var langs_to_db = {
@@ -27,9 +27,7 @@ var update_autosave = function(id, language, content) {
     });
     db.transaction(function (tx) {
         content = content.replace(new RegExp("'", 'g'), "''");
-        //console.log(content);
         var sql = 'UPDATE autosave SET ' + lang + ' = \'' + content + '\', last_lang = \'' + language + '\' WHERE id = \'' + id + '\'';
-        //console.log(sql);
         tx.executeSql(sql);
     });
 };
@@ -69,6 +67,30 @@ var clear_submissions = function($q, id) {
     return deferred.promise;
 }
 
+var clear_single_submission = function($q, sid) {
+    var deferred = $q.defer();
+    db.transaction(function (tx) {
+        tx.executeSql('DELETE FROM submission WHERE sid = ' + sid, [], function(tx, results) {
+            deferred.resolve();
+        });
+    });
+    return deferred.promise;
+}
+
+var get_submission_detail = function($q, sid) {
+    var deferred = $q.defer();
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM submission WHERE sid = ' + sid, [], function (tx, results) {
+            if(results.rows.length > 0) {
+                deferred.resolve(results.rows.item(0));
+            } else {
+                deferred.reject();
+            }
+        });
+    });
+    return deferred.promise;
+};
+
 var get_submissions = function($q, id) {
     var deferred = $q.defer();
     db.transaction(function (tx) {
@@ -101,12 +123,12 @@ var get_all_submissions = function(func) {
     });
 };
 
-var add_submission = function(id, code, language, status, runtime) {
+var add_submission = function(id, code, language, status, runtime, detail) {
     if(status != 'Accepted') runtime = 0;
     code = code.replace(new RegExp("'", 'g'), "''");
     db.transaction(function (tx) {
         var time = moment().format('YYYY-MM-DD HH:mm:ss');
-        var query = 'INSERT INTO submission (id, code, subtime, language, status, runtime) VALUES (\'' + id + '\',\'' + code + '\',\'' + time +  '\',\'' + language + '\', \'' + status + '\', ' + runtime + ')';
+        var query = 'INSERT INTO submission (id, code, subtime, language, status, detail, runtime) VALUES (\'' + id + '\',\'' + code + '\',\'' + time +  '\',\'' + language + '\',\'' + status + '\', \'' + detail + '\', ' + runtime + ')';
         tx.executeSql(query);
     });
 };

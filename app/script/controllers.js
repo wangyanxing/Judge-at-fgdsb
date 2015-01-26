@@ -2,12 +2,100 @@
 
 /* Controllers */
 
+var modes = {
+    "C++" : "ace/mode/c_cpp",
+    "Java" : "ace/mode/java",
+    "Ruby" : "ace/mode/ruby",
+    "Python" : "ace/mode/python"
+};
+var codes = {
+    "C++" : "code_cpp",
+    "Java" : "code_java",
+    "Ruby" : "code_ruby",
+    "Python" : "code_python"
+};
+
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);
 
 fgdsbControllers.controller('ProblemListCtrl', ['$scope', 'Problem',
     function($scope, Problem) {
         $scope.problems = Problem.query();
         $scope.orderProp = 'age';
+    }]);
+
+fgdsbControllers.controller('SubDetailCtrl', ['$scope', '$q', '$window', '$routeParams', 'Problem',
+
+    function($scope, $q, $window, $routeParams, Problem) {
+
+        $scope.onEdit = function() {
+            update_autosave($scope.submission.id, $scope.submission.language, $scope.submission.code);
+            $window.location.href = '#/problems/' + $scope.submission.id;
+        };
+
+        $scope.onDelete = function() {
+            bootbox.dialog({
+                message: "Do you really want to delete this submission?",
+                title: "Delete Submission",
+                buttons: {
+                    success: {
+                        label: "No",
+                        className: "btn-success",
+                        callback: function() {
+                        }
+                    },
+                    danger: {
+                        label: "Yes",
+                        className: "btn-danger",
+                        callback: function() {
+                            clear_single_submission($q, $scope.submission.sid).then(function (){
+                                var pa = '#/submissions/' + $scope.submission.id;
+                                $window.location.href= pa;
+                            });
+                        }
+                    }
+                }
+            });
+        };
+
+        $scope.aceLoaded = function(_editor) {
+            $scope.$editor = _editor;
+            _editor.setFontSize(14);
+            _editor.setHighlightActiveLine(false);
+            _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true)
+            _editor.setReadOnly(true);
+        };
+
+        get_submission_detail($q, $routeParams.subid).then(function(data) {
+            $scope.submission = data;
+            $scope.problem = Problem.get({problemId: data.id, 'foo':new Date().getTime()}, function(problem) {
+            });
+
+            $scope.$editor.getSession().setMode(modes[$scope.submission.language]);
+            $scope.$editor.setValue($scope.submission.code);
+            $scope.$editor.clearSelection();
+
+            $("#error-msg-div").hide();
+            $("#wrong-answer-div").hide();
+            $("#ac-msg-div").hide();
+
+            if ($scope.submission.status == 'Compile Error') {
+                $("#error-msg-div").show();
+                $('#error-msg').text($scope.submission.detail);
+            } else if ($scope.submission.status == 'Wrong Answer') {
+                var was = $scope.submission.detail.split(';');
+                $("#wrong-answer-div").show();
+                $("#ret_wa_tests").text(was[0]);
+                $("#ret_wa_input").text(was[1]);
+                $("#ret_wa_output").text(was[2]);
+                $("#ret_wa_expected").text(was[3]);
+            } else if ($scope.submission.status == 'Accepted') {
+                $("#ac-msg-div").show();
+                $("#ac-msg").text("Run time : " + $scope.submission.runtime + " ms");
+            }
+        }, function() {
+
+        });
     }]);
 
 fgdsbControllers.controller('SubmissionsCtrl', ['$scope', '$q', '$routeParams', 'Problem',
@@ -54,25 +142,6 @@ fgdsbControllers.controller('SubmissionsCtrl', ['$scope', '$q', '$routeParams', 
 fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Problem',
     function($scope, $routeParams, Problem) {
 
-        var modes = {
-            "C++" : "ace/mode/c_cpp",
-            "Java" : "ace/mode/java",
-            "Ruby" : "ace/mode/ruby",
-            "Python" : "ace/mode/python"
-        };
-        var codes = {
-            "C++" : "code_cpp",
-            "Java" : "code_java",
-            "Ruby" : "code_ruby",
-            "Python" : "code_python"
-        };
-        var judge_funcs = {
-            "C++" : judge_cpp,
-            "Java" : judge_java,
-            "Ruby" : judge_ruby,
-            "Python" : judge_python
-        };
-
         $scope.last_autosave = new Date().getTime();
         $scope.languages = [
             'C++',
@@ -81,6 +150,13 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             'Python'
         ];
         $scope.cur_lang = 'C++';
+
+        var judge_funcs = {
+            "C++" : judge_cpp,
+            "Java" : judge_java,
+            "Ruby" : judge_ruby,
+            "Python" : judge_python
+        };
 
         $scope.problem = Problem.get({problemId: $routeParams.problemId, 'foo':new Date().getTime()}, function(problem) {
 
@@ -109,6 +185,7 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             _editor.setFontSize(14);
             _editor.setHighlightActiveLine(false);
             _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true)
 
             _editor.commands.addCommand({
                 name: 'SaveCommand',
@@ -161,9 +238,15 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
 
             var judge_f = judge_funcs[$scope.cur_lang];
 
-            judge_f($scope, function(ret){
+            judge_f($scope, function(ret) {
 
-                add_submission($scope.problem['id'], $scope.$editor.getValue(), $scope.cur_lang, ret['result'], ret['runtime']);
+                var detail = "";
+                if (ret['result'] == 'Wrong Answer') {
+                    detail = ret["tests"] + ";" + ret["input"] + ";" + ret["output"] + ";" + ret["expected"];
+                } else if (ret['result'] == 'Compile Error') {
+                    detail = ret['details'];
+                }
+                add_submission($scope.problem['id'], $scope.$editor.getValue(), $scope.cur_lang, ret['result'], ret['runtime'], detail);
 
                 if (ret['result'] == 'Accepted') {
                     $('#judge-ret').css('color', '#398439');
