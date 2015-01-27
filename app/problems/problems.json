@@ -64,5 +64,11 @@
         "id": "segregate-even-odd",
         "name": "Segregate Even and Odd Numbers",
         "difficulty": "Easy"
+    },
+    {
+        "age": 11,
+        "id": "second-largest-number",
+        "name": "Second Largest Number",
+        "difficulty": "Easy"
     }
 ]

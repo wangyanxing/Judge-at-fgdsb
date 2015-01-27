@@ -95,11 +95,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="common.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54022986" vertical-offset="1077" max-vertical-offset="1890">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1077" max-vertical-offset="1890">
               <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="second-largest-number.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/second-largest-number.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42145595" vertical-offset="0" max-vertical-offset="1110">
+              <caret line="22" column="7" selection-start-line="8" selection-start-column="4" selection-end-line="22" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -123,6 +133,7 @@
         <option value="$PROJECT_DIR$/three-increasing-elements.rb" />
         <option value="$PROJECT_DIR$/segregate-even-odd.rb" />
         <option value="$PROJECT_DIR$/common.rb" />
+        <option value="$PROJECT_DIR$/second-largest-number.rb" />
       </list>
     </option>
   </component>
@@ -450,8 +461,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54022986" vertical-offset="1077" max-vertical-offset="1890">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1077" max-vertical-offset="1890">
           <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/second-largest-number.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42145595" vertical-offset="0" max-vertical-offset="1110">
+          <caret line="22" column="7" selection-start-line="8" selection-start-column="4" selection-end-line="22" selection-end-column="7" />
           <folding />
         </state>
       </provider>

@@ -1,27 +1,26 @@
 import sys
 import datetime
 from common import *
-from tests.segregate_even_odd import *
+from tests.second_largest_number import *
 
-def segregate(arr):
-	l, r = 0, len(arr) - 1
-	while(l < r):
-		while((arr[l] % 2 == 0) and (l < r)):
-			l += 1
-		while((arr[r] % 2 != 0) and (l < r)):
-			r -= 1
-		if(l < r):
-			arr[l], arr[r] = arr[r], arr[l]
-			l += 1
-			r -= 1
+def second_largest(arr):
+    if len(arr) < 2: return 0
+    second_max, max_val = arr[0], arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] > max_val:
+            second_max = max_val
+            max_val = arr[i]
+        elif arr[i] > second_max and arr[i] != max_val:
+            second_max = arr[i]
+    if second_max == max_val: return 0
+    else: return second_max
 
 
 start_time = datetime.datetime.now()
 
 for i in range(num_test):
-    answer = segregate(in_0[i])
-    answer = in_0[i];
-    if not test(i):
+    answer = second_largest(in_0[i])
+    if answer != out[i] :
         out_str = ""
         out_str += str(i+1) + " / " + str(num_test) + ";"
         out_str += str(in_org_0[i])

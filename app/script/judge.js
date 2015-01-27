@@ -30,6 +30,14 @@ try {
     console.log(ex.message);
 }
 
+$(window).on('dragover', function (e) {
+    e.preventDefault();
+    e.originalEvent.dataTransfer.dropEffect = 'none';
+});
+$(window).on('drop', function (e) {
+    e.preventDefault();
+});
+
 ///////////////////////////////////////////////////////////////////////////
 
 var beginsWith = function(needle, haystack){

@@ -5,19 +5,18 @@ import java.io.*;
 import tests.*;
 
 public class src {
-void segregate(int[] arr) {
-    int l = 0, r = arr.length - 1;
-    while(l < r) {
-        while(arr[l] % 2 == 0 && l < r) ++l;
-        while(arr[r] % 2 != 0 && l < r) --r;
-        if(l < r) {
-            int t = arr[l];
-            arr[l] = arr[r];
-            arr[r] = t;
-            l++;
-            r--;
+int second_largest(int[] arr) {
+    if(arr.length < 2) return 0;
+    int second_max = arr[0], max_val = arr[0];
+    for(int i = 1; i < arr.length; ++i) {
+        if(arr[i] > max_val) {
+            second_max = max_val;
+            max_val = arr[i];
+        } else if(arr[i] > second_max && arr[i] != max_val) {
+            second_max = arr[i];
         }
     }
+    return second_max == max_val ? 0 : second_max;
 }
 
 public static void main (String[] args) throws java.lang.Exception {
@@ -26,15 +25,14 @@ public static void main (String[] args) throws java.lang.Exception {
 
     long startTime = System.currentTimeMillis();
 
-    for(int i = 0; i < segregate_even_odd.num_test; ++i) {
-        s.segregate(segregate_even_odd.in_0[i]);
-        int[] answer = segregate_even_odd.in_0[i];
-        if(!segregate_even_odd.test(i)) {
-            System.out.printf("%d / %d;", i+1, segregate_even_odd.num_test);
-            String outs = common.to_string(segregate_even_odd.in_org_0[i]);
+    for(int i = 0; i < second_largest_number.num_test; ++i) {
+        int answer = s.second_largest(second_largest_number.in_0[i]);
+        if(answer != second_largest_number.out[i]) {
+            System.out.printf("%d / %d;", i+1, second_largest_number.num_test);
+            String outs = common.to_string(second_largest_number.in_org_0[i]);
             System.out.print(outs + ";");
             System.out.print(common.to_string(answer) + ";");
-            System.out.println(common.to_string(segregate_even_odd.out[i]));
+            System.out.println(common.to_string(second_largest_number.out[i]));
             return;
         }
     }

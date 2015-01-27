@@ -5,15 +5,20 @@
 using namespace std;
 
 #include "common.h"
-#include "tests/segregate-even-odd.h"
+#include "tests/second-largest-number.h"
 
-void segregate(vector<int>& arr) {
-    int l = 0, r = arr.size() - 1;
-    while(l < r) {
-        while(arr[l] % 2 == 0 && l < r) ++l;
-        while(arr[r] % 2 != 0 && l < r) --r;
-        if(l < r) swap(arr[l++], arr[r--]);
+int second_largest(const vector<int>& arr) {
+    if(arr.size() < 2) return 0;
+    int second_max = arr[0], max_val = arr[0];
+    for(size_t i = 1; i < arr.size(); ++i) {
+        if(arr[i] > max_val) {
+            second_max = max_val;
+            max_val = arr[i];
+        } else if(arr[i] > second_max && arr[i] != max_val) {
+            second_max = arr[i];
+        }
     }
+    return second_max == max_val ? 0 : second_max;
 }
 
 int main() {
@@ -23,9 +28,8 @@ int main() {
     auto start = chrono::steady_clock::now();
 
     for(int i = 0; i < num_test; ++i) {
-        segregate(in_0[i]);
-        auto answer = in_0[i];
-        if(!test(i)) {
+        auto answer = second_largest(in_0[i]);
+        if(answer != out[i]) {
             cout << i+1 << "/" << num_test << ";";
             cout << in_org_0[i] << ";";
             cout << answer << ";";

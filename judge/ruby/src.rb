@@ -1,20 +1,21 @@
 require './judge/ruby/common'
-require './judge/ruby/tests/segregate-even-odd'
+require './judge/ruby/tests/second-largest-number'
 
-def segregate(arr)
-	l, r = 0, arr.length - 1
-	while(l < r)
-		while(arr[l] % 2 == 0 && l < r)
-			l += 1
+def second_largest(arr)
+    return 0 if arr.length < 2
+	second_max, max_val = arr[0], arr[0]
+	(1...arr.length).each do |i|
+		if arr[i] > max_val
+			second_max = max_val
+			max_val = arr[i]
+		elsif arr[i] > second_max && arr[i] != max_val
+			second_max = arr[i]
 		end
-		while(arr[r] % 2 != 0 && l < r)
-			r -= 1
-		end
-		if(l < r)
-			arr[l], arr[r] = arr[r], arr[l]
-			l += 1
-			r -= 1
-		end
+	end
+	if second_max == max_val
+		0
+	else
+		second_max
 	end
 end
 
@@ -22,9 +23,8 @@ end
 start_time = Time.now
 
 (0...T_num_test).each do |i|
-    answer = segregate(T_in_0[i])
-    answer = T_in_0[i];
-    if !test(i)
+    answer = second_largest(T_in_0[i])
+    if answer != T_out[i]
         print "#{i+1} / #{T_num_test};"
         print T_in_org_0[i]
         print ';'

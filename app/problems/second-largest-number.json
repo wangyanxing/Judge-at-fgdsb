@@ -1,0 +1,25 @@
+{
+    "name" : "Second Largest Number",
+    "id" : "second-largest-number",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/18/second-largest-number/",
+    "desc" : "<p>Find the second largest number in a given array.</p>",
+    "code_cpp" : "int second_largest(vector<int>& arr) {\n}",
+    "code_java" : "int second_largest(int[] arr) {\n}",
+    "code_ruby" : "def second_largest(arr)\nend",
+    "code_python" : "def second_largest(arr):",
+
+    "in_type_cpp" : ["vector<int>"],
+    "ret_type_cpp" : "int",
+    "out_type_cpp" : "int",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int[]"],
+    "ret_type_java" : "int",
+    "out_type_java" : "int",
+    "judge_type_java" : "equal",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : "second_largest"
+}
