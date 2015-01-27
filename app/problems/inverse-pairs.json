@@ -1,0 +1,25 @@
+{
+    "name" : "Inverse Pairs",
+    "id" : "inverse-pairs",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/03/inverse-pairs/",
+    "desc" : "<p>Given an integer array, return the number of all inverse pairs.<br><br>For example: <code>[7, 5, 6, 4]</code><br><br>There are five inverse pairs in total:<br><br><code>(7,6), (7,5), (7,4), (6,4), (5,4)</code><br><br>Thus the result is <code>5</code>.</p>",
+    "code_cpp" : "int num_inverse_pairs(vector<int>& arr) {\n}",
+    "code_java" : "int num_inverse_pairs(int[] arr) {\n}",
+    "code_ruby" : "def num_inverse_pairs(arr)\nend",
+    "code_python" : "def num_inverse_pairs(arr):",
+
+    "in_type_cpp" : ["vector<int>"],
+    "ret_type_cpp" : "int",
+    "out_type_cpp" : "int",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int[]"],
+    "ret_type_java" : "int",
+    "out_type_java" : "int",
+    "judge_type_java" : "equal",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : "num_inverse_pairs"
+}

@@ -1,0 +1,25 @@
+{
+    "name" : "Intersection of Two Sorted Arrays",
+    "id" : "intersection-of-two-sorted-arrays",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/03/finding-intersection-of-two-sorted-arrays/",
+    "desc" : "<p>Find the intersection of two sorted arrays.<br><br>For example: the intersection of <code>[1,2,3,4]</code> and <code>[1,3,5,7]</code> is <code>[1,3]</code>.</p>",
+    "code_cpp" : "vector<int> intersection(vector<int>& a, vector<int>& b) {\n}",
+    "code_java" : "int[] intersection(int[] a, int[] b) {\n}",
+    "code_ruby" : "def intersection(a, b)\nend",
+    "code_python" : "def intersection(a, b):",
+
+    "in_type_cpp" : ["vector<int>", "vector<int>"],
+    "ret_type_cpp" : "vector<int>",
+    "out_type_cpp" : "vector<int>",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int[]", "int[]"],
+    "ret_type_java" : "List<Integer>",
+    "out_type_java" : "List<Integer>",
+    "judge_type_java" : "!common.compare_arr_arraylist(intersection_of_two_sorted_arrays.out[i], answer)",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : "intersection"
+}

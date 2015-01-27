@@ -45,6 +45,8 @@ class TestBase
     file.print "vector<#{@problem['out_type_cpp']}> out = ";
     file.puts cpp_arr(@test_out) + ';'
 
+    file.puts @extra_test_code_cpp
+
     file.close
   end
 
@@ -56,6 +58,7 @@ class TestBase
     file.puts 'import java.util.*;'
     file.puts 'import java.lang.*;'
     file.puts 'import java.io.*;'
+    file.puts 'import judge.*;'
     file.puts
 
     file.puts "public class #{class_name} {"
@@ -68,6 +71,8 @@ class TestBase
     end
     file.print indent(1) + "public static #{@problem['out_type_java']}[] out = ";
     file.puts cpp_arr(@test_out) + ';'
+
+    file.puts @extra_test_code_java
 
     file.puts '}'
 
@@ -86,16 +91,18 @@ class TestBase
     file.print 'T_out = ';
     file.puts @test_out.to_s
 
+    file.puts @extra_test_code_ruby
+
     file.close
   end
 
   def gen_python_test
-    #from tests.a_plus_b import *
-
     file = File.open("../python/tests/#{@name.gsub(/-/, '_')}.py", 'w')
+    file.puts 'from common import *'
     file.puts 'import copy'
     file.puts
     file.puts "num_test = #{@test_in[0].length}"
+    file.puts 'true, false = True, False'
 
     @problem['in_type_java'].each_with_index do |in_type, i|
       file.print "in_#{i} = "
@@ -105,6 +112,7 @@ class TestBase
     file.print 'out = ';
     file.puts @test_out.to_s
 
+    file.puts @extra_test_code_python
     file.close
   end
 

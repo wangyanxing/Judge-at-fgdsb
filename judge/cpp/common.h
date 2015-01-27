@@ -1,8 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
-#include <string>
 #include <algorithm>
 #include <utility>
 #include <stack>
@@ -18,8 +16,6 @@
 #include <numeric>
 #include <iomanip>
 #include <fstream>
-
-using namespace std;
 
 struct TreeNode {
     TreeNode(int v = 0) :val(v){}
@@ -72,3 +68,15 @@ bool test_wiggle(vector<int>& arr) {
     }
     return true;
 }
+
+bool test_anagram(vector<int>& a0, vector<int>& a1) {
+    if(a0.size() != a1.size()) return false;
+    vector<int> t0 = a0;
+    vector<int> t1 = a1;
+    sort(t0.begin(), t0.end());
+    sort(t1.begin(), t1.end());
+    return t0 == t1;
+}
+
+
+

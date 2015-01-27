@@ -38,8 +38,16 @@ var beginsWith = function(needle, haystack){
 
 var generate_cpp = function(problem, solution) {
 
-    var out_file = "#include \"common.h\"\n";
+    var out_file = "#include <vector>\n"
+    out_file += "#include <string>\n"
+    out_file += "#include <algorithm>\n"
+    out_file += "#include <cstdlib>\n"
+
+    out_file += "using namespace std;\n\n"
+
+    out_file += "#include \"common.h\"\n";
     out_file += "#include \"tests/" + problem['id'] + ".h\"\n\n";
+
     out_file += solution + "\n\n";
 
     out_file += "int main() {\n";
@@ -49,6 +57,8 @@ var generate_cpp = function(problem, solution) {
     var indent3 = indent + indent + indent;
 
     // judge
+    out_file += "\n" + indent;
+    out_file += "cout.setf(ios::boolalpha);\n";
     out_file += "\n" + indent;
     out_file += "auto start = chrono::steady_clock::now();\n"
     out_file += "\n" + indent;

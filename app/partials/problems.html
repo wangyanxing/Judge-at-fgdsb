@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="pro in problems | filter:query | orderBy:orderProp">
-          <td>{{pro.age}}</td>
+          <td>{{pro.age + 1}}</td>
           <td>
             <a href="#/problems/{{pro.id}}">{{pro.name}}</a>
           </td>

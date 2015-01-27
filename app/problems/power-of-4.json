@@ -1,0 +1,25 @@
+{
+    "name" : "Power of 4",
+    "id" : "power-of-4",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/11/power-of-4/",
+    "desc" : "<p>Write a program to check if a 32-bit integer is a power of 4.<br><br>Try to solve this problem with different approaches.</p>",
+    "code_cpp" : "bool power_of_4(int number) {\n}",
+    "code_java" : "boolean power_of_4(int number) {\n}",
+    "code_ruby" : "def power_of_4(number)\nend",
+    "code_python" : "def power_of_4(number):",
+
+    "in_type_cpp" : ["int"],
+    "ret_type_cpp" : "bool",
+    "out_type_cpp" : "bool",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int"],
+    "ret_type_java" : "boolean",
+    "out_type_java" : "boolean",
+    "judge_type_java" : "equal",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : "power_of_4"
+}

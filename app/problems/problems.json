@@ -22,5 +22,47 @@
         "id": "fence-painter",
         "name": "Fence Painter",
         "difficulty": "Medium"
+    },
+    {
+        "age": 4,
+        "id": "power-of-4",
+        "name": "Power of 4",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 5,
+        "id": "find-kth-smallest-element",
+        "name": "Find Kth Smallest Element",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 6,
+        "id": "ugly-number",
+        "name": "Ugly Number",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 7,
+        "id": "intersection-of-two-sorted-arrays",
+        "name": "Intersection of Two Sorted Arrays",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 8,
+        "id": "inverse-pairs",
+        "name": "Inverse Pairs",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 9,
+        "id": "three-increasing-elements",
+        "name": "Find Three Increasing Numbers",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 10,
+        "id": "segregate-even-odd",
+        "name": "Segregate Even and Odd Numbers",
+        "difficulty": "Easy"
     }
 ]

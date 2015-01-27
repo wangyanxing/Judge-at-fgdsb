@@ -5,15 +5,19 @@ import java.io.*;
 import tests.*;
 
 public class src {
-int num_colors(int n, int k) {
-    if(n <= 0 || k <= 0) return 0;
-    int prev_prev = k, prev = k * k;
-    for (int i = 0; i < n - 1; ++i) {
-        int old_dif = prev;
-        prev = (k - 1) * (prev_prev + prev);
-        prev_prev = old_dif;
+void segregate(int[] arr) {
+    int l = 0, r = arr.length - 1;
+    while(l < r) {
+        while(arr[l] % 2 == 0 && l < r) ++l;
+        while(arr[r] % 2 != 0 && l < r) --r;
+        if(l < r) {
+            int t = arr[l];
+            arr[l] = arr[r];
+            arr[r] = t;
+            l++;
+            r--;
+        }
     }
-    return prev_prev;
 }
 
 public static void main (String[] args) throws java.lang.Exception {
@@ -22,14 +26,15 @@ public static void main (String[] args) throws java.lang.Exception {
 
     long startTime = System.currentTimeMillis();
 
-    for(int i = 0; i < fence_painter.num_test; ++i) {
-        int answer = s.num_colors(fence_painter.in_0[i],fence_painter.in_1[i]);
-        if(answer != fence_painter.out[i]) {
-            System.out.printf("%d / %d;", i+1, fence_painter.num_test);
-            String outs = common.to_string(fence_painter.in_org_0[i]) + ", " + common.to_string(fence_painter.in_org_1[i]);
+    for(int i = 0; i < segregate_even_odd.num_test; ++i) {
+        s.segregate(segregate_even_odd.in_0[i]);
+        int[] answer = segregate_even_odd.in_0[i];
+        if(!segregate_even_odd.test(i)) {
+            System.out.printf("%d / %d;", i+1, segregate_even_odd.num_test);
+            String outs = common.to_string(segregate_even_odd.in_org_0[i]);
             System.out.print(outs + ";");
             System.out.print(common.to_string(answer) + ";");
-            System.out.println(common.to_string(fence_painter.out[i]));
+            System.out.println(common.to_string(segregate_even_odd.out[i]));
             return;
         }
     }

@@ -42,6 +42,27 @@ public class common {
         return num;
     }
     
+    public static String to_string(boolean num) {
+        return num ? "true" : "false";
+    }
+    
+    public static String to_string(List<Integer> num) {
+        String ret = "[";
+        for(int i = 0; i < num.size(); ++i) {
+            if(i != 0) ret += ", ";
+            ret += Integer.toString(num.get(i));
+        }
+        ret += "]";
+        return ret;
+    }
+    
+    public static boolean compare_arr_arraylist(int[] array, List<Integer> al) {
+        ArrayList<Integer> list = new ArrayList<Integer>(array.length);
+        for (int i = 0; i < array.length; i++)
+            list.add(Integer.valueOf(array[i]));
+        return al.equals(list);
+    }
+    
     public static boolean test_wiggle(int[] arr) {
         if(arr.length == 0) return true;
         boolean test_flag = true;
@@ -55,6 +76,7 @@ public class common {
         }
         return true;
     }
+    
     
     public static int[][] copy(int[][] input) {
         int[][] target = new int[input.length][];
@@ -70,5 +92,22 @@ public class common {
             target[i] = input[i];
         }
         return target;
+    }
+    
+    public static boolean equals(int[] a0, int[] a1) {
+        if(a0.length != a1.length) return false;
+        for (int i=0; i <a0.length; i++) {
+            if(a0[i] != a1[i]) return false;
+        }
+        return true;
+    }
+    
+    public static boolean test_anagram(int[] a0, int[] a1) {
+        if(a0.length != a1.length) return false;
+        int[] t0 = copy(a0);
+        int[] t1 = copy(a1);
+        Arrays.sort(t0);
+        Arrays.sort(t1);
+        return equals(t0, t1);
     }
 }

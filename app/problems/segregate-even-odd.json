@@ -1,0 +1,25 @@
+{
+    "name" : "Segregate Even and Odd Numbers",
+    "id": "segregate-even-odd",
+    "discuss_link": "http://www.fgdsb.com/2015/01/17/segregate-even-and-odd/",
+    "desc" : "<p>Given an array, write a function that segregates even and odd numbers. The functions should put all even numbers first, and then odd numbers. <br><br>Example:<br>Input = <code>[12, 34, 45, 9, 8, 90, 3]</code><br>Output = <code>[12, 34, 8, 90, 45, 9, 3]</code></p>",
+    "code_cpp" : "void segregate(vector<int>& arr) {\n}",
+    "code_java" : "void segregate(int[] arr) {\n}",
+    "code_ruby" : "def segregate(arr)\nend",
+    "code_python" : "def segregate(arr):",
+
+    "in_type_cpp" : ["vector<int>"],
+    "ret_type_cpp" : "void",
+    "out_type_cpp" : "vector<int>",
+    "judge_type_cpp" : "!test(i)",
+
+    "in_type_java" : ["int[]"],
+    "ret_type_java" : "void",
+    "out_type_java" : "int[]",
+    "judge_type_java" : "!segregate_even_odd.test(i)",
+
+    "judge_type_ruby" : "!test(i)",
+    "judge_type_python" : "not test(i)",
+
+    "judge_call" : "segregate"
+}

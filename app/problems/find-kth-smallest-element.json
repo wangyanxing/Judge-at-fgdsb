@@ -1,0 +1,25 @@
+{
+    "name" : "Find Kth Smallest Element",
+    "id" : "find-kth-smallest-element",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/03/find-kth-smallest-element/",
+    "desc" : "<p>Find the k-th (zero-based) smallest element in an unordered array.<br><br>Can you provide an <code>O(N)</code> solution?</p>",
+    "code_cpp" : "int kth_element(vector<int>& arr, int k) {\n}",
+    "code_java" : "int kth_element(int[] arr, int k) {\n}",
+    "code_ruby" : "def kth_element(arr, k)\nend",
+    "code_python" : "def kth_element(arr, k):",
+
+    "in_type_cpp" : ["vector<int>", "int"],
+    "ret_type_cpp" : "int",
+    "out_type_cpp" : "int",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["int[]", "int"],
+    "ret_type_java" : "int",
+    "out_type_java" : "int",
+    "judge_type_java" : "equal",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : "kth_element"
+}
