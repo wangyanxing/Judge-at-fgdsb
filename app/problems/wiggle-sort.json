@@ -4,7 +4,7 @@
     "discuss_link": "http://www.fgdsb.com/2015/01/20/special-sorting/",
     "desc" : "<p>Write a function to convert the array into alternate increasing decreasing numbers: <br><br><code>a[0] <= a[1] >= a[2] <= a[3] >=...</code><br><br><b>Note</b>: You should solve it in place and one pass.</p>",
     "code_cpp" : "void wiggle_sort(vector<int>& arr) {\n}",
-    "code_java" : "void wiggle_sort(int[] arr) {\n}",
+    "code_java" : "public class Solution {\n    public void wiggle_sort(int[] arr) {\n    }\n}",
     "code_ruby" : "def wiggle_sort(arr)\nend",
     "code_python" : "def wiggle_sort(arr):",
 
@@ -18,8 +18,8 @@
     "out_type_java" : "int[]",
     "judge_type_java" : "!common.test_wiggle(wiggle_sort.in_0[i])",
 
-    "judge_type_ruby" : "!test_wiggle(T_in_0[i])",
+    "judge_type_ruby" : "!test_wiggle(@in_0[i])",
     "judge_type_python" : "not test_wiggle(in_0[i])",
 
-    "judge_call" : "wiggle_sort"
+    "judge_call" : "wiggle_sort(@)"
 }

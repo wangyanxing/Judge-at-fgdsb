@@ -2,8 +2,98 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36558874-859b-4cbf-b143-e91278b2030e" name="Default" comment="history finished">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/a_plus_b.class" afterPath="$PROJECT_DIR$/judge/java/tests/a_plus_b.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/judge/common.class" afterPath="$PROJECT_DIR$/judge/java/judge/common.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/fence_painter.class" afterPath="$PROJECT_DIR$/judge/java/tests/fence_painter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/find_kth_smallest_element.class" afterPath="$PROJECT_DIR$/judge/java/tests/find_kth_smallest_element.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/intersection_of_two_sorted_arrays.class" afterPath="$PROJECT_DIR$/judge/java/tests/intersection_of_two_sorted_arrays.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/out" afterPath="$PROJECT_DIR$/judge/cpp/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/power_of_4.class" afterPath="$PROJECT_DIR$/judge/java/tests/power_of_4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/second_largest_number.class" afterPath="$PROJECT_DIR$/judge/java/tests/second_largest_number.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/segregate_even_odd.class" afterPath="$PROJECT_DIR$/judge/java/tests/segregate_even_odd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/judge/src.class" afterPath="$PROJECT_DIR$/judge/java/judge/src.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/test_common.class" afterPath="$PROJECT_DIR$/judge/java/tests/test_common.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/three_increasing_elements.class" afterPath="$PROJECT_DIR$/judge/java/tests/three_increasing_elements.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/two_difference.class" afterPath="$PROJECT_DIR$/judge/java/tests/two_difference.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/ugly_number.class" afterPath="$PROJECT_DIR$/judge/java/tests/ugly_number.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/wiggle_sort.class" afterPath="$PROJECT_DIR$/judge/java/tests/wiggle_sort.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/a-plus-b.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/a-plus-b.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/a-plus-b.json" afterPath="$PROJECT_DIR$/app/problems/a-plus-b.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/a-plus-b.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/a-plus-b.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/a_plus_b.java" afterPath="$PROJECT_DIR$/judge/java/tests/a_plus_b.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/a_plus_b.py" afterPath="$PROJECT_DIR$/judge/python/tests/a_plus_b.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/common.h" afterPath="$PROJECT_DIR$/judge/cpp/common.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/common.java" afterPath="$PROJECT_DIR$/judge/java/common.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/common.py" afterPath="$PROJECT_DIR$/judge/python/common.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/common.rb" afterPath="$PROJECT_DIR$/judge/build_tests/common.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/common.rb" afterPath="$PROJECT_DIR$/judge/ruby/common.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/script/controllers.js" afterPath="$PROJECT_DIR$/app/script/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/fence-painter.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/fence-painter.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/fence-painter.json" afterPath="$PROJECT_DIR$/app/problems/fence-painter.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/fence-painter.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/fence-painter.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/fence_painter.java" afterPath="$PROJECT_DIR$/judge/java/tests/fence_painter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/fence_painter.py" afterPath="$PROJECT_DIR$/judge/python/tests/fence_painter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/find-kth-smallest-element.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/find-kth-smallest-element.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/find-kth-smallest-element.json" afterPath="$PROJECT_DIR$/app/problems/find-kth-smallest-element.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/find-kth-smallest-element.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/find-kth-smallest-element.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/find_kth_smallest_element.java" afterPath="$PROJECT_DIR$/judge/java/tests/find_kth_smallest_element.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/find_kth_smallest_element.py" afterPath="$PROJECT_DIR$/judge/python/tests/find_kth_smallest_element.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/intersection-of-two-sorted-arrays.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/intersection-of-two-sorted-arrays.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json" afterPath="$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/intersection-of-two-sorted-arrays.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/intersection-of-two-sorted-arrays.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/intersection_of_two_sorted_arrays.java" afterPath="$PROJECT_DIR$/judge/java/tests/intersection_of_two_sorted_arrays.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/intersection_of_two_sorted_arrays.py" afterPath="$PROJECT_DIR$/judge/python/tests/intersection_of_two_sorted_arrays.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/inverse-pairs.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/inverse-pairs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/inverse-pairs.json" afterPath="$PROJECT_DIR$/app/problems/inverse-pairs.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/inverse-pairs.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/inverse-pairs.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/inverse_pairs.java" afterPath="$PROJECT_DIR$/judge/java/tests/inverse_pairs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/inverse_pairs.py" afterPath="$PROJECT_DIR$/judge/python/tests/inverse_pairs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/script/judge.js" afterPath="$PROJECT_DIR$/app/script/judge.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/power-of-4.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/power-of-4.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/power-of-4.json" afterPath="$PROJECT_DIR$/app/problems/power-of-4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/power-of-4.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/power-of-4.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/power_of_4.java" afterPath="$PROJECT_DIR$/judge/java/tests/power_of_4.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/power_of_4.py" afterPath="$PROJECT_DIR$/judge/python/tests/power_of_4.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/problems.json" afterPath="$PROJECT_DIR$/app/problems/problems.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/second-largest-number.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/second-largest-number.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/second-largest-number.json" afterPath="$PROJECT_DIR$/app/problems/second-largest-number.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/second-largest-number.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/second-largest-number.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/second_largest_number.java" afterPath="$PROJECT_DIR$/judge/java/tests/second_largest_number.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/second_largest_number.py" afterPath="$PROJECT_DIR$/judge/python/tests/second_largest_number.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/segregate-even-odd.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/segregate-even-odd.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/segregate-even-odd.json" afterPath="$PROJECT_DIR$/app/problems/segregate-even-odd.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/segregate-even-odd.rb" afterPath="$PROJECT_DIR$/judge/build_tests/segregate-even-odd.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/segregate-even-odd.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/segregate-even-odd.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/segregate_even_odd.java" afterPath="$PROJECT_DIR$/judge/java/tests/segregate_even_odd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/segregate_even_odd.py" afterPath="$PROJECT_DIR$/judge/python/tests/segregate_even_odd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/src.cpp" afterPath="$PROJECT_DIR$/judge/cpp/src.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/src.java" afterPath="$PROJECT_DIR$/judge/java/src.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/src.py" afterPath="$PROJECT_DIR$/judge/python/src.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/src.rb" afterPath="$PROJECT_DIR$/judge/ruby/src.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/test_common.java" afterPath="$PROJECT_DIR$/judge/java/tests/test_common.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/three-increasing-elements.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/three-increasing-elements.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/three-increasing-elements.json" afterPath="$PROJECT_DIR$/app/problems/three-increasing-elements.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/three-increasing-elements.rb" afterPath="$PROJECT_DIR$/judge/build_tests/three-increasing-elements.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/three-increasing-elements.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/three-increasing-elements.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/three_increasing_elements.java" afterPath="$PROJECT_DIR$/judge/java/tests/three_increasing_elements.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/three_increasing_elements.py" afterPath="$PROJECT_DIR$/judge/python/tests/three_increasing_elements.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/two-difference.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/two-difference.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/two-difference.json" afterPath="$PROJECT_DIR$/app/problems/two-difference.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/two-difference.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/two-difference.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/two_dif.rb" afterPath="$PROJECT_DIR$/judge/build_tests/two_dif.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/two_difference.java" afterPath="$PROJECT_DIR$/judge/java/tests/two_difference.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/two_difference.py" afterPath="$PROJECT_DIR$/judge/python/tests/two_difference.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/ugly-number.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/ugly-number.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/ugly-number.json" afterPath="$PROJECT_DIR$/app/problems/ugly-number.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/ugly-number.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/ugly-number.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/ugly_number.java" afterPath="$PROJECT_DIR$/judge/java/tests/ugly_number.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/ugly_number.py" afterPath="$PROJECT_DIR$/judge/python/tests/ugly_number.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/cpp/tests/wiggle-sort.h" afterPath="$PROJECT_DIR$/judge/cpp/tests/wiggle-sort.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/problems/wiggle-sort.json" afterPath="$PROJECT_DIR$/app/problems/wiggle-sort.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/ruby/tests/wiggle-sort.rb" afterPath="$PROJECT_DIR$/judge/ruby/tests/wiggle-sort.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/java/tests/wiggle_sort.java" afterPath="$PROJECT_DIR$/judge/java/tests/wiggle_sort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/python/tests/wiggle_sort.py" afterPath="$PROJECT_DIR$/judge/python/tests/wiggle_sort.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/wiggle_sort.rb" afterPath="$PROJECT_DIR$/judge/build_tests/wiggle_sort.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/judge/build_tests/.idea/workspace.xml" afterPath="$PROJECT_DIR$/judge/build_tests/.idea/workspace.xml" />
     </list>
@@ -32,78 +122,18 @@
       <file leaf-file-name="problems.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/problems/problems.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.916666" vertical-offset="437" max-vertical-offset="1200">
-              <caret line="69" column="36" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="36" />
+            <state vertical-scroll-proportion="-24.291666" vertical-offset="902" max-vertical-offset="1650">
+              <caret line="99" column="30" selection-start-line="99" selection-start-column="15" selection-end-line="99" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="second-largest-number.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/problems/second-largest-number.json">
+      <file leaf-file-name="compress-string.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/problems/compress-string.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.040927693" vertical-offset="0" max-vertical-offset="733">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="segregate-even-odd.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/problems/segregate-even-odd.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="450">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inverse-pairs.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/problems/inverse-pairs.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="465">
-              <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="intersection-of-two-sorted-arrays.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="465">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="two-difference.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/problems/two-difference.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="465">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="judge.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/script/judge.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7935">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/script/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.045592707" vertical-offset="0" max-vertical-offset="658">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -112,8 +142,48 @@
       <file leaf-file-name="three-increasing-elements.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/problems/three-increasing-elements.json">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="450">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="108" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="factor-combinations.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/problems/factor-combinations.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="465">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="116" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="isomorphic-strings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/problems/isomorphic-strings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="480">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="110" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="two-difference.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/problems/two-difference.json">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="450">
               <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="segregate-even-odd.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/problems/segregate-even-odd.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="450">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -122,8 +192,18 @@
       <file leaf-file-name="wiggle-sort.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/problems/wiggle-sort.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="450">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="450">
+              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="judge.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/script/judge.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.269231" vertical-offset="4320" max-vertical-offset="5295">
+              <caret line="311" column="44" selection-start-line="311" selection-start-column="18" selection-end-line="311" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -156,21 +236,28 @@
         <option value="$PROJECT_DIR$/app/partials/submission-detail.html" />
         <option value="$PROJECT_DIR$/app/script/db.js" />
         <option value="$PROJECT_DIR$/app/problems/build_tests/t.rb" />
-        <option value="$PROJECT_DIR$/app/script/controllers.js" />
-        <option value="$PROJECT_DIR$/app/problems/wiggle-sort.json" />
-        <option value="$PROJECT_DIR$/app/problems/a-plus-b.json" />
-        <option value="$PROJECT_DIR$/app/problems/fence-painter.json" />
         <option value="$PROJECT_DIR$/app/partials/problems.html" />
+        <option value="$PROJECT_DIR$/app/problems/group-ungroup-strings.json" />
+        <option value="$PROJECT_DIR$/app/script/controllers.js" />
+        <option value="$PROJECT_DIR$/app/problems/a-plus-b.json" />
+        <option value="$PROJECT_DIR$/app/problems/two-difference.json" />
+        <option value="$PROJECT_DIR$/app/problems/fence-painter.json" />
+        <option value="$PROJECT_DIR$/app/problems/power-of-4.json" />
         <option value="$PROJECT_DIR$/app/problems/find-kth-smallest-element.json" />
         <option value="$PROJECT_DIR$/app/problems/ugly-number.json" />
         <option value="$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json" />
         <option value="$PROJECT_DIR$/app/problems/inverse-pairs.json" />
-        <option value="$PROJECT_DIR$/app/problems/two-difference.json" />
         <option value="$PROJECT_DIR$/app/problems/three-increasing-elements.json" />
         <option value="$PROJECT_DIR$/app/problems/segregate-even-odd.json" />
+        <option value="$PROJECT_DIR$/app/problems/second-largest-number.json" />
+        <option value="$PROJECT_DIR$/app/problems/longest-zero-subarray.json" />
+        <option value="$PROJECT_DIR$/app/problems/factor-combinations.json" />
+        <option value="$PROJECT_DIR$/app/problems/isomorphic-strings.json" />
+        <option value="$PROJECT_DIR$/app/problems/wiggle-sort.json" />
+        <option value="$PROJECT_DIR$/app/problems/encode-decode-strings.json" />
         <option value="$PROJECT_DIR$/app/script/judge.js" />
         <option value="$PROJECT_DIR$/app/problems/problems.json" />
-        <option value="$PROJECT_DIR$/app/problems/second-largest-number.json" />
+        <option value="$PROJECT_DIR$/app/problems/compress-string.json" />
       </list>
     </option>
   </component>
@@ -443,20 +530,20 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0955414" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18208303" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22286963" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0955414" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -511,41 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19016" max-vertical-offset="99705">
-          <caret line="1288" column="25" selection-start-line="1288" selection-start-column="25" selection-end-line="1288" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/copy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3184" max-vertical-offset="19740">
-          <caret line="229" column="14" selection-start-line="223" selection-start-column="8" selection-end-line="229" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="585">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/partials/problems.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="510">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24489796" vertical-offset="0" max-vertical-offset="735">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/update-repo.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2656676" vertical-offset="0" max-vertical-offset="734">
@@ -728,6 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="2100">
           <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -735,6 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -745,28 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/script/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2526" max-vertical-offset="4215">
-          <caret line="177" column="52" selection-start-line="177" selection-start-column="52" selection-end-line="177" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/a-plus-b.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="465">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/fence-painter.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="465">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/problems.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="510">
@@ -774,82 +806,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/power-of-4.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="465">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/ugly-number.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="465">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/find-kth-smallest-element.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="465">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/problem-detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1635">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/wiggle-sort.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="450">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="465">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/inverse-pairs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="465">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/two-difference.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="465">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/three-increasing-elements.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/segregate-even-odd.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="450">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -862,26 +822,162 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/script/judge.js">
+    <entry file="file://$PROJECT_DIR$/app/script/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7935">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3533" max-vertical-offset="4215">
+          <caret line="250" column="38" selection-start-line="250" selection-start-column="38" selection-end-line="250" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/problems/problems.json">
+    <entry file="file://$PROJECT_DIR$/app/problems/a-plus-b.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.916666" vertical-offset="437" max-vertical-offset="1200">
-          <caret line="69" column="36" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="36" />
+        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/fence-painter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="465">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/power-of-4.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="465">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/find-kth-smallest-element.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="465">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/ugly-number.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="465">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/problems/second-largest-number.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040927693" vertical-offset="0" max-vertical-offset="733">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="33" />
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="465">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/intersection-of-two-sorted-arrays.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41033435" vertical-offset="0" max-vertical-offset="658">
+          <caret line="18" column="106" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/inverse-pairs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="465">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/longest-zero-subarray.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="450">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/three-increasing-elements.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="450">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/isomorphic-strings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="480">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/wiggle-sort.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="450">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/two-difference.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/script/judge.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.269231" vertical-offset="4320" max-vertical-offset="5295">
+          <caret line="311" column="44" selection-start-line="311" selection-start-column="18" selection-end-line="311" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/problems.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.291666" vertical-offset="902" max-vertical-offset="1650">
+          <caret line="99" column="30" selection-start-line="99" selection-start-column="15" selection-end-line="99" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/factor-combinations.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="465">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/encode-decode-strings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45592704" vertical-offset="0" max-vertical-offset="658">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/segregate-even-odd.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="450">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/problems/compress-string.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.045592707" vertical-offset="0" max-vertical-offset="658">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
         </state>
       </provider>

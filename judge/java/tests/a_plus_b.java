@@ -2,12 +2,57 @@ package tests;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
+import judge.*;
 
 public class a_plus_b {
     public static int num_test = 50;
-    public static int[] in_0 = {65, 81, 26, 91, 89, 45, 26, 0, 23, 9, 49630, 97662, 60341, 59554, 66906, 89339, 48514, 9829, 12475, 13122, 37327, 65105, 22476, 10353, 30628, 3521445, 2412407, 545135, 8258211, 9513202, 9381451, 1278156, 7186349, 9951935, 6362833, 630052, 2725223, 2666019, 9141253, 3027507, 1067247, 9064135, 755714, 2080163, 4828050, 9065715, 4511090, 6640376, 3747475, 2097821};
-    public static int[] in_org_0 = test_common.copy(in_0);
-    public static int[] in_1 = {97, 24, 97, 41, 69, 92, 1, 14, 91, 73, 98062, 92119, 52009, 20304, 70949, 62066, 50073, 24034, 9687, 22691, 79359, 2921, 15957, 79873, 87762, 1414075, 3436709, 2526757, 2679009, 8865776, 1994488, 6346120, 7894068, 5800259, 9137478, 4315122, 304072, 5884528, 1269196, 3120303, 1649157, 7674620, 188317, 4851117, 3873548, 1475112, 2766296, 8094141, 1122247, 8022566};
-    public static int[] in_org_1 = test_common.copy(in_1);
-    public static int[] out = {162, 105, 123, 132, 158, 137, 27, 14, 114, 82, 147692, 189781, 112350, 79858, 137855, 151405, 98587, 33863, 22162, 35813, 116686, 68026, 38433, 90226, 118390, 4935520, 5849116, 3071892, 10937220, 18378978, 11375939, 7624276, 15080417, 15752194, 15500311, 4945174, 3029295, 8550547, 10410449, 6147810, 2716404, 16738755, 944031, 6931280, 8701598, 10540827, 7277386, 14734517, 4869722, 10120387};
+    public static int[] in_0;
+    public static int[] in_org_0;
+    public static int[] in_1;
+    public static int[] in_org_1;
+    public static int[] out;
+
+
+    public static void load_test() {
+        File fil = new File("judge/tests/a-plus-b.txt");
+        FileReader inputFil = null;
+        try {
+            inputFil = new FileReader(fil);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = new BufferedReader(inputFil);
+        try {
+            in_0 = common.read_int_array(in);
+            in_org_0 = test_common.copy(in_0);
+            in_1 = common.read_int_array(in);
+            in_org_1 = test_common.copy(in_1);
+            out = common.read_int_array(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void judge() {
+        load_test();
+        Solution s = new Solution();
+
+        long startTime = System.currentTimeMillis();
+
+        for(int i = 0; i < num_test; ++i) {
+            int answer = s.plus_num(in_0[i], in_1[i]);
+            if(answer != out[i]) {
+                System.out.printf("%d / %d;", i+1, num_test);
+                String outs = common.to_string(a_plus_b.in_org_0[i]) + common.to_string(a_plus_b.in_org_1[i]);
+                System.out.print(outs + ";");
+                System.out.print(common.to_string(answer) + ";");
+                System.out.println(common.to_string(out[i]));
+                return;
+            }
+        }
+
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.print("Accepted;");
+        System.out.println(estimatedTime);
+    }
 }

@@ -4,7 +4,7 @@
     "discuss_link" : "http://www.fgdsb.com/2015/01/03/plus-one/",
     "desc" : "<p>Write a function to calculate A + B without using <code>+ - / * %</code>.<br><br><b>Note</b>: A and B are both 32-bit nonnegative integers, the output is guaranteed not to overflow.</p>",
     "code_cpp" : "int plus_num(int a, int b) {\n}",
-    "code_java" : "int plus_num(int a, int b) {\n}",
+    "code_java" : "public class Solution {\n    public int plus_num(int a, int b) {\n    }\n}",
     "code_ruby" : "def plus_num(a, b)\nend",
     "code_python" : "def plus_num(a, b):",
 
@@ -21,5 +21,5 @@
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
 
-    "judge_call" : "plus_num"
+    "judge_call" : "plus_num(@)"
 }

@@ -1,8 +1,47 @@
+from common import *
+from solution import *
 import copy
+import sys
+import datetime
 
 num_test = 80
-in_0 = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10]
-in_org_0 = copy.deepcopy(in_0)
-in_1 = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
-in_org_1 = copy.deepcopy(in_1)
-out = [1, 2, 3, 4, 5, 6, 7, 8, 1, 4, 9, 16, 25, 36, 49, 64, 0, 6, 24, 60, 120, 210, 336, 504, 0, 10, 66, 228, 580, 1230, 2310, 3976, 0, 16, 180, 864, 2800, 7200, 15876, 31360, 0, 26, 492, 3276, 13520, 42150, 109116, 247352, 0, 42, 1344, 12420, 65280, 246750, 749952, 1950984, 0, 68, 3672, 47088, 315200, 1444500, 5154408, 15388352, 0, 110, 10032, 178524, 1521920, 8456250, 35426160, 121375352, 0, 178, 27408, 676836, 7348480, 49503750, 243483408, 957345928]
+true, false = True, False
+in_0 = []
+in_org_0 = []
+in_1 = []
+in_org_1 = []
+out = []
+
+
+def load_test():
+    f = open('judge/tests/fence-painter.txt', 'r')
+    global in_0, in_org_0
+    in_0 = read_int_array(f)
+    in_org_0 = copy.deepcopy(in_0)
+    global in_1, in_org_1
+    in_1 = read_int_array(f)
+    in_org_1 = copy.deepcopy(in_1)
+    global out
+    out = read_int_array(f)
+    f.close
+
+def judge():
+    load_test()
+    start_time = datetime.datetime.now()
+    for i in range(num_test):
+        answer = num_colors(in_0[i], in_1[i]) 
+        if (answer != out[i]):
+            out_str = str(i+1) + " / " + str(num_test) + ";"
+            out_str += str(in_org_0[i])
+            out_str += ", "
+            out_str += str(in_org_1[i])
+            out_str += ";"
+            out_str += str(answer)
+            out_str += ";"
+            out_str += str(out[i])
+            print(out_str)
+            return
+
+    delta = datetime.datetime.now() - start_time
+    runtime = str(int(delta.total_seconds() * 1000))
+    print('Accepted;' + runtime)

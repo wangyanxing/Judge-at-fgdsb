@@ -70,5 +70,35 @@
         "id": "second-largest-number",
         "name": "Second Largest Number",
         "difficulty": "Easy"
+    },
+    {
+        "age": 12,
+        "id": "longest-zero-subarray",
+        "name": "Longest Subarray Sum to Zero",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 13,
+        "id": "factor-combinations",
+        "name": "Factor Combinations",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 14,
+        "id": "isomorphic-strings",
+        "name": "Isomorphic Strings",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 15,
+        "id": "encode-decode-strings",
+        "name": "Encode and Decode Strings",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 16,
+        "id": "compress-string",
+        "name": "Compress String",
+        "difficulty": "Easy"
     }
 ]

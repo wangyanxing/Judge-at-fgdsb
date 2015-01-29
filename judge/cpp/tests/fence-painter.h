@@ -1,6 +1,36 @@
 const int num_test = 80;
-vector<int> in_0 = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10};
-vector<int> in_org_0 = in_0;
-vector<int> in_1 = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
-vector<int> in_org_1 = in_1;
-vector<int> out = {1, 2, 3, 4, 5, 6, 7, 8, 1, 4, 9, 16, 25, 36, 49, 64, 0, 6, 24, 60, 120, 210, 336, 504, 0, 10, 66, 228, 580, 1230, 2310, 3976, 0, 16, 180, 864, 2800, 7200, 15876, 31360, 0, 26, 492, 3276, 13520, 42150, 109116, 247352, 0, 42, 1344, 12420, 65280, 246750, 749952, 1950984, 0, 68, 3672, 47088, 315200, 1444500, 5154408, 15388352, 0, 110, 10032, 178524, 1521920, 8456250, 35426160, 121375352, 0, 178, 27408, 676836, 7348480, 49503750, 243483408, 957345928};
+vector<int> in_0;
+vector<int> in_org_0;
+vector<int> in_1;
+vector<int> in_org_1;
+vector<int> out;
+
+
+void load_test() {
+    ifstream in("judge/tests/fence-painter.txt");
+    read_array(in, in_0);
+    in_org_0 = in_0;
+    read_array(in, in_1);
+    in_org_1 = in_1;
+    read_array(in, out);
+    in.close();
+}
+
+void judge() {
+    cout.setf(ios::boolalpha);
+    load_test();
+    auto start = chrono::steady_clock::now();
+    for(int i = 0; i < num_test; ++i) {
+        auto answer = num_colors(in_0[i], in_1[i]);
+        if(answer != out[i]) {
+            cout << i+1 << "/" << num_test << ";";
+            cout << in_org_0[i] << + ", " << in_org_1[i] << ";";
+            cout << answer << ";";
+            cout << out[i] << endl;
+            return;
+        }
+    }
+    auto elapsed = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start);
+    cout << "Accepted;";
+    cout << elapsed.count() << endl;
+}

@@ -4,7 +4,7 @@
     "discuss_link" : "http://www.fgdsb.com/2015/01/04/fence-painter/",
     "desc" : "<p>Write an algorithm that counts the number of ways you can paint a fence with N posts using K colors such that no more than 2 adjacent fence posts are painted with the same color.</p>",
     "code_cpp" : "int num_colors(int n, int k) {\n}",
-    "code_java" : "int num_colors(int n, int k) {\n}",
+    "code_java" : "public class Solution {\n    public int num_colors(int n, int k) {\n    }\n}",
     "code_ruby" : "def num_colors(n, k)\nend",
     "code_python" : "def num_colors(n, k):",
 
@@ -21,5 +21,5 @@
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
 
-    "judge_call" : "num_colors"
+    "judge_call" : "num_colors(@)"
 }

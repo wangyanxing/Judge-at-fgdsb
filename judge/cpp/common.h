@@ -17,6 +17,8 @@
 #include <iomanip>
 #include <fstream>
 
+using namespace std;
+
 struct TreeNode {
     TreeNode(int v = 0) :val(v){}
     int val{ 0 };
@@ -42,6 +44,8 @@ struct UndirectedGraphNode {
     vector<UndirectedGraphNode *> neighbors;
     UndirectedGraphNode(int x) : label(x) {};
 };
+
+////////////////////////////////////////////////////////////////////////
 
 template<typename T>
 ostream& operator<< (ostream& out, const vector<T>& v) {
@@ -76,6 +80,69 @@ bool test_anagram(vector<int>& a0, vector<int>& a1) {
     sort(t0.begin(), t0.end());
     sort(t1.begin(), t1.end());
     return t0 == t1;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+template <typename T>
+vector<T> read_array(ifstream& in) {
+    vector<T> ret;
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        T n;
+        in >> n;
+        ret.push_back(n);
+    }
+    return ret;
+}
+
+template <typename T>
+void read_array(ifstream& in, vector<T>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        T n;
+        in >> n;
+        ret.push_back(n);
+    }
+}
+
+template <typename T>
+vector<vector<T>> read_matrix(ifstream& in) {
+    vector<vector<T>> ret;
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        ret.push_back(vector<T>());
+        read_array<T>(in, ret.back());
+    }
+    return ret;
+}
+
+template <typename T>
+void read_matrix(ifstream& in, vector<vector<T>>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        ret.push_back(vector<T>());
+        read_array<T>(in, ret.back());
+    }
+}
+
+template <typename T>
+void read_matrix_arr(ifstream& in, vector<vector<vector<T>>>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        ret.push_back(vector<vector<T>>());
+        read_matrix<T>(in, ret.back());
+    }
 }
 
 

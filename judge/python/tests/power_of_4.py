@@ -1,7 +1,40 @@
+from common import *
+from solution import *
 import copy
+import sys
+import datetime
 
-num_test = 258
+num_test = 262
 true, false = True, False
-in_0 = [1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824, 186, 22, 230, 128, 89, 85, 27, 240, 141, 26, 291, 173, 132, 226, 276, 12, 243, 138, 257, 20, 53, 67, 225, 11, 74, 170, 267, 201, 220, 155, 164, 238, 51, 121, 83, 192, 57, 181, 47, 65, 109, 72, 1471318770, 365650999, 2130636947, 693902187, 1665348885, 130588480, 504202183, 1799969856, 1734898, 1200183882, 1873555243, 793423053, 774260029, 499608044, 381105648, 301431218, 1063807128, 1485468997, 1732037001, 437751451, 1342208204, 122711465, 425790528, 1116972005, 1391545462, 754017988, 1469977675, 1305365565, 1433766976, 1138657829, 1709722187, 1335744119, 133993764, 66919895, 1930718773, 1540484323, 1676605974, 395986101, 548190683, 138212270, 1852313430, 1242239135, 490077983, 1573685234, 2020451533, 1795155135, 2145630465, 2006970663, 1587683507, 923047501, 1621938175, 151760852, 1530844188, 992938031, 18839314, 1739124115, 427669024, 777081054, 283725684, 845637073, 94166110, 1767144735, 1433836954, 341629194, 478854084, 844792897, 1911330143, 508126798, 1498170904, 997827475, 1554150973, 1143336034, 964876839, 1312031028, 1932146898, 1440174734, 659915236, 1378323580, 720314812, 1642375809, 1054890368, 629009057, 1836800664, 1692391847, 1525133777, 688775258, 1980356753, 1431917330, 1357582421, 603845499, 186302640, 1164421627, 1523976482, 409076881, 387242606, 1842714260, 1878442071, 1605275823, 258306634, 289148999, 136334767, 1824046419, 1263200833, 549709560, 1588270932, 10674577, 923437507, 988644840, 1982407884, 355474222, 602795563, 1839296245, 1252048260, 774132665, 924579975, 459860763, 1460874075, 865384711, 1477269714, 679955078, 2146048151, 833082507, 1808457812, 1430105015, 1702794772, 908715988, 1586374690, 657156466, 1893650053, 703441926, 1702523445, 1018042161, 1278639446, 893023449, 1490798307, 1112080472, 1415169835, 626471841, 1650892016, 248156101, 2113554225, 1518834030, 1050092421, 726394391, 1220207170, 746211120, 439447637, 482888844, 889028508, 1277504023, 1743688679, 1861593974, 1365719001, 492175239, 2059529919, 1362353933, 163870080, 1315379422, 1093509767, 1858887854, 52686420, 1740749542, 86888495, 1065481126, 1415833198, 95577999, 546995426, 1889239480, 1981148884, 799328799, 1892418771, 1886156130, 1411430811, 149300444, 1968802607, 1304333622, 1061335917, 454750272, 1484877110, 2101953802, 382273595, 1324926026, 2048399738, 186616435, 2037904088, 2002554839, 245986518, 195109525, 297451500, 284870244, 2119904965, 415958228, 2012861984, 344603164, 846094950, 1197907210, 650784654, 699891803, 1369160586, 358239314]
-in_org_0 = copy.deepcopy(in_0)
-out = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+in_0 = []
+in_org_0 = []
+out = []
+
+
+def load_test():
+    f = open('judge/tests/power-of-4.txt', 'r')
+    global in_0, in_org_0
+    in_0 = read_int_array(f)
+    in_org_0 = copy.deepcopy(in_0)
+    global out
+    out = read_bool_array(f)
+    f.close
+
+def judge():
+    load_test()
+    start_time = datetime.datetime.now()
+    for i in range(num_test):
+        answer = power_of_4(in_0[i]) 
+        if (answer != out[i]):
+            out_str = str(i+1) + " / " + str(num_test) + ";"
+            out_str += str(in_org_0[i])
+            out_str += ";"
+            out_str += str(answer)
+            out_str += ";"
+            out_str += str(out[i])
+            print(out_str)
+            return
+
+    delta = datetime.datetime.now() - start_time
+    runtime = str(int(delta.total_seconds() * 1000))
+    print('Accepted;' + runtime)

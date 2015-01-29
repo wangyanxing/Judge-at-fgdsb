@@ -61,12 +61,13 @@ class Test_segregate_even_odd < TestBase
 			segregates(@test_out[-1])
 		end
 
-		@extra_test_code_ruby = 'def test(i)
-	if T_in_0[i].sort != T_in_org_0[i].sort
+		@extra_test_code_ruby = '
+def test(i)
+	if @in_0[i].sort != @in_org_0[i].sort
 		return false
 	end
 	flag = false
-	T_in_0[i].each do |num|
+	@in_0[i].each do |num|
 		if num % 2 == 0
 			return false if flag
 		else

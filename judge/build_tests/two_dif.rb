@@ -117,17 +117,18 @@ class Test_two_dif < TestBase
 		'
 
 
-		@extra_test_code_ruby = 'def test(answer, i)
-    if T_out[i].length != answer.length
+		@extra_test_code_ruby = '
+def test(answer, i)
+    if @out[i].length != answer.length
         return false
     end
-    if T_out[i][0] == -1 && T_out[i][1] == -1
+    if @out[i][0] == -1 && @out[i][1] == -1
         return answer[0] == -1 && answer[1] == -1
     else
         if answer[0] == -1 || answer[1] == -1
             return false
         else
-            return (T_in_0[i][answer[0]] - T_in_0[i][answer[1]]).abs == T_in_1[i]
+            return (@in_0[i][answer[0]] - @in_0[i][answer[1]]).abs == @in_1[i]
         end
     end
 end'

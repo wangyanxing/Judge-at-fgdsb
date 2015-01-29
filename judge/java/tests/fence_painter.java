@@ -2,12 +2,57 @@ package tests;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
+import judge.*;
 
 public class fence_painter {
     public static int num_test = 80;
-    public static int[] in_0 = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10};
-    public static int[] in_org_0 = test_common.copy(in_0);
-    public static int[] in_1 = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
-    public static int[] in_org_1 = test_common.copy(in_1);
-    public static int[] out = {1, 2, 3, 4, 5, 6, 7, 8, 1, 4, 9, 16, 25, 36, 49, 64, 0, 6, 24, 60, 120, 210, 336, 504, 0, 10, 66, 228, 580, 1230, 2310, 3976, 0, 16, 180, 864, 2800, 7200, 15876, 31360, 0, 26, 492, 3276, 13520, 42150, 109116, 247352, 0, 42, 1344, 12420, 65280, 246750, 749952, 1950984, 0, 68, 3672, 47088, 315200, 1444500, 5154408, 15388352, 0, 110, 10032, 178524, 1521920, 8456250, 35426160, 121375352, 0, 178, 27408, 676836, 7348480, 49503750, 243483408, 957345928};
+    public static int[] in_0;
+    public static int[] in_org_0;
+    public static int[] in_1;
+    public static int[] in_org_1;
+    public static int[] out;
+
+
+    public static void load_test() {
+        File fil = new File("judge/tests/fence-painter.txt");
+        FileReader inputFil = null;
+        try {
+            inputFil = new FileReader(fil);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = new BufferedReader(inputFil);
+        try {
+            in_0 = common.read_int_array(in);
+            in_org_0 = test_common.copy(in_0);
+            in_1 = common.read_int_array(in);
+            in_org_1 = test_common.copy(in_1);
+            out = common.read_int_array(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void judge() {
+        load_test();
+        Solution s = new Solution();
+
+        long startTime = System.currentTimeMillis();
+
+        for(int i = 0; i < num_test; ++i) {
+            int answer = s.num_colors(in_0[i], in_1[i]);
+            if(answer != out[i]) {
+                System.out.printf("%d / %d;", i+1, num_test);
+                String outs = common.to_string(fence_painter.in_org_0[i]) + common.to_string(fence_painter.in_org_1[i]);
+                System.out.print(outs + ";");
+                System.out.print(common.to_string(answer) + ";");
+                System.out.println(common.to_string(out[i]));
+                return;
+            }
+        }
+
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.print("Accepted;");
+        System.out.println(estimatedTime);
+    }
 }

@@ -4,7 +4,7 @@
     "discuss_link" : "http://www.fgdsb.com/2015/01/03/find-three-increasing-subsequence/",
     "desc" : "<p>Given an array find 3 elements such that <code>a[i] < a[j] < a[k]</code> and <code>i < j < k</code> in <code>O(N)</code> time.<br><br>Your function should return indices of the three numbers. <br><br>There might be multiple increasing subsequences, you only need to return any of them. Return <code>[-1,-1,-1]</code> if no result can be found.</p>",
     "code_cpp" : "vector<int> three_increasing_nums(vector<int>& arr) {\n}",
-    "code_java" : "int[] three_increasing_nums(int[] arr) {\n}",
+    "code_java" : "public class Solution {\n    public int[] three_increasing_nums(int[] nums) {\n    }\n}",
     "code_ruby" : "def three_increasing_nums(arr)\nend",
     "code_python" : "def three_increasing_nums(arr):",
 
@@ -21,5 +21,5 @@
     "judge_type_ruby" : "!test(answer, i)",
     "judge_type_python" : "not test(answer, i)",
 
-    "judge_call" : "three_increasing_nums"
+    "judge_call" : "three_increasing_nums(@)"
 }
