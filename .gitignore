@@ -29,3 +29,6 @@ node_modules
 
 # web storm files
 .idea
+
+# temp scripts
+run.command
