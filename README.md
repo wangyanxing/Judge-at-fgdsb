@@ -5,9 +5,13 @@ Judge@fgdsb
 
 Judge@fgdsb is a desktop app to help you learn algorithms and practice real interview coding questions.
 
-The app will call your local compilers or virtual machines to compile, run and judge your solutions.
+The app will call the local compilers or virtual machines to compile, run and judge your solutions.
 
 We do support C++, Java, Ruby and Python. Scala supporting is on going!
+
+### Releases
+
+Please wait!
 
 ### Build and run
 
