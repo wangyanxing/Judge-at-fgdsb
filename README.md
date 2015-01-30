@@ -25,4 +25,4 @@ Then you can just open the node-webkit app. Enjoy it!
 
 ![screenshot1](https://farm8.staticflickr.com/7428/16212867557_9740abd95a_h.jpg)
 
-![screenshot1](https://farm9.staticflickr.com/8624/16397851992_0c29cf83dc_h.jpg)
+![screenshot1](https://farm8.staticflickr.com/7444/15776558304_7d20a776a1_h.jpg)
