@@ -1,0 +1,30 @@
+{
+    "name" : "Convert BST to Sorted Doubly-Linked List",
+    "id" : "bst-to-dlist",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/09/convert-bst-to-sorted-doubly-linked-list/",
+    "desc" : "<p>Given a binary search tree, convert it to a sorted doubly-linked list.<br><br>Your solution musb be <strong>in-place</strong> without altering the nodes' values.<br><br>For example: <br>Input:<br><pre>   2<br>  / \\<br> 1   3<br></pre> Output:<br><pre>   1<br>   \\\\<br>    2<br>    \\\\<br>     3<br></pre><br><br><strong>Note:</strong> Since there is no doubly linked list structure here, you have to to use TreeNode to represent a doubly-linked list node, i.e. use left as previous and right as next.</p>",
+    "code_cpp" : "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* bst_to_list(TreeNode* root) {\n}",
+    "code_java" : "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode bst_to_list(TreeNode root) {\n    }\n}",
+    "code_ruby" : "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return TreeNode\ndef bst_to_list(root)\nend",
+    "code_python" : "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return TreeNode\ndef bst_to_list(root):",
+
+    "in_type_cpp" : ["TreeNode*"],
+    "ret_type_cpp" : "TreeNode*",
+    "out_type_cpp" : "vector<int>",
+    "judge_type_cpp" : "!check_dlist(out[i], answer)",
+    "vis_answer_cpp" : "dlist_to_string(answer)",
+
+    "in_type_java" : ["TreeNode"],
+    "ret_type_java" : "TreeNode",
+    "out_type_java" : "int[]",
+    "judge_type_java" : "!check_dlist(out[i], answer)",
+    "vis_answer_java" : "dlist_to_string(answer)",
+
+    "judge_type_ruby" : "!check_dlist(@out[i], answer)",
+    "vis_answer_ruby" : "dlist_to_string(answer)",
+
+    "judge_type_python" : "not check_dlist(out[i], answer)",
+    "vis_answer_python" : "dlist_to_string(answer)",
+
+    "judge_call" : "bst_to_list(@)"
+}

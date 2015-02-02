@@ -1,8 +1,26 @@
-def num_colors(n, k)
-	return 0 if n <= 0 || k <= 0
-	prev_prev, prev = k, k * k
-	(n - 1).times do
-		prev, prev_prev = (k - 1) * (prev_prev + prev), prev
+# class TreeNode
+#    attr_accessor :left, :right, :val
+#    def initialize(v)
+#        @val, @left, @right = v, nil, nil
+#    end
+
+def _all_path(root, ret, cur)
+	return if root.nil?
+	cur << root.val
+	if root.left.nil? && root.right.nil?
+		ret << cur.dup
+		cur.pop
+		return
 	end
-	prev_prev
+	_all_path(root.left, ret, cur)
+	_all_path(root.right, ret, cur)
+	cur.pop
+end
+
+# @param root, TreeNode
+# @return TreeNode
+def all_path(root)
+    ret = []
+	_all_path(root, ret, [])
+    ret
 end

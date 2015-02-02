@@ -1,0 +1,27 @@
+{
+    "name" : "Query Intervals",
+    "id" : "query-intervals-1",
+    "discuss_link" : "",
+    "desc" : "<p>Given a list of intervals and a time, write a function to determine is there any interval covers the given time.<br><br>For example:<br>Intervals: <code>[0,2], [3,5]</code><br>Time: <code>3</code><br>Result: <code>true</code><br><br>If you are allowed to pre-process the intervals, how can you speed up the query performance?<br><br><strong>Note:</strong> We will call your <code>preprocess()</code> method before queries, so do not call it in your constructor.</p>",
+    "code_cpp" : "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nclass Intervals {\npublic:\n    Intervals(vector<Interval>& data) {\n    }\n    \n    void preprocess() {\n    }\n    \n    bool query(int time) {\n    }\nprivate:\n    vector<Interval> intervals;\n};",
+    "code_java" : "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Intervals {\n    public Intervals(List<Interval> data) {\n    }\n\n    public void preprocess() {\n    }\n\n    public boolean query(int time) {\n    }\n    List<Interval> intervals;\n};\n",
+    "code_ruby" : "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\nclass Intervals\n    # @param intervals, Intervals array\n    def initialize(intervals)\n    end\n\n    def preprocess()\n    end\n\n    # @param time, integer\n    # @return boolean\n    def query(time)\n    end\nend",
+    "code_python" : "# class Interval:\n#     def __init__(self, b=0, e=0):\n#         self.begin = b\n#         self.end = e\n\nclass Intervals:\n    # @param intervals, list of Interval\n    def __init__(self, intervals):\n\n    def preprocess(self):\n\n    # @param time, integer\n    # @return boolean\n    def query(self, time):\n",
+
+    "in_type_cpp" : ["vector<Interval>", "int"],
+    "ret_type_cpp" : "bool",
+    "out_type_cpp" : "vector<bool>",
+    "judge_type_cpp" : "equal",
+
+    "in_type_java" : ["List<Interval>", "int"],
+    "ret_type_java" : "boolean",
+    "out_type_java" : "boolean[]",
+    "judge_type_java" : "equal",
+    "class_name_java" : "Intervals",
+
+    "judge_type_ruby" : "equal",
+    "judge_type_python" : "equal",
+
+    "judge_call" : ""
+}
+

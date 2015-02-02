@@ -4,6 +4,8 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
+import datastruct.*;
+
 public class common {
     public static <T> String to_string(T[] arr) {
         String ret = "[";
@@ -51,6 +53,30 @@ public class common {
     
     public static String to_string(boolean num) {
         return num ? "true" : "false";
+    }
+    
+    public static String to_string(TreeNode root) {
+        String ret = "";
+        if (root == null) {
+            ret = "# ";
+            return ret;
+        }
+        
+        ret += Integer.toString(root.val);
+        ret += " ";
+        
+        ret += to_string(root.left);
+        ret += to_string(root.right);
+        return ret;
+    }
+    
+    public static boolean compare_interval_list(List<Interval> a0, List<Interval> a1) {
+        if(a0.size() != a1.size()) return false;
+        for(int i = 0; i < a0.size(); ++i) {
+            if(a0.get(i).begin != a1.get(i).begin ||
+               a0.get(i).end != a1.get(i).end) return false;
+        }
+        return true;
     }
     
     public static boolean compare_arr_arraylist(int[] array, List<Integer> al) {
@@ -126,6 +152,105 @@ public class common {
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public static TreeNode read_tree(BufferedReader in, int nums) throws IOException {
+        if(nums == 0) {
+            return null;
+        }
+        String cur = in.readLine();
+        
+        if(cur.equals("#")) {
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.parseInt(cur));
+        nums--;
+        root.left = read_tree(in, nums);
+        nums--;
+        root.right = read_tree(in, nums);
+        return root;
+    }
+    
+    public static TreeNode[] read_tree_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        TreeNode[] ret = new TreeNode[number];
+        for(int i = 0; i < number; ++i) {
+            int num = Integer.parseInt(in.readLine());
+            ret[i] = read_tree(in, num);
+        }
+        return ret;
+    }
+    
+    public static TreeNode[][] read_tree_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        TreeNode[][] ret = new TreeNode[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_tree_array(in);
+        }
+        return ret;
+    }
+    
+    public static Interval[] read_interval_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Interval[] ret = new Interval[number];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = new Interval();
+            ret[i].begin = Integer.parseInt(in.readLine());
+            ret[i].end = Integer.parseInt(in.readLine());
+        }
+        return ret;
+    }
+    
+    public static ArrayList<Interval> read_interval_arraylist(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<Interval> ret = new ArrayList<Interval>();
+        for(int i = 0; i < number; ++i) {
+            int begin = Integer.parseInt(in.readLine());
+            int end = Integer.parseInt(in.readLine());
+            ret.add(new Interval(begin, end));
+        }
+        return ret;
+    }
+    
+    public static Interval[][] read_interval_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Interval[][] ret = new Interval[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_interval_array(in);
+        }
+        return ret;
+    }
+    
+    public static ArrayList<ArrayList<Interval>> read_interval_al_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<ArrayList<Interval>> ret = new ArrayList<ArrayList<Interval>>();
+        for(int i = 0; i < number; ++i) {
+            ret.add(read_interval_arraylist(in));
+        }
+        return ret;
+    }
+    
+    public static ArrayList<ArrayList<ArrayList<Interval>>> read_interval_al_matrix_arr(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<ArrayList<ArrayList<Interval>>> ret = new ArrayList<ArrayList<ArrayList<Interval>>>();
+        for(int i = 0; i < number; ++i) {
+            ret.add(read_interval_al_matrix(in));
+        }
+        return ret;
+    }
     
     public static boolean[] read_bool_array(BufferedReader in) throws IOException {
         String s = in.readLine();

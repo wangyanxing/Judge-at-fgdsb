@@ -34,11 +34,11 @@ def judge
         answer = wiggle_sort(@in_0[i]) 
         if (!test_wiggle(@in_0[i]))
             print "#{i+1} / #{@num_test};"
-            print @in_org_0[i]
+            print @in_org_0[i].to_s
             print ';'
-            print answer
+            print answer.to_s
             print ';'
-            print @out[i]
+            print @out[i].to_s
             puts
             return
         end

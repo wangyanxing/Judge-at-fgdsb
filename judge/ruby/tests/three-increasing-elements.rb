@@ -35,11 +35,11 @@ def judge
         answer = three_increasing_nums(@in_0[i]) 
         if (!test(answer, i))
             print "#{i+1} / #{@num_test};"
-            print @in_org_0[i]
+            print @in_org_0[i].to_s
             print ';'
-            print answer
+            print answer.to_s
             print ';'
-            print @out[i]
+            print @out[i].to_s
             puts
             return
         end

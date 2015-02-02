@@ -1,4 +1,5 @@
 require 'json'
+require '../ruby/common'
 
 class TestBase
 
@@ -7,11 +8,15 @@ class TestBase
     @name = name
 
     gen_tests
+
+    puts "#{@test_in[0].length} test cases generated."
     gen_test_file
-    gen_cpp_test
-    gen_java_test
-    gen_ruby_test
-    gen_python_test
+    if @manual_test.nil? || @manual_test == false
+      gen_cpp_test
+      gen_java_test
+      gen_ruby_test
+      gen_python_test
+    end
   end
 
   def load_problem(name)
@@ -39,14 +44,18 @@ class TestBase
         'int' => '1D',
         'double' => '1D',
         'string' => '1D',
+        'TreeNode*' => '1D_bt',
         'vector<bool>' => '2D',
         'vector<int>' => '2D',
         'vector<double>' => '2D',
         'vector<string>' => '2D',
+        'vector<Interval>' => '2D_interval',
+        'vector<TreeNode*>' => '2D_bt',
         'vector<vector<bool>>' => '3D',
         'vector<vector<int>>' => '3D',
         'vector<vector<double>>' => '3D',
         'vector<vector<string>>' => '3D',
+        'vector<vector<Interval>>' => '3D_interval',
     }
     file = File.open("../tests/#{@name}.txt", 'w')
     in_types = @problem['in_type_cpp']
@@ -60,12 +69,18 @@ class TestBase
           write_0D(file, t)
         when '1D'
           write_1D(file, t)
+        when '1D_bt'
+          write_1D_bt(file, t)
         when '2D'
           write_2D(file, t)
+        when '2D_interval'
+          write_2D_interval(file, t)
+        when '2D_bt'
+          write_2D_bt(file, t)
         when '3D'
           write_3D(file, t)
         else
-          puts 'Unsupported type!' + in_types[i]
+          puts 'Unsupported type!' + in_types[i].to_s
       end
     end
 
@@ -75,12 +90,20 @@ class TestBase
         write_0D(file, @test_out)
       when '1D'
         write_1D(file, @test_out)
+      when '1D_bt'
+        write_1D_bt(file, @test_out)
       when '2D'
         write_2D(file, @test_out)
+      when '2D_interval'
+        write_2D_interval(file, @test_out)
+      when '2D_bt'
+        write_2D_bt(file, @test_out)
       when '3D'
         write_3D(file, @test_out)
+      when '3D_interval'
+        write_3D_interval(file, @test_out)
       else
-        puts 'Unsupported type!' + in_types[i]
+        puts 'Unsupported type!' + type.to_s
     end
 
     file.close
@@ -95,10 +118,34 @@ class TestBase
     end
   end
 
+  def write_bt(file, data)
+    out = []
+    save_tree(data, out)
+    file.puts out.length
+    out.each do |d|
+      file.puts d
+    end
+  end
+
   def write_1D(file, data)
     file.puts data.length
     data.each do |d|
       write_0D file, d
+    end
+  end
+
+  def write_1D_bt(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_bt file, d
+    end
+  end
+
+  def write_1D_interval(file, data)
+    file.puts data.length
+    data.each do |d|
+      file.puts d[0]
+      file.puts d[1]
     end
   end
 
@@ -109,10 +156,31 @@ class TestBase
     end
   end
 
+  def write_2D_interval(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_1D_interval file, d
+    end
+  end
+
+  def write_2D_bt(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_1D_bt file, d
+    end
+  end
+
   def write_3D(file, data)
     file.puts data.length
     data.each do |d|
       write_2D file, d
+    end
+  end
+
+  def write_3D_interval(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_2D_interval file, d
     end
   end
 
@@ -138,18 +206,32 @@ class TestBase
       case @types[in_type]
         when '1D'
           file.puts "    read_array(in, in_#{i});"
+        when '1D_bt'
+          file.puts "    read_array(in, in_#{i});"
         when '2D'
           file.puts "    read_matrix(in, in_#{i});"
+        when '2D_interval'
+          file.puts "    read_matrix(in, in_#{i});"
+        when '3D'
+          file.puts "    read_matrix_arr(in, in_#{i});"
+        else
+          puts 'Invalid input type ' + @types[in_type].to_s
       end
-      file.puts "    in_org_#{i} = in_#{i};"
+      file.puts "    in_org_#{i} = clone(in_#{i});"
     end
     case @types[@problem['out_type_cpp']]
       when '1D'
         file.puts '    read_array(in, out);'
+      when '1D_bt'
+        file.puts '    read_array(in, out);'
       when '2D'
+        file.puts '    read_matrix(in, out);'
+      when '2D_interval'
         file.puts '    read_matrix(in, out);'
       when '3D'
         file.puts '    read_matrix_arr(in, out);'
+      else
+        puts 'Invalid output type ' + @types[@problem['out_type_cpp']].to_s
     end
     file.puts '    in.close();'
     file.puts '}'
@@ -194,10 +276,14 @@ class TestBase
       file.print "in_org_#{i}[i]"
     end
     file.puts ' << ";";'
-    file.puts '            cout << answer << ";";
+
+    vis_answer = @problem['vis_answer_cpp']
+    vis_answer = 'answer' if vis_answer.nil?
+
+    file.puts "            cout << #{vis_answer} << \";\";
             cout << out[i] << endl;
             return;
-        }'
+        }"
 
     file.puts '    }
     auto elapsed = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start);
@@ -215,10 +301,14 @@ class TestBase
         'int' => 'common.read_int_array',
         'double' => 'common.read_double_array',
         'string' => 'common.read_string_array',
+        'Interval' => 'common.read_interval_array',
+        'TreeNode*' => 'common.read_tree_array',
         'vector<bool>' => 'common.read_bool_matrix',
         'vector<int>' => 'common.read_int_matrix',
         'vector<double>' => 'common.read_double_matrix',
         'vector<string>' => 'common.read_string_matrix',
+        'vector<Interval>' => 'common.read_interval_matrix',
+        'vector<TreeNode*>' => 'common.read_tree_matrix',
         'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
         'vector<vector<int>>' => 'common.read_int_matrix_arr',
         'vector<vector<double>>' => 'common.read_double_matrix_arr',
@@ -233,6 +323,7 @@ class TestBase
     file.puts 'import java.lang.*;'
     file.puts 'import java.io.*;'
     file.puts 'import judge.*;'
+    file.puts 'import datastruct.*;'
     file.puts
 
     file.puts "public class #{class_name} {"
@@ -313,13 +404,16 @@ class TestBase
 
     file.print '                String outs = '
     @problem['in_type_java'].each_with_index do |in_type, i|
-      file.print ' + ' if i != 0
+      file.print ' + ", " + ' if i != 0
       file.print "common.to_string(#{class_name}.in_org_#{i}[i])"
     end
     file.puts ';'
     file.puts '                System.out.print(outs + ";");'
 
-    file.puts '                System.out.print(common.to_string(answer) + ";");'
+    vis_answer = @problem['vis_answer_java']
+    vis_answer = 'common.to_string(answer)' if vis_answer.nil?
+
+    file.puts "                System.out.print(#{vis_answer} + \";\");"
     file.puts '                System.out.println(common.to_string(out[i]));'
     file.puts '                return;'
     file.puts '            }'
@@ -343,10 +437,14 @@ class TestBase
         'int' => 'read_int_array',
         'double' => 'read_double_array',
         'string' => 'read_string_array',
+        'Interval' => 'read_interval_array',
+        'TreeNode*' => 'read_tree_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
+        'vector<Interval>' => 'read_interval_matrix',
+        'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
@@ -395,21 +493,28 @@ class TestBase
     end
     file.puts judge_call.gsub(/@/, judge_inputs)
 
+    if @problem['ret_type_java'] == 'void'
+      file.puts '        answer = @in_0[i]'
+    end
+
     if @problem['judge_type_ruby'] == 'equal'
       file.puts '        if answer != @out[i]'
     else
       file.puts "        if (#{@problem['judge_type_ruby']})"
     end
 
+    vis_answer = @problem['vis_answer_ruby']
+    vis_answer = 'answer.to_s' if vis_answer.nil?
+
     file.puts '            print "#{i+1} / #{@num_test};"'
     @problem['in_type_java'].each_with_index do |in_type, i|
       file.puts '            print \', \'' if i != 0
-      file.puts "            print @in_org_#{i}[i]"
+      file.puts "            print @in_org_#{i}[i].to_s"
     end
     file.puts '            print \';\''
-    file.puts '            print answer'
+    file.puts "            print #{vis_answer}"
     file.puts '            print \';\''
-    file.puts '            print @out[i]'
+    file.puts '            print @out[i].to_s'
     file.puts '            puts'
 
     file.puts '            return'
@@ -431,10 +536,14 @@ class TestBase
         'int' => 'read_int_array',
         'double' => 'read_double_array',
         'string' => 'read_string_array',
+        'Interval' => 'read_interval_array',
+        'TreeNode*' => 'read_tree_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
+        'vector<Interval>' => 'read_interval_matrix',
+        'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
@@ -489,6 +598,10 @@ class TestBase
     end
     file.puts judge_call.gsub(/@/, judge_inputs)
 
+    if @problem['ret_type_java'] == 'void'
+      file.puts '        answer = in_0[i]'
+    end
+
     if @problem['judge_type_python'] == 'equal'
       file.puts '        if (answer != out[i]):'
     else
@@ -501,12 +614,15 @@ class TestBase
       file.puts "            out_str += str(in_org_#{i}[i])"
     end
 
-    file.puts '            out_str += ";"
-            out_str += str(answer)
-            out_str += ";"
+    vis_answer = @problem['vis_answer_python']
+    vis_answer = 'str(answer)' if vis_answer.nil?
+
+    file.puts "            out_str += \";\"
+            out_str += #{vis_answer}
+            out_str += \";\"
             out_str += str(out[i])
             print(out_str)
-            return'
+            return"
     file.puts '
     delta = datetime.datetime.now() - start_time
     runtime = str(int(delta.total_seconds() * 1000))
@@ -516,4 +632,5 @@ class TestBase
 
   def gen_tests
   end
+
 end

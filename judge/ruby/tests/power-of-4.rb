@@ -1,4 +1,4 @@
-@num_test = 262
+@num_test = 260
 @in_0 = []
 @in_org_0 = []
 @out = []
@@ -21,11 +21,11 @@ def judge
         answer = power_of_4(@in_0[i]) 
         if answer != @out[i]
             print "#{i+1} / #{@num_test};"
-            print @in_org_0[i]
+            print @in_org_0[i].to_s
             print ';'
-            print answer
+            print answer.to_s
             print ';'
-            print @out[i]
+            print @out[i].to_s
             puts
             return
         end

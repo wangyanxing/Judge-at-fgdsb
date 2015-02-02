@@ -1,22 +1,31 @@
-package judge;import java.util.*;import java.lang.*;import java.io.*; public class Solution {
-    public String compress(String str) {
-        String ret = "";
-        if(str.isEmpty()) return ret;
-       
-        char cur = str.charAt(0);
-        int count = 1, id = 1;
-        while(id <= str.length()) {
-            if(id < str.length() && str.charAt(id) == cur) {
-                count++;
-            } else {
-                ret += cur;
-                ret += Integer.toString(count);
-                if(id < str.length()) cur = str.charAt(id);
-                count = 1;
-            }
-            id++;
+package judge;import java.util.*;import java.lang.*;import java.io.*;import datastruct.*; /*
+public class TreeNode {
+    public int val;
+    public TreeNode left, right;
+    public TreeNode(int x) { val = x; }
+}
+*/
+public class Solution {
+    List<List<Integer>> ret;
+    
+    public void solve(TreeNode root, ArrayList<Integer> cur) {
+        if(root == null) return;
+        cur.add(root.val);
+        if(root.left == null && root.right == null) {
+			ret.add(new ArrayList<Integer>(cur));
+			cur.remove(Integer.valueOf(root.val));
+			return;
         }
-        return ret.length() < str.length() ? ret : str;
-    }
+        solve(root.left, cur);
+        solve(root.right, cur);
 
+        cur.remove(Integer.valueOf(root.val));
+    }
+    
+    public List<List<Integer>> all_path(TreeNode root) {
+        ret = new ArrayList<List<Integer>>();
+        //ArrayList<Integer> cur = new ArrayList<Integer>();
+        solve(root, new ArrayList<Integer>());
+        return ret;
+    }
 }

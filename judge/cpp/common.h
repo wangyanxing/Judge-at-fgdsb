@@ -45,17 +45,73 @@ struct UndirectedGraphNode {
     UndirectedGraphNode(int x) : label(x) {};
 };
 
+struct Interval {
+    int begin{ 0 }, end{ 0 };
+};
+
+bool operator== (Interval &i1, Interval &i2){
+    return i1.begin == i2.begin && i1.end == i2.end;
+}
+
+bool operator== (const Interval &i1, const Interval &i2){
+    return i1.begin == i2.begin && i1.end == i2.end;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+TreeNode* clone(TreeNode*& nd) {
+    if(!nd) return nullptr;
+    TreeNode* r = new TreeNode(nd->val);
+    r->left = clone(nd->left);
+    r->right = clone(nd->right);
+    return r;
+}
+
+vector<TreeNode*> clone(vector<TreeNode*>& nd) {
+    vector<TreeNode*> r;
+    for(auto n : nd) {
+        r.push_back(clone(n));
+    }
+    return r;
+}
+
+template<typename T>
+T clone(T& n) {
+    T ret = n;
+    return ret;
+}
+
 ////////////////////////////////////////////////////////////////////////
 
 template<typename T>
 ostream& operator<< (ostream& out, const vector<T>& v) {
-    out << "[ ";
+    out << "[";
     size_t last = v.size() - 1;
     for(size_t i = 0; i < v.size(); ++i) {
         out << v[i];
         if (i != last) out << ", ";
     }
-    out << " ]";
+    out << "]";
+    return out;
+}
+
+ostream& operator<< (ostream& out, const Interval& v) {
+    out << "[" << v.begin << ", " << v.end << "]";
+    return out;
+}
+
+void serialize(const TreeNode *root, ostream& out) {
+    if (!root) {
+        out << "# ";
+        return;
+    }
+    out << root->val << " ";
+    serialize(root->left, out);
+    serialize(root->right, out);
+}
+
+ostream& operator<< (ostream& out, const TreeNode* v) {
+    serialize(v, out);
     return out;
 }
 
@@ -84,6 +140,31 @@ bool test_anagram(vector<int>& a0, vector<int>& a1) {
 
 ////////////////////////////////////////////////////////////////////////
 
+bool same_tree(TreeNode *p, TreeNode *q) {
+    if(!p && !q) return true;
+    if(!p || !q) return false;
+    if(p->val != q->val) return false;
+    return same_tree(p->left,q->left) && same_tree(p->right,q->right);
+}
+
+TreeNode* read_tree(ifstream& in, int nums) {
+    if(nums == 0) {
+        return nullptr;
+    }
+    string cur;
+    in >> cur;
+    
+    if(cur == "#") {
+        return nullptr;
+    }
+    auto root = new TreeNode(atoi(cur.c_str()));
+    nums--;
+    root->left = read_tree(in, nums);
+    nums--;
+    root->right = read_tree(in, nums);
+    return root;
+}
+
 template <typename T>
 vector<T> read_array(ifstream& in) {
     vector<T> ret;
@@ -110,6 +191,29 @@ void read_array(ifstream& in, vector<T>& ret) {
     }
 }
 
+void read_array(ifstream& in, vector<Interval>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        Interval n;
+        in >> n.begin;
+        in >> n.end;
+        ret.push_back(n);
+    }
+}
+
+void read_array(ifstream& in, vector<TreeNode*>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        int n = 0;
+        in >> n;
+        ret.push_back(read_tree(in, n));
+    }
+}
+
 template <typename T>
 vector<vector<T>> read_matrix(ifstream& in) {
     vector<vector<T>> ret;
@@ -130,7 +234,17 @@ void read_matrix(ifstream& in, vector<vector<T>>& ret) {
     ret.reserve(nums);
     for(int i = 0; i < nums; ++i) {
         ret.push_back(vector<T>());
-        read_array<T>(in, ret.back());
+        read_array(in, ret.back());
+    }
+}
+
+void read_matrix(ifstream& in, vector<vector<Interval>>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        ret.push_back(vector<Interval>());
+        read_array(in, ret.back());
     }
 }
 
@@ -141,7 +255,7 @@ void read_matrix_arr(ifstream& in, vector<vector<vector<T>>>& ret) {
     ret.reserve(nums);
     for(int i = 0; i < nums; ++i) {
         ret.push_back(vector<vector<T>>());
-        read_matrix<T>(in, ret.back());
+        read_matrix(in, ret.back());
     }
 }
 

@@ -59,6 +59,7 @@ var generate_java = function(problem) {
     var test_class = problem['id'].replace(new RegExp('-', 'g'), '_');
 
     var out_file = "package judge;\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\nimport tests.test_common;\n";
+    out_file += "import datastruct.*;\n";
     out_file += "import tests." + test_class + ";\n\n";
 
     out_file += "public class src {\n";
@@ -161,7 +162,7 @@ var judge_java = function($scope, callback, msg) {
     if (!solution_file) solution_file = 'Solution';
     solution_file += '.java';
 
-    var solution = "package judge;import java.util.*;import java.lang.*;import java.io.*; " + $scope.$editor.getValue();
+    var solution = "package judge;import java.util.*;import java.lang.*;import java.io.*;import datastruct.*; " + $scope.$editor.getValue();
 
     // write source
     fs.writeFile('judge/java/' + solution_file, solution, function (err) {

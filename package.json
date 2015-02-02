@@ -20,7 +20,8 @@
     "nedb": "^1.1.1",
     "protractor": "~1.0.0",
     "shelljs": "^0.2.6",
-    "tmp": "0.0.23"
+    "tmp": "0.0.23",
+    "moment": "2.9.0"
   },
   "scripts": {
     "postinstall": "bower install",

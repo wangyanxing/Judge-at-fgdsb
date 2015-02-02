@@ -25,13 +25,13 @@ def judge
         answer = is_isomorphic(@in_0[i], @in_1[i]) 
         if answer != @out[i]
             print "#{i+1} / #{@num_test};"
-            print @in_org_0[i]
+            print @in_org_0[i].to_s
             print ', '
-            print @in_org_1[i]
+            print @in_org_1[i].to_s
             print ';'
-            print answer
+            print answer.to_s
             print ';'
-            print @out[i]
+            print @out[i].to_s
             puts
             return
         end

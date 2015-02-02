@@ -5,7 +5,7 @@ import java.io.*;
 import judge.*;
 
 public class power_of_4 {
-    public static int num_test = 262;
+    public static int num_test = 260;
     public static int[] in_0;
     public static int[] in_org_0;
     public static boolean[] out;

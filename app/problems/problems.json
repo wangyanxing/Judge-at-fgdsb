@@ -13,9 +13,9 @@
     },
     {
         "age": 2,
-        "id": "two-difference",
-        "name": "Two Difference",
-        "difficulty": "Medium"
+        "id": "second-largest-number",
+        "name": "Second Largest Number",
+        "difficulty": "Easy"
     },
     {
         "age": 3,
@@ -67,9 +67,9 @@
     },
     {
         "age": 11,
-        "id": "second-largest-number",
-        "name": "Second Largest Number",
-        "difficulty": "Easy"
+        "id": "two-difference",
+        "name": "Two Difference",
+        "difficulty": "Medium"
     },
     {
         "age": 12,
@@ -100,5 +100,59 @@
         "id": "compress-string",
         "name": "Compress String",
         "difficulty": "Easy"
+    },
+    {
+        "age": 17,
+        "id": "valid-tree",
+        "name": "Valid Tree",
+        "difficulty": "Hard"
+    },
+    {
+        "age": 18,
+        "id": "activity-selection",
+        "name": "Maximum Non-overlapping Intervals",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 19,
+        "id": "meeting-rooms-1",
+        "name": "Meeting Rooms",
+        "difficulty": "Easy"
+    },
+    {
+        "age": 20,
+        "id": "meeting-rooms-2",
+        "name": "Meeting Rooms II",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 21,
+        "id": "query-intervals-1",
+        "name": "Query Intervals",
+        "difficulty": "Hard"
+    },
+    {
+        "age": 22,
+        "id": "query-intervals-2",
+        "name": "Query Intervals II",
+        "difficulty": "Hard"
+    },
+    {
+        "age": 23,
+        "id": "rotate-array",
+        "name": "Rotate Array",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 24,
+        "id": "bst-to-dlist",
+        "name": "Convert BST to Sorted Doubly-Linked List",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 25,
+        "id": "all-path-tree",
+        "name": "All Path From Root to Leaf",
+        "difficulty": "Medium"
     }
 ]

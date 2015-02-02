@@ -1,0 +1,25 @@
+{
+    "name" : "Rotate Array",
+    "id" : "rotate-array",
+    "discuss_link" : "http://www.fgdsb.com/2015/01/03/rotate-sorted-array/",
+    "desc" : "<p>Write a function to rotate a given array by k places.<br><br><strong>Note:</strong> Your solution must be in-place and in linear time.</p>",
+    "code_cpp" : "void rotate_array(vector<int>& arr, int k) {\n}",
+    "code_java" : "public class Solution {\n    public void rotate_array(int[] arr, int k) {\n    }\n}",
+    "code_ruby" : "def rotate_array(arr, k)\nend",
+    "code_python" : "def rotate_array(arr, k):",
+
+    "in_type_cpp" : ["vector<int>", "int"],
+    "ret_type_cpp" : "void",
+    "out_type_cpp" : "vector<int>",
+    "judge_type_cpp" : "out[i] != answer",
+
+    "in_type_java" : ["int[]", "int"],
+    "ret_type_java" : "void",
+    "out_type_java" : "int[]",
+    "judge_type_java" : "!common.equals(out[i], answer)",
+
+    "judge_type_ruby" : "@out[i] != answer",
+    "judge_type_python" : "out[i] != answer",
+
+    "judge_call" : "rotate_array(@)"
+}

@@ -1,4 +1,4 @@
-const int num_test = 262;
+const int num_test = 260;
 vector<int> in_0;
 vector<int> in_org_0;
 vector<bool> out;
