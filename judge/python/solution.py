@@ -1,25 +1,15 @@
-# class TreeNode:
-#     def initialize(self, v=0):
-#         self.val, self.left, self.right = v, None, None
-import copy
-
-def _all_path(root, ret, cur):
-    if root == None: return
-
-    cur.append(root.val)
-
-    if root.left == None and root.right == None:
-        ret.append(copy.deepcopy(cur))
-        cur.pop()
-        return
-
-    _all_path(root.left, ret, cur)
-    _all_path(root.right, ret, cur)
-    cur.pop()
+# @param a, integer list
+def product(a):
+    ret = [None] * len(a)
     
-# @param root, TreeNode
-# @return TreeNode
-def all_path(root):
-    ret = []
-    _all_path(root, ret, [])
+    prod = 1
+    for i in range(len(a)):
+        prod *= a[i]
+        ret[i] = prod
+        
+    prod = 1
+    for i in reversed(range(len(a))):
+        if i > 0: ret[i] = ret[i-1] * prod
+        else: ret[i] = prod
+        prod *= a[i]
     return ret

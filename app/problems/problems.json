@@ -154,5 +154,11 @@
         "id": "all-path-tree",
         "name": "All Path From Root to Leaf",
         "difficulty": "Medium"
+    },
+    {
+        "age": 26,
+        "id": "self-exclusive-product",
+        "name": "Self Exclusive Product",
+        "difficulty": "Medium"
     }
 ]
