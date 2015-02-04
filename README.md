@@ -7,7 +7,7 @@ Judge@fgdsb is a desktop app to help you learn algorithms and practice real inte
 
 The app will call the local compilers or virtual machines to compile, run and judge your solutions.
 
-We do support C++, Java, Ruby and Python. Scala supporting is on going!
+We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
 ### Releases
 
