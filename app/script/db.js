@@ -17,7 +17,8 @@ var langs_to_db = {
     "C#" : "csharp",
     "JavaScript" : "js",
     "Swift" : "swift",
-    "Objective-C" : "objc"
+    "Objective-C" : "objc",
+    "Lua" : "lua"
 };
 
 var update_autosave = function(id, language, content) {

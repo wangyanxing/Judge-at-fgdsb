@@ -1,4 +1,4 @@
-const int num_test = 91;
+const int num_test = 122;
 vector<vector<Interval>> in_0;
 vector<vector<Interval>> in_org_0;
 vector<bool> out;
@@ -7,7 +7,7 @@ vector<bool> out;
 void load_test() {
     ifstream in("judge/tests/meeting-rooms-1.txt");
     read_matrix(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_array(in, out);
     in.close();
 }

@@ -9,9 +9,9 @@ vector<int> out;
 void load_test() {
     ifstream in("judge/tests/fence-painter.txt");
     read_array(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_array(in, in_1);
-    in_org_1 = in_1;
+    in_org_1 = clone(in_1);
     read_array(in, out);
     in.close();
 }

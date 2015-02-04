@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class isomorphic_strings {
-    public static int num_test = 155;
+    public static int num_test = 635;
     public static String[] in_0;
     public static String[] in_org_0;
     public static String[] in_1;
@@ -43,7 +44,7 @@ public class isomorphic_strings {
             boolean answer = s.is_isomorphic(in_0[i], in_1[i]);
             if(answer != out[i]) {
                 System.out.printf("%d / %d;", i+1, num_test);
-                String outs = common.to_string(isomorphic_strings.in_org_0[i]) + common.to_string(isomorphic_strings.in_org_1[i]);
+                String outs = common.to_string(isomorphic_strings.in_org_0[i]) + ", " + common.to_string(isomorphic_strings.in_org_1[i]);
                 System.out.print(outs + ";");
                 System.out.print(common.to_string(answer) + ";");
                 System.out.println(common.to_string(out[i]));

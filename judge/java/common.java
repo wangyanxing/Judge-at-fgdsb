@@ -70,6 +70,10 @@ public class common {
         return ret;
     }
     
+    public static String node_to_string(TreeNode n) {
+        return n == null ? "null" : Integer.toString(n.val);
+    }
+    
     public static boolean compare_interval_list(List<Interval> a0, List<Interval> a1) {
         if(a0.size() != a1.size()) return false;
         for(int i = 0; i < a0.size(); ++i) {
@@ -132,6 +136,12 @@ public class common {
             if(a0[i] != a1[i]) return false;
         }
         return true;
+    }
+    
+    public static boolean equals(TreeNode n1, TreeNode n2) {
+        if(n1 == null && n2 == null) return true;
+        if(n1 == null || n2 == null) return false;
+        return n1.val == n2.val;
     }
     
     public static boolean equals(String[] a0, String[] a1) {

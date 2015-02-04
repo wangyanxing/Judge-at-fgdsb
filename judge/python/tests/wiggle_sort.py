@@ -4,7 +4,7 @@ import copy
 import sys
 import datetime
 
-num_test = 50
+num_test = 100
 true, false = True, False
 in_0 = []
 in_org_0 = []
@@ -25,6 +25,7 @@ def judge():
     start_time = datetime.datetime.now()
     for i in range(num_test):
         answer = wiggle_sort(in_0[i]) 
+        answer = in_0[i]
         if (not test_wiggle(in_0[i])):
             out_str = str(i+1) + " / " + str(num_test) + ";"
             out_str += str(in_org_0[i])

@@ -1,4 +1,4 @@
-const int num_test = 50;
+const int num_test = 100;
 vector<vector<int>> in_0;
 vector<vector<int>> in_org_0;
 vector<vector<int>> out;
@@ -18,7 +18,7 @@ vector<vector<int>> out;
 void load_test() {
     ifstream in("judge/tests/segregate-even-odd.txt");
     read_matrix(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_matrix(in, out);
     in.close();
 }

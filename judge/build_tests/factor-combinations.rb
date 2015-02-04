@@ -32,7 +32,7 @@ class Test_factor_comb < TestBase
 	def gen_tests
 		@test_in, @test_out = [[]], []
 
-		(1..30).each do |n|
+		(1..2000).each do |n|
 			add_test n
 		end
 	end

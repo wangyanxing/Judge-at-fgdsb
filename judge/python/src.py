@@ -1,5 +1,5 @@
 from common import *
 from solution import *
-from tests.self_exclusive_product import *
+from tests.meeting_rooms_2 import *
 
 judge()

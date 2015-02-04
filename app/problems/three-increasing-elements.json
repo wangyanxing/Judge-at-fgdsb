@@ -5,8 +5,9 @@
     "desc" : "<p>Given an array find 3 elements such that <code>a[i] < a[j] < a[k]</code> and <code>i < j < k</code> in <code>O(N)</code> time.<br><br>Your function should return indices of the three numbers. <br><br>There might be multiple increasing subsequences, you only need to return any of them. Return <code>[-1,-1,-1]</code> if no result can be found.</p>",
     "code_cpp" : "vector<int> three_increasing_nums(vector<int>& arr) {\n}",
     "code_java" : "public class Solution {\n    public int[] three_increasing_nums(int[] nums) {\n    }\n}",
-    "code_ruby" : "def three_increasing_nums(arr)\nend",
-    "code_python" : "def three_increasing_nums(arr):",
+    "code_ruby" : "# @param arr, array of integers\n# @return array of integers\ndef three_increasing_nums(arr)\nend",
+    "code_python" : "# @param arr, list of integers\n# @return list of integers\ndef three_increasing_nums(arr):",
+    "code_lua" : "-- @param arr, table of integers\n-- @return table of integers\nfunction three_increasing_nums(arr)\nend",
 
     "in_type_cpp" : ["vector<int>"],
     "ret_type_cpp" : "vector<int>",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "!test(answer, i)",
     "judge_type_python" : "not test(answer, i)",
+    "judge_type_lua" : "not test(answer, i)",
 
     "judge_call" : "three_increasing_nums(@)"
 }

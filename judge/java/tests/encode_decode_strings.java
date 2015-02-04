@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class encode_decode_strings {
     public static int num_test = 100;

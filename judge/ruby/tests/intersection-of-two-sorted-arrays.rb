@@ -1,4 +1,4 @@
-@num_test = 60
+@num_test = 100
 @in_0 = []
 @in_org_0 = []
 @in_1 = []

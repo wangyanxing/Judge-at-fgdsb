@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class compress_string {
     public static int num_test = 105;

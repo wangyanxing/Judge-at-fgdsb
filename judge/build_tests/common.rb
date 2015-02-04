@@ -16,6 +16,7 @@ class TestBase
       gen_java_test
       gen_ruby_test
       gen_python_test
+      gen_lua_test
     end
   end
 
@@ -60,7 +61,6 @@ class TestBase
     file = File.open("../tests/#{@name}.txt", 'w')
     in_types = @problem['in_type_cpp']
     out_type = @problem['out_type_cpp']
-    #file.puts in_types.length
 
     @test_in.each_with_index do |t, i|
       type = @types[in_types[i]]
@@ -280,8 +280,11 @@ class TestBase
     vis_answer = @problem['vis_answer_cpp']
     vis_answer = 'answer' if vis_answer.nil?
 
+    vis_out = @problem['vis_out_cpp']
+    vis_out = 'out[i]' if vis_out.nil?
+
     file.puts "            cout << #{vis_answer} << \";\";
-            cout << out[i] << endl;
+            cout << #{vis_out} << endl;
             return;
         }"
 
@@ -413,8 +416,11 @@ class TestBase
     vis_answer = @problem['vis_answer_java']
     vis_answer = 'common.to_string(answer)' if vis_answer.nil?
 
+    vis_out = @problem['vis_out_java']
+    vis_out = 'common.to_string(out[i])' if vis_out.nil?
+
     file.puts "                System.out.print(#{vis_answer} + \";\");"
-    file.puts '                System.out.println(common.to_string(out[i]));'
+    file.puts "                System.out.println(#{vis_out});"
     file.puts '                return;'
     file.puts '            }'
 
@@ -506,6 +512,9 @@ class TestBase
     vis_answer = @problem['vis_answer_ruby']
     vis_answer = 'answer.to_s' if vis_answer.nil?
 
+    vis_out = @problem['vis_out_ruby']
+    vis_out = '@out[i].to_s' if vis_out.nil?
+
     file.puts '            print "#{i+1} / #{@num_test};"'
     @problem['in_type_java'].each_with_index do |in_type, i|
       file.puts '            print \', \'' if i != 0
@@ -514,7 +523,7 @@ class TestBase
     file.puts '            print \';\''
     file.puts "            print #{vis_answer}"
     file.puts '            print \';\''
-    file.puts '            print @out[i].to_s'
+    file.puts "            print #{vis_out}"
     file.puts '            puts'
 
     file.puts '            return'
@@ -617,16 +626,122 @@ class TestBase
     vis_answer = @problem['vis_answer_python']
     vis_answer = 'str(answer)' if vis_answer.nil?
 
+    vis_out = @problem['vis_out_python']
+    vis_out = 'str(out[i])' if vis_out.nil?
+
     file.puts "            out_str += \";\"
             out_str += #{vis_answer}
             out_str += \";\"
-            out_str += str(out[i])
+            out_str += #{vis_out}
             print(out_str)
             return"
     file.puts '
     delta = datetime.datetime.now() - start_time
     runtime = str(int(delta.total_seconds() * 1000))
     print(\'Accepted;\' + runtime)'
+    file.close
+  end
+
+  def gen_lua_test
+    lua_funcs = {
+        'bool' => 'read_bool_array',
+        'int' => 'read_num_array',
+        'double' => 'read_num_array',
+        'string' => 'read_string_array',
+        'Interval' => 'read_interval_array',
+        'TreeNode*' => 'read_tree_array',
+        'vector<bool>' => 'read_bool_matrix',
+        'vector<int>' => 'read_num_matrix',
+        'vector<double>' => 'read_num_matrix',
+        'vector<string>' => 'read_string_matrix',
+        'vector<Interval>' => 'read_interval_matrix',
+        'vector<TreeNode*>' => 'read_tree_matrix',
+        'vector<vector<bool>>' => 'read_bool_matrix_arr',
+        'vector<vector<int>>' => 'read_num_matrix_arr',
+        'vector<vector<double>>' => 'read_num_matrix_arr',
+        'vector<vector<string>>' => 'read_string_matrix_arr'
+    }
+
+    file = File.open("../lua/tests/#{@name}.lua", 'w')
+
+    file.puts 'require("../solution")'
+
+    file.puts
+    file.puts "local num_test = #{@test_in[0].length}"
+
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      file.puts "local in_#{i} = {}"
+      file.puts "local in_org_#{i} = {}"
+    end
+    file.puts 'local out = {}';
+
+    file.puts @extra_test_code_lua
+    file.puts
+
+    file.puts 'function load_test()'
+    file.puts "    local f = io.open(\"./judge/tests/#{@name}.txt\", \"r\")"
+    @problem['in_type_cpp'].each_with_index do |in_type, i|
+      file.puts "    in_#{i} = #{lua_funcs[in_type]}(f)"
+      file.puts "    in_org_#{i} = copy(in_#{i})"
+    end
+    file.puts "    out = #{lua_funcs[@problem['out_type_cpp']]}(f)"
+    file.puts '    f:close()'
+    file.puts 'end'
+
+    file.puts
+
+    file.puts 'function judge()'
+    file.puts '    load_test()'
+    file.puts
+    file.puts '    local start = os.clock()'
+    file.puts '    for i = 1, num_test do'
+
+
+    caller = @problem['judge_call']
+    judge_call = "        local answer = #{caller} "
+    judge_inputs = ''
+
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      judge_inputs += ', ' if i != 0
+      judge_inputs += "in_#{i}[i]"
+    end
+    file.puts judge_call.gsub(/@/, judge_inputs)
+
+    if @problem['ret_type_java'] == 'void'
+      file.puts '        answer = in_0[i]'
+    end
+
+    if @problem['judge_type_lua'] == 'equal'
+      file.puts '        if answer ~= out[i] then'
+    else
+      file.puts "        if #{@problem['judge_type_lua']} then"
+    end
+    file.puts '            io.write(string.format("%d / %d;", i, num_test))'
+
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      file.puts '            io.write(", ")' if i != 0
+      file.puts "            io.write(to_string(in_org_#{i}[i]))"
+    end
+
+    vis_answer = @problem['vis_answer_lua']
+    vis_answer = 'to_string(answer)' if vis_answer.nil?
+
+    vis_out = @problem['vis_out_lua']
+    vis_out = 'to_string(out[i])' if vis_out.nil?
+
+    file.puts "            io.write(\";\")
+            io.write(#{vis_answer})
+            io.write(\";\")
+            io.write(#{vis_out})
+            io.write(\"\\n\")
+            return
+        end
+    end"
+    file.puts '
+    local elapsed = math.floor((os.clock() - start) * 1000)
+	print("Accepted;" .. elapsed)
+end'
+
     file.close
   end
 

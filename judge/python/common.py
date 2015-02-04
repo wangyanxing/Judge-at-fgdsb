@@ -34,19 +34,16 @@ class TreeNode:
 
 ############################################################
 
-def test_wiggle(arr):
-    if not arr:
-        return False
-    test_flag = True
-    for i in range(len(arr)-1):
-        if test_flag:
-            if arr[i] > arr[i+1]:
-                return False
-        else:
-            if arr[i] < arr[i+1]:
-                return False
-        test_flag = not test_flag
-    return True
+def node_equals(n1, n2):
+    if n1 == None and n2 == None: return True
+    if n1 == None or n2 == None: return False
+    return n1.val == n2.val
+
+def node_to_string(n):
+    if n == None: return "None"
+    return str(n.val)
+
+############################################################
 
 # test anagram
 def test_anagram(a0, a1):

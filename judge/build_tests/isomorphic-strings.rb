@@ -93,7 +93,7 @@ class Test_isomorphic_str < TestBase
 
 		tin = [[],[]]
 		ret = []
-		while tin[0].length < 20
+		while tin[0].length < 500
 			size = rand(200...300)
 			r0 = (0...size).map { ('a'..'z').to_a[rand(26)] }.join
 			r1 = (0...size).map { ('a'..'z').to_a[rand(26)] }.join

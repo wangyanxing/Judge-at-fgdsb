@@ -1,4 +1,4 @@
-const int num_test = 60;
+const int num_test = 110;
 vector<vector<int>> in_0;
 vector<vector<int>> in_org_0;
 vector<vector<int>> out;
@@ -7,7 +7,7 @@ vector<vector<int>> out;
 void load_test() {
     ifstream in("judge/tests/longest-zero-subarray.txt");
     read_matrix(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_matrix(in, out);
     in.close();
 }

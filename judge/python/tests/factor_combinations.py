@@ -4,7 +4,7 @@ import copy
 import sys
 import datetime
 
-num_test = 30
+num_test = 2000
 true, false = True, False
 in_0 = []
 in_org_0 = []

@@ -1,4 +1,4 @@
-const int num_test = 260;
+const int num_test = 263;
 vector<int> in_0;
 vector<int> in_org_0;
 vector<bool> out;
@@ -7,7 +7,7 @@ vector<bool> out;
 void load_test() {
     ifstream in("judge/tests/power-of-4.txt");
     read_array(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_array(in, out);
     in.close();
 }

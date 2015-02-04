@@ -6,13 +6,15 @@ var modes = {
     "C++" : "ace/mode/c_cpp",
     "Java" : "ace/mode/java",
     "Ruby" : "ace/mode/ruby",
-    "Python" : "ace/mode/python"
+    "Python" : "ace/mode/python",
+    "Lua" : "ace/mode/lua"
 };
 var codes = {
     "C++" : "code_cpp",
     "Java" : "code_java",
     "Ruby" : "code_ruby",
-    "Python" : "code_python"
+    "Python" : "code_python",
+    "Lua" : "code_lua"
 };
 
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);
@@ -147,7 +149,8 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             'C++',
             'Java',
             'Ruby',
-            'Python'
+            'Python',
+            'Lua'
         ];
         $scope.cur_lang = 'C++';
 
@@ -155,7 +158,8 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             "C++" : judge_cpp,
             "Java" : judge_java,
             "Ruby" : judge_ruby,
-            "Python" : judge_python
+            "Python" : judge_python,
+            "Lua" : judge_lua
         };
 
         $scope.problem = Problem.get({problemId: $routeParams.problemId, 'foo':new Date().getTime()}, function(problem) {

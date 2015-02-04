@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class fence_painter {
     public static int num_test = 80;
@@ -43,7 +44,7 @@ public class fence_painter {
             int answer = s.num_colors(in_0[i], in_1[i]);
             if(answer != out[i]) {
                 System.out.printf("%d / %d;", i+1, num_test);
-                String outs = common.to_string(fence_painter.in_org_0[i]) + common.to_string(fence_painter.in_org_1[i]);
+                String outs = common.to_string(fence_painter.in_org_0[i]) + ", " + common.to_string(fence_painter.in_org_1[i]);
                 System.out.print(outs + ";");
                 System.out.print(common.to_string(answer) + ";");
                 System.out.println(common.to_string(out[i]));

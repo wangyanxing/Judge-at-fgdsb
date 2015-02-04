@@ -35,7 +35,7 @@ class Test_three_increasing_nums < TestBase
 			add_test(cur)
 		end
 
-		20.times do
+		40.times do
 			size = Random.rand(50..100)
 			cur = []
 			size.times do
@@ -44,11 +44,11 @@ class Test_three_increasing_nums < TestBase
 			add_test(cur)
 		end
 
-		30.times do
-			size = Random.rand(100..200)
+		70.times do
+			size = Random.rand(500..1000)
 			cur = []
 			size.times do
-				cur << Random.rand(-500..500)
+				cur << Random.rand(-1000..1000)
 			end
 			add_test(cur)
 		end
@@ -89,6 +89,21 @@ class Test_three_increasing_nums < TestBase
         else:
             return (in_org_0[i][answer[0]] < in_org_0[i][answer[1]] and in_org_0[i][answer[1]] < in_org_0[i][answer[2]]) and (answer[0] < answer[1] and answer[1] < answer[2])
 		'
+
+		@extra_test_code_lua = 'function test(answer, i)
+    if #out[i] ~= #answer then return false end
+
+    if out[i][1] == -1 and out[i][2] == -1 and out[i][3] == -1 then
+        return answer[1] == -1 and answer[2] == -1 and answer[3] == -1
+    else
+				out[i][1], out[i][2], out[i][3] = out[i][1]+1, out[i][2]+1, out[i][3]+1
+        if answer[1] == -1 or answer[2] == -1 or answer[3] == -1 then
+            return false
+        else
+            return (in_org_0[i][answer[1]] < in_org_0[i][answer[2]] and in_org_0[i][answer[2]] < in_org_0[i][answer[3]]) and (answer[1] < answer[2] and answer[2] < answer[3])
+		end
+	end
+end'
 
 
 		@extra_test_code_ruby = '

@@ -6,7 +6,7 @@ import judge.*;
 import datastruct.*;
 
 public class meeting_rooms_2 {
-    public static int num_test = 91;
+    public static int num_test = 121;
     public static Interval[][] in_0;
     public static Interval[][] in_org_0;
     public static int[] out;

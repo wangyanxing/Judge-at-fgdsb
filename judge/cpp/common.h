@@ -81,6 +81,16 @@ T clone(T& n) {
     return ret;
 }
 
+bool equals(TreeNode* n1, TreeNode* n2) {
+    if(!n1 && !n2) return true;
+    if(!n1 || !n2) return false;
+    return n1->val == n2->val;
+}
+
+string node_to_string(TreeNode* n) {
+    return !n ? "nullptr" : to_string(n->val);
+}
+
 ////////////////////////////////////////////////////////////////////////
 
 template<typename T>

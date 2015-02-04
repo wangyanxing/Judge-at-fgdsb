@@ -5,8 +5,9 @@
     "desc" : "<p>Implement a function to perform basic string compression using the counts of repeated characters.<br><br>For example, the string <code>aabcccccaaa</code> would become <code>a2b1c5a3</code>.<br><br>If the compressed string would not become smaller than the original string, you should return the original one.</p>",
     "code_cpp" : "string compress(string& str) {\n}",
     "code_java" : "public class Solution {\n    public String compress(String str) {\n    }\n}",
-    "code_ruby" : "def compress(str)\nend",
-    "code_python" : "def compress(string):",
+    "code_ruby" : "# @param str, String\n# @return String\ndef compress(str)\nend",
+    "code_python" : "# @param str, string\n# @return string\ndef compress(string):",
+    "code_lua" : "-- @param str, string\n-- @return string\nfunction compress(str)\nend",
 
     "in_type_cpp" : ["string"],
     "ret_type_cpp" : "string",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
+    "judge_type_lua" : "not equals(out[i], answer)",
 
     "judge_call" : "compress(@)"
 }

@@ -78,6 +78,17 @@ def load_tree(arr, id = 0)
     [root, ret_r[1]]
 end
 
+def node_equals(n1, n2)
+    return true if n1.nil? && n2.nil?
+    return false if n1.nil? || n2.nil?
+    n1.val == n2.val
+end
+
+def node_to_string(n)
+    return 'nil' if n.nil?
+    n.val.to_s
+end
+
 ##################################################
 
 def read_tree(file, nums)

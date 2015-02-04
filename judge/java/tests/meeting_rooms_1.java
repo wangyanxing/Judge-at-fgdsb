@@ -6,7 +6,7 @@ import judge.*;
 import datastruct.*;
 
 public class meeting_rooms_1 {
-    public static int num_test = 91;
+    public static int num_test = 122;
     public static Interval[][] in_0;
     public static Interval[][] in_org_0;
     public static boolean[] out;

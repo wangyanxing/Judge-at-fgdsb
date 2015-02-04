@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class factor_combinations {
-    public static int num_test = 30;
+    public static int num_test = 2000;
     public static int[] in_0;
     public static int[] in_org_0;
     public static int[][][] out;
@@ -37,7 +38,7 @@ public class factor_combinations {
 
         for(int i = 0; i < num_test; ++i) {
             List<List<Integer>> answer = s.factors_combinations(in_0[i]);
-            if(!common.compare_arr_arraylist(factor_combinations.out[i], answer)) {
+            if(!common.compare_arr_arraylist(out[i], answer)) {
                 System.out.printf("%d / %d;", i+1, num_test);
                 String outs = common.to_string(factor_combinations.in_org_0[i]);
                 System.out.print(outs + ";");

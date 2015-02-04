@@ -7,7 +7,7 @@ vector<vector<string>> out;
 void load_test() {
     ifstream in("judge/tests/encode-decode-strings.txt");
     read_matrix(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_matrix(in, out);
     in.close();
 }

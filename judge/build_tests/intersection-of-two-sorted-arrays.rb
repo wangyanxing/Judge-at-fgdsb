@@ -31,18 +31,18 @@ class Test_intersection_two_sorted_arr < TestBase
 			@test_out << (a & b)
 		end
 
-		30.times do
-			size_a = Random.rand(20..50)
-			size_b = Random.rand(20..50)
+		50.times do
+			size_a = Random.rand(20..100)
+			size_b = Random.rand(20..100)
 
 			a,b = [],[]
 
 			size_a.times do
-				a << Random.rand(50)
+				a << Random.rand(200)
 			end
 
 			size_b.times do
-				b << Random.rand(50)
+				b << Random.rand(200)
 			end
 
 			a.sort!
@@ -53,18 +53,18 @@ class Test_intersection_two_sorted_arr < TestBase
 			@test_out << (a & b)
 		end
 
-		20.times do
-			size_a = Random.rand(50..70)
-			size_b = Random.rand(50..70)
+		40.times do
+			size_a = Random.rand(500..700)
+			size_b = Random.rand(500..700)
 
 			a,b = [],[]
 
 			size_a.times do
-				a << Random.rand(70)
+				a << Random.rand(700)
 			end
 
 			size_b.times do
-				b << Random.rand(70)
+				b << Random.rand(700)
 			end
 
 			a.sort!

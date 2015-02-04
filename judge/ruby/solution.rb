@@ -1,19 +1,35 @@
-# @param a, integer array
-def product(a)
-    ret = Array.new(a.length)
-    prod = 1
-    (0...a.length).each do |i|
-        prod *= a[i]
-        ret[i] = prod
+# class Interval
+#     attr_accessor :begin_t, :end_t
+#     def initialize(b = 0, e = 0)
+#         @begin_t, @end_t = b, e
+#     end
+# end
+        
+class Intervals
+    # @param intervals, Intervals array
+    def initialize(intervals)
+        @intervals = intervals
     end
-    prod = 1
-    (0...a.length).reverse_each do |i|
-        if i > 0
-            ret[i] = ret[i-1] * prod
-        else
-            ret[i] = prod
-        end
-        prod *= a[i]
+
+    def preprocess()
+        @intervals.sort! {|a, b|
+			if(a.begin_t == b.begin_t)
+				a.end_t <=> b.end_t
+			else
+				a.begin_t <=> b.begin_t
+			end
+		}
     end
-    ret
+
+    # @param time, integer
+    # @return Intervals array
+    def query(time)
+        ret = []
+        @intervals.each do |i|
+			if time >= i.begin_t && time <= i.end_t
+				ret << i
+			end
+		end
+		ret
+    end
 end

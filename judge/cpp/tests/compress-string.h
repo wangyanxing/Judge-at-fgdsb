@@ -7,7 +7,7 @@ vector<string> out;
 void load_test() {
     ifstream in("judge/tests/compress-string.txt");
     read_array(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_array(in, out);
     in.close();
 }

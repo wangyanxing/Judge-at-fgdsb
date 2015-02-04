@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class longest_zero_subarray {
-    public static int num_test = 60;
+    public static int num_test = 110;
     public static int[][] in_0;
     public static int[][] in_org_0;
     public static int[][] out;

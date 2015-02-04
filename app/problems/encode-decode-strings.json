@@ -5,8 +5,9 @@
     "desc" : "<p>Given a string array, write functions to encode and decode the strings.<br><br>Please make sure <code>decode(encode(input))</code> equals <code>input</code>.</p>",
     "code_cpp" : "string encode(const vector<string>& strs) {\n}\n\nvector<string> decode(const string& str) {\n}",
     "code_java" : "public class Solution {\n    public String encode(String[] strs) {\n    }\n\n    public String[] decode(String str) {\n    }\n}",
-    "code_ruby" : "def encode(strs)\nend\n\ndef decode(str)\nend",
-    "code_python" : "def encode(strs):\n\ndef decode(str):",
+    "code_ruby" : "# @param strs, array of Strings\n# @return String\ndef encode(strs)\nend\n\n# @param str, String\n# @return array of Strings\ndef decode(str)\nend",
+    "code_python" : "# @param strs, list of Strings\n# @return String\ndef encode(strs):\n\n# @param str, String\n# @return list of Strings\ndef decode(str):",
+    "code_lua" : "-- @param strs, list of Strings\n-- @return String\nfunction encode(strs)\nend\n\n-- @param str, String\n-- @return list of Strings\nfunction decode(str)\nend",
 
     "in_type_cpp" : ["vector<string>"],
     "ret_type_cpp" : "vector<string>",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "answer != @in_org_0[i]",
     "judge_type_python" : "answer != in_org_0[i]",
+    "judge_type_lua" : "not equals(answer, in_org_0[i])",
 
     "judge_call" : "decode(encode(@))",
     "judge_call_java" : "s.decode(s.encode(@))"

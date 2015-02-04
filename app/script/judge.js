@@ -2,6 +2,7 @@ var gui = require('nw.gui');
 var fs = require('fs');
 var util = require('util');
 var exec = require('child_process').exec;
+var cur_dir = process.cwd();
 
 //change directory settings per user platform
 if (process.platform === 'darwin') {
@@ -86,6 +87,19 @@ var generate_python = function(problem) {
     var out_file = "from common import *\nfrom solution import *\n";
     var test_class = problem['id'].replace(new RegExp('-', 'g'), '_');
     out_file += "from tests." + test_class + " import *\n\n"
+
+    out_file += "judge()";
+
+    return out_file;
+};
+
+var generate_lua = function(problem) {
+
+    var packpath = "package.path = package.path .. ';" + cur_dir + "/judge/lua/?.lua;'\n";
+
+    var out_file = packpath + "require \"common\"\nrequire \"tests/" + problem['id'] + "\"\n";
+
+    //out_file += "from tests." + test_class + " import *\n\n"
 
     out_file += "judge()";
 
@@ -315,6 +329,63 @@ var judge_python = function($scope, callback, msg) {
                     if (stderr != undefined && stderr != "") {
                         // Compile error
                         var errors = stderr.replace(new RegExp('File "judge/python/src.py", ', 'g'), '');
+                        var ret = {"result": "Compile Error", "details": errors};
+                        callback(ret);
+                        return;
+                    }
+
+                    if (error !== null) {
+                        // Internal error
+                        var ret = {"result": "Internal Error", "details": error};
+                        callback(ret);
+                        return;
+                    }
+
+                    var results = stdout.trim();
+                    if (beginsWith('Accepted', results)) {
+                        var ret = {"result": "Accepted", "runtime": results.split(";")[1]};
+                        callback(ret);
+                    } else {
+                        var res = results.split(";");
+                        var ret = {
+                            "result": "Wrong Answer",
+                            "tests": res[0],
+                            "input": res[1],
+                            "output": res[2],
+                            "expected": res[3]
+                        };
+                        callback(ret);
+                    }
+                }
+            );
+        });
+    });
+}
+
+var judge_lua = function($scope, callback, msg) {
+    var py_out = generate_lua($scope.problem);
+
+    // write source
+    fs.writeFile('judge/lua/solution.lua', $scope.$editor.getValue(), function (err) {
+        if (err) {
+            ret = {"result": "Internal Error", "details": err};
+            callback(ret);
+            return;
+        }
+        fs.writeFile('judge/lua/src.lua', py_out, function (err) {
+            if (err) {
+                ret = {"result": "Internal Error", "details": err};
+                callback(ret);
+                return;
+            }
+
+            // judge
+            msg('Judging');
+            exec('lua judge/lua/src.lua',
+                function (error, stdout, stderr) {
+                    if (stderr != undefined && stderr != "") {
+                        // Compile error
+                        var errors = stderr;
                         var ret = {"result": "Compile Error", "details": errors};
                         callback(ret);
                         return;

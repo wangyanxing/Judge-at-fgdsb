@@ -1,4 +1,4 @@
-@num_test = 50
+@num_test = 100
 @in_0 = []
 @in_org_0 = []
 @out = []
@@ -33,6 +33,7 @@ def judge
 
     (0...@num_test).each do |i|
         answer = segregate(@in_0[i]) 
+        answer = @in_0[i]
         if (!test(i))
             print "#{i+1} / #{@num_test};"
             print @in_org_0[i].to_s

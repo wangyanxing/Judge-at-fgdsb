@@ -34,7 +34,7 @@ class Test_longest_zero_subarray < TestBase
 	def gen_tests
 		@test_in, @test_out = [[]], []
 
-		10.times do
+		20.times do
 			size = Random.rand(2..20)
 			cur = []
 			size.times do
@@ -43,7 +43,7 @@ class Test_longest_zero_subarray < TestBase
 			add_test(cur)
 		end
 
-		20.times do
+		40.times do
 			size = Random.rand(50..100)
 			cur = []
 			size.times do
@@ -52,11 +52,11 @@ class Test_longest_zero_subarray < TestBase
 			add_test(cur)
 		end
 
-		30.times do
-			size = Random.rand(100..200)
+		50.times do
+			size = Random.rand(500..1000)
 			cur = []
 			size.times do
-				cur << Random.rand(-100..100)
+				cur << Random.rand(-1000..1000)
 			end
 			add_test(cur)
 		end

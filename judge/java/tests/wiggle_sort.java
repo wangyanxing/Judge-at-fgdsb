@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class wiggle_sort {
-    public static int num_test = 50;
+    public static int num_test = 100;
     public static int[][] in_0;
     public static int[][] in_org_0;
     public static int[][] out;

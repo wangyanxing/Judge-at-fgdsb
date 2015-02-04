@@ -5,8 +5,9 @@
     "desc" : "<p>Given an integer array, find the longest contiguous subarray that sum up to zero.<br><br>For example:<br>Input: <code>[1, 2, -3, 1, 5, -5, 6]</code><br>Output: <code>[2, -3, 1, 5, -5]</code></p>",
     "code_cpp" : "vector<int> longest_subarray(vector<int>& arr) {\n}",
     "code_java" : "public class Solution {\n    public List<Integer> longest_subarray(int[] arr) {\n    }\n}",
-    "code_ruby" : "def longest_subarray(arr)\nend",
-    "code_python" : "def longest_subarray(arr):",
+    "code_ruby" : "# @param arr, array of integers\n# @return array of integers\ndef longest_subarray(arr)\nend",
+    "code_python" : "# @param arr, list of integers\n# @return list array of integers\ndef longest_subarray(arr):",
+    "code_lua" : "-- @param arr, table of integers\n-- @return table of integers\nfunction longest_subarray(arr)\nend",
 
     "in_type_cpp" : ["vector<int>"],
     "ret_type_cpp" : "vector<int>",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
+    "judge_type_lua" : "not equals(out[i], answer)",
 
     "judge_call" : "longest_subarray(@)"
 }

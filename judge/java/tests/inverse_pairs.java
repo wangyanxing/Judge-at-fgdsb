@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class inverse_pairs {
-    public static int num_test = 60;
+    public static int num_test = 80;
     public static int[][] in_0;
     public static int[][] in_org_0;
     public static int[] out;

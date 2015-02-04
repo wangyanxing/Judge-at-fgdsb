@@ -1,4 +1,4 @@
-const int num_test = 155;
+const int num_test = 635;
 vector<string> in_0;
 vector<string> in_org_0;
 vector<string> in_1;
@@ -9,9 +9,9 @@ vector<bool> out;
 void load_test() {
     ifstream in("judge/tests/isomorphic-strings.txt");
     read_array(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_array(in, in_1);
-    in_org_1 = in_1;
+    in_org_1 = clone(in_1);
     read_array(in, out);
     in.close();
 }

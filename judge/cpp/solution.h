@@ -1,28 +1,22 @@
 /*
-struct TreeNode {
-    TreeNode(int v = 0) :val(v){}
-    int val{ 0 };
-    TreeNode* left{ nullptr };
-    TreeNode* right{ nullptr };
+struct Interval {
+    int begin{ 0 }, end{ 0 };
 };
 */
-
-void solve(vector<vector<int>>& ret, TreeNode* root, vector<int>& cur) {
-    if(!root) return;
-    cur.push_back(root->val);
-    if(!root->left && !root->right) {
-        ret.push_back(cur);
-        cur.pop_back();
-		return;
+int min_rooms(vector<Interval>& meetings) {
+    vector<int> times;
+    times.reserve(meetings.size()*2);
+    for(auto m : meetings) {
+        times.push_back(m.begin);
+        times.push_back(-m.end);
+    }   
+    sort(times.begin(), times.end(), [](int a, int b){
+        return abs(a) == abs(b) ? a < b : abs(a) < abs(b);
+    });   
+    int ret = 0, cur = 0;
+    for(auto t : times) {
+        if(t >= 0) ret = max(ret, ++cur);
+        else --cur;
     }
-    solve(ret, root->left, cur);
-    solve(ret, root->right, cur);
-    cur.pop_back();
-}
-
-vector<vector<int>> all_path(TreeNode* root) {
-    vector<vector<int>> ret;
-    vector<int> cur;
-    solve(ret, root, cur);
     return ret;
 }

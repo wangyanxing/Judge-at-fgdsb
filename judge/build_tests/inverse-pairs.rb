@@ -43,11 +43,11 @@ class Test_inverse_pairs < TestBase
 			add_test(cur)
 		end
 
-		30.times do
-			size = Random.rand(100..200)
+		50.times do
+			size = Random.rand(500..800)
 			cur = []
 			size.times do
-				cur << Random.rand(-500..500)
+				cur << Random.rand(-800..800)
 			end
 			add_test(cur)
 		end

@@ -5,8 +5,9 @@
     "desc" : "<p>Print all unique combination of factors <strong>(except 1)</strong> of a given number.<br><br>For example:<br>Input: &nbsp&nbsp&nbsp<code>12</code><br>Output: <code>[[2, 2, 3], [2, 6], [3, 4]]</code><br>Input: &nbsp&nbsp&nbsp<code>15</code><br>Output: <code>[[3, 5]]</code><br>Input: &nbsp&nbsp&nbsp<code>28</code><br>Output: <code>[[2, 2, 7], [2, 14], [4, 7]]</code></p>",
     "code_cpp" : "vector<vector<int>> factors_combinations(int number) {\n}",
     "code_java" : "public class Solution {\n    public List<List<Integer>> factors_combinations(int n) {\n    }\n}",
-    "code_ruby" : "def factors_combinations(number)\nend",
-    "code_python" : "def factors_combinations(number):",
+    "code_ruby" : "# @param number, integer\n# @return array of array of integers\ndef factors_combinations(number)\nend",
+    "code_python" : "# @param number, integer\n# @return list of list of integers\ndef factors_combinations(number):",
+    "code_lua" : "-- @param number, integer\n-- @return table of table of integers\nfunction factors_combinations(number)\nend",
 
     "in_type_cpp" : ["int"],
     "ret_type_cpp" : "vector<vector<int>>",
@@ -16,10 +17,11 @@
     "in_type_java" : ["int"],
     "ret_type_java" : "List<List<Integer>>",
     "out_type_java" : "int[][]",
-    "judge_type_java" : "!common.compare_arr_arraylist(factor_combinations.out[i], answer)",
+    "judge_type_java" : "!common.compare_arr_arraylist(out[i], answer)",
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
+    "judge_type_lua" : "not equals(out[i], answer)",
 
     "judge_call" : "factors_combinations(@)"
 }

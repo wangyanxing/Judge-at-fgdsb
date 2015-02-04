@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class find_kth_smallest_element {
     public static int num_test = 60;
@@ -43,7 +44,7 @@ public class find_kth_smallest_element {
             int answer = s.kth_element(in_0[i], in_1[i]);
             if(answer != out[i]) {
                 System.out.printf("%d / %d;", i+1, num_test);
-                String outs = common.to_string(find_kth_smallest_element.in_org_0[i]) + common.to_string(find_kth_smallest_element.in_org_1[i]);
+                String outs = common.to_string(find_kth_smallest_element.in_org_0[i]) + ", " + common.to_string(find_kth_smallest_element.in_org_1[i]);
                 System.out.print(outs + ";");
                 System.out.print(common.to_string(answer) + ";");
                 System.out.println(common.to_string(out[i]));

@@ -1,4 +1,4 @@
-const int num_test = 60;
+const int num_test = 100;
 vector<vector<int>> in_0;
 vector<vector<int>> in_org_0;
 vector<vector<int>> in_1;
@@ -9,9 +9,9 @@ vector<vector<int>> out;
 void load_test() {
     ifstream in("judge/tests/intersection-of-two-sorted-arrays.txt");
     read_matrix(in, in_0);
-    in_org_0 = in_0;
+    in_org_0 = clone(in_0);
     read_matrix(in, in_1);
-    in_org_1 = in_1;
+    in_org_1 = clone(in_1);
     read_matrix(in, out);
     in.close();
 }

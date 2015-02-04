@@ -160,5 +160,11 @@
         "id": "self-exclusive-product",
         "name": "Self Exclusive Product",
         "difficulty": "Medium"
+    },
+    {
+        "age": 27,
+        "id": "kth-smallest-bst",
+        "name": "Kth Smallest Element in BST",
+        "difficulty": "Medium"
     }
 ]

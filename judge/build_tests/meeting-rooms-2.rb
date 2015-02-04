@@ -31,18 +31,16 @@ class Test_meeting_rooms_2 < TestBase
 		ret
 	end
 
-	def gen_random(max, nums)
+	def gen_random(max, nums, length)
 		ret = []
 		candidates = (0...max).to_a
 		while ret.length < nums
-			int = candidates.sample(2)
-			if int[0] > int[1]
-				int[0], int[1] = int[1], int[0]
-			end
-			if ret.include? int
+			start = candidates.sample()
+			over = rand(length)
+			if ret.include? [start, start + over]
 				next
 			end
-			ret << int
+			ret << [start, start + over]
 		end
 		ret
 	end
@@ -58,15 +56,19 @@ class Test_meeting_rooms_2 < TestBase
 		add_test([[1,4], [2,3], [3,4], [4,5]])
 
 		10.times do
-			add_test(gen_random(10, rand(5...10)))
+			add_test(gen_random(10, rand(5...10), 1..5))
 		end
 
 		50.times do
-			add_test(gen_random(200, rand(100...150)))
+			add_test(gen_random(200, rand(100...150), 1..20))
 		end
 
 		30.times do
-			add_test(gen_random(1000, rand(800...1000)))
+			add_test(gen_random(5000, rand(100...300), 10..20))
+		end
+
+		30.times do
+			add_test(gen_random(1000, rand(800...1000), 10..20))
 		end
 	end
 end

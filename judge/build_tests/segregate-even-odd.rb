@@ -25,7 +25,7 @@ class Test_segregate_even_odd < TestBase
 	def gen_tests
 		@test_in, @test_out = [[]], []
 
-		5.times do
+		20.times do
 			size = Random.rand(5..10)
 			ret, out = [], []
 			size.times do
@@ -37,7 +37,7 @@ class Test_segregate_even_odd < TestBase
 			segregates(@test_out[-1])
 		end
 
-		15.times do
+		30.times do
 			size = Random.rand(10..50)
 			ret, out = [], []
 			size.times do
@@ -49,8 +49,8 @@ class Test_segregate_even_odd < TestBase
 			segregates(@test_out[-1])
 		end
 
-		30.times do
-			size = Random.rand(50..100)
+		50.times do
+			size = Random.rand(500..800)
 			ret, out = [], []
 			size.times do
 				ret << Random.rand(0..10000)
@@ -86,6 +86,23 @@ end'
         else:
             flag = True
     return True'
+
+		@extra_test_code_lua = '
+function test(i)
+    if not test_anagram(in_0[i], in_org_0[i]) then
+    	return false
+    end
+    local flag = false
+    for j = 1, #in_0[i] do
+    	local num = in_0[i][j]
+        if num % 2 == 0 then
+            if flag then return false end
+        else
+            flag = true
+        end
+    end
+    return true
+end'
 
 		@extra_test_code_java = '		public static boolean test(int i) {
       if(!common.test_anagram(in_0[i], in_org_0[i])) return false;

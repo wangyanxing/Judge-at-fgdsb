@@ -24,7 +24,7 @@ class Test_two_dif < TestBase
 	def gen_tests
 		@test_in, @test_out = [[],[]], []
 
-		5.times do
+		20.times do
 			size = Random.rand(5..15)
 			ret = []
 			size.times do
@@ -47,7 +47,7 @@ class Test_two_dif < TestBase
 			@test_out << [id0, id1]
 		end
 
-		35.times do
+		40.times do
 			size = Random.rand(100..200)
 			ret = []
 			size.times do
@@ -70,8 +70,8 @@ class Test_two_dif < TestBase
 			@test_out << [id0, id1]
 		end
 
-		10.times do
-			size = Random.rand(50..100)
+		30.times do
+			size = Random.rand(500..1000)
 			ret = []
 			size.times do
 				ret << Random.rand(-500..500)
@@ -129,6 +129,22 @@ def test(answer, i)
             return false
         else
             return (@in_0[i][answer[0]] - @in_0[i][answer[1]]).abs == @in_1[i]
+        end
+    end
+end'
+
+		@extra_test_code_lua = '
+function test(answer, i)
+    if out[i].length ~= answer.length then
+        return false
+    end
+    if out[i][1] == -1 and out[i][2] == -1 then
+        return answer[1] == -1 and answer[2] == -1
+    else
+        if answer[1] == -1 or answer[2] == -1 then
+            return false
+        else
+            return math.abs(in_0[i][answer[1]] - in_0[i][answer[2]]) == in_1[i]
         end
     end
 end'

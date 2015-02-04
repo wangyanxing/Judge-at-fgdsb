@@ -7,6 +7,7 @@
     "code_java" : "public class Solution {\n    public int plus_num(int a, int b) {\n    }\n}",
     "code_ruby" : "def plus_num(a, b)\nend",
     "code_python" : "def plus_num(a, b):",
+    "code_lua" : "function plus_num(a, b)\nend",
 
     "in_type_cpp" : ["int","int"],
     "ret_type_cpp" : "int",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
+    "judge_type_lua" : "equal",
 
     "judge_call" : "plus_num(@)"
 }

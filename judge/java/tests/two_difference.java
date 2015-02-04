@@ -3,9 +3,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import judge.*;
+import datastruct.*;
 
 public class two_difference {
-    public static int num_test = 50;
+    public static int num_test = 90;
     public static int[][] in_0;
     public static int[][] in_org_0;
     public static int[] in_1;
@@ -54,7 +55,7 @@ public class two_difference {
             int[] answer = s.two_dif(in_0[i], in_1[i]);
             if(!two_difference.test(answer,i)) {
                 System.out.printf("%d / %d;", i+1, num_test);
-                String outs = common.to_string(two_difference.in_org_0[i]) + common.to_string(two_difference.in_org_1[i]);
+                String outs = common.to_string(two_difference.in_org_0[i]) + ", " + common.to_string(two_difference.in_org_1[i]);
                 System.out.print(outs + ";");
                 System.out.print(common.to_string(answer) + ";");
                 System.out.println(common.to_string(out[i]));
