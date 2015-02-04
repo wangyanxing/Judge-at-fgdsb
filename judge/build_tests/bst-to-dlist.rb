@@ -234,6 +234,57 @@ def dlist_to_string(list):
 		first = False
 	return ret + "]"
 '
+		@extra_test_code_lua = '
+function check_dlist(arr, list)
+	local cur, pre, i = list, nil, 1
+
+	while cur ~= nil do
+		if i > #arr or arr[i] ~= cur.val then
+		    return false
+		end
+		i = i + 1
+		pre = cur
+		cur = cur.right
+    end
+
+	if i ~= #arr + 1 then
+	    return false
+	end
+
+	cur = pre
+	i = i - 1
+
+	while cur ~= nil do
+		if (i <= 0 or arr[i] ~= cur.val) then
+		    return false
+		end
+		i = i - 1
+		last = cur
+		cur = cur.left
+		last.left = nil
+	end
+
+	if i ~= 0 then
+	    return false
+	end
+
+	return true
+end
+
+function dlist_to_string(list)
+	local ret = "["
+	local first = true
+	while list ~= nil do
+		if not first then
+		    ret = ret .. ", "
+		end
+		ret = ret .. list.val
+		list = list.right
+		first = false
+  end
+	return ret .. "]"
+end
+'
 	end
 end
 

@@ -9,14 +9,14 @@ Interval = {
 -- ListNode structure
 ListNode = {
 	new = function(v)
-		return {val = v, next = nil}
+		return {val = v, next = nil, class = "ListNode"}
 	end
 }
 
--- TreeNode structure
+-- Definition for a binary tree node
 TreeNode = {
 	new = function(v)
-		return {val = v, left = nil, right = nil}
+		return {val = v, left = nil, right = nil, class = "TreeNode"}
 	end
 }
 
@@ -72,6 +72,28 @@ function matrix_to_string(arr)
 	return ret .. "]"
 end
 
+function tree_to_str(root)
+	if root == nil then return "# " end
+	return "" .. root.val .. " " .. tree_to_str(root.left) .. tree_to_str(root.right)
+end
+
+function node_to_string(root)
+	if root == nil then return "#" end
+	return "" .. root.val
+end
+
+function node_equals(n1, n2)
+	if n1 == nil and n2 == nil then
+		return true
+	end
+
+	if n1 == nil or n2 == nil then
+		return false
+	end
+
+	return n1.val == n2.val
+end
+
 function to_string(n)
 	if type(n) == "boolean" then
 		if n == true then return "true"
@@ -81,6 +103,12 @@ function to_string(n)
 		-- For intervals
 		if n.begin_t ~= nil and n.end_t ~= nil then
 			return "[" .. n.begin_t .. ", " .. n.end_t .. "]"
+		end
+
+		if n.class ~= nil then
+			if n.class == "TreeNode" then
+				return tree_to_str(n)
+			end
 		end
 
 		local ret = "["
@@ -99,6 +127,30 @@ function to_string(n)
 end
 
 ------------------------------------------------------------------------
+function arr_equals(table1, table2)
+	if #table1 ~= #table2 then
+		return false
+	end
+	for i = 1, #table1 do
+		if table1[i] ~= table2[i] then
+			return false
+		end
+	end
+	return true
+end
+
+function mat_equals(table1, table2)
+	if #table1 ~= #table2 then
+		return false
+	end
+	for i = 1, #table1 do
+		if not arr_equals(table1[i], table2[i]) then
+			return false
+		end
+	end
+	return true
+end
+
 -- from http://stackoverflow.com/a/25976660/2954435
 function equals(table1, table2)
    local avoid_loops = {}
@@ -170,6 +222,43 @@ function test_anagram(a0, a1)
 end
 
 ------------------------------------------------------------------------
+
+function read_tree(f, nums)
+	if nums == 0 then
+		return nil
+	end
+	
+	local cur = f:read()
+	
+	if cur == "#" then
+		return nil
+	end
+
+	local root = TreeNode.new(tonumber(cur))
+	nums = nums - 1
+	root.left = read_tree(f, nums)
+	nums = nums - 1
+	root.right = read_tree(f, nums)
+	return root
+end
+
+function read_tree_array(f)
+    local num = tonumber(f:read())
+	local ret = {}
+	for i = 1, num do
+		ret[i] = read_tree(f, tonumber(f:read()))
+	end
+	return ret
+end
+
+function read_tree_matrix(f)
+	local num = tonumber(f:read())
+	local ret = {}
+	for i = 1, num do
+		ret[i] = read_tree_array(f)
+	end
+	return ret
+end
 
 function read_interval_array(f)
 	local num = tonumber(f:read())

@@ -7,6 +7,7 @@
     "code_java" : "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode kth_smallest(TreeNode root, int k) {\n    }\n}",
     "code_ruby" : "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k)\nend",
     "code_python" : "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k):",
+    "code_lua" : "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @param k, integer\n-- @return TreeNode\nfunction kth_smallest(root, k)\nend",
 
     "in_type_cpp" : ["TreeNode*", "int"],
     "ret_type_cpp" : "TreeNode*",
@@ -29,6 +30,10 @@
     "judge_type_python" : "not node_equals(out[i], answer)",
     "vis_answer_python" : "node_to_string(answer)",
     "vis_out_python" : "node_to_string(out[i])",
+
+    "judge_type_lua" : "not node_equals(out[i], answer)",
+    "vis_answer_lua" : "node_to_string(answer)",
+    "vis_out_lua" : "node_to_string(out[i])",
 
     "judge_call" : "kth_smallest(@)"
 }

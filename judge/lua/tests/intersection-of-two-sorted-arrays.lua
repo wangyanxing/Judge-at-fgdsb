@@ -24,7 +24,7 @@ function judge()
     local start = os.clock()
     for i = 1, num_test do
         local answer = intersection(in_0[i], in_1[i]) 
-        if not equals(out[i], answer) then
+        if not arr_equals(out[i], answer) then
             io.write(string.format("%d / %d;", i, num_test))
             io.write(to_string(in_org_0[i]))
             io.write(", ")

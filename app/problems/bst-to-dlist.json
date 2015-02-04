@@ -7,6 +7,7 @@
     "code_java" : "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode bst_to_list(TreeNode root) {\n    }\n}",
     "code_ruby" : "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return TreeNode\ndef bst_to_list(root)\nend",
     "code_python" : "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return TreeNode\ndef bst_to_list(root):",
+    "code_lua" : "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return TreeNode\nfunction bst_to_list(root)\nend",
 
     "in_type_cpp" : ["TreeNode*"],
     "ret_type_cpp" : "TreeNode*",
@@ -25,6 +26,9 @@
 
     "judge_type_python" : "not check_dlist(out[i], answer)",
     "vis_answer_python" : "dlist_to_string(answer)",
+
+    "judge_type_lua" : "not check_dlist(out[i], answer)",
+    "vis_answer_lua" : "dlist_to_string(answer)",
 
     "judge_call" : "bst_to_list(@)"
 }

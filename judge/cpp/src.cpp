@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/meeting-rooms-2.h"
+#include "tests/self-exclusive-product.h"
 
 int main() {
     judge();

@@ -25,15 +25,15 @@ function judge()
     for i = 1, num_test do
         local inte = clone(Intervals, {})
         inte:preprocess(in_0[i])
-        for j = 1, in_1[i] do
+        for j = 1, in_1[i]-1 do
             local answer = inte:query(j)
-            if not equals(answer,out[i][j]) then
+            if not equals(answer,out[i][j+1]) then
                 io.write(string.format("%d / %d;", i, num_test))
                 io.write(to_string(in_org_0[i]) .. ", " .. j)
                 io.write(";")
                 io.write(to_string(answer))
                 io.write(";")
-                io.write(to_string(out[i][j]))
+                io.write(to_string(out[i][j+1]))
                 io.write("\n")
                 return
             end

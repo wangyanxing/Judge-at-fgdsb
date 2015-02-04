@@ -1,35 +1,28 @@
-# class Interval
-#     attr_accessor :begin_t, :end_t
-#     def initialize(b = 0, e = 0)
-#         @begin_t, @end_t = b, e
-#     end
-# end
-        
-class Intervals
-    # @param intervals, Intervals array
-    def initialize(intervals)
-        @intervals = intervals
-    end
+def most_right(root)
+	return nil if root.nil?
+	ret = root
+	while !ret.right.nil?
+		ret = ret.right
+	end
+	ret
+end
 
-    def preprocess()
-        @intervals.sort! {|a, b|
-			if(a.begin_t == b.begin_t)
-				a.end_t <=> b.end_t
-			else
-				a.begin_t <=> b.begin_t
-			end
-		}
+def bst_to_list(root)
+    return nil if root.nil?
+    lefts = bst_to_list(root.left)
+    cur = root
+    left_end = most_right(lefts)
+    if !left_end.nil?
+    	left_end.right = cur
+    	cur.left = left_end
     end
-
-    # @param time, integer
-    # @return Intervals array
-    def query(time)
-        ret = []
-        @intervals.each do |i|
-			if time >= i.begin_t && time <= i.end_t
-				ret << i
-			end
-		end
-		ret
+    cur.right = bst_to_list(root.right)
+    if !cur.right.nil?
+        cur.right.left = cur
+    end
+    if lefts.nil?
+    	return cur
+    else
+    	return lefts
     end
 end

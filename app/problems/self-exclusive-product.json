@@ -7,6 +7,7 @@
     "code_java" : "public class Solution {\n    public int[] product(int[] a) {\n    }\n}",
     "code_ruby" : "# @param a, integer array\ndef product(a)\nend",
     "code_python" : "# @param a, integer list\ndef product(a):",
+    "code_lua" : "-- @param a, table of integers\n-- @return table of integers\nfunction product(a)\nend",
 
     "in_type_cpp" : ["vector<int>"],
     "ret_type_cpp" : "vector<int>",
@@ -20,6 +21,7 @@
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
+    "judge_type_lua" : "not arr_equals(out[i], answer)",
 
     "judge_call" : "product(@)"
 }

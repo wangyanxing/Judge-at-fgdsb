@@ -1,19 +1,42 @@
--- Definition for an interval
--- Interval = {
---     new = function(b, e)
---         return {begin_t = b, end_t = e}
+-- Definition for a binary tree node
+-- TreeNode = {
+--     new = function(v)
+--         return {val = v, left = nil, right = nil}
 --     end
 -- }
 
-Intervals = {
-    -- @param intervals, table of Intervals
-    preprocess = function(self, intervals)
-        self.intervals = intervals
-    end,
+function most_right(root)
+	if root == nil then return nil end
+	ret = root
+	while ret.right ~= nil do
+		ret = ret.right
+	end
+	return ret
+end
 
-    -- @param time, integer
-    -- @return table of Intervals
-    query = function(self, time)
-        return {self.intervals[1]}
+-- @param root, TreeNode
+-- @return TreeNode
+function bst_to_list(root)
+    if root == nil then return nil end
+    
+    local lefts = bst_to_list(root.left)
+    local cur = root
+    local left_end = most_right(lefts)
+    
+    if left_end ~= nil then
+    	left_end.right = cur
+    	cur.left = left_end
     end
-}
+    
+    cur.right = bst_to_list(root.right)
+    
+    if cur.right ~= nil then
+        cur.right.left = cur
+    end
+    
+    if lefts == nil then
+    	return cur
+    else
+    	return lefts
+    end    	
+end

@@ -21,7 +21,7 @@
 
     "judge_type_ruby" : "equal",
     "judge_type_python" : "equal",
-    "judge_type_lua" : "not equals(out[i], answer)",
+    "judge_type_lua" : "not arr_equals(out[i], answer)",
 
     "judge_call" : "longest_subarray(@)"
 }

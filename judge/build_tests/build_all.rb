@@ -1,17 +1,10 @@
 #=begin
 str =
-'Intervals = {
-	intervals = nil,
-
-	-- @param intervals, table of Intervals
-	preprocess = function(self, intervals)
-		self.intervals = intervals
+'-- Definition for a binary tree node
+TreeNode = {
+	new = function(v)
+		return {val = v, left = nil, right = nil}
 	end
-
-	-- @param time, integer
-    -- @return boolean
-    query = function(self, time)
-    end
 }
 '
 p str
