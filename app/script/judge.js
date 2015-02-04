@@ -22,7 +22,7 @@ if (process.platform === 'darwin') {
     baseDIR = process.env.HOME
 }
 
-win = gui.Window.get();
+var win = gui.Window.get();
 var nativeMenuBar = new gui.Menu({ type: "menubar" });
 try {
     nativeMenuBar.createMacBuiltin("fgdsb@Judge");
@@ -31,6 +31,9 @@ try {
     console.log(ex.message);
 }
 
+win.show();
+win.maximize();
+
 $(window).on('dragover', function (e) {
     e.preventDefault();
     e.originalEvent.dataTransfer.dropEffect = 'none';
@@ -38,6 +41,7 @@ $(window).on('dragover', function (e) {
 $(window).on('drop', function (e) {
     e.preventDefault();
 });
+
 
 ///////////////////////////////////////////////////////////////////////////
 
