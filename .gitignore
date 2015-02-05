@@ -27,8 +27,9 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-# web storm files
+# IDE temp files
 .idea
+judge/build_tests/.idea
 
 # temp scripts
 run.command
