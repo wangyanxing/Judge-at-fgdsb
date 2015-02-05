@@ -11,7 +11,7 @@ We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
 ### Releases
 
-Please wait!
+Check this [link](https://github.com/wangyanxing/fgdsb_judge/releases)
 
 ### Build and run
 
