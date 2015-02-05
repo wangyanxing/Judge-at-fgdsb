@@ -55,6 +55,21 @@ public class common {
         return num ? "true" : "false";
     }
     
+    public static String to_string(TreeNodeWithParent root) {
+        String ret = "";
+        if (root == null) {
+            ret = "# ";
+            return ret;
+        }
+        
+        ret += Integer.toString(root.val);
+        ret += " ";
+        
+        ret += to_string(root.left);
+        ret += to_string(root.right);
+        return ret;
+    }
+
     public static String to_string(TreeNode root) {
         String ret = "";
         if (root == null) {
@@ -71,6 +86,10 @@ public class common {
     }
     
     public static String node_to_string(TreeNode n) {
+        return n == null ? "null" : Integer.toString(n.val);
+    }
+    
+    public static String node_to_string(TreeNodeWithParent n) {
         return n == null ? "null" : Integer.toString(n.val);
     }
     
@@ -144,6 +163,12 @@ public class common {
         return n1.val == n2.val;
     }
     
+    public static boolean equals(TreeNodeWithParent n1, TreeNodeWithParent n2) {
+        if(n1 == null && n2 == null) return true;
+        if(n1 == null || n2 == null) return false;
+        return n1.val == n2.val;
+    }
+    
     public static boolean equals(String[] a0, String[] a1) {
         if(a0.length != a1.length) return false;
         for (int i=0; i <a0.length; i++) {
@@ -180,6 +205,25 @@ public class common {
         return root;
     }
     
+    public static TreeNodeWithParent read_tree_with_p(BufferedReader in, int nums) throws IOException {
+        if(nums == 0) {
+            return null;
+        }
+        String cur = in.readLine();
+        
+        if(cur.equals("#")) {
+            return null;
+        }
+        TreeNodeWithParent root = new TreeNodeWithParent(Integer.parseInt(cur));
+        nums--;
+        root.left = read_tree_with_p(in, nums);
+        if(root.left != null) root.left.parent = root;
+        nums--;
+        root.right = read_tree_with_p(in, nums);
+        if(root.right != null) root.right.parent = root;
+        return root;
+    }
+    
     public static TreeNode[] read_tree_array(BufferedReader in) throws IOException {
         String s = in.readLine();
         int number = Integer.parseInt(s);
@@ -199,6 +243,29 @@ public class common {
         TreeNode[][] ret = new TreeNode[number][];
         for(int i = 0; i < number; ++i) {
             ret[i] = read_tree_array(in);
+        }
+        return ret;
+    }
+    
+    public static TreeNodeWithParent[] read_tree_with_p_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        TreeNodeWithParent[] ret = new TreeNodeWithParent[number];
+        for(int i = 0; i < number; ++i) {
+            int num = Integer.parseInt(in.readLine());
+            ret[i] = read_tree_with_p(in, num);
+        }
+        return ret;
+    }
+    
+    public static TreeNodeWithParent[][] read_tree_with_p_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        TreeNodeWithParent[][] ret = new TreeNodeWithParent[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_tree_with_p_array(in);
         }
         return ret;
     }

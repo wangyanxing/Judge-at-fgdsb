@@ -1,12 +1,12 @@
 #=begin
 str =
-'-- Definition for a binary tree node
-TreeNode = {
-	new = function(v)
-		return {val = v, left = nil, right = nil}
-	end
-}
-'
+'struct TreeNodeWithParent {
+    TreeNodeWithParent(int v = 0) :val(v){}
+    int val{ 0 };
+    TreeNodeWithParent* left{ nullptr };
+    TreeNodeWithParent* right{ nullptr };
+    TreeNodeWithParent* parent{ nullptr };
+};'
 p str
 
 exit

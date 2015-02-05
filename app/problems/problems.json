@@ -166,5 +166,17 @@
         "id": "kth-smallest-bst",
         "name": "Kth Smallest Element in BST",
         "difficulty": "Medium"
+    },
+    {
+        "age": 28,
+        "id": "lca-1",
+        "name": "Lowest Common Ancestor",
+        "difficulty": "Medium"
+    },
+    {
+        "age": 29,
+        "id": "lca-2",
+        "name": "Lowest Common Ancestor II",
+        "difficulty": "Medium"
     }
 ]

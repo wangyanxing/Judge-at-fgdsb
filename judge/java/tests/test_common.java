@@ -54,8 +54,26 @@ public class test_common {
         return r;
     }
     
+    public static TreeNodeWithParent copy(TreeNodeWithParent input) {
+        if(input == null) return null;
+        TreeNodeWithParent r = new TreeNodeWithParent(input.val);
+        r.left = copy(input.left);
+        if(r.left != null) r.left.parent = r;
+        r.right = copy(input.right);
+        if(r.right != null) r.right.parent = r;
+        return r;
+    }
+    
     public static TreeNode[] copy(TreeNode[] input) {
         TreeNode[] target = new TreeNode[input.length];
+        for (int i=0; i <input.length; i++) {
+            target[i] = copy(input[i]);
+        }
+        return target;
+    }
+    
+    public static TreeNodeWithParent[] copy(TreeNodeWithParent[] input) {
+        TreeNodeWithParent[] target = new TreeNodeWithParent[input.length];
         for (int i=0; i <input.length; i++) {
             target[i] = copy(input[i]);
         }

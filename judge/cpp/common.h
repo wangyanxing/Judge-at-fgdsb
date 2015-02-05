@@ -26,6 +26,14 @@ struct TreeNode {
     TreeNode* right{ nullptr };
 };
 
+struct TreeNodeWithParent {
+    TreeNodeWithParent(int v = 0) :val(v){}
+    int val{ 0 };
+    TreeNodeWithParent* left{ nullptr };
+    TreeNodeWithParent* right{ nullptr };
+    TreeNodeWithParent* parent{ nullptr };
+};
+
 struct ListNode {
     ListNode(int v = 0) :val(v){}
     int val{ 0 };
@@ -67,8 +75,19 @@ TreeNode* clone(TreeNode*& nd) {
     return r;
 }
 
-vector<TreeNode*> clone(vector<TreeNode*>& nd) {
-    vector<TreeNode*> r;
+TreeNodeWithParent* clone(TreeNodeWithParent*& nd) {
+    if(!nd) return nullptr;
+    TreeNodeWithParent* r = new TreeNodeWithParent(nd->val);
+    r->left = clone(nd->left);
+    if(r->left) r->left->parent = r;
+    r->right = clone(nd->right);
+    if(r->right) r->right->parent = r;
+    return r;
+}
+
+template<typename T>
+vector<T*> clone(vector<T*>& nd) {
+    vector<T*> r;
     for(auto n : nd) {
         r.push_back(clone(n));
     }
@@ -87,7 +106,14 @@ bool equals(TreeNode* n1, TreeNode* n2) {
     return n1->val == n2->val;
 }
 
-string node_to_string(TreeNode* n) {
+bool equals(TreeNodeWithParent* n1, TreeNodeWithParent* n2) {
+    if(!n1 && !n2) return true;
+    if(!n1 || !n2) return false;
+    return n1->val == n2->val;
+}
+
+template<typename T>
+string node_to_string(T* n) {
     return !n ? "nullptr" : to_string(n->val);
 }
 
@@ -175,6 +201,26 @@ TreeNode* read_tree(ifstream& in, int nums) {
     return root;
 }
 
+TreeNodeWithParent* read_tree_with_parent(ifstream& in, int nums) {
+    if(nums == 0) {
+        return nullptr;
+    }
+    string cur;
+    in >> cur;
+    
+    if(cur == "#") {
+        return nullptr;
+    }
+    auto root = new TreeNodeWithParent(atoi(cur.c_str()));
+    nums--;
+    root->left = read_tree_with_parent(in, nums);
+    if(root->left) root->left->parent = root;
+    nums--;
+    root->right = read_tree_with_parent(in, nums);
+    if(root->right) root->right->parent = root;
+    return root;
+}
+
 template <typename T>
 vector<T> read_array(ifstream& in) {
     vector<T> ret;
@@ -221,6 +267,17 @@ void read_array(ifstream& in, vector<TreeNode*>& ret) {
         int n = 0;
         in >> n;
         ret.push_back(read_tree(in, n));
+    }
+}
+
+void read_array(ifstream& in, vector<TreeNodeWithParent*>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        int n = 0;
+        in >> n;
+        ret.push_back(read_tree_with_parent(in, n));
     }
 }
 

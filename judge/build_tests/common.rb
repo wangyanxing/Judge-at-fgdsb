@@ -46,12 +46,14 @@ class TestBase
         'double' => '1D',
         'string' => '1D',
         'TreeNode*' => '1D_bt',
+        'TreeNodeWithParent*' => '1D_bt_p',
         'vector<bool>' => '2D',
         'vector<int>' => '2D',
         'vector<double>' => '2D',
         'vector<string>' => '2D',
         'vector<Interval>' => '2D_interval',
         'vector<TreeNode*>' => '2D_bt',
+        'vector<TreeNodeWithParent*>' => '2D_bt_p',
         'vector<vector<bool>>' => '3D',
         'vector<vector<int>>' => '3D',
         'vector<vector<double>>' => '3D',
@@ -69,13 +71,13 @@ class TestBase
           write_0D(file, t)
         when '1D'
           write_1D(file, t)
-        when '1D_bt'
+        when '1D_bt', '1D_bt_p'
           write_1D_bt(file, t)
         when '2D'
           write_2D(file, t)
         when '2D_interval'
           write_2D_interval(file, t)
-        when '2D_bt'
+        when '2D_bt', '2D_bt_p'
           write_2D_bt(file, t)
         when '3D'
           write_3D(file, t)
@@ -90,13 +92,13 @@ class TestBase
         write_0D(file, @test_out)
       when '1D'
         write_1D(file, @test_out)
-      when '1D_bt'
+      when '1D_bt', '1D_bt_p'
         write_1D_bt(file, @test_out)
       when '2D'
         write_2D(file, @test_out)
       when '2D_interval'
         write_2D_interval(file, @test_out)
-      when '2D_bt'
+      when '2D_bt', '2D_bt_p'
         write_2D_bt(file, @test_out)
       when '3D'
         write_3D(file, @test_out)
@@ -204,13 +206,9 @@ class TestBase
 "
     @problem['in_type_cpp'].each_with_index do |in_type, i|
       case @types[in_type]
-        when '1D'
+        when '1D', '1D_bt', '1D_bt_p'
           file.puts "    read_array(in, in_#{i});"
-        when '1D_bt'
-          file.puts "    read_array(in, in_#{i});"
-        when '2D'
-          file.puts "    read_matrix(in, in_#{i});"
-        when '2D_interval'
+        when '2D', '2D_interval'
           file.puts "    read_matrix(in, in_#{i});"
         when '3D'
           file.puts "    read_matrix_arr(in, in_#{i});"
@@ -220,13 +218,9 @@ class TestBase
       file.puts "    in_org_#{i} = clone(in_#{i});"
     end
     case @types[@problem['out_type_cpp']]
-      when '1D'
+      when '1D','1D_bt','1D_bt_p'
         file.puts '    read_array(in, out);'
-      when '1D_bt'
-        file.puts '    read_array(in, out);'
-      when '2D'
-        file.puts '    read_matrix(in, out);'
-      when '2D_interval'
+      when '2D','2D_interval'
         file.puts '    read_matrix(in, out);'
       when '3D'
         file.puts '    read_matrix_arr(in, out);'
@@ -306,12 +300,14 @@ class TestBase
         'string' => 'common.read_string_array',
         'Interval' => 'common.read_interval_array',
         'TreeNode*' => 'common.read_tree_array',
+        'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
         'vector<bool>' => 'common.read_bool_matrix',
         'vector<int>' => 'common.read_int_matrix',
         'vector<double>' => 'common.read_double_matrix',
         'vector<string>' => 'common.read_string_matrix',
         'vector<Interval>' => 'common.read_interval_matrix',
         'vector<TreeNode*>' => 'common.read_tree_matrix',
+        'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
         'vector<vector<int>>' => 'common.read_int_matrix_arr',
         'vector<vector<double>>' => 'common.read_double_matrix_arr',
@@ -445,12 +441,14 @@ class TestBase
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
         'TreeNode*' => 'read_tree_array',
+        'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
+        'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
@@ -547,12 +545,14 @@ class TestBase
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
         'TreeNode*' => 'read_tree_array',
+        'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
+        'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
@@ -650,12 +650,14 @@ class TestBase
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
         'TreeNode*' => 'read_tree_array',
+        'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_num_matrix',
         'vector<double>' => 'read_num_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
+        'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_num_matrix_arr',
         'vector<vector<double>>' => 'read_num_matrix_arr',

@@ -78,7 +78,7 @@ function tree_to_str(root)
 end
 
 function node_to_string(root)
-	if root == nil then return "#" end
+	if root == nil then return "nil" end
 	return "" .. root.val
 end
 
