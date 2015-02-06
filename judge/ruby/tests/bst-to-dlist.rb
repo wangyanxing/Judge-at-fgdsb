@@ -48,12 +48,15 @@ end
 
 def judge
     load_test
+    capture_stdout
 
     start_time = Time.now
 
     (0...@num_test).each do |i|
+       puts 'Testing case #' + (i+1).to_s
         answer = bst_to_list(@in_0[i]) 
         if (!check_dlist(@out[i], answer))
+            release_stdout
             print "#{i+1} / #{@num_test};"
             print @in_org_0[i].to_s
             print ';'
@@ -65,6 +68,7 @@ def judge
         end
     end
 
+    release_stdout
     runtime = (Time.now - start_time) * 1000.0
     puts('Accepted;' + runtime.to_i.to_s)
 end

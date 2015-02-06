@@ -24,9 +24,11 @@ end
 
 function judge()
     load_test()
+    capture_stdout()
 
     local start = os.clock()
     for i = 1, num_test do
+        print("Testing case #" .. i)
         local answer = lca(in_0[i], in_1[i], in_2[i]) 
         if not node_equals(out[i], answer) then
             io.write(string.format("%d / %d;", i, num_test))
@@ -44,6 +46,7 @@ function judge()
         end
     end
 
+    release_stdout()
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end

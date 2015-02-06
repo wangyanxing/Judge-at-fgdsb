@@ -464,4 +464,22 @@ public class common {
         return ret;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    private static PrintStream old_stream = new PrintStream(System.out);
+    
+    public static void capture_stdout() {
+        try {
+            System.setOut(new PrintStream(new FileOutputStream("judge/stdout.txt", false)));
+        } catch (FileNotFoundException fnfEx) {
+            System.out.println("Error in IO Redirection");
+        } catch (Exception ex) {
+            System.out.println("Redirecting output & exceptions to file");
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void release_stdout() {
+        System.setOut(old_stream);
+    }
 }

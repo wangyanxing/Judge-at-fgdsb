@@ -16,6 +16,7 @@
 #include <numeric>
 #include <iomanip>
 #include <fstream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -326,5 +327,17 @@ void read_matrix_arr(ifstream& in, vector<vector<vector<T>>>& ret) {
     }
 }
 
+////////////////////////////////////////////////////////////////////////
 
+int g_old_stdout = 0;
+
+void capture_stdout() {
+    g_old_stdout = dup(1);
+    freopen("judge/stdout.txt", "w", stdout);
+}
+
+void release_stdout() {
+    fclose(stdout);
+    *stdout = *fdopen(g_old_stdout, "w");
+}
 

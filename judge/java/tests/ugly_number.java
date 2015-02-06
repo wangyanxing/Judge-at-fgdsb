@@ -32,13 +32,16 @@ public class ugly_number {
 
     public static void judge() {
         load_test();
+        common.capture_stdout();
         Solution s = new Solution();
 
         long startTime = System.currentTimeMillis();
 
         for(int i = 0; i < num_test; ++i) {
+            System.out.printf("Testing case #%d\n", i+1);
             int answer = s.kth_ugly_number(in_0[i]);
             if(answer != out[i]) {
+                common.release_stdout();
                 System.out.printf("%d / %d;", i+1, num_test);
                 String outs = common.to_string(ugly_number.in_org_0[i]);
                 System.out.print(outs + ";");
@@ -48,6 +51,7 @@ public class ugly_number {
             }
         }
 
+        common.release_stdout();
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.print("Accepted;");
         System.out.println(estimatedTime);

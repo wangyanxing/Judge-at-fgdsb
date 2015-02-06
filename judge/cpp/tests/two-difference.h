@@ -30,11 +30,16 @@ void load_test() {
 
 void judge() {
     cout.setf(ios::boolalpha);
+
+    capture_stdout();
+
     load_test();
     auto start = chrono::steady_clock::now();
     for(int i = 0; i < num_test; ++i) {
+        printf("Testing case #%d\n", i+1);
         auto answer = two_dif(in_0[i], in_1[i]);
         if(!test(answer, i)) {
+            release_stdout();
             cout << i+1 << "/" << num_test << ";";
             cout << in_org_0[i] << + ", " << in_org_1[i] << ";";
             cout << answer << ";";
@@ -42,6 +47,7 @@ void judge() {
             return;
         }
     }
+    release_stdout();
     auto elapsed = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start);
     cout << "Accepted;";
     cout << elapsed.count() << endl;

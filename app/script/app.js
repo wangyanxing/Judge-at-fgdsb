@@ -5,6 +5,7 @@
 var fgdsbApp = angular.module('fgdsbApp', [
     'ui.ace',
     'ngRoute',
+    'ngAnimate',
     'fgdsbControllers',
     'fgdsbServices'
 ]);

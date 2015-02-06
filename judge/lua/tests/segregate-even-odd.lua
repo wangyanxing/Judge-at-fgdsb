@@ -31,9 +31,11 @@ end
 
 function judge()
     load_test()
+    capture_stdout()
 
     local start = os.clock()
     for i = 1, num_test do
+        print("Testing case #" .. i)
         local answer = segregate(in_0[i]) 
         answer = in_0[i]
         if not test(i) then
@@ -48,6 +50,7 @@ function judge()
         end
     end
 
+    release_stdout()
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end

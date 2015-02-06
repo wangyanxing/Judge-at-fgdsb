@@ -43,13 +43,16 @@ public static boolean test(int[] answer, int i) {
 
     public static void judge() {
         load_test();
+        common.capture_stdout();
         Solution s = new Solution();
 
         long startTime = System.currentTimeMillis();
 
         for(int i = 0; i < num_test; ++i) {
+            System.out.printf("Testing case #%d\n", i+1);
             int[] answer = s.three_increasing_nums(in_0[i]);
             if(!three_increasing_elements.test(answer,i)) {
+                common.release_stdout();
                 System.out.printf("%d / %d;", i+1, num_test);
                 String outs = common.to_string(three_increasing_elements.in_org_0[i]);
                 System.out.print(outs + ";");
@@ -59,6 +62,7 @@ public static boolean test(int[] answer, int i) {
             }
         }
 
+        common.release_stdout();
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.print("Accepted;");
         System.out.println(estimatedTime);

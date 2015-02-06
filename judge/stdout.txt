@@ -1,0 +1,150 @@
+Testing case #1
+asdf
+40 + 74
+Testing case #2
+asdf
+48 + 52
+Testing case #3
+asdf
+82 + 19
+Testing case #4
+asdf
+52 + 31
+Testing case #5
+asdf
+93 + 48
+Testing case #6
+asdf
+92 + 59
+Testing case #7
+asdf
+67 + 45
+Testing case #8
+asdf
+4 + 34
+Testing case #9
+asdf
+86 + 38
+Testing case #10
+asdf
+58 + 39
+Testing case #11
+asdf
+55781 + 86031
+Testing case #12
+asdf
+32588 + 94219
+Testing case #13
+asdf
+11259 + 93992
+Testing case #14
+asdf
+89666 + 11060
+Testing case #15
+asdf
+31753 + 21663
+Testing case #16
+asdf
+8752 + 50356
+Testing case #17
+asdf
+40595 + 79989
+Testing case #18
+asdf
+90095 + 14646
+Testing case #19
+asdf
+26052 + 5282
+Testing case #20
+asdf
+79053 + 58661
+Testing case #21
+asdf
+66503 + 97807
+Testing case #22
+asdf
+79196 + 75235
+Testing case #23
+asdf
+31085 + 42417
+Testing case #24
+asdf
+44659 + 22689
+Testing case #25
+asdf
+13699 + 5479
+Testing case #26
+asdf
+5414157 + 7157898
+Testing case #27
+asdf
+6738201 + 7654035
+Testing case #28
+asdf
+3431736 + 386292
+Testing case #29
+asdf
+6340730 + 8390624
+Testing case #30
+asdf
+7416755 + 2932603
+Testing case #31
+asdf
+2741275 + 1168220
+Testing case #32
+asdf
+5979224 + 1626760
+Testing case #33
+asdf
+8298515 + 1513513
+Testing case #34
+asdf
+725351 + 2861167
+Testing case #35
+asdf
+8289571 + 7784771
+Testing case #36
+asdf
+2164896 + 159755
+Testing case #37
+asdf
+629495 + 6470483
+Testing case #38
+asdf
+5643657 + 3217946
+Testing case #39
+asdf
+783612 + 37590
+Testing case #40
+asdf
+2805127 + 8722439
+Testing case #41
+asdf
+8583752 + 3549306
+Testing case #42
+asdf
+5139424 + 5392671
+Testing case #43
+asdf
+3233664 + 7174321
+Testing case #44
+asdf
+6022119 + 2070127
+Testing case #45
+asdf
+4046931 + 9519807
+Testing case #46
+asdf
+7743995 + 1604945
+Testing case #47
+asdf
+322743 + 1544501
+Testing case #48
+asdf
+1232818 + 4550013
+Testing case #49
+asdf
+3078817 + 2714954
+Testing case #50
+asdf
+5426747 + 5811904

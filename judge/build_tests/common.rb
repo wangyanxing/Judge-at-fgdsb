@@ -232,9 +232,13 @@ class TestBase
     file.puts
     file.puts 'void judge() {
     cout.setf(ios::boolalpha);
+
+    capture_stdout();
+
     load_test();
     auto start = chrono::steady_clock::now();
-    for(int i = 0; i < num_test; ++i) {'
+    for(int i = 0; i < num_test; ++i) {
+        printf("Testing case #%d\n", i+1);'
 
     judge_call = '        ';
     judge_inputs = '';
@@ -262,6 +266,7 @@ class TestBase
       file.puts "        if(#{@problem['judge_type_cpp']}) {"
     end
 
+    file.puts '            release_stdout();'
     file.puts '            cout << i+1 << "/" << num_test << ";";'
 
     file.print '            cout << '
@@ -283,6 +288,7 @@ class TestBase
         }"
 
     file.puts '    }
+    release_stdout();
     auto elapsed = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start);
     cout << "Accepted;";
     cout << elapsed.count() << endl;'
@@ -365,11 +371,14 @@ class TestBase
     file.puts
     file.puts '    public static void judge() {'
     file.puts '        load_test();'
+    file.puts '        common.capture_stdout();'
+
     file.puts "        #{solution_class} s = new #{solution_class}();"
     file.puts
     file.puts '        long startTime = System.currentTimeMillis();'
     file.puts
     file.puts '        for(int i = 0; i < num_test; ++i) {'
+    file.puts '            System.out.printf("Testing case #%d\n", i+1);'
 
     caller = @problem['judge_call_java']
     caller = 's.' + @problem['judge_call'] if caller.nil?
@@ -399,6 +408,7 @@ class TestBase
       file.puts "            if(#{@problem['judge_type_java']}) {"
     end
 
+    file.puts '                common.release_stdout();'
     file.puts '                System.out.printf("%d / %d;", i+1, num_test);'
 
     file.print '                String outs = '
@@ -422,6 +432,7 @@ class TestBase
 
     file.puts '        }'
     file.puts
+    file.puts '        common.release_stdout();'
     file.puts '        long estimatedTime = System.currentTimeMillis() - startTime;'
     file.puts '        System.out.print("Accepted;");'
     file.puts '        System.out.println(estimatedTime);'
@@ -482,10 +493,12 @@ class TestBase
 
     file.puts 'def judge'
     file.puts '    load_test'
+    file.puts '    capture_stdout'
     file.puts
     file.puts '    start_time = Time.now'
     file.puts
     file.puts '    (0...@num_test).each do |i|'
+    file.puts '       puts \'Testing case #\' + (i+1).to_s'
 
     caller = @problem['judge_call']
     judge_call = "        answer = #{caller} "
@@ -513,6 +526,7 @@ class TestBase
     vis_out = @problem['vis_out_ruby']
     vis_out = '@out[i].to_s' if vis_out.nil?
 
+    file.puts '            release_stdout'
     file.puts '            print "#{i+1} / #{@num_test};"'
     @problem['in_type_java'].each_with_index do |in_type, i|
       file.puts '            print \', \'' if i != 0
@@ -529,6 +543,7 @@ class TestBase
 
     file.puts '    end'
     file.puts
+    file.puts '    release_stdout'
     file.puts '    runtime = (Time.now - start_time) * 1000.0'
     file.puts '    puts(\'Accepted;\' + runtime.to_i.to_s)'
     file.puts 'end'
@@ -594,8 +609,10 @@ class TestBase
 
     file.puts 'def judge():'
     file.puts '    load_test()'
+    file.puts '    capture_stdout()'
     file.puts '    start_time = datetime.datetime.now()'
     file.puts '    for i in range(num_test):'
+    file.puts '        print (\'Testing case #\' + str(i+1))'
 
     caller = @problem['judge_call']
     judge_call = "        answer = #{caller} "
@@ -616,6 +633,7 @@ class TestBase
     else
       file.puts "        if (#{@problem['judge_type_python']}):"
     end
+    file.puts '            release_stdout()'
     file.puts '            out_str = str(i+1) + " / " + str(num_test) + ";"'
 
     @problem['in_type_java'].each_with_index do |in_type, i|
@@ -636,6 +654,7 @@ class TestBase
             print(out_str)
             return"
     file.puts '
+    release_stdout()
     delta = datetime.datetime.now() - start_time
     runtime = str(int(delta.total_seconds() * 1000))
     print(\'Accepted;\' + runtime)'
@@ -694,10 +713,11 @@ class TestBase
 
     file.puts 'function judge()'
     file.puts '    load_test()'
+    file.puts '    capture_stdout()'
     file.puts
     file.puts '    local start = os.clock()'
     file.puts '    for i = 1, num_test do'
-
+    file.puts '        print("Testing case #" .. i)'
 
     caller = @problem['judge_call']
     judge_call = "        local answer = #{caller} "
@@ -740,6 +760,7 @@ class TestBase
         end
     end"
     file.puts '
+    release_stdout()
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end'

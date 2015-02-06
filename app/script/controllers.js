@@ -225,6 +225,45 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             });
         };
 
+        $('#debug-panel').on('DOMMouseScroll mousewheel', function(ev) {
+            var $this = $(this),
+                scrollTop = this.scrollTop,
+                scrollHeight = this.scrollHeight,
+                height = $this.height(),
+                delta = (ev.type == 'DOMMouseScroll' ? ev.originalEvent.detail * -40 : ev.originalEvent.wheelDelta),
+                up = delta > 0;
+
+            var prevent = function() {
+                ev.stopPropagation();
+                ev.preventDefault();
+                ev.returnValue = false;
+                return false;
+            }
+
+            if (!up && -delta > scrollHeight - height - scrollTop) {
+                $this.scrollTop(scrollHeight);
+                return prevent();
+            } else if (up && delta > scrollTop) {
+                $this.scrollTop(0);
+                return prevent();
+            }
+        });
+
+        $scope.collapsed = true;
+        $scope.onToggleDebug = function(e) {
+            if ($scope.collapsed) {
+                $scope.collapsed = false;
+                $("#edit-panel").animate({
+                    width: '100%'
+                }, 250);
+            } else {
+                $scope.collapsed = true;
+                $("#edit-panel").animate({
+                    width: '135%'
+                }, 250);
+            }
+        };
+
         $scope.onSave = function(e) {
             update_autosave($scope.problem['id'], $scope.cur_lang, $scope.$editor.getValue());
         };
@@ -271,6 +310,17 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
                     }
                 }
                 $('#judge-ret').text(ret['result']);
+
+                // std out file
+                fs.readFile('judge/stdout.txt', function (err, data) {
+                    if (err) throw err;
+
+                    var obj = $("#debug-panel").text(data);
+                    obj.html(obj.html().replace(/\n/g,'<br/>')
+                        .replace(/Testing case #\d+/g,'<hr><span class="dbg-green">$&</span>')
+                        .replace(/<hr>/,''));
+                });
+
             }, function(msg) {
                 $('#judge-ret').css('color', '#158db8');
                 $('#judge-ret').text(msg);

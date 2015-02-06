@@ -261,3 +261,14 @@ def read_string_matrix_arr(file)
     end
     ret
 end
+
+##################################################
+OrigStdOut = STDOUT.clone
+
+def capture_stdout()
+    STDOUT.reopen(File.open('judge/stdout.txt', 'w'))
+end
+
+def release_stdout()
+    STDOUT.reopen(OrigStdOut)
+end

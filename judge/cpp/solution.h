@@ -1,11 +1,5 @@
-/*
-struct TreeNode {
-    TreeNode(int v = 0) :val(v){}
-    int val{ 0 };
-    TreeNode* left{ nullptr };
-    TreeNode* right{ nullptr };
-};
-*/
-TreeNode* lca(TreeNode* root, int m, int n) {
-    return nullptr;
+int plus_num(int a, int b) {
+    cout << "asdf" << endl;
+    printf("%d + %d\n",a, b);
+    return a + b;
 }

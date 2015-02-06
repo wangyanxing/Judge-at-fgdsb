@@ -20,9 +20,11 @@ end
 
 function judge()
     load_test()
+    capture_stdout()
 
     local start = os.clock()
     for i = 1, num_test do
+        print("Testing case #" .. i)
         local answer = valid_tree(in_0[i], in_1[i]) 
         if answer ~= out[i] then
             io.write(string.format("%d / %d;", i, num_test))
@@ -38,6 +40,7 @@ function judge()
         end
     end
 
+    release_stdout()
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end

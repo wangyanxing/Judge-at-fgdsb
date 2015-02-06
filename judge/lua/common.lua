@@ -374,3 +374,29 @@ function read_string_matrix_arr(f)
 	end
 	return ret
 end
+
+------------------------------------------------------------------------
+
+print_stdout = print
+stdout_file = nil
+
+print = function(msg)
+  	if stdout_file == nil then
+  		print_stdout(msg)
+  	else
+  		stdout_file:write(msg .. "\n")
+  	end
+end
+
+function capture_stdout()
+	stdout_file = io.open("judge/stdout.txt", "w")
+end
+
+function release_stdout()
+	if stdout_file ~= nil then
+		stdout_file:close()
+		stdout_file = nil
+	end
+end
+
+

@@ -1,4 +1,4 @@
-#=begin
+=begin
 str =
 'struct TreeNodeWithParent {
     TreeNodeWithParent(int v = 0) :val(v){}
@@ -10,7 +10,7 @@ str =
 p str
 
 exit
-#=end
+=end
 files = Dir.entries('.').select {|f| !File.directory?(f) && File.extname(f)=='.rb' && f != 'build_all.rb' && f != 'common.rb'}
 files.each do |f|
 	puts "running: #{f}"

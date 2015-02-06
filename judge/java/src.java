@@ -4,10 +4,10 @@ import java.lang.*;
 import java.io.*;
 import tests.test_common;
 import datastruct.*;
-import tests.lca_2;
+import tests.a_plus_b;
 
 public class src {
     public static void main (String[] args) throws java.lang.Exception {
-        lca_2.judge();
+        a_plus_b.judge();
     }
 }

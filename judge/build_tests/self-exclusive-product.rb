@@ -17,7 +17,7 @@ class Test_self_exclusive_prod < TestBase
 	def gen_tests
 		@test_in, @test_out = [[]], []
 
-		2000.times do
+		200.times do
 			size = Random.rand(5..10)
 			ret, out = [], []
 			size.times do

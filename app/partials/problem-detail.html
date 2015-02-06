@@ -1,3 +1,8 @@
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
 
 <div>
   <h3>{{problem.name}}</h3>
@@ -7,68 +12,184 @@
   <hr />
 </div>
 
-<div class="btn-group">
-  <a ng-click="onSubmit()" class="btn btn-primary">Submit</a>
-</div>
+<div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="btn-group">
+        <a ng-click="onSubmit()" class="btn btn-primary">Submit</a>
+      </div>
 
-<div class="btn-group" dropdown>
-  <button id="cur-lang" type="button" class="btn btn-success dropdown-toggle" dropdown-toggle >C++</button>
-  <ul class="dropdown-menu" role="menu">
-    <li ng-repeat="choice in languages" ng-click="langClick($index)">
-      <a href>{{choice}}</a>
-    </li>
-  </ul>
-</div>
+      <div class="btn-group" dropdown>
+        <button id="cur-lang" type="button" class="btn btn-success dropdown-toggle" dropdown-toggle >C++</button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-repeat="choice in languages" ng-click="langClick($index)">
+            <a href>{{choice}}</a>
+          </li>
+        </ul>
+      </div>
 
-<div class="btn-group">
-  <a href={{problem.discuss_link}} class="btn btn-info">Discuss</a>
-</div>
+      <div class="btn-group">
+        <a href={{problem.discuss_link}} class="btn btn-info">Discuss</a>
+      </div>
 
-<div class="btn-group">
-  <a href="#/submissions/{{problem.id}}" class="btn btn-warning">History</a>
-</div>
-
-
-<div class="btn-group" style="margin-left: 20px">
-  <a ng-click="onSave()" class="btn btn-default">
-    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-  </a>
-</div>
-
-<div class="btn-group" style="margin-left: 4px">
-  <a ng-click="onReload()" class="btn btn-default">
-    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-  </a>
-</div>
+      <div class="btn-group">
+        <a href="#/submissions/{{problem.id}}" class="btn btn-warning">History</a>
+      </div>
 
 
-<div class="row">
-  <div >
-    <style type="text/css" media="screen">
-      .ace_editor {
-        margin-left: 14px;
-        margin-right: 14px;
-        margin-top: 23px;
-        width: 97.8%;
-        height: 400px;
-        border: 1px lightgray solid;
-      }
-    </style>
+      <div class="btn-group" style="margin-left: 20px" data-toggle="tooltip" data-placement="top" title="Save">
+        <a ng-click="onSave()" class="btn btn-default">
+          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        </a>
+      </div>
 
-    <div ui-ace="{
-      theme:'textmate',
-      mode: 'c_cpp',
-      showPrintMargin: false,
-      useSoftTabs: true,
-      onLoad: aceLoaded,
-      onChange: aceChanged
-    }"></div>
-
-    <script src="script/ace.js" type="text/javascript" charset="utf-8"></script>
+      <div class="btn-group" style="margin-left: 4px" data-toggle="tooltip" data-placement="top" title="Reload">
+        <a ng-click="onReload()" class="btn btn-default">
+          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="pull-right" data-toggle="tooltip" data-placement="top" title="Debug Output" ng-click="hide_dbg = !hide_dbg">
+        <a ng-click="onToggleDebug()" class="btn btn-default">
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
-<br>
+<div class="container">
+  <div class="row" style="margin-top: 23px; margin-bottom: 20px;">
+      <div class="col-lg-9">
+        <style type="text/css" media="screen">
+          .ace_editor {
+            margin-left: -15px;
+            height: 400px;
+            border: 1px lightgray solid;
+            width: 135%;
+          }
+        </style>
+        <div id = "edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'c_cpp',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: aceLoaded,
+          onChange: aceChanged
+        }"></div>
+        <script src="script/ace.js" type="text/javascript" charset="utf-8"></script>
+      </div>
+
+      <div class="col-lg-3">
+        <style type="text/css" media="screen">
+          .debug_panel {
+            overflow: scroll;
+            margin-left: -25px;
+            margin-right: 10px;
+            padding-left: 5px;
+            padding-top: 2px;
+            padding-bottom: 5px;
+            height: 400px;
+            border-color: #dddddd;
+            border-style:solid;
+            border-width:1px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          }
+
+          .slide-right {
+            -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* easeOutQuad */
+            -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* easeOutQuad */
+          }
+          /* line 165, ../sass/ng-animation.scss */
+          .slide-right.ng-enter {
+            transform: translateX(60px);
+            -ms-transform: translateX(60px);
+            -webkit-transform: translateX(60px);
+            transition-duration: 250ms;
+            -webkit-transition-duration: 250ms;
+            opacity: 0;
+          }
+          /* line 171, ../sass/ng-animation.scss */
+          .slide-right.ng-enter-active {
+            transform: translateX(0);
+            -ms-transform: translateX(0);
+            -webkit-transform: translateX(0);
+            opacity: 1;
+          }
+          /* line 176, ../sass/ng-animation.scss */
+          .slide-right.ng-leave {
+            transform: translateX(0);
+            -ms-transform: translateX(0);
+            -webkit-transform: translateX(0);
+            transition-duration: 250ms;
+            -webkit-transition-duration: 250ms;
+            opacity: 1;
+          }
+          /* line 182, ../sass/ng-animation.scss */
+          .slide-right.ng-leave-active {
+            transform: translateX(60px);
+            -ms-transform: translateX(60px);
+            -webkit-transform: translateX(60px);
+            opacity: 0;
+          }
+          /* line 188, ../sass/ng-animation.scss */
+          .slide-right.ng-hide-add {
+            transform: translateX(0);
+            -ms-transform: translateX(0);
+            -webkit-transform: translateX(0);
+            transition-duration: 250ms;
+            -webkit-transition-duration: 250ms;
+            opacity: 1;
+          }
+          /* line 193, ../sass/ng-animation.scss */
+          .slide-right.ng-hide-add.ng-hide-add-active {
+            transform: translateX(60px);
+            -ms-transform: translateX(60px);
+            -webkit-transform: translateX(60px);
+            opacity: 0;
+          }
+          /* line 199, ../sass/ng-animation.scss */
+          .slide-right.ng-hide-remove {
+            transform: translateX(60px);
+            -ms-transform: translateX(60px);
+            -webkit-transform: translateX(60px);
+            transition-duration: 250ms;
+            -webkit-transition-duration: 250ms;
+            display: block !important;
+            opacity: 0;
+          }
+          /* line 205, ../sass/ng-animation.scss */
+          .slide-right.ng-hide-remove.ng-hide-remove-active {
+            transform: translateX(0);
+            -ms-transform: translateX(0);
+            -webkit-transform: translateX(0);
+            opacity: 1;
+          }
+
+          .dbg-green {
+            color:#008B15;
+            font-weight: bold;
+          }
+        </style>
+        <div id="debug-panel" class="debug_panel slide-right" ng-show="hide_dbg">
+
+        </div>
+      </div>
+
+  </div>
+</div>
 
 <div id="submission-ret-panel" class="row">
   <div style="margin-left: 14px; font-size: 20px; font-weight: bold;">

@@ -1,4 +1,5 @@
 import copy
+import sys
 
 # data structures
 class Interval:
@@ -189,3 +190,12 @@ def read_bool_matrix_arr(f) :
     for i in range(num):
         ret.append(read_bool_matrix(f))
     return ret
+
+OrigStdOut = sys.stdout
+
+def capture_stdout() :
+    sys.stdout = open('judge/stdout.txt', 'w')
+
+def release_stdout() :
+    global OrigStdOut
+    sys.stdout = OrigStdOut

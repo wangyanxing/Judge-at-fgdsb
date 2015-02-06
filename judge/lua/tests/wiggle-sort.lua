@@ -7,7 +7,7 @@ local out = {}
 
 function test_wiggle(arr)
     if #arr == 0 then return true end
-    test_flag = true
+    local test_flag = true
     for i = 1, #arr - 1 do
         if test_flag then
         	if arr[i] > arr[i+1] then
@@ -33,9 +33,11 @@ end
 
 function judge()
     load_test()
+    capture_stdout()
 
     local start = os.clock()
     for i = 1, num_test do
+        print("Testing case #" .. i)
         local answer = wiggle_sort(in_0[i]) 
         answer = in_0[i]
         if not test_wiggle(in_0[i]) then
@@ -50,6 +52,7 @@ function judge()
         end
     end
 
+    release_stdout()
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end

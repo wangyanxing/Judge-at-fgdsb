@@ -32,7 +32,7 @@ try {
 }
 
 win.show();
-win.maximize();
+//win.maximize();
 
 $(window).on('dragover', function (e) {
     e.preventDefault();
