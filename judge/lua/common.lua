@@ -102,7 +102,7 @@ function to_string(n)
 	elseif type(n) == "table" then
 		-- For intervals
 		if n.begin_t ~= nil and n.end_t ~= nil then
-			return "[" .. n.begin_t .. ", " .. n.end_t .. "]"
+			return "{" .. n.begin_t .. ", " .. n.end_t .. "}"
 		end
 
 		if n.class ~= nil then
@@ -111,16 +111,16 @@ function to_string(n)
 			end
 		end
 
-		local ret = "["
+		local ret = "{"
 		for k, v in pairs(n) do
 			if k ~= 1 then ret = ret .. ", " end
 		    ret = ret .. to_string(v)
 		end
-		return ret .. "]"
+		return ret .. "}"
 	elseif type(n) == "number" then
 		return "" .. n
 	elseif type(n) == "string" then
-		return "\"" .. n .. "\""
+		return n
 	else
 		print("Unsupported type: " .. type(n))
 	end
@@ -384,7 +384,7 @@ print = function(msg)
   	if stdout_file == nil then
   		print_stdout(msg)
   	else
-  		stdout_file:write(msg .. "\n")
+  		stdout_file:write(to_string(msg) .. "\n")
   	end
 end
 

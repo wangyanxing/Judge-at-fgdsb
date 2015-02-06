@@ -19,9 +19,16 @@ var codes = {
 
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);
 
-fgdsbControllers.controller('ProblemListCtrl', ['$scope', 'Problem',
-    function($scope, Problem) {
+fgdsbControllers.controller('ProblemListCtrl', ['$scope', '$q', 'Problem',
+    function($scope, $q, Problem) {
         $scope.problems = Problem.query();
+        $scope.problems.$promise.then(function (result) {
+            for(var i = 0; i < result.length; ++i) {
+                has_cleared($q, result[i]).then(function(){
+                });
+            }
+        });
+
         $scope.orderProp = 'age';
     }]);
 
@@ -317,8 +324,8 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
 
                     var obj = $("#debug-panel").text(data);
                     obj.html(obj.html().replace(/\n/g,'<br/>')
-                        .replace(/Testing case #\d+/g,'<hr><span class="dbg-green">$&</span>')
-                        .replace(/<hr>/,''));
+                        .replace(/Testing case #\d+/g,'<br><span class="label label-success">$&</span>')
+                        .replace(/<br>/,''));
                 });
 
             }, function(msg) {

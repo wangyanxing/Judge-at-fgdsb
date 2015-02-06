@@ -11,15 +11,20 @@
           <th>#</th>
           <th>Title</th>
           <th>Difficulty</th>
+          <th>Source</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="pro in problems | filter:query | orderBy:orderProp">
-          <td>{{pro.age + 1}}</td>
+          <td style="font-weight: 500">{{pro.age + 1}}</td>
           <td>
-            <a href="#/problems/{{pro.id}}">{{pro.name}}</a>
+            <a href="#/problems/{{pro.id}}" style="font-weight: 500">{{pro.name}}</a>
           </td>
-          <td>{{pro.difficulty}}</td>
+          <td ng-if="pro.difficulty=='Easy'"><span class="label label-success">Easy</span></td>
+          <td ng-if="pro.difficulty=='Medium'"><span class="label label-primary">Medium</span></td>
+          <td ng-if="pro.difficulty=='Hard'"><span class="label label-danger">Hard</span></td>
+          <td ng-if="pro.solved">solved</td>
+          <td ng-if="!pro.solved">not solved</td>
         </tr>
       </tbody>
     </table>

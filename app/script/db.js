@@ -78,6 +78,22 @@ var clear_single_submission = function($q, sid) {
     return deferred.promise;
 }
 
+var has_cleared = function($q, p) {
+    var deferred = $q.defer();
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM submission WHERE id = \'' + p.id + '\' and status = \'Accepted\'', [], function (tx, results) {
+            if(results.rows.length > 0) {
+                p.solved = true;
+                deferred.resolve();
+            } else {
+                p.solved = false;
+                deferred.resolve();
+            }
+        });
+    });
+    return deferred.promise;
+}
+
 var get_submission_detail = function($q, sid) {
     var deferred = $q.defer();
     db.transaction(function (tx) {

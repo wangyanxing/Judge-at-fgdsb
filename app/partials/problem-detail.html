@@ -66,7 +66,11 @@
           .ace_editor {
             margin-left: -15px;
             height: 400px;
-            border: 1px lightgray solid;
+            border-style:solid;
+            border-width:1px;
+            border-color: #dddddd;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
             width: 135%;
           }
         </style>
@@ -85,12 +89,14 @@
         <style type="text/css" media="screen">
           .debug_panel {
             overflow: scroll;
+            overflow-x: scroll;
             margin-left: -25px;
             margin-right: 10px;
-            padding-left: 5px;
-            padding-top: 2px;
-            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             height: 400px;
+            border-radius: 3px;
             border-color: #dddddd;
             border-style:solid;
             border-width:1px;
@@ -178,10 +184,6 @@
             opacity: 1;
           }
 
-          .dbg-green {
-            color:#008B15;
-            font-weight: bold;
-          }
         </style>
         <div id="debug-panel" class="debug_panel slide-right" ng-show="hide_dbg">
 
