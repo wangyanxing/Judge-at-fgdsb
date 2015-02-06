@@ -5,26 +5,29 @@
       <h1 id="tables">Problems</h1>
     </div>
 
-    <table class="table table-striped table-hover" style="font-size:15px;">
+    <table class="table table-hover" style="font-size:15px;">
       <thead>
         <tr>
+          <th style="width: 20px"></th>
           <th>#</th>
           <th>Title</th>
           <th>Difficulty</th>
-          <th>Source</th>
+          <th style="text-align:center">Source</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="pro in problems | filter:query | orderBy:orderProp">
+          <td align="center" ng-if="pro.solved"><img src="./image/Check_mark.png" height="16" width="16" alt="Solved"></td>
+          <td align="center" ng-if="!pro.solved"></td>
           <td style="font-weight: 500">{{pro.age + 1}}</td>
           <td>
             <a href="#/problems/{{pro.id}}" style="font-weight: 500">{{pro.name}}</a>
           </td>
-          <td ng-if="pro.difficulty=='Easy'"><span class="label label-success">Easy</span></td>
-          <td ng-if="pro.difficulty=='Medium'"><span class="label label-primary">Medium</span></td>
-          <td ng-if="pro.difficulty=='Hard'"><span class="label label-danger">Hard</span></td>
-          <td ng-if="pro.solved">solved</td>
-          <td ng-if="!pro.solved">not solved</td>
+          <td align="center" ng-if="pro.difficulty=='Easy'"><div class="label label-success pull-left" style="min-width: 60px;">Easy</div></td>
+          <td align="center" ng-if="pro.difficulty=='Medium'"><div class="label label-primary pull-left" style="min-width: 60px;">Fair</div></td>
+          <td align="center" ng-if="pro.difficulty=='Hard'"><div class="label label-danger pull-left" style="min-width: 60px;">Hard</div></td>
+          <td align="center">G</td>
+
         </tr>
       </tbody>
     </table>

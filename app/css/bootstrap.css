@@ -6616,16 +6616,7 @@ input[type="checkbox"] {
   color: #fff;
   text-decoration: underline;
 }
-.label {
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 3px;
-  font-weight: 300;
-}
-.label-default {
-  background-color: #e7e7e7;
-  color: #333333;
-}
+
 .badge {
   font-weight: 300;
 }
