@@ -23,13 +23,24 @@ fgdsbControllers.controller('ProblemListCtrl', ['$scope', '$q', 'Problem',
     function($scope, $q, Problem) {
         $scope.problems = Problem.query();
         $scope.problems.$promise.then(function (result) {
+            result.sort(function (a, b) {
+                var ta = moment(a.age, "YYYY-MM-DD HH:mm:ss");
+                var tb = moment(b.age, "YYYY-MM-DD HH:mm:ss");
+                return ta - tb;
+            });
             for(var i = 0; i < result.length; ++i) {
+                result[i].number = i+1;
                 has_cleared($q, result[i]).then(function(){
                 });
             }
         });
 
-        $scope.orderProp = 'age';
+        $scope.orderProp = 'number';
+    }]);
+
+fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q',
+    function($scope, $q, Problem) {
+
     }]);
 
 fgdsbControllers.controller('SubDetailCtrl', ['$scope', '$q', '$window', '$routeParams', 'Problem',

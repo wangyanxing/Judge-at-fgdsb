@@ -19,7 +19,7 @@
         <tr ng-repeat="pro in problems | filter:query | orderBy:orderProp">
           <td align="center" ng-if="pro.solved"><img src="./image/Check_mark.png" height="16" width="16" alt="Solved"></td>
           <td align="center" ng-if="!pro.solved"></td>
-          <td style="font-weight: 500">{{pro.age + 1}}</td>
+          <td style="font-weight: 500">{{pro.number}}</td>
           <td>
             <a href="#/problems/{{pro.id}}" style="font-weight: 500">{{pro.name}}</a>
           </td>
