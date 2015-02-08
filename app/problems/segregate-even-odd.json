@@ -1,27 +1,35 @@
 {
-    "name" : "Segregate Even and Odd Numbers",
-    "id": "segregate-even-odd",
-    "discuss_link": "http://www.fgdsb.com/2015/01/17/segregate-even-and-odd/",
-    "desc" : "<p>Given an array, write a function that segregates even and odd numbers. The functions should put all even numbers first, and then odd numbers. <br><br>Example:<br>Input = <code>[12, 34, 45, 9, 8, 90, 3]</code><br>Output = <code>[12, 34, 8, 90, 45, 9, 3]</code></p>",
-    "code_cpp" : "void segregate(vector<int>& arr) {\n}",
-    "code_java" : "public class Solution {\n    public void segregate(int[] arr) {\n    }\n}",
-    "code_ruby" : "# @param arr, array of integers\ndef segregate(arr)\nend",
-    "code_python" : "# @param arr, list of integers\ndef segregate(arr):",
-    "code_lua" : "-- @param arr, table of integers\nfunction segregate(arr)\nend",
-
-    "in_type_cpp" : ["vector<int>"],
-    "ret_type_cpp" : "void",
-    "out_type_cpp" : "vector<int>",
-    "judge_type_cpp" : "!test(i)",
-
-    "in_type_java" : ["int[]"],
-    "ret_type_java" : "void",
-    "out_type_java" : "int[]",
-    "judge_type_java" : "!segregate_even_odd.test(i)",
-
-    "judge_type_ruby" : "!test(i)",
-    "judge_type_python" : "not test(i)",
-    "judge_type_lua" : "not test(i)",
-
-    "judge_call" : "segregate(@)"
+  "name": "Segregate Even and Odd Numbers",
+  "id": "segregate-even-odd",
+  "discuss_link": "http://www.fgdsb.com/2015/01/17/segregate-even-and-odd/",
+  "desc": "<p>Given an array, write a function that segregates even and odd numbers. The functions should put all even numbers first, and then odd numbers. <br><br>Example:<br>Input = <code>[12, 34, 45, 9, 8, 90, 3]</code><br>Output = <code>[12, 34, 8, 90, 45, 9, 3]</code></p>",
+  
+  "code_cpp": "void segregate(vector<int>& arr) {\n}",
+  "code_java": "public class Solution {\n    public void segregate(int[] arr) {\n    }\n}",
+  "code_ruby": "# @param arr, array of integers\ndef segregate(arr)\nend",
+  "code_python": "# @param arr, list of integers\ndef segregate(arr):",
+  "code_lua": "-- @param arr, table of integers\nfunction segregate(arr)\nend",
+  
+  "in_type_cpp": [
+    "vector<int>"
+  ],
+  "ret_type_cpp": "void",
+  "out_type_cpp": "vector<int>",
+  "judge_type_cpp": "!test(i)",
+  
+  "in_type_java": [
+    "int[]"
+  ],
+  "ret_type_java": "void",
+  "out_type_java": "int[]",
+  "judge_type_java": "!segregate_even_odd.test(i)",
+  "judge_type_ruby": "!test(i)",
+  "judge_type_python": "not test(i)",
+  "judge_type_lua": "not test(i)",
+  
+  "judge_call": "segregate(@)",
+  
+  "difficulty": "Easy",
+  "time": "2015-01-30 11:40:40",
+  "source": "Unknown"
 }

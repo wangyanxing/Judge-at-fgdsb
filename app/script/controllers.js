@@ -49,8 +49,15 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
     function($scope, $q, $routeParams, Problem) {
         $scope.languages = langs;
         $scope.cur_lang = 'C++';
-        $scope.desc = "";
         $scope.question = {};
+        $scope.question.desc = "";
+        $scope.question.codes = {
+            "C++": "",
+            "Java": "",
+            "Ruby": "",
+            "Python": "",
+            "Lua": ""
+        };
         $scope.question.name = "";
         $scope.question.discuss_url = "";
         $scope.question.difficulty = "Easy";
@@ -63,20 +70,32 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
                 var excluded_key = ["name", "id", "discuss_link", "desc",
                     "code_cpp", "code_java", "code_ruby", "code_python", "code_lua"];
+
                 for (var prop in $scope.problem) {
                     if(excluded_key.indexOf(prop) >= 0) continue;
                     $scope.judge_obj[prop] = $scope.problem[prop];
                 }
+
                 $scope.judge_json = JSON.stringify($scope.judge_obj, null, '    ')
                     .replace(/"judge_type_cpp"/, '\n    $&')
                     .replace(/"judge_type_java"/, '\n    $&')
                     .replace(/"judge_type_lua"/, '\n    $&');
+
                 $scope.$judge_editor.setValue($scope.judge_json);
                 $scope.$judge_editor.clearSelection();
 
                 $scope.question.name = $scope.problem.name;
                 $scope.question.discuss_url = $scope.problem.discuss_link;
                 $scope.question.difficulty = $scope.problem.difficulty;
+
+                for(var i in langs) {
+                    var lang = langs[i];
+                    $scope.question.codes[lang] = $scope.problem[codes[lang]];
+                }
+
+                $scope.$default_code_editor.setValue($scope.question.codes[$scope.cur_lang]);
+                $scope.$default_code_editor.clearSelection();
+
                 if ($scope.problem.source) {
                     $scope.question.source = $scope.problem.source;
                 }
@@ -96,6 +115,9 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                     }
                 });
             }
+        };
+
+        $scope.onBuild = function(e) {
         };
 
         $scope.onClear = function(e) {
@@ -129,6 +151,8 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             $("#cur-lang").text(lang);
 
             $scope.$default_code_editor.getSession().setMode(modes[lang]);
+            $scope.$default_code_editor.setValue($scope.question.codes[$scope.cur_lang]);
+            $scope.$default_code_editor.clearSelection();
         };
 
         $scope.desc_editor_loaded = function(_editor) {
@@ -143,7 +167,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         };
 
         $scope.desc_editor_changed = function(e) {
-            $scope.desc = $scope.$desc_editor.getValue();
+            $scope.question.desc = $scope.$desc_editor.getValue();
         };
 
         $scope.default_code_editor_loaded = function(_editor) {
@@ -156,6 +180,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         };
 
         $scope.default_code_editor_changed = function(e) {
+            $scope.question.codes[$scope.cur_lang] = $scope.$default_code_editor.getValue();
         };
 
         $scope.script_editor_loaded = function(_editor) {

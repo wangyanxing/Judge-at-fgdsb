@@ -1,27 +1,35 @@
 {
-    "name" : "Self Exclusive Product",
-    "id" : "self-exclusive-product",
-    "discuss_link" : "http://www.fgdsb.com/2015/01/13/get-prod-array-without-div/",
-    "desc" : "<p>Given an array <strong>A</strong>, write a function to calculate an array <strong>B</strong>, where<br><code>B[i] = A[0] * A[1] * ... * A[i - 1] * A[i + 1] * ... * A[n-1]</code><br><br>Examples:<br>A[] = <code>[2, 3, 4, 5]</code><br>B[] = <code>[60, 40, 30, 24]</code><br><br><strong>Note:</strong> DO NOT use division in your solution.</p>",
-    "code_cpp" : "vector<int> product(vector<int>& a) {\n}",
-    "code_java" : "public class Solution {\n    public int[] product(int[] a) {\n    }\n}",
-    "code_ruby" : "# @param a, integer array\ndef product(a)\nend",
-    "code_python" : "# @param a, integer list\ndef product(a):",
-    "code_lua" : "-- @param a, table of integers\n-- @return table of integers\nfunction product(a)\nend",
-
-    "in_type_cpp" : ["vector<int>"],
-    "ret_type_cpp" : "vector<int>",
-    "out_type_cpp" : "vector<int>",
-    "judge_type_cpp" : "equal",
-
-    "in_type_java" : ["int[]"],
-    "ret_type_java" : "int[]",
-    "out_type_java" : "int[]",
-    "judge_type_java" : "!common.equals(out[i], answer)",
-
-    "judge_type_ruby" : "equal",
-    "judge_type_python" : "equal",
-    "judge_type_lua" : "not arr_equals(out[i], answer)",
-
-    "judge_call" : "product(@)"
+  "name": "Self Exclusive Product",
+  "id": "self-exclusive-product",
+  "discuss_link": "http://www.fgdsb.com/2015/01/13/get-prod-array-without-div/",
+  "desc": "<p>Given an array <strong>A</strong>, write a function to calculate an array <strong>B</strong>, where<br><code>B[i] = A[0] * A[1] * ... * A[i - 1] * A[i + 1] * ... * A[n-1]</code><br><br>Examples:<br>A[] = <code>[2, 3, 4, 5]</code><br>B[] = <code>[60, 40, 30, 24]</code><br><br><strong>Note:</strong> DO NOT use division in your solution.</p>",
+  
+  "code_cpp": "vector<int> product(vector<int>& a) {\n}",
+  "code_java": "public class Solution {\n    public int[] product(int[] a) {\n    }\n}",
+  "code_ruby": "# @param a, integer array\ndef product(a)\nend",
+  "code_python": "# @param a, integer list\ndef product(a):",
+  "code_lua": "-- @param a, table of integers\n-- @return table of integers\nfunction product(a)\nend",
+  
+  "in_type_cpp": [
+    "vector<int>"
+  ],
+  "ret_type_cpp": "vector<int>",
+  "out_type_cpp": "vector<int>",
+  "judge_type_cpp": "equal",
+  
+  "in_type_java": [
+    "int[]"
+  ],
+  "ret_type_java": "int[]",
+  "out_type_java": "int[]",
+  "judge_type_java": "!common.equals(out[i], answer)",
+  "judge_type_ruby": "equal",
+  "judge_type_python": "equal",
+  "judge_type_lua": "not arr_equals(out[i], answer)",
+  
+  "judge_call": "product(@)",
+  
+  "difficulty": "Medium",
+  "time": "2015-02-02 12:10:05",
+  "source": "Unknown"
 }

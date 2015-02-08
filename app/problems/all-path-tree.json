@@ -1,27 +1,35 @@
 {
-    "name" : "All Path From Root to Leaf",
-    "id" : "all-path-tree",
-    "discuss_link" : "",
-    "desc" : "<p>Return all path from root to leaf.<br><br>For example:<br>Input:<br><pre>   1\n  / \\\n 2   3\n    /\n   4\n</pre>   Output:<br><code>[1, 2]</code><br><code>[1, 3, 4]</code></p>",
-    "code_cpp" : "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nvector<vector<int>> all_path(TreeNode* root) {\n}",
-    "code_java" : "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public List<List<Integer>> all_path(TreeNode root) {\n    }\n}",
-    "code_ruby" : "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return array of array of integers\ndef all_path(root)\nend",
-    "code_python" : "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return list of list of integers\ndef all_path(root):",
-    "code_lua" : "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return table of table of integers\nfunction all_path(root)\nend",
-
-    "in_type_cpp" : ["TreeNode*"],
-    "ret_type_cpp" : "vector<vector<int>>",
-    "out_type_cpp" : "vector<vector<int>>",
-    "judge_type_cpp" : "equal",
-
-    "in_type_java" : ["TreeNode"],
-    "ret_type_java" : "List<List<Integer>>",
-    "out_type_java" : "int[][]",
-    "judge_type_java" : "!common.compare_arr_arraylist(out[i], answer)",
-
-    "judge_type_ruby" : "equal",
-    "judge_type_python" : "equal",
-    "judge_type_lua" : "not mat_equals(out[i], answer)",
-
-    "judge_call" : "all_path(@)"
+  "name": "All Path From Root to Leaf",
+  "id": "all-path-tree",
+  "discuss_link": "",
+  "desc": "<p>Return all path from root to leaf.<br><br>For example:<br>Input:<br><pre>   1\n  / \\\n 2   3\n    /\n   4\n</pre>   Output:<br><code>[1, 2]</code><br><code>[1, 3, 4]</code></p>",
+  
+  "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nvector<vector<int>> all_path(TreeNode* root) {\n}",
+  "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public List<List<Integer>> all_path(TreeNode root) {\n    }\n}",
+  "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return array of array of integers\ndef all_path(root)\nend",
+  "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return list of list of integers\ndef all_path(root):",
+  "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return table of table of integers\nfunction all_path(root)\nend",
+  
+  "in_type_cpp": [
+    "TreeNode*"
+  ],
+  "ret_type_cpp": "vector<vector<int>>",
+  "out_type_cpp": "vector<vector<int>>",
+  "judge_type_cpp": "equal",
+  
+  "in_type_java": [
+    "TreeNode"
+  ],
+  "ret_type_java": "List<List<Integer>>",
+  "out_type_java": "int[][]",
+  "judge_type_java": "!common.compare_arr_arraylist(out[i], answer)",
+  "judge_type_ruby": "equal",
+  "judge_type_python": "equal",
+  "judge_type_lua": "not mat_equals(out[i], answer)",
+  
+  "judge_call": "all_path(@)",
+  
+  "difficulty": "Medium",
+  "time": "2015-02-01 21:45:38",
+  "source": "Unknown"
 }

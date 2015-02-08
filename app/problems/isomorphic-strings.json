@@ -1,28 +1,37 @@
 {
-    "name" : "Isomorphic Strings",
-    "id" : "isomorphic-strings",
-    "discuss_link" : "http://www.fgdsb.com/2015/01/14/isomorphic-string/",
-    "desc" : "<p>Given two strings, determine if they are isomorphic. <br><br> Two words are called isomorphic if the letters in one word can be remapped to get the second word. Remapping a letter means replacing all occurrences of it with another letter while the ordering of the letters remains unchanged. No two letters may map to the same letter, but a letter may map to itself.<br><br>Examples: <br><br>Given <code>'foo', 'app'</code>, returns <code>true</code><br>We can map <code>'f' -> 'a' and 'o' -> 'p'</code><br><br>Given <code>'bar', 'foo'</code>, returns <code>false</code><br>We can’t map both <code>'a' and 'r'</code> to <code>'o'</code><br><br>Given <code>'turtle', 'tletur'</code>, returns <code>true</code><br>We can map <code>'t' -> 't', 'u' -> 'l', 'r' -> 'e', 'l' -> 'u', 'e' -'r'</code><br><br>Given <code>'ab', 'ca'</code>, returns <code>true</code><br>We can map <code>'a' -> 'c', 'b' -> 'a'</code></p>",
-    "code_cpp" : "bool is_isomorphic(string& w0, string& w1) {\n}",
-    "code_java" : "public class Solution {\n    public boolean is_isomorphic(String a, String b) {\n    }\n}",
-    "code_ruby" : "# @param w0, String w1, String\n# @return boolean\ndef is_isomorphic(w0, w1)\nend",
-    "code_python" : "# @param w0, string w1, string\n# @return boolean\ndef is_isomorphic(w0, w1):",
-    "code_lua" : "-- @param w0, string w1, string\n-- @return boolean\nfunction is_isomorphic(w0, w1)\nend",
-
-    "in_type_cpp" : ["string","string"],
-    "ret_type_cpp" : "bool",
-    "out_type_cpp" : "bool",
-    "judge_type_cpp" : "equal",
-
-    "in_type_java" : ["String","String"],
-    "ret_type_java" : "boolean",
-    "out_type_java" : "boolean",
-    "judge_type_java" : "equal",
-
-    "judge_type_ruby" : "equal",
-    "judge_type_python" : "equal",
-    "judge_type_lua" : "equal",
-
-    "judge_call" : "is_isomorphic(@)"
+  "name": "Isomorphic Strings",
+  "id": "isomorphic-strings",
+  "discuss_link": "http://www.fgdsb.com/2015/01/14/isomorphic-string/",
+  "desc": "<p>Given two strings, determine if they are isomorphic. <br><br> Two words are called isomorphic if the letters in one word can be remapped to get the second word. Remapping a letter means replacing all occurrences of it with another letter while the ordering of the letters remains unchanged. No two letters may map to the same letter, but a letter may map to itself.<br><br>Examples: <br><br>Given <code>'foo', 'app'</code>, returns <code>true</code><br>We can map <code>'f' -> 'a' and 'o' -> 'p'</code><br><br>Given <code>'bar', 'foo'</code>, returns <code>false</code><br>We can’t map both <code>'a' and 'r'</code> to <code>'o'</code><br><br>Given <code>'turtle', 'tletur'</code>, returns <code>true</code><br>We can map <code>'t' -> 't', 'u' -> 'l', 'r' -> 'e', 'l' -> 'u', 'e' -'r'</code><br><br>Given <code>'ab', 'ca'</code>, returns <code>true</code><br>We can map <code>'a' -> 'c', 'b' -> 'a'</code></p>",
+  
+  "code_cpp": "bool is_isomorphic(string& w0, string& w1) {\n}",
+  "code_java": "public class Solution {\n    public boolean is_isomorphic(String a, String b) {\n    }\n}",
+  "code_ruby": "# @param w0, String w1, String\n# @return boolean\ndef is_isomorphic(w0, w1)\nend",
+  "code_python": "# @param w0, string w1, string\n# @return boolean\ndef is_isomorphic(w0, w1):",
+  "code_lua": "-- @param w0, string w1, string\n-- @return boolean\nfunction is_isomorphic(w0, w1)\nend",
+  
+  "in_type_cpp": [
+    "string",
+    "string"
+  ],
+  "ret_type_cpp": "bool",
+  "out_type_cpp": "bool",
+  "judge_type_cpp": "equal",
+  
+  "in_type_java": [
+    "String",
+    "String"
+  ],
+  "ret_type_java": "boolean",
+  "out_type_java": "boolean",
+  "judge_type_java": "equal",
+  "judge_type_ruby": "equal",
+  "judge_type_python": "equal",
+  "judge_type_lua": "equal",
+  
+  "judge_call": "is_isomorphic(@)",
+  
+  "difficulty": "Easy",
+  "time": "2015-01-30 15:10:35",
+  "source": "Unknown"
 }
-

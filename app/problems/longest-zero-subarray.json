@@ -1,27 +1,35 @@
 {
-    "name": "Longest Subarray Sum to Zero",
-    "id": "longest-zero-subarray",
-    "discuss_link" : "http://www.fgdsb.com/2015/01/10/find-longest-contiguous-subarray-sum-to-zero/",
-    "desc" : "<p>Given an integer array, find the longest contiguous subarray that sum up to zero.<br><br>For example:<br>Input: <code>[1, 2, -3, 1, 5, -5, 6]</code><br>Output: <code>[2, -3, 1, 5, -5]</code></p>",
-    "code_cpp" : "vector<int> longest_subarray(vector<int>& arr) {\n}",
-    "code_java" : "public class Solution {\n    public List<Integer> longest_subarray(int[] arr) {\n    }\n}",
-    "code_ruby" : "# @param arr, array of integers\n# @return array of integers\ndef longest_subarray(arr)\nend",
-    "code_python" : "# @param arr, list of integers\n# @return list array of integers\ndef longest_subarray(arr):",
-    "code_lua" : "-- @param arr, table of integers\n-- @return table of integers\nfunction longest_subarray(arr)\nend",
-
-    "in_type_cpp" : ["vector<int>"],
-    "ret_type_cpp" : "vector<int>",
-    "out_type_cpp" : "vector<int>",
-    "judge_type_cpp" : "equal",
-
-    "in_type_java" : ["int[]"],
-    "ret_type_java" : "List<Integer>",
-    "out_type_java" : "int[]",
-    "judge_type_java" : "!common.compare_arr_arraylist(longest_zero_subarray.out[i], answer)",
-
-    "judge_type_ruby" : "equal",
-    "judge_type_python" : "equal",
-    "judge_type_lua" : "not arr_equals(out[i], answer)",
-
-    "judge_call" : "longest_subarray(@)"
+  "name": "Longest Subarray Sum to Zero",
+  "id": "longest-zero-subarray",
+  "discuss_link": "http://www.fgdsb.com/2015/01/10/find-longest-contiguous-subarray-sum-to-zero/",
+  "desc": "<p>Given an integer array, find the longest contiguous subarray that sum up to zero.<br><br>For example:<br>Input: <code>[1, 2, -3, 1, 5, -5, 6]</code><br>Output: <code>[2, -3, 1, 5, -5]</code></p>",
+  
+  "code_cpp": "vector<int> longest_subarray(vector<int>& arr) {\n}",
+  "code_java": "public class Solution {\n    public List<Integer> longest_subarray(int[] arr) {\n    }\n}",
+  "code_ruby": "# @param arr, array of integers\n# @return array of integers\ndef longest_subarray(arr)\nend",
+  "code_python": "# @param arr, list of integers\n# @return list array of integers\ndef longest_subarray(arr):",
+  "code_lua": "-- @param arr, table of integers\n-- @return table of integers\nfunction longest_subarray(arr)\nend",
+  
+  "in_type_cpp": [
+    "vector<int>"
+  ],
+  "ret_type_cpp": "vector<int>",
+  "out_type_cpp": "vector<int>",
+  "judge_type_cpp": "equal",
+  
+  "in_type_java": [
+    "int[]"
+  ],
+  "ret_type_java": "List<Integer>",
+  "out_type_java": "int[]",
+  "judge_type_java": "!common.compare_arr_arraylist(longest_zero_subarray.out[i], answer)",
+  "judge_type_ruby": "equal",
+  "judge_type_python": "equal",
+  "judge_type_lua": "not arr_equals(out[i], answer)",
+  
+  "judge_call": "longest_subarray(@)",
+  
+  "difficulty": "Easy",
+  "time": "2015-01-30 13:19:38",
+  "source": "Unknown"
 }

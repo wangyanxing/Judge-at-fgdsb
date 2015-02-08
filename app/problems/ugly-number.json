@@ -1,27 +1,35 @@
 {
-    "name" : "Ugly Number",
-    "id" : "ugly-number",
-    "discuss_link" : "http://www.fgdsb.com/2015/01/03/ugly-numbers/",
-    "desc" : "<p>Ugly numbers are numbers whose only prime factors are 2, 3 or 5.<br><br>The sequence <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12, …</code> shows the first 10 ugly numbers. By convention, <code>1</code> is included.<br><br>Please write a function to calculate the k-th (one-based) ugly number.</p>",
-    "code_cpp" : "int kth_ugly_number(int k) {\n}",
-    "code_java" : "public class Solution {\n    public int kth_ugly_number(int k) {\n    }\n}",
-    "code_ruby" : "# @param k, integer\n# @return integer\ndef kth_ugly_number(k)\nend",
-    "code_python" : "# @param k, integer\n# @return integer\ndef kth_ugly_number(k):",
-    "code_lua" : "-- @param k, integer\n-- @return integer\nfunction kth_ugly_number(k)\nend",
-
-    "in_type_cpp" : ["int"],
-    "ret_type_cpp" : "int",
-    "out_type_cpp" : "int",
-    "judge_type_cpp" : "equal",
-
-    "in_type_java" : ["int"],
-    "ret_type_java" : "int",
-    "out_type_java" : "int",
-    "judge_type_java" : "equal",
-
-    "judge_type_ruby" : "equal",
-    "judge_type_python" : "equal",
-    "judge_type_lua" : "equal",
-
-    "judge_call" : "kth_ugly_number(@)"
+  "name": "Ugly Number",
+  "id": "ugly-number",
+  "discuss_link": "http://www.fgdsb.com/2015/01/03/ugly-numbers/",
+  "desc": "<p>Ugly numbers are numbers whose only prime factors are 2, 3 or 5.<br><br>The sequence <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12, …</code> shows the first 10 ugly numbers. By convention, <code>1</code> is included.<br><br>Please write a function to calculate the k-th (one-based) ugly number.</p>",
+  
+  "code_cpp": "int kth_ugly_number(int k) {\n}",
+  "code_java": "public class Solution {\n    public int kth_ugly_number(int k) {\n    }\n}",
+  "code_ruby": "# @param k, integer\n# @return integer\ndef kth_ugly_number(k)\nend",
+  "code_python": "# @param k, integer\n# @return integer\ndef kth_ugly_number(k):",
+  "code_lua": "-- @param k, integer\n-- @return integer\nfunction kth_ugly_number(k)\nend",
+  
+  "in_type_cpp": [
+    "int"
+  ],
+  "ret_type_cpp": "int",
+  "out_type_cpp": "int",
+  "judge_type_cpp": "equal",
+  
+  "in_type_java": [
+    "int"
+  ],
+  "ret_type_java": "int",
+  "out_type_java": "int",
+  "judge_type_java": "equal",
+  "judge_type_ruby": "equal",
+  "judge_type_python": "equal",
+  "judge_type_lua": "equal",
+  
+  "judge_call": "kth_ugly_number(@)",
+  
+  "difficulty": "Medium",
+  "time": "2015-01-29 17:13:15",
+  "source": "Unknown"
 }

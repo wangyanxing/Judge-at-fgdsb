@@ -1,27 +1,37 @@
 {
-    "name" : "Two Difference",
-    "id" : "two-difference",
-    "discuss_link" : "http://www.fgdsb.com/2015/01/06/two-difference/",
-    "desc" : "<p>Given an <strong>sorted</strong> array and find two numbers in the array having difference equal to given number.<br><br>Your function should return indices of the two numbers. <br><br>If there are multiple pairs, just return any of them. Return <code>[-1,-1]</code> if no result can be found.<br><br>You may assume that the input array has no duplicates.</p>",
-    "code_cpp" : "vector<int> two_dif(vector<int>& A, int target) {\n}",
-    "code_java" : "public class Solution {\n    public int[] two_dif(int[] A, int target) {\n    }\n}",
-    "code_ruby" : "# @param arr, array of integers, target integer\n# @return array of integers\ndef two_dif(arr, target)\nend",
-    "code_python" : "# @param arr, list of integers, target integer\n# @return list of integers\ndef two_dif(arr, target):",
-    "code_lua" : "-- @param arr, list of integers, target integer\n-- @return list of integers\nfunction two_dif(arr, target)\nend",
-
-    "in_type_cpp" : ["vector<int>", "int"],
-    "ret_type_cpp" : "vector<int>",
-    "out_type_cpp" : "vector<int>",
-    "judge_type_cpp" : "!test(answer, i)",
-
-    "in_type_java" : ["int[]", "int"],
-    "ret_type_java" : "int[]",
-    "out_type_java" : "int[]",
-    "judge_type_java" : "!two_difference.test(answer,i)",
-
-    "judge_type_ruby" : "!test(answer, i)",
-    "judge_type_python" : "not test(answer, i)",
-    "judge_type_lua" : "not test(answer, i)",
-
-    "judge_call" : "two_dif(@)"
+  "name": "Two Difference",
+  "id": "two-difference",
+  "discuss_link": "http://www.fgdsb.com/2015/01/06/two-difference/",
+  "desc": "<p>Given an <strong>sorted</strong> array and find two numbers in the array having difference equal to given number.<br><br>Your function should return indices of the two numbers. <br><br>If there are multiple pairs, just return any of them. Return <code>[-1,-1]</code> if no result can be found.<br><br>You may assume that the input array has no duplicates.</p>",
+  
+  "code_cpp": "vector<int> two_dif(vector<int>& A, int target) {\n}",
+  "code_java": "public class Solution {\n    public int[] two_dif(int[] A, int target) {\n    }\n}",
+  "code_ruby": "# @param arr, array of integers, target integer\n# @return array of integers\ndef two_dif(arr, target)\nend",
+  "code_python": "# @param arr, list of integers, target integer\n# @return list of integers\ndef two_dif(arr, target):",
+  "code_lua": "-- @param arr, list of integers, target integer\n-- @return list of integers\nfunction two_dif(arr, target)\nend",
+  
+  "in_type_cpp": [
+    "vector<int>",
+    "int"
+  ],
+  "ret_type_cpp": "vector<int>",
+  "out_type_cpp": "vector<int>",
+  "judge_type_cpp": "!test(answer, i)",
+  
+  "in_type_java": [
+    "int[]",
+    "int"
+  ],
+  "ret_type_java": "int[]",
+  "out_type_java": "int[]",
+  "judge_type_java": "!two_difference.test(answer,i)",
+  "judge_type_ruby": "!test(answer, i)",
+  "judge_type_python": "not test(answer, i)",
+  "judge_type_lua": "not test(answer, i)",
+  
+  "judge_call": "two_dif(@)",
+  
+  "difficulty": "Medium",
+  "time": "2015-01-30 12:20:49",
+  "source": "Unknown"
 }

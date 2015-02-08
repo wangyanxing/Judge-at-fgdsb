@@ -48,12 +48,12 @@
           <div class="row">
             <div class="col-md-6 form-group">
                 <label for="problem-name">Name</label>
-                <input type="text" class="form-control" id="problem-name" placeholder="Enter name here" ng-model="question.name">
+                <input type="text" class="form-control" id="problem-name" placeholder="" ng-model="question.name">
             </div>
 
             <div class="col-md-6 form-group">
                 <label for="problem-id">ID</label>
-                <input type="text" class="form-control" id="problem-id" placeholder="enter-id-here" ng-model="question.id">
+                <input type="text" class="form-control" id="problem-id" placeholder="" ng-model="question.id">
             </div>
           </div>
 
@@ -62,7 +62,7 @@
               <label>Difficulty</label>
               <select class="form-control" ng-model="question.difficulty">
                 <option>Easy</option>
-                <option>Fair</option>
+                <option>Medium</option>
                 <option>Hard</option>
               </select>
             </div>
@@ -215,7 +215,7 @@
       <div style="margin-left: 10px; margin-right: 10px;">
         <h3>{{question.name}}</h3>
         <blockquote>
-          <p bind-html-unsafe="desc"></p>
+          <p bind-html-unsafe="question.desc"></p>
         </blockquote>
         <br>
       </div>
@@ -226,12 +226,15 @@
 <div class="row">
   <div class="col-md-6">
     <div class="btn-group">
-      <a class="btn btn-lg btn-success" ng-click="onSave()">Save</a>
+      <a class="btn btn-success" ng-click="onSave()">Save</a>
+    </div>
+    <div class="btn-group">
+      <a class="btn btn-info" ng-click="onBuild()">Build</a>
     </div>
   </div>
   <div class="col-md-6">
     <div class="btn-group pull-right">
-      <a class="btn btn-lg btn-warning" ng-click="onClear()">Clear</a>
+      <a class="btn btn-warning" ng-click="onClear()">Clear</a>
     </div>
   </div>
 </div>

@@ -4,37 +4,17 @@
 #        @val, @left, @right = v, nil, nil
 #    end
 
-=begin
-def dfs(ret, node, cur)
-    return if node.nil?
-    cur << node.val
-    if not node.left and not node.right 
-        ret << cur.dup
-    else
-        dfs ret, node.left, cur
-        dfs ret, node.right, cur
-    end
-    cur.pop
-end
-=end
-
 # @param root, TreeNode
-# @return array of array of integers
-def all_path(root)
-    ret = []
+# @param m,n, integer
+# @return TreeNode
+def lca(root, m, n)
+    return nil if root.nil?
+	return root if root.val == m || root.val == n
 
-    define_method :dfs do |node, cur|
-        return if node.nil?
-        cur << node.val
-        if not node.left and not node.right 
-            ret << cur.dup
-        else
-            dfs node.left, cur
-            dfs node.right, cur
-        end
-        cur.pop
-    end
+	l = lca root.left, m, n
+	r = lca root.right, m, n
 
-    dfs(root, [])
-    ret
+	return root if l and r
+	return l if l
+	return r
 end
