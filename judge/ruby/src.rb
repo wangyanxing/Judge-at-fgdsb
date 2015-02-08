@@ -1,5 +1,5 @@
 require './judge/ruby/common'
 require './judge/ruby/solution'
-require './judge/ruby/tests/a-plus-b'
+require './judge/ruby/tests/all-path-tree'
 
 judge

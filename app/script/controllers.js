@@ -17,6 +17,14 @@ var codes = {
     "Lua" : "code_lua"
 };
 
+var langs = [
+    'C++',
+    'Java',
+    'Ruby',
+    'Python',
+    'Lua'
+];
+
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);
 
 fgdsbControllers.controller('ProblemListCtrl', ['$scope', '$q', 'Problem',
@@ -24,8 +32,8 @@ fgdsbControllers.controller('ProblemListCtrl', ['$scope', '$q', 'Problem',
         $scope.problems = Problem.query();
         $scope.problems.$promise.then(function (result) {
             result.sort(function (a, b) {
-                var ta = moment(a.age, "YYYY-MM-DD HH:mm:ss");
-                var tb = moment(b.age, "YYYY-MM-DD HH:mm:ss");
+                var ta = moment(a.time, "YYYY-MM-DD HH:mm:ss");
+                var tb = moment(b.time, "YYYY-MM-DD HH:mm:ss");
                 return ta - tb;
             });
             for(var i = 0; i < result.length; ++i) {
@@ -34,13 +42,145 @@ fgdsbControllers.controller('ProblemListCtrl', ['$scope', '$q', 'Problem',
                 });
             }
         });
-
         $scope.orderProp = 'number';
     }]);
 
-fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q',
-    function($scope, $q, Problem) {
+fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Problem',
+    function($scope, $q, $routeParams, Problem) {
+        $scope.languages = langs;
+        $scope.cur_lang = 'C++';
+        $scope.desc = "";
+        $scope.question = {};
+        $scope.question.name = "";
+        $scope.question.discuss_url = "";
+        $scope.question.difficulty = "Easy";
+        $scope.question.source = "Unknown";
+        $scope.question.id = $routeParams.problemId.replace(/id=/,'');
+        $scope.judge_obj = {};
+        $scope.judge_json = "";
 
+        if ($scope.question.id != '') {
+            $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
+                var excluded_key = ["name", "id", "discuss_link", "desc",
+                    "code_cpp", "code_java", "code_ruby", "code_python", "code_lua"];
+                for (var prop in $scope.problem) {
+                    if(excluded_key.indexOf(prop) >= 0) continue;
+                    $scope.judge_obj[prop] = $scope.problem[prop];
+                }
+                $scope.judge_json = JSON.stringify($scope.judge_obj, null, '    ')
+                    .replace(/"judge_type_cpp"/, '\n    $&')
+                    .replace(/"judge_type_java"/, '\n    $&')
+                    .replace(/"judge_type_lua"/, '\n    $&');
+                $scope.$judge_editor.setValue($scope.judge_json);
+                $scope.$judge_editor.clearSelection();
+
+                $scope.question.name = $scope.problem.name;
+                $scope.question.discuss_url = $scope.problem.discuss_link;
+                $scope.question.difficulty = $scope.problem.difficulty;
+                if ($scope.problem.source) {
+                    $scope.question.source = $scope.problem.source;
+                }
+            });
+        }
+
+        $scope.onSave = function(e) {
+            if ($scope.question.id == '') {
+                bootbox.dialog({
+                    message: "ID cannot be empty.",
+                    title: "Error",
+                    buttons: {
+                        success: {
+                            label: "OK",
+                            className: "btn-success"
+                        }
+                    }
+                });
+            }
+        };
+
+        $scope.onClear = function(e) {
+            bootbox.dialog({
+                message: "Do you really want to clear all fields?",
+                title: "Clear Confirmation",
+                buttons: {
+                    success: {
+                        label: "No",
+                        className: "btn-success"
+                    },
+                    danger: {
+                        label: "Yes",
+                        className: "btn-danger",
+                        callback: function() {
+                            $scope.doClear();
+                        }
+                    }
+                }
+            });
+        };
+        
+        $scope.doClear = function () {
+            
+        };
+
+        $scope.langClick = function($index) {
+            var lang = $scope.languages[$index];
+            $scope.cur_lang = lang;
+
+            $("#cur-lang").text(lang);
+
+            $scope.$default_code_editor.getSession().setMode(modes[lang]);
+        };
+
+        $scope.desc_editor_loaded = function(_editor) {
+            $scope.$desc_editor = _editor;
+            _editor.setFontSize(12);
+            _editor.setHighlightActiveLine(false);
+            _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true);
+            _editor.setHighlightActiveLine(false);
+            _editor.setValue('<p></p>');
+            _editor.clearSelection();
+        };
+
+        $scope.desc_editor_changed = function(e) {
+            $scope.desc = $scope.$desc_editor.getValue();
+        };
+
+        $scope.default_code_editor_loaded = function(_editor) {
+            $scope.$default_code_editor = _editor;
+            _editor.setFontSize(12);
+            _editor.setHighlightActiveLine(false);
+            _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true);
+            _editor.setHighlightActiveLine(false);
+        };
+
+        $scope.default_code_editor_changed = function(e) {
+        };
+
+        $scope.script_editor_loaded = function(_editor) {
+            $scope.$script_editor = _editor;
+            _editor.setFontSize(12);
+            _editor.setHighlightActiveLine(false);
+            _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true);
+            _editor.setHighlightActiveLine(false);
+        };
+
+        $scope.script_editor_changed = function(e) {
+        };
+
+        $scope.judge_editor_loaded = function(_editor) {
+            $scope.$judge_editor = _editor;
+            _editor.setFontSize(12);
+            _editor.setHighlightActiveLine(false);
+            _editor.$blockScrolling = Infinity;
+            _editor.getSession().setUseSoftTabs(true);
+            _editor.setHighlightActiveLine(false);
+        };
+
+        $scope.judge_editor_changed = function(e) {
+        };
     }]);
 
 fgdsbControllers.controller('SubDetailCtrl', ['$scope', '$q', '$window', '$routeParams', 'Problem',
@@ -163,13 +303,7 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
     function($scope, $routeParams, Problem) {
 
         $scope.last_autosave = new Date().getTime();
-        $scope.languages = [
-            'C++',
-            'Java',
-            'Ruby',
-            'Python',
-            'Lua'
-        ];
+        $scope.languages = langs;
         $scope.cur_lang = 'C++';
 
         var judge_funcs = {

@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/a-plus-b.h"
+#include "tests/all-path-tree.h"
 
 int main() {
     judge();

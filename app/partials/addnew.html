@@ -1,1 +1,239 @@
-fgdsb
+<br>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+  $("[data-widget='collapse']").click(function() {
+    //Find the box parent
+    var box = $(this).parents(".box").first();
+    //Find the body and the footer
+    var bf = box.find(".box-body, .box-footer");
+    if (!box.hasClass("collapsed-box")) {
+      box.addClass("collapsed-box");
+      bf.slideUp();
+    } else {
+      box.removeClass("collapsed-box");
+      bf.slideDown();
+    }
+  });
+</script>
+
+<style type="text/css" media="screen">
+  .ace_editor {
+    border-style:solid;
+    border-width:1px;
+    border-color: #dddddd;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Basic Information</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <form role="form">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="problem-name">Name</label>
+                <input type="text" class="form-control" id="problem-name" placeholder="Enter name here" ng-model="question.name">
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="problem-id">ID</label>
+                <input type="text" class="form-control" id="problem-id" placeholder="enter-id-here" ng-model="question.id">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label>Difficulty</label>
+              <select class="form-control" ng-model="question.difficulty">
+                <option>Easy</option>
+                <option>Fair</option>
+                <option>Hard</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label>Source</label>
+              <select class="form-control" ng-model="question.source">
+                <option>Unknown</option>
+                <option>Google</option>
+                <option>Facebook</option>
+                <option>LinkedIn</option>
+                <option>Twitter</option>
+                <option>Amazon</option>
+                <option>Microsoft</option>
+                <option>NVIDIA</option>
+                <option>CLRS</option>
+                <option>CC150</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label for="problem-url">Discuss URL</label>
+              <input type="text" class="form-control" id="problem-url" placeholder="" ng-model="question.discuss_url">
+            </div>
+          </div>
+
+        </div><!-- /.box-body -->
+
+      </form>
+    </div>
+
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Scripts</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div class='box-body pad'>
+        <div id = "script-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'ruby',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: script_editor_loaded,
+          onChange: script_editor_changed,
+          showGutter: false
+        }" style="height: 617px;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-6">
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Description</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div class='box-body pad'>
+        <div id = "desc-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'html',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: desc_editor_loaded,
+          onChange: desc_editor_changed,
+          showGutter: false
+        }" style="height: 150px;"></div>
+      </div>
+    </div>
+
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Default Codes</h3>
+
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+
+        <div class="pull-right box-tools" dropdown>
+          <button id="cur-lang" type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle >C++</button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="choice in languages" ng-click="langClick($index)">
+              <a href>{{choice}}</a>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div class='box-body pad'>
+        <div id = "default-code-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'c_cpp',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: default_code_editor_loaded,
+          onChange: default_code_editor_changed,
+          showGutter: false
+        }" style="height: 220px;"></div>
+      </div>
+    </div>
+
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Judge Information</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+      <div class='box-body pad'>
+        <div id = "judge-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'json',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: judge_editor_loaded,
+          onChange: judge_editor_changed,
+          showGutter: false
+        }" style="height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-solid box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Preview</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div style="margin-left: 10px; margin-right: 10px;">
+        <h3>{{question.name}}</h3>
+        <blockquote>
+          <p bind-html-unsafe="desc"></p>
+        </blockquote>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="btn-group">
+      <a class="btn btn-lg btn-success" ng-click="onSave()">Save</a>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="btn-group pull-right">
+      <a class="btn btn-lg btn-warning" ng-click="onClear()">Clear</a>
+    </div>
+  </div>
+</div>
+
+<script src="script/ace.js" type="text/javascript" charset="utf-8"></script>

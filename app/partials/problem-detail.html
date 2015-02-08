@@ -36,7 +36,6 @@
         <a href="#/submissions/{{problem.id}}" class="btn btn-warning">History</a>
       </div>
 
-
       <div class="btn-group" style="margin-left: 20px" data-toggle="tooltip" data-placement="top" title="Save">
         <a ng-click="onSave()" class="btn btn-default">
           <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
@@ -46,6 +45,12 @@
       <div class="btn-group" style="margin-left: 4px" data-toggle="tooltip" data-placement="top" title="Reload">
         <a ng-click="onReload()" class="btn btn-default">
           <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="btn-group" style="margin-left: 4px" data-toggle="tooltip" data-placement="top" title="Edit">
+        <a href="#/addnew/id={{problem.id}}" class="btn btn-default">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         </a>
       </div>
     </div>
