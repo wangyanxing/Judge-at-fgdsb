@@ -12,6 +12,7 @@ def fix_json(file)
     prob['difficulty'] = intro['difficulty']
     prob['time'] = intro['time']
     prob['source'] = intro['source']
+    prob['tags'] = []
 
     output = JSON.pretty_generate(prob)
     output.sub! /"code_cpp"/, "\n  \"code_cpp\""
@@ -23,8 +24,9 @@ def fix_json(file)
     File.write(filename, output)
 end
 
+excluded = %w(problems.json tags.json)
 Dir.entries('../../app/problems/').each do |f|
-    next if File.directory?(f) or File.extname(f) != '.json' or f == 'problems.json'
+    next if File.directory?(f) or File.extname(f) != '.json' or excluded.include? f
     puts "fixing: #{f}"
     fix_json f
 end

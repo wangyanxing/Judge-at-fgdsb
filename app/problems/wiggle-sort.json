@@ -31,5 +31,8 @@
   
   "difficulty": "Medium",
   "time": "2015-01-27 17:30:01",
-  "source": "Unknown"
+  "source": "Unknown",
+  "tags": [
+    "Array"
+  ]
 }

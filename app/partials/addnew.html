@@ -1,5 +1,10 @@
 <br>
 
+<link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+
+<script src="script/typeahead.bundle.min.js"></script>
+<script src="script/bootstrap-tagsinput.min.js"></script>
+
 <script type="text/javascript">
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -18,6 +23,31 @@
       bf.slideDown();
     }
   });
+
+  var tags = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: {
+      url: 'problems/tags.json',
+      filter: function(list) {
+        return $.map(list, function(cityname) {
+          return { name: cityname }; });
+      }
+    }
+  });
+  tags.initialize();
+
+  var elt = $('#problem-tags');
+  elt.tagsinput({
+    typeaheadjs: {
+      name: 'tags',
+      displayKey: 'name',
+      valueKey: 'name',
+      source: tags.ttAdapter()
+    }
+  });
+
+  $(".twitter-typeahead").css('display', 'inline');
 </script>
 
 <style type="text/css" media="screen">
@@ -30,6 +60,42 @@
     width: 100%;
   }
 </style>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-solid box-black">
+      <div class="box-header">
+        <h3 class="box-title">Preview</h3>
+      </div><!-- /.box-header -->
+
+      <div style="margin-left: 15px; margin-right: 15px;">
+        <h3>{{question.name}}</h3>
+        <blockquote style="min-height: 170px;">
+          <p bind-html-unsafe="question.desc"></p>
+        </blockquote>
+        <br>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <a class="btn btn-success" ng-click="onSave()" style="margin-left: 15px; margin-bottom: 15px;">Save</a>
+          </div>
+
+          <div class="btn-group">
+            <a class="btn btn-info" ng-click="onBuild()" style="margin-left: 5px; margin-bottom: 15px;">Build</a>
+          </div>
+
+          <div class="btn-group pull-right">
+            <a class="btn btn-warning" ng-click="onClear()" style="margin-right: 15px; margin-bottom: 15px;">Clear</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-6">
@@ -87,8 +153,13 @@
               <label for="problem-url">Discuss URL</label>
               <input type="text" class="form-control" id="problem-url" placeholder="" ng-model="question.discuss_url">
             </div>
-          </div>
 
+            <div class="col-md-12 form-group">
+              <label for="problem-tags">Tags</label>
+              <input type="text" id="problem-tags" class="col-md-12" />
+            </div>
+
+          </div>
         </div><!-- /.box-body -->
 
       </form>
@@ -123,6 +194,29 @@
   </div>
 
   <div class="col-md-6">
+    <div class="box box-solid box-black">
+      <div class="box-header">
+        <h3 class="box-title">Description</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div class='box-body pad'>
+        <div id = "desc-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'html',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: desc_editor_loaded,
+          onChange: desc_editor_changed,
+          showGutter: false
+        }" style="height: 235px;"></div>
+      </div>
+    </div>
+
     <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Default Codes</h3>
@@ -178,64 +272,8 @@
       </div>
     </div>
 
-    <div class="box box-solid box-black">
-      <div class="box-header">
-        <h3 class="box-title">Description</h3>
-        <div class="pull-right box-tools">
-          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-        </div>
-      </div><!-- /.box-header -->
-
-      <div class='box-body pad'>
-        <div id = "desc-edit-panel" ui-ace="{
-          theme:'textmate',
-          mode: 'html',
-          showPrintMargin: false,
-          useSoftTabs: true,
-          onLoad: desc_editor_loaded,
-          onChange: desc_editor_changed,
-          showGutter: false
-        }" style="height: 150px;"></div>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="box box-solid box-black">
-      <div class="box-header">
-        <h3 class="box-title">Preview</h3>
-      </div><!-- /.box-header -->
-
-      <div style="margin-left: 10px; margin-right: 10px;">
-        <h3>{{question.name}}</h3>
-        <blockquote>
-          <p bind-html-unsafe="question.desc"></p>
-        </blockquote>
-        <br>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="btn-group">
-      <a class="btn btn-success" ng-click="onSave()">Save</a>
-    </div>
-    <div class="btn-group">
-      <a class="btn btn-info" ng-click="onBuild()">Build</a>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="btn-group pull-right">
-      <a class="btn btn-warning" ng-click="onClear()">Clear</a>
-    </div>
-  </div>
-</div>
 
 <script src="script/ace.js" type="text/javascript" charset="utf-8"></script>

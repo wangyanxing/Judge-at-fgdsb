@@ -9,6 +9,7 @@ var modes = {
     "Python" : "ace/mode/python",
     "Lua" : "ace/mode/lua"
 };
+
 var codes = {
     "C++" : "code_cpp",
     "Java" : "code_java",
@@ -110,6 +111,11 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                 var text = fs.readFileSync(script_file,'utf8');
                 $scope.$script_editor.setValue(text);
                 $scope.$script_editor.clearSelection();
+
+
+                for(var i in $scope.problem.tags) {
+                    $("#problem-tags").tagsinput('add', $scope.problem.tags[i]);
+                }
             });
         }
 
@@ -125,6 +131,8 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                         }
                     }
                 });
+            } else {
+                var tags = $("#problem-tags").tagsinput('items');
             }
         };
 
