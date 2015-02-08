@@ -206,6 +206,20 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             });
         };
 
+        $scope.onCommit = function () {
+            var message = $scope.question.id + " updated";
+            exec('git add -A && git commit -m "' + message + '"',
+                function (error, stdout, stderr) {
+                    if (error) {
+                        alert(error);
+                    }
+                    if (stderr != undefined && stderr != "") {
+                        alert(stderr);
+                    }
+                    console.log(stdout);
+                });
+        }
+
         $scope.langClick = function($index) {
             var lang = $scope.languages[$index];
             $scope.cur_lang = lang;
