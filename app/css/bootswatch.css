@@ -34,6 +34,16 @@ body{padding-top:50px}body>.navbar{-webkit-transition:background-color 300ms eas
 .btn.btn-primary.hover {
     background-color: #367fa9;
 }
+.btn.btn-black {
+    background-color: #333333;
+    border-color: #333333;
+}
+.btn.btn-black:hover,
+.btn.btn-black:active,
+.btn.btn-black.hover {
+    background-color: #393939;
+    color: #ffffff;
+}
 .btn.btn-success {
     background-color: #00a65a;
     border-color: #008d4c;
@@ -187,6 +197,9 @@ body{padding-top:50px}body>.navbar{-webkit-transition:background-color 300ms eas
 }
 .box.box-primary {
     border-top-color: #3c8dbc;
+}
+.box.box-black {
+    border-top-color: #333333;
 }
 .box.box-info {
     border-top-color: #00c0ef;
@@ -355,6 +368,14 @@ body{padding-top:50px}body>.navbar{-webkit-transition:background-color 300ms eas
 .box.box-solid.box-primary > .box-header a {
     color: #444;
 }
+.box.box-solid.box-black > .box-header {
+    color: #fff;
+    background: #333333;
+    background-color: #333333;
+}
+.box.box-solid.box-black > .box-header a {
+    color: #444;
+}
 .box.box-solid.box-info > .box-header {
     color: #fff;
     background: #00c0ef;
@@ -441,6 +462,9 @@ body{padding-top:50px}body>.navbar{-webkit-transition:background-color 300ms eas
 }
 .box .todo-list > li.primary {
     border-left-color: #3c8dbc;
+}
+.box .todo-list > li.black {
+    border-left-color: #232323;
 }
 .box .todo-list > li > input[type='checkbox'] {
     margin: 0 10px 0 5px;

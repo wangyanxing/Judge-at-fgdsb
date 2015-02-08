@@ -32,3 +32,4 @@ class Test_a_plus_b < TestBase
 end
 
 Test_a_plus_b.new 'a-plus-b'
+

@@ -66,6 +66,8 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         $scope.judge_obj = {};
         $scope.judge_json = "";
 
+        var script_tempalte = "require './common'\nrequire '../ruby/common'\n\nclass Test_class < TestBase\n  def initialize(name)\n    super(name)\n  end\n\n  def add_test\n  end\n\n  def gen_tests\n    @test_in, @test_out = [[]], []\n  end\nend\n\nTest_class.new 'ID'";
+
         if ($scope.question.id != '') {
             $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
                 var excluded_key = ["name", "id", "discuss_link", "desc",
@@ -88,6 +90,10 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                 $scope.question.discuss_url = $scope.problem.discuss_link;
                 $scope.question.difficulty = $scope.problem.difficulty;
 
+                $scope.question.desc = $scope.problem.desc;
+                $scope.$desc_editor.setValue($scope.problem.desc);
+                $scope.$desc_editor.clearSelection();
+
                 for(var i in langs) {
                     var lang = langs[i];
                     $scope.question.codes[lang] = $scope.problem[codes[lang]];
@@ -99,6 +105,11 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                 if ($scope.problem.source) {
                     $scope.question.source = $scope.problem.source;
                 }
+
+                var script_file = 'judge/build_tests/' + $scope.question.id + '.rb';
+                var text = fs.readFileSync(script_file,'utf8');
+                $scope.$script_editor.setValue(text);
+                $scope.$script_editor.clearSelection();
             });
         }
 
@@ -115,6 +126,19 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                     }
                 });
             }
+        };
+
+        $scope.onLoadDefault = function(e) {
+            var name = "class";
+            var id = "id";
+            if ($scope.question.id && $scope.question.id != '') {
+                id = $scope.question.id;
+                name = id.replace(/-/g,'_');
+            }
+            var code = script_tempalte.replace(/Test_class/g, 'Test_' + name)
+                .replace(/ID/, id);
+            $scope.$script_editor.setValue(code);
+            $scope.$script_editor.clearSelection();
         };
 
         $scope.onBuild = function(e) {
@@ -141,7 +165,6 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         };
         
         $scope.doClear = function () {
-            
         };
 
         $scope.langClick = function($index) {
@@ -162,7 +185,9 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             _editor.$blockScrolling = Infinity;
             _editor.getSession().setUseSoftTabs(true);
             _editor.setHighlightActiveLine(false);
-            _editor.setValue('<p></p>');
+            if ($scope.question.desc != '') {
+                _editor.setValue($scope.question.desc);
+            }
             _editor.clearSelection();
         };
 

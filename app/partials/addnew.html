@@ -33,11 +33,11 @@
 
 <div class="row">
   <div class="col-md-6">
-    <div class="box box-solid box-primary">
+    <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Basic Information</h3>
         <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i>
           </button>
         </div>
@@ -94,13 +94,17 @@
       </form>
     </div>
 
-    <div class="box box-solid box-primary">
+    <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Scripts</h3>
         <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i>
           </button>
+        </div>
+
+        <div class="pull-right box-tools" dropdown>
+          <button ng-click="onLoadDefault()" type="button" class="btn btn-black btn-sm" >Default</button>
         </div>
       </div><!-- /.box-header -->
 
@@ -111,8 +115,7 @@
           showPrintMargin: false,
           useSoftTabs: true,
           onLoad: script_editor_loaded,
-          onChange: script_editor_changed,
-          showGutter: false
+          onChange: script_editor_changed
         }" style="height: 617px;"></div>
       </div>
     </div>
@@ -120,41 +123,18 @@
   </div>
 
   <div class="col-md-6">
-    <div class="box box-solid box-primary">
-      <div class="box-header">
-        <h3 class="box-title">Description</h3>
-        <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-        </div>
-      </div><!-- /.box-header -->
-
-      <div class='box-body pad'>
-        <div id = "desc-edit-panel" ui-ace="{
-          theme:'textmate',
-          mode: 'html',
-          showPrintMargin: false,
-          useSoftTabs: true,
-          onLoad: desc_editor_loaded,
-          onChange: desc_editor_changed,
-          showGutter: false
-        }" style="height: 150px;"></div>
-      </div>
-    </div>
-
-    <div class="box box-solid box-primary">
+    <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Default Codes</h3>
 
         <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i>
           </button>
         </div>
 
         <div class="pull-right box-tools" dropdown>
-          <button id="cur-lang" type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle >C++</button>
+          <button id="cur-lang" type="button" class="btn btn-black btn-sm dropdown-toggle" dropdown-toggle >C++</button>
           <ul class="dropdown-menu" role="menu">
             <li ng-repeat="choice in languages" ng-click="langClick($index)">
               <a href>{{choice}}</a>
@@ -176,11 +156,11 @@
       </div>
     </div>
 
-    <div class="box box-solid box-primary">
+    <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Judge Information</h3>
         <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i>
           </button>
         </div>
@@ -197,19 +177,38 @@
         }" style="height: 400px;"></div>
       </div>
     </div>
+
+    <div class="box box-solid box-black">
+      <div class="box-header">
+        <h3 class="box-title">Description</h3>
+        <div class="pull-right box-tools">
+          <button class="btn btn-black btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+
+      <div class='box-body pad'>
+        <div id = "desc-edit-panel" ui-ace="{
+          theme:'textmate',
+          mode: 'html',
+          showPrintMargin: false,
+          useSoftTabs: true,
+          onLoad: desc_editor_loaded,
+          onChange: desc_editor_changed,
+          showGutter: false
+        }" style="height: 150px;"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <div class="box box-solid box-primary">
+    <div class="box box-solid box-black">
       <div class="box-header">
         <h3 class="box-title">Preview</h3>
-        <div class="pull-right box-tools">
-          <button class="btn btn-primary btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-        </div>
       </div><!-- /.box-header -->
 
       <div style="margin-left: 10px; margin-right: 10px;">
