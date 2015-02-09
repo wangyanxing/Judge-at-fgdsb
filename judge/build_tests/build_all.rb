@@ -1,15 +1,17 @@
+require '../ruby/common'
+
+p = Point.new(1,2)
+h = {}
+h[p] = 1
+p h
+
+puts h.has_key? p
+puts h.has_key? Point.new(1,2)
+
+exit
 
 module ElevationDfs
-	@mat = [
-		[1, 2, 2, 3, 5],
-		[3, 2, 3, 4, 4],
-		[2, 4, 5, 3, 1],
-		[6, 7, 1, 4, 5],
-		[5, 1, 1, 2, 4]
-	]
-
-	@visited, @pac_ok, @atl_ok = {}, {}, {}
-	@n = 0
+	@mat = [[1, 3, 2], [4, 3, 5], [0, 3, 5]]
 
 	def self.search(i, j, origin)
 		@pac_ok[origin] = true if j == 0 or i == 0
@@ -24,12 +26,13 @@ module ElevationDfs
 
 			@visited[[newI, newJ]] = true
 			search(newI, newJ, origin)
-			@visited.delete [newI,newJ]
+			#@visited.delete [newI,newJ]
 		end
 	end
 
 	def self.get_points
 		ret = []
+		@visited, @pac_ok, @atl_ok = {}, {}, {}
 		@n = @mat.length
 
 		(0...@n).each do |i|
@@ -45,19 +48,14 @@ module ElevationDfs
 
 	puts '------------------'
 	pts = get_points
+	p pts
 	pts.each do |p|
 		puts "#{p} => #{@mat[p[0]][p[1]]}"
 	end
 end
 
 module ElevationDfs2
-	@mat = [
-			[1, 2, 2, 3, 5],
-			[3, 2, 3, 4, 4],
-			[2, 4, 5, 3, 1],
-			[6, 7, 1, 4, 5],
-			[5, 1, 1, 2, 4]
-	]
+	@mat = [[1, 3, 2], [4, 3, 5], [0, 3, 5]]
 
 	def self.search(i, j, origin, visited)
 		[[0,1], [0,-1], [1,0], [-1,0]].each do |dir|
@@ -75,13 +73,13 @@ module ElevationDfs2
 		n = @mat.length
 
 		@visited_pac = {}
-		(([0].product (0...n).to_a) + ((1...n).to_a.product [0])).each do |i, j|
+		(([0].product (0...n).to_a) + ((0...n).to_a.product [0])).each do |i, j|
 			@visited_pac[[i,j]] = true
 			search(i, j, [i,j], @visited_pac)
 		end
 
 		@visited_alt = {}
-		(([n-1].product (0...n).to_a) + ((1...n).to_a.product [n-1])).each do |i, j|
+		(([n-1].product (0...n).to_a) + ((0...n).to_a.product [n-1])).each do |i, j|
 			@visited_alt[[i,j]] = true
 			search(i, j, [i,j], @visited_alt)
 		end

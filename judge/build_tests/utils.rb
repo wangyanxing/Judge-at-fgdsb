@@ -69,4 +69,15 @@ module Utils
 		end
 		root
 	end
+
+	def gen_matrix(n, m, range)
+		ret = []
+		n.times do
+			ret << []
+			m.times do
+				ret[-1] << rand(range)
+			end
+		end
+		ret
+	end
 end

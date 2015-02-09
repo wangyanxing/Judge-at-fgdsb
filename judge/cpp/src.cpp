@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/tree-vertical-traversal.h"
+#include "tests/flowing-water.h"
 
 int main() {
     judge();

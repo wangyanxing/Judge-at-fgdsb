@@ -1,38 +1,41 @@
 /*
-struct TreeNode {
-    TreeNode(int v = 0) :val(v){}
-    int val{ 0 };
-    TreeNode* left{ nullptr };
-    TreeNode* right{ nullptr };
+struct Point {
+    int x{ 0 }, y{ 0 };
 };
 */
-
-vector<vector<int>> vertical_traversal(TreeNode* root) {
-    vector<vector<int>> ret;
-    function<void(TreeNode*, int&, int&, int)> minmax =
-            [&](TreeNode* node, int& min, int& max, int d){
-        if(!node) return;
-        min = std::min(min, d);
-        max = std::max(max, d);
-        minmax(node->left,min,max,d-1);
-        minmax(node->right,min,max,d+1);
+vector<Point> flowing_water(vector<vector<int>> mat) {
+    set<Point> visited, leftOK, rightOK;
+    int n = mat.size();
+    
+    function<void(int,int,Point)> search = [&](int i, int j, Point origin) {
+        if (j == 0 || i == 0) leftOK.insert(origin);
+        if (j == n-1 || i == n-1) rightOK.insert(origin);
+        if(visited.size() == n*n) return;
+        //cout <<Point(i,j)<<endl;
+        vector<Point> dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}}; 
+        for(auto dir : dirs) {
+            Point new_pt(dir.x + i, dir.y + j);
+            if (new_pt.x < 0 || new_pt.x >= n || new_pt.y < 0 || new_pt.y >= n) {
+                continue;
+            }
+            if (mat[new_pt.x][new_pt.y] > mat[i][j] || visited.count(new_pt)) {
+                continue;
+            }
+            visited.insert(new_pt);
+            search(new_pt.x, new_pt.y, origin);
+            //visited.erase({newI,newJ});
+        }
     };
     
-    function<void(TreeNode*, int, int, vector<int>&)> print =
-        [&](TreeNode* node, int d, int cur, vector<int>& sln) {
-        if(!node) return;
-        if(d == cur) sln.push_back(node->val);
-        print(node->left, d, cur-1, sln);
-        print(node->right, d, cur+1, sln);
-    };
-    
-    int min_hd = INT_MAX, max_hd = INT_MIN;
-    minmax(root,min_hd,max_hd,0);
-    
-    for(int i = min_hd; i <= max_hd; ++i) {
-        vector<int> sln;
-        print(root, i, 0, sln);
-        ret.push_back(sln);
+    vector<Point> ret;
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            Point pt(i,j);
+            visited = {pt};
+            search(i,j,pt);
+            if (leftOK.count(pt) && rightOK.count(pt))
+                ret.push_back(pt);
+        }
     }
     return ret;
 }

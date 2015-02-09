@@ -1,12 +1,12 @@
-# Definition of Point
-# class Point
-#     attr_accessor :x, :y
-#     def initialize(x = 0, y = 0)
-#         @x, @y = x, y
-#     end
-# end
+require './common'
+require '../ruby/common'
 
-def search(i, j, origin, mat)
+class Test_flowing_water < TestBase
+  def initialize(name)
+    super(name)
+  end
+
+  def search(i, j, origin, mat)
     n = mat.length
     @pac_ok[origin] = true if j == 0 or i == 0
     @atl_ok[origin] = true if j == n - 1 or i == n - 1
@@ -24,7 +24,7 @@ def search(i, j, origin, mat)
     end
   end
 
-  def flowing_water(mat)
+  def get_points(mat)
     ret = []
     @visited, @pac_ok, @atl_ok = {}, {}, {}
 
@@ -33,8 +33,30 @@ def search(i, j, origin, mat)
         @visited = {}
         @visited[[i,j]] = true
         search(i,j,[i,j],mat)
-        ret << Point.new(i,j) if @pac_ok.has_key?([i,j]) and @atl_ok.has_key?([i,j])
+        ret << [i,j] if @pac_ok.has_key?([i,j]) and @atl_ok.has_key?([i,j])
       end
     end
     ret
   end
+
+  def add_test(n)
+    mat = gen_matrix(n, n, 0..(n*2))
+    @test_in[0] << mat
+    @test_out << get_points(mat)
+  end
+
+  def gen_tests
+    @test_in, @test_out = [[]], []
+
+    20.times do
+      add_test rand(3...5)
+    end
+
+    50.times do
+      add_test rand(30...50)
+    end
+
+  end
+end
+
+Test_flowing_water.new 'flowing-water'

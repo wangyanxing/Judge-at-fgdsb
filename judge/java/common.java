@@ -102,6 +102,22 @@ public class common {
         return true;
     }
     
+    public static boolean compare_point_list(List<Point> a0, List<Point> a1) {
+        if(a0.size() != a1.size()) return false;
+        for(int i = 0; i < a0.size(); ++i) {
+            if(a0.get(i).x != a1.get(i).x ||
+               a0.get(i).y != a1.get(i).y) return false;
+        }
+        return true;
+    }
+    
+    public static boolean compare_point_arraylist(Point[] array, List<Point> al) {
+        for(int i = 0; i < array.length; ++i) {
+            if(array[i].x != al.get(i).x || array[i].y != al.get(i).y) return false;
+        }
+        return true;
+    }
+    
     public static boolean compare_arr_arraylist(int[] array, List<Integer> al) {
         for(int i = 0; i < array.length; ++i) {
             if(array[i] != al.get(i)) return false;
@@ -328,6 +344,68 @@ public class common {
         }
         return ret;
     }
+    
+    //
+    
+    public static Point[] read_point_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Point[] ret = new Point[number];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = new Point();
+            ret[i].x = Integer.parseInt(in.readLine());
+            ret[i].y = Integer.parseInt(in.readLine());
+        }
+        return ret;
+    }
+    
+    public static ArrayList<Point> read_point_arraylist(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<Point> ret = new ArrayList<Point>();
+        for(int i = 0; i < number; ++i) {
+            int x = Integer.parseInt(in.readLine());
+            int y = Integer.parseInt(in.readLine());
+            ret.add(new Point(x, y));
+        }
+        return ret;
+    }
+    
+    public static Point[][] read_point_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Point[][] ret = new Point[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_point_array(in);
+        }
+        return ret;
+    }
+    
+    public static ArrayList<ArrayList<Point>> read_point_al_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<ArrayList<Point>> ret = new ArrayList<ArrayList<Point>>();
+        for(int i = 0; i < number; ++i) {
+            ret.add(read_point_arraylist(in));
+        }
+        return ret;
+    }
+    
+    public static ArrayList<ArrayList<ArrayList<Point>>> read_point_al_matrix_arr(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        ArrayList<ArrayList<ArrayList<Point>>> ret = new ArrayList<ArrayList<ArrayList<Point>>>();
+        for(int i = 0; i < number; ++i) {
+            ret.add(read_point_al_matrix(in));
+        }
+        return ret;
+    }
+    //
     
     public static boolean[] read_bool_array(BufferedReader in) throws IOException {
         String s = in.readLine();

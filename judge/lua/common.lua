@@ -6,6 +6,13 @@ Interval = {
 	end
 }
 
+-- Point structure
+Point = {
+	new = function(_x, _y)
+		return {x = _x, y = _y}
+	end
+}
+
 -- ListNode structure
 ListNode = {
 	new = function(v)

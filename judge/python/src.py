@@ -1,5 +1,5 @@
 from common import *
 from solution import *
-from tests.wiggle_sort import *
+from tests.flowing_water import *
 
 judge()

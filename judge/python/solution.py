@@ -1,3 +1,7 @@
-# @pram arr, list of integers
-def wiggle_sort(arr):
-    print arr
+# Definition of Point
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+def flowing_water(mat):
+    return []

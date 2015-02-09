@@ -1,0 +1,35 @@
+{
+    "name": "Flowing Water",
+    "id": "flowing-water",
+    "discuss_link": "",
+    "desc": "<p>Given a N*N matrix contains lakes, each lake is represented by an elevation. The water in each lake can flow to its neighbours which has <b>lower or equal elevations</b>.</p>\n<p>Suppose the left and top side of the matrix is surrounded by Pacific, the right and bottom is Atlantic.</p>\n<p>Please write a function and return all lakes that can flow to both Pacific and Atlantic.</p>\n\n<p>For example:\n<pre>\nPacific: ~\nAtlantic: *\n\n~  ~   ~   ~   ~   ~  ~\n~  1   2   2   3  (5) *\n~  3   2   3  (4) (4) *\n~  2   4  (5)  3   1  *\n~ (6) (7)  1   4   5  *\n~ (5)  1   1   2   4  *\n*  *   *   *   *   *  *\n</pre>\n<p>The elements in parentheses are expected outputs:</p>\n<p>\n<code>[[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]</code>\n</p>\n</p>",
+    "difficulty": "Hard",
+    "source": "Google",
+    "time": "2015-02-08 22:45:53",
+    "tags": [
+        "DFS",
+        "BFS",
+        "Backtracking"
+    ],
+    "code_cpp": "/*\nstruct Point {\n    int x{ 0 }, y{ 0 };\n};\n*/\nvector<Point> flowing_water(vector<vector<int>> mat) {\n}",
+    "code_java": "/*\npublic class Point {\n    public int x = 0, y = 0;\n    public Point() {}\n    public Point(int x, int y) {\n        this.x = x;\n        this.y = y;\n    }\n}\n*/\nList<Point> flowing_water(int[][] mat) {\n}",
+    "code_ruby": "# Definition of Point\n# class Point\n#     attr_accessor :x, :y\n#     def initialize(x = 0, y = 0)\n#         @x, @y = x, y\n#     end\n# end\n\n# @param mat, integer matrix\n# @return Point array\ndef flowing_water(mat)\nend",
+    "code_python": "# Definition of Point\n# class Point:\n#     def __init__(self, x=0, y=0):\n#         self.x = x\n#         self.y = y\n\n# @param mat, integer matrix\n# @return Point list\ndef flowing_water(mat):",
+    "code_lua": "-- Definition of Point\n-- Point = {\n-- \tnew = function(_x, _y)\n-- \t\treturn {x = _x, y = _y}\n-- \tend\n-- }\n\n-- @param mat, integer matrix\n-- @return table of points\nfunction flowing_water(mat)\nend",
+    "in_type_cpp": [
+        "vector<vector<int>>"
+    ],
+    "ret_type_cpp": "vector<Point>",
+    "out_type_cpp": "vector<Point>",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[][]"
+    ],
+    "ret_type_java": "List<Point>",
+    "out_type_java": "Point[]",
+    "judge_type_java": "!common.compare_point_arraylist(out[i],answer)",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "not equals(out[i],answer)",
+    "judge_call": "flowing_water(@)"
+}

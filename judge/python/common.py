@@ -16,6 +16,20 @@ class Interval:
     def __eq__(self, other):
         return self.begin == other.begin and self.end == other.end
 
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    
+    def __str__(self):
+        return "(" + str(self.x) + ", " + str(self.y) + ")"
+    
+    def __repr__(self):
+        return self.__str__()
+    
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
 def serial(root):
     if root == None: return "# "
     ret = str(root.val) + ' '
@@ -80,6 +94,29 @@ def read_tree_matrix(f) :
     ret = []
     for i in range(num):
         ret.append(read_tree_array(f))
+    return ret
+
+def read_point_array(f) :
+    num = int(f.readline())
+    ret = []
+    for i in range(num):
+        b = int(f.readline())
+        e = int(f.readline())
+        ret.append(Point(b,e))
+    return ret
+
+def read_point_matrix(f) :
+    num = int(f.readline())
+    ret = []
+    for i in range(num):
+        ret.append(read_point_array(f))
+    return ret
+
+def read_point_matrix_arr(f) :
+    num = int(f.readline())
+    ret = []
+    for i in range(num):
+        ret.append(read_point_matrix(f))
     return ret
 
 def read_interval_array(f) :

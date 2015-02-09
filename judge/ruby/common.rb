@@ -11,12 +11,45 @@ class Interval
     end
     
     def inspect
-        "[#{@begin_t}, #{@end_t}]"
+        to_s
     end
 
     
     def == (rhs)
         self.begin_t == rhs.begin_t && self.end_t == rhs.end_t
+    end
+end
+
+class Point
+    attr_accessor :x, :y
+    
+    def initialize(x = 0, y = 0)
+        @x, @y = x, y
+    end
+    
+    def to_s
+        "(#{@x}, #{@y})"
+    end
+    
+    def inspect
+        to_s
+    end
+
+    def eql?(rhs)
+        self.x == rhs.x && self.y == rhs.y
+    end
+
+    def hash
+        [x,y].hash
+    end
+
+    def <=>(rhs)
+        return x <=> rhs.x if x != rhs.x
+        return y <=> rhs.y
+    end
+
+    def == (rhs)
+        eql?(rhs)
     end
 end
 
@@ -148,6 +181,36 @@ def read_interval_matrix_arr(file)
     ret = []
     (0...nums).each do
         ret << read_interval_matrix(file)
+    end
+    ret
+end
+
+def read_point_array(file)
+    nums = file.readline.to_i
+    ret = []
+    (0...nums).each do
+        i = Point.new
+        i.x = file.readline.to_i
+        i.y = file.readline.to_i
+        ret << i
+    end
+    ret
+end
+
+def read_point_matrix(file)
+    nums = file.readline.to_i
+    ret = []
+    (0...nums).each do
+        ret << read_point_array(file)
+    end
+    ret
+end
+
+def read_point_matrix_arr(file)
+    nums = file.readline.to_i
+    ret = []
+    (0...nums).each do
+        ret << read_point_matrix(file)
     end
     ret
 end

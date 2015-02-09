@@ -54,8 +54,14 @@ struct UndirectedGraphNode {
     UndirectedGraphNode(int x) : label(x) {};
 };
 
+struct Point {
+    Point(int _x = 0, int _y = 0): x(_x), y(_y){}
+    int x, y;
+};
+
 struct Interval {
-    int begin{ 0 }, end{ 0 };
+    Interval(int b = 0, int e = 0): begin(b), end(e){}
+    int begin, end;
 };
 
 bool operator== (Interval &i1, Interval &i2){
@@ -65,6 +71,23 @@ bool operator== (Interval &i1, Interval &i2){
 bool operator== (const Interval &i1, const Interval &i2){
     return i1.begin == i2.begin && i1.end == i2.end;
 }
+
+bool operator== (Point &i1, Point &i2){
+    return i1.x == i2.x && i1.y == i2.y;
+}
+
+bool operator== (const Point &i1, const Point &i2){
+    return i1.x == i2.x && i1.y == i2.y;
+}
+
+bool operator< (Point &__x, Point &__y){
+    return __x.x < __y.x || (!(__y.x < __x.x) && __x.y < __y.y);
+}
+
+bool operator< (const Point &__x, const Point &__y){
+    return __x.x < __y.x || (!(__y.x < __x.x) && __x.y < __y.y);
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -134,6 +157,11 @@ ostream& operator<< (ostream& out, const vector<T>& v) {
 
 ostream& operator<< (ostream& out, const Interval& v) {
     out << "[" << v.begin << ", " << v.end << "]";
+    return out;
+}
+
+ostream& operator<< (ostream& out, const Point& v) {
+    out << "(" << v.x << ", " << v.y << ")";
     return out;
 }
 
@@ -256,6 +284,18 @@ void read_array(ifstream& in, vector<Interval>& ret) {
         Interval n;
         in >> n.begin;
         in >> n.end;
+        ret.push_back(n);
+    }
+}
+
+void read_array(ifstream& in, vector<Point>& ret) {
+    int nums = 0;
+    in >> nums;
+    ret.reserve(nums);
+    for(int i = 0; i < nums; ++i) {
+        Point n;
+        in >> n.x;
+        in >> n.y;
         ret.push_back(n);
     }
 }

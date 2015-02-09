@@ -55,6 +55,7 @@ class TestBase
         'vector<double>' => '2D',
         'vector<string>' => '2D',
         'vector<Interval>' => '2D_interval',
+        'vector<Point>' => '2D_point',
         'vector<TreeNode*>' => '2D_bt',
         'vector<TreeNodeWithParent*>' => '2D_bt_p',
         'vector<vector<bool>>' => '3D',
@@ -62,6 +63,7 @@ class TestBase
         'vector<vector<double>>' => '3D',
         'vector<vector<string>>' => '3D',
         'vector<vector<Interval>>' => '3D_interval',
+        'vector<vector<Point>>' => '3D_point',
     }
     file = File.open("../tests/#{@name}.txt", 'w')
     in_types = @problem['in_type_cpp']
@@ -80,6 +82,8 @@ class TestBase
           write_2D(file, t)
         when '2D_interval'
           write_2D_interval(file, t)
+        when '2D_point'
+          write_2D_point(file, t)
         when '2D_bt', '2D_bt_p'
           write_2D_bt(file, t)
         when '3D'
@@ -101,12 +105,16 @@ class TestBase
         write_2D(file, @test_out)
       when '2D_interval'
         write_2D_interval(file, @test_out)
+      when '2D_point'
+        write_2D_interval(file, @test_out)
       when '2D_bt', '2D_bt_p'
         write_2D_bt(file, @test_out)
       when '3D'
         write_3D(file, @test_out)
       when '3D_interval'
         write_3D_interval(file, @test_out)
+      when '3D_point'
+        write_3D_point(file, @test_out)
       else
         puts 'Unsupported type!' + type.to_s
     end
@@ -154,10 +162,25 @@ class TestBase
     end
   end
 
+  def write_1D_point(file, data)
+    file.puts data.length
+    data.each do |d|
+      file.puts d[0]
+      file.puts d[1]
+    end
+  end
+
   def write_2D(file, data)
     file.puts data.length
     data.each do |d|
       write_1D file, d
+    end
+  end
+
+  def write_2D_point(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_1D_point file, d
     end
   end
 
@@ -186,6 +209,13 @@ class TestBase
     file.puts data.length
     data.each do |d|
       write_2D_interval file, d
+    end
+  end
+
+  def write_3D_point(file, data)
+    file.puts data.length
+    data.each do |d|
+      write_2D_point file, d
     end
   end
 
@@ -223,9 +253,9 @@ class TestBase
     case @types[@problem['out_type_cpp']]
       when '1D','1D_bt','1D_bt_p'
         file.puts '    read_array(in, out);'
-      when '2D','2D_interval'
+      when '2D','2D_interval','2D_point'
         file.puts '    read_matrix(in, out);'
-      when '3D'
+      when '3D','3D_interval','3D_point'
         file.puts '    read_matrix_arr(in, out);'
       else
         puts 'Invalid output type ' + @types[@problem['out_type_cpp']].to_s
@@ -308,6 +338,7 @@ class TestBase
         'double' => 'common.read_double_array',
         'string' => 'common.read_string_array',
         'Interval' => 'common.read_interval_array',
+        'Point' => 'common.read_point_array',
         'TreeNode*' => 'common.read_tree_array',
         'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
         'vector<bool>' => 'common.read_bool_matrix',
@@ -315,6 +346,7 @@ class TestBase
         'vector<double>' => 'common.read_double_matrix',
         'vector<string>' => 'common.read_string_matrix',
         'vector<Interval>' => 'common.read_interval_matrix',
+        'vector<Point>' => 'common.read_point_matrix',
         'vector<TreeNode*>' => 'common.read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
@@ -454,6 +486,7 @@ class TestBase
         'double' => 'read_double_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
+        'Point' => 'read_point_array',
         'TreeNode*' => 'read_tree_array',
         'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
@@ -461,6 +494,7 @@ class TestBase
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
+        'vector<Point>' => 'read_point_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
@@ -562,6 +596,7 @@ class TestBase
         'double' => 'read_double_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
+        'Point' => 'read_point_array',
         'TreeNode*' => 'read_tree_array',
         'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
@@ -569,6 +604,7 @@ class TestBase
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
+        'vector<Point>' => 'read_point_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
@@ -671,6 +707,7 @@ class TestBase
         'double' => 'read_num_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
+        'Point' => 'read_point_array',
         'TreeNode*' => 'read_tree_array',
         'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
@@ -678,6 +715,7 @@ class TestBase
         'vector<double>' => 'read_num_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
+        'vector<Point>' => 'read_point_matrix',
         'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
