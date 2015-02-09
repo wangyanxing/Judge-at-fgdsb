@@ -4,7 +4,7 @@
     "discuss_link": "http://www.fgdsb.com/2015/01/20/special-sorting/",
     "desc": "<p>Write a function to convert the array into alternate increasing decreasing numbers: <br><br><code>a[0] <= a[1] >= a[2] <= a[3] >=...</code><br><br><b>Note</b>: You should solve it in place and one pass.</p>",
     "difficulty": "Medium",
-    "source": "Unknown",
+    "source": "Google",
     "time": "2015-01-27 17:30:01",
     "tags": [
         "Array"

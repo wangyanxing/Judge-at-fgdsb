@@ -1,7 +1,10 @@
 require 'json'
 require '../ruby/common'
+require './utils.rb'
 
 class TestBase
+
+  include Utils
 
   def initialize(name)
     @problem = load_problem name

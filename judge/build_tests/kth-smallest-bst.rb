@@ -6,38 +6,6 @@ class Test_kth_bst < TestBase
 		super(name)
 	end
 
-	def add_bst(node, val)
-		return if node.nil?
-
-		if val == node.val
-			return false
-		elsif val < node.val
-			if node.left.nil?
-				node.left = TreeNode.new(val)
-				return true
-			else
-					return add_bst(node.left, val)
-			end
-		elsif val > node.val
-			if node.right.nil?
-				node.right = TreeNode.new(val)
-				return true
-			else
-				return add_bst(node.right, val)
-			end
-		end
-		false
-	end
-
-	def gen_bst(nodes)
-		arr = (0...nodes).to_a.shuffle
-		root = TreeNode.new(arr[0])
-		(1...nodes).each do |i|
-			add_bst(root, arr[i])
-		end
-		return [root, arr.sort]
-	end
-
 	def most_right(root)
 		return nil if root.nil?
 		ret = root

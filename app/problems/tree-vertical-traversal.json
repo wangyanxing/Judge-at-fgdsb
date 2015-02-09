@@ -11,9 +11,25 @@
         "DFS",
         "Hash Table"
     ],
-    "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\n\nvector<int> vertical_traversal(TreeNode* root) {\n}",
-    "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public List<Integer> vertical_traversal(TreeNode root) {\n    }\n}",
-    "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return array of integers\ndef vertical_traversal(root)\nend",
-    "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return list of integers\ndef vertical_traversal(root):",
-    "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return table of integers\nfunction vertical_traversal(root)\nend\n"
+    "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\n\nvector<vector<int>> vertical_traversal(TreeNode* root) {\n}",
+    "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public List<List<Integer>> vertical_traversal(TreeNode root) {\n    }\n}",
+    "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return array of array of integers\ndef vertical_traversal(root)\nend",
+    "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return list of list of integers\ndef vertical_traversal(root):",
+    "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return table of table of integers\nfunction vertical_traversal(root)\nend\n",
+    "in_type_cpp": [
+        "TreeNode*"
+    ],
+    "ret_type_cpp": "vector<vector<int>>",
+    "out_type_cpp": "vector<vector<int>>",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "TreeNode"
+    ],
+    "ret_type_java": "List<List<Integer>>",
+    "out_type_java": "int[][]",
+    "judge_type_java": "!common.compare_arr_arraylist(out[i], answer)",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "not arr_equals(out[i], answer)",
+    "judge_call": "vertical_traversal(@)"
 }

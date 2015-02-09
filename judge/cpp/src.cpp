@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/all-path-tree.h"
+#include "tests/tree-vertical-traversal.h"
 
 int main() {
     judge();

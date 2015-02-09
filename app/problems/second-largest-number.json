@@ -1,38 +1,31 @@
 {
-  "name": "Second Largest Number",
-  "id": "second-largest-number",
-  "discuss_link": "http://www.fgdsb.com/2015/01/18/second-largest-number/",
-  "desc": "<p>Find the second largest number in a given array.<br><br>Return <code>0</code> if the given array has no second largest number.</p>",
-  
-  "code_cpp": "int second_largest(vector<int>& arr) {\n}",
-  "code_java": "public class Solution {\n    public int second_largest(int[] arr) {\n    }\n}",
-  "code_ruby": "# @param arr, array of integers\n# @return integer\ndef second_largest(arr)\nend",
-  "code_python": "# @param arr, list of integers\n# @return integer\ndef second_largest(arr):",
-  "code_lua": "-- @param arr, table of integers\n-- @return integer\nfunction second_largest(arr)\nend",
-  
-  "in_type_cpp": [
-    "vector<int>"
-  ],
-  "ret_type_cpp": "int",
-  "out_type_cpp": "int",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "int[]"
-  ],
-  "ret_type_java": "int",
-  "out_type_java": "int",
-  "judge_type_java": "equal",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  "judge_type_lua": "equal",
-  
-  "judge_call": "second_largest(@)",
-  
-  "difficulty": "Easy",
-  "time": "2015-01-28 14:59:11",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Second Largest Number",
+    "id": "second-largest-number",
+    "discuss_link": "http://www.fgdsb.com/2015/01/18/second-largest-number/",
+    "desc": "<p>Find the second largest number in a given array.<br><br>Return <code>0</code> if the given array has no second largest number.</p>",
+    "difficulty": "Easy",
+    "source": "Google",
+    "time": "2015-01-28 14:59:11",
+    "tags": [],
+    "code_cpp": "int second_largest(vector<int>& arr) {\n}",
+    "code_java": "public class Solution {\n    public int second_largest(int[] arr) {\n    }\n}",
+    "code_ruby": "# @param arr, array of integers\n# @return integer\ndef second_largest(arr)\nend",
+    "code_python": "# @param arr, list of integers\n# @return integer\ndef second_largest(arr):",
+    "code_lua": "-- @param arr, table of integers\n-- @return integer\nfunction second_largest(arr)\nend",
+    "in_type_cpp": [
+        "vector<int>"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "second_largest(@)"
 }

@@ -1,50 +1,43 @@
 {
-  "name": "Kth Smallest Element in BST",
-  "id": "kth-smallest-bst",
-  "discuss_link": "http://www.fgdsb.com/2015/01/19/kth-smallest-node-in-bst/",
-  "desc": "<p>Given a binary search tree and an integer K, find K-th smallest element in BST.<br><br>For example: <br>Input:<br><pre>   2<br>  / \\<br> 1   3<br></pre>K = 2<br><br>Output:<br>2<br><br><strong>Note:</strong> Your solution musb be <strong>in-place</strong> without altering the nodes' values.</p>",
-  
-  "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* kth_smallest(TreeNode* root, int k) {\n}",
-  "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode kth_smallest(TreeNode root, int k) {\n    }\n}",
-  "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k)\nend",
-  "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k):",
-  "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @param k, integer\n-- @return TreeNode\nfunction kth_smallest(root, k)\nend",
-  
-  "in_type_cpp": [
-    "TreeNode*",
-    "int"
-  ],
-  "ret_type_cpp": "TreeNode*",
-  "out_type_cpp": "TreeNode*",
-  "judge_type_cpp": "!equals(out[i], answer)",
-  "vis_answer_cpp": "node_to_string(answer)",
-  "vis_out_cpp": "node_to_string(out[i])",
-  
-  "in_type_java": [
-    "TreeNode",
-    "int"
-  ],
-  "ret_type_java": "TreeNode",
-  "out_type_java": "TreeNode",
-  "judge_type_java": "!common.equals(out[i], answer)",
-  "vis_answer_java": "common.node_to_string(answer)",
-  "vis_out_java": "common.node_to_string(out[i])",
-  "judge_type_ruby": "!node_equals(@out[i], answer)",
-  "vis_answer_ruby": "node_to_string(answer)",
-  "vis_out_ruby": "node_to_string(@out[i])",
-  "judge_type_python": "not node_equals(out[i], answer)",
-  "vis_answer_python": "node_to_string(answer)",
-  "vis_out_python": "node_to_string(out[i])",
-  "judge_type_lua": "not node_equals(out[i], answer)",
-  "vis_answer_lua": "node_to_string(answer)",
-  "vis_out_lua": "node_to_string(out[i])",
-  
-  "judge_call": "kth_smallest(@)",
-  
-  "difficulty": "Medium",
-  "time": "2015-02-02 16:13:16",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Kth Smallest Element in BST",
+    "id": "kth-smallest-bst",
+    "discuss_link": "http://www.fgdsb.com/2015/01/19/kth-smallest-node-in-bst/",
+    "desc": "<p>Given a binary search tree and an integer K, find K-th smallest element in BST.<br><br>For example: <br>Input:<br><pre>   2<br>  / \\<br> 1   3<br></pre>K = 2<br><br>Output:<br>2<br><br><strong>Note:</strong> Your solution musb be <strong>in-place</strong> without altering the nodes' values.</p>",
+    "difficulty": "Medium",
+    "source": "Google",
+    "time": "2015-02-02 16:13:16",
+    "tags": [],
+    "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* kth_smallest(TreeNode* root, int k) {\n}",
+    "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode kth_smallest(TreeNode root, int k) {\n    }\n}",
+    "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k)\nend",
+    "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @param k, integer\n# @return TreeNode\ndef kth_smallest(root, k):",
+    "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @param k, integer\n-- @return TreeNode\nfunction kth_smallest(root, k)\nend",
+    "in_type_cpp": [
+        "TreeNode*",
+        "int"
+    ],
+    "ret_type_cpp": "TreeNode*",
+    "out_type_cpp": "TreeNode*",
+    "judge_type_cpp": "!equals(out[i], answer)",
+    "vis_answer_cpp": "node_to_string(answer)",
+    "vis_out_cpp": "node_to_string(out[i])",
+    "in_type_java": [
+        "TreeNode",
+        "int"
+    ],
+    "ret_type_java": "TreeNode",
+    "out_type_java": "TreeNode",
+    "judge_type_java": "!common.equals(out[i], answer)",
+    "vis_answer_java": "common.node_to_string(answer)",
+    "vis_out_java": "common.node_to_string(out[i])",
+    "judge_type_ruby": "!node_equals(@out[i], answer)",
+    "vis_answer_ruby": "node_to_string(answer)",
+    "vis_out_ruby": "node_to_string(@out[i])",
+    "judge_type_python": "not node_equals(out[i], answer)",
+    "vis_answer_python": "node_to_string(answer)",
+    "vis_out_python": "node_to_string(out[i])",
+    "judge_type_lua": "not node_equals(out[i], answer)",
+    "vis_answer_lua": "node_to_string(answer)",
+    "vis_out_lua": "node_to_string(out[i])",
+    "judge_call": "kth_smallest(@)"
 }

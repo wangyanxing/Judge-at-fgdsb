@@ -1,38 +1,31 @@
 {
-  "name": "Maximum Non-overlapping Intervals",
-  "id": "activity-selection",
-  "discuss_link": "",
-  "desc": "<p>Given a list of intervals of time, find maximum number of non-overlapping intervals.<br><br>For example:<br>Given <code>[0,2], [1,4], [3,5]</code>, the result would be <code>2</code>.</p>",
-  
-  "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nint max_intervals(vector<Interval>& intervals) {\n}",
-  "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Solution {\n    public int max_intervals(Interval[] intervals) {\n    }\n}",
-  "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\n# @param intervals, Intervals array\ndef max_intervals(intervals)\nend",
-  "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#     self.begin = b\n#     self.end = e\n\n# @param intervals, Intervals list\ndef max_intervals(intervals):",
-  "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\n-- @param intervals, table of Intervals\nfunction max_intervals(intervals)\nend",
-  
-  "in_type_cpp": [
-    "vector<Interval>"
-  ],
-  "ret_type_cpp": "int",
-  "out_type_cpp": "int",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "Interval[]"
-  ],
-  "ret_type_java": "int",
-  "out_type_java": "int",
-  "judge_type_java": "equal",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  "judge_type_lua": "equal",
-  
-  "judge_call": "max_intervals(@)",
-  
-  "difficulty": "Medium",
-  "time": "2015-01-31 18:21:20",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Maximum Non-overlapping Intervals",
+    "id": "activity-selection",
+    "discuss_link": "",
+    "desc": "<p>Given a list of intervals of time, find maximum number of non-overlapping intervals.<br><br>For example:<br>Given <code>[0,2], [1,4], [3,5]</code>, the result would be <code>2</code>.</p>",
+    "difficulty": "Medium",
+    "source": "Facebook",
+    "time": "2015-01-31 18:21:20",
+    "tags": [],
+    "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nint max_intervals(vector<Interval>& intervals) {\n}",
+    "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Solution {\n    public int max_intervals(Interval[] intervals) {\n    }\n}",
+    "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\n# @param intervals, Intervals array\ndef max_intervals(intervals)\nend",
+    "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#     self.begin = b\n#     self.end = e\n\n# @param intervals, Intervals list\ndef max_intervals(intervals):",
+    "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\n-- @param intervals, table of Intervals\nfunction max_intervals(intervals)\nend",
+    "in_type_cpp": [
+        "vector<Interval>"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "Interval[]"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "max_intervals(@)"
 }

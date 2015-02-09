@@ -1,40 +1,33 @@
 {
-  "name": "Query Intervals II",
-  "id": "query-intervals-2",
-  "discuss_link": "",
-  "desc": "<p>Follow up for \"Query Intervals\":<br><br>How about return all intervals that cover the given time?<br><br><strong>Note:</strong> Please keep your results sorted by the begin time.</p>",
-  
-  "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nclass Intervals {\npublic:\n    Intervals(vector<Interval>& data) {\n    }\n    \n    void preprocess() {\n    }\n    \n    vector<Interval> query(int time) {\n    }\nprivate:\n    vector<Interval> intervals;\n};",
-  "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Intervals {\n    public Intervals(List<Interval> data) {\n    }\n\n    public void preprocess() {\n    }\n\n    public List<Interval> query(int time) {\n    }\n    List<Interval> intervals;\n};\n",
-  "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\nclass Intervals\n    # @param intervals, Intervals array\n    def initialize(intervals)\n    end\n\n    def preprocess()\n    end\n\n    # @param time, integer\n    # @return Intervals array\n    def query(time)\n    end\nend",
-  "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#         self.begin = b\n#         self.end = e\n\nclass Intervals:\n    # @param intervals, list of Interval\n    def __init__(self, intervals):\n\n    def preprocess(self):\n\n    # @param time, integer\n    # @return Intervals list\n    def query(self, time):\n",
-  "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\nIntervals = {\n    -- @param intervals, table of Intervals\n    preprocess = function(self, intervals)\n        self.intervals = intervals\n    end,\n\n    -- @param time, integer\n    -- @return table of Intervals\n    query = function(self, time)\n    end\n}\n",
-  
-  "in_type_cpp": [
-    "vector<Interval>",
-    "int"
-  ],
-  "ret_type_cpp": "vector<Interval>",
-  "out_type_cpp": "vector<vector<Interval>>",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "Interval[]",
-    "int"
-  ],
-  "ret_type_java": "List<Interval>",
-  "out_type_java": "List<List<Interval>>",
-  "judge_type_java": "equal",
-  "class_name_java": "Intervals",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  
-  "judge_call": "",
-  
-  "difficulty": "Hard",
-  "time": "2015-01-31 23:21:49",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Query Intervals II",
+    "id": "query-intervals-2",
+    "discuss_link": "",
+    "desc": "<p>Follow up for \"Query Intervals\":<br><br>How about return all intervals that cover the given time?<br><br><strong>Note:</strong> Please keep your results sorted by the begin time.</p>",
+    "difficulty": "Hard",
+    "source": "Google",
+    "time": "2015-01-31 23:21:49",
+    "tags": [],
+    "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nclass Intervals {\npublic:\n    Intervals(vector<Interval>& data) {\n    }\n    \n    void preprocess() {\n    }\n    \n    vector<Interval> query(int time) {\n    }\nprivate:\n    vector<Interval> intervals;\n};",
+    "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Intervals {\n    public Intervals(List<Interval> data) {\n    }\n\n    public void preprocess() {\n    }\n\n    public List<Interval> query(int time) {\n    }\n    List<Interval> intervals;\n};\n",
+    "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\nclass Intervals\n    # @param intervals, Intervals array\n    def initialize(intervals)\n    end\n\n    def preprocess()\n    end\n\n    # @param time, integer\n    # @return Intervals array\n    def query(time)\n    end\nend",
+    "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#         self.begin = b\n#         self.end = e\n\nclass Intervals:\n    # @param intervals, list of Interval\n    def __init__(self, intervals):\n\n    def preprocess(self):\n\n    # @param time, integer\n    # @return Intervals list\n    def query(self, time):\n",
+    "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\nIntervals = {\n    -- @param intervals, table of Intervals\n    preprocess = function(self, intervals)\n        self.intervals = intervals\n    end,\n\n    -- @param time, integer\n    -- @return table of Intervals\n    query = function(self, time)\n    end\n}\n",
+    "in_type_cpp": [
+        "vector<Interval>",
+        "int"
+    ],
+    "ret_type_cpp": "vector<Interval>",
+    "out_type_cpp": "vector<vector<Interval>>",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "Interval[]",
+        "int"
+    ],
+    "ret_type_java": "List<Interval>",
+    "out_type_java": "List<List<Interval>>",
+    "judge_type_java": "equal",
+    "class_name_java": "Intervals",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_call": ""
 }

@@ -1,52 +1,45 @@
 {
-  "name": "Lowest Common Ancestor",
-  "id": "lca-1",
-  "discuss_link": "http://www.fgdsb.com/2015/01/03/lowest-common-ancestor/",
-  "desc": "<p>Given an arbitrary binary tree and two values, write a function to find the least common ancestor.</p>",
-  
-  "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* lca(TreeNode* root, int m, int n) {\n}",
-  "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode lca(TreeNode root, int m, int n) {\n    }\n}",
-  "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @param m,n, integer\n# @return TreeNode\ndef lca(root, m, n)\nend",
-  "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @param m,n, integer\n# @return TreeNode\ndef lca(root, m, n):",
-  "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @param m,n, integer\n-- @return TreeNode\nfunction lca(root, m, n)\nend",
-  
-  "in_type_cpp": [
-    "TreeNode*",
-    "int",
-    "int"
-  ],
-  "ret_type_cpp": "TreeNode*",
-  "out_type_cpp": "TreeNode*",
-  "judge_type_cpp": "!equals(out[i], answer)",
-  "vis_answer_cpp": "node_to_string(answer)",
-  "vis_out_cpp": "node_to_string(out[i])",
-  
-  "in_type_java": [
-    "TreeNode",
-    "int",
-    "int"
-  ],
-  "ret_type_java": "TreeNode",
-  "out_type_java": "TreeNode",
-  "judge_type_java": "!common.equals(out[i], answer)",
-  "vis_answer_java": "common.node_to_string(answer)",
-  "vis_out_java": "common.node_to_string(out[i])",
-  "judge_type_ruby": "!node_equals(@out[i], answer)",
-  "vis_answer_ruby": "node_to_string(answer)",
-  "vis_out_ruby": "node_to_string(@out[i])",
-  "judge_type_python": "not node_equals(out[i], answer)",
-  "vis_answer_python": "node_to_string(answer)",
-  "vis_out_python": "node_to_string(out[i])",
-  "judge_type_lua": "not node_equals(out[i], answer)",
-  "vis_answer_lua": "node_to_string(answer)",
-  "vis_out_lua": "node_to_string(out[i])",
-  
-  "judge_call": "lca(@)",
-  
-  "difficulty": "Medium",
-  "time": "2015-02-03 20:14:36",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Lowest Common Ancestor",
+    "id": "lca-1",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/lowest-common-ancestor/",
+    "desc": "<p>Given an arbitrary binary tree and two values, write a function to find the least common ancestor.</p>",
+    "difficulty": "Medium",
+    "source": "CC150",
+    "time": "2015-02-03 20:14:36",
+    "tags": [],
+    "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* lca(TreeNode* root, int m, int n) {\n}",
+    "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public TreeNode lca(TreeNode root, int m, int n) {\n    }\n}",
+    "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @param m,n, integer\n# @return TreeNode\ndef lca(root, m, n)\nend",
+    "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @param m,n, integer\n# @return TreeNode\ndef lca(root, m, n):",
+    "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @param m,n, integer\n-- @return TreeNode\nfunction lca(root, m, n)\nend",
+    "in_type_cpp": [
+        "TreeNode*",
+        "int",
+        "int"
+    ],
+    "ret_type_cpp": "TreeNode*",
+    "out_type_cpp": "TreeNode*",
+    "judge_type_cpp": "!equals(out[i], answer)",
+    "vis_answer_cpp": "node_to_string(answer)",
+    "vis_out_cpp": "node_to_string(out[i])",
+    "in_type_java": [
+        "TreeNode",
+        "int",
+        "int"
+    ],
+    "ret_type_java": "TreeNode",
+    "out_type_java": "TreeNode",
+    "judge_type_java": "!common.equals(out[i], answer)",
+    "vis_answer_java": "common.node_to_string(answer)",
+    "vis_out_java": "common.node_to_string(out[i])",
+    "judge_type_ruby": "!node_equals(@out[i], answer)",
+    "vis_answer_ruby": "node_to_string(answer)",
+    "vis_out_ruby": "node_to_string(@out[i])",
+    "judge_type_python": "not node_equals(out[i], answer)",
+    "vis_answer_python": "node_to_string(answer)",
+    "vis_out_python": "node_to_string(out[i])",
+    "judge_type_lua": "not node_equals(out[i], answer)",
+    "vis_answer_lua": "node_to_string(answer)",
+    "vis_out_lua": "node_to_string(out[i])",
+    "judge_call": "lca(@)"
 }

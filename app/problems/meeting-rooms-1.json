@@ -1,38 +1,31 @@
 {
-  "name": "Meeting Rooms",
-  "id": "meeting-rooms-1",
-  "discuss_link": "http://www.fgdsb.com/2015/01/08/meeting-rooms/",
-  "desc": "<p>Given an array of pairs where each pair contains the start and end time of a meeting (as in int), please write a function to determine if a single person can attend all the meetings.<br><br>For example:<br>Input: <code>[[1,4], [4, 5], [3,4], [2,3]]</code><br>Output: <code>false</code><br><br><strong>Note</strong>: We use <code>Interval</code> class to represent a meeting.</p>",
-  
-  "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nbool attend_all(vector<Interval>& meetings) {\n}",
-  "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Solution {\n    public boolean attend_all(Interval[] meetings) {\n    }\n}",
-  "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\n# @param intervals, Intervals array\ndef attend_all(meetings)\nend",
-  "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#         self.begin = b\n#         self.end = e\n\n# @param intervals, Intervals list\ndef attend_all(meetings):",
-  "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\n-- @param meetings, table of Intervals\nfunction attend_all(meetings)\nend",
-  
-  "in_type_cpp": [
-    "vector<Interval>"
-  ],
-  "ret_type_cpp": "bool",
-  "out_type_cpp": "bool",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "Interval[]"
-  ],
-  "ret_type_java": "boolean",
-  "out_type_java": "boolean",
-  "judge_type_java": "equal",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  "judge_type_lua": "equal",
-  
-  "judge_call": "attend_all(@)",
-  
-  "difficulty": "Easy",
-  "time": "2015-01-31 19:30:30",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Meeting Rooms",
+    "id": "meeting-rooms-1",
+    "discuss_link": "http://www.fgdsb.com/2015/01/08/meeting-rooms/",
+    "desc": "<p>Given an array of pairs where each pair contains the start and end time of a meeting (as in int), please write a function to determine if a single person can attend all the meetings.<br><br>For example:<br>Input: <code>[[1,4], [4, 5], [3,4], [2,3]]</code><br>Output: <code>false</code><br><br><strong>Note</strong>: We use <code>Interval</code> class to represent a meeting.</p>",
+    "difficulty": "Easy",
+    "source": "Facebook",
+    "time": "2015-01-31 19:30:30",
+    "tags": [],
+    "code_cpp": "/*\nstruct Interval {\n    int begin{ 0 }, end{ 0 };\n};\n*/\nbool attend_all(vector<Interval>& meetings) {\n}",
+    "code_java": "/*\npublic class Interval {\n    public int begin = 0, end = 0;\n    public Interval() {}\n    public Interval(int b, int e) {\n        begin = b;\n        end = e;\n    }\n}\n*/\npublic class Solution {\n    public boolean attend_all(Interval[] meetings) {\n    }\n}",
+    "code_ruby": "# class Interval\n#     attr_accessor :begin_t, :end_t\n#     def initialize(b = 0, e = 0)\n#         @begin_t, @end_t = b, e\n#     end\n# end\n\n# @param intervals, Intervals array\ndef attend_all(meetings)\nend",
+    "code_python": "# class Interval:\n#     def __init__(self, b=0, e=0):\n#         self.begin = b\n#         self.end = e\n\n# @param intervals, Intervals list\ndef attend_all(meetings):",
+    "code_lua": "-- Definition for an interval\n-- Interval = {\n--     new = function(b, e)\n--         return {begin_t = b, end_t = e}\n--     end\n-- }\n\n-- @param meetings, table of Intervals\nfunction attend_all(meetings)\nend",
+    "in_type_cpp": [
+        "vector<Interval>"
+    ],
+    "ret_type_cpp": "bool",
+    "out_type_cpp": "bool",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "Interval[]"
+    ],
+    "ret_type_java": "boolean",
+    "out_type_java": "boolean",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "attend_all(@)"
 }

@@ -1,40 +1,33 @@
 {
-  "name": "Find Kth Smallest Element",
-  "id": "find-kth-smallest-element",
-  "discuss_link": "http://www.fgdsb.com/2015/01/03/find-kth-smallest-element/",
-  "desc": "<p>Find the k-th (zero-based) smallest element in an unordered array.<br><br>Can you provide an <code>O(N)</code> solution?</p>",
-  
-  "code_cpp": "int kth_element(vector<int>& arr, int k) {\n}",
-  "code_java": "public class Solution {\n    public int kth_element(int[] arr, int k) {\n    }\n}",
-  "code_ruby": "# @param arr, array of integers k, integer\n# @return integer\ndef kth_element(arr, k)\nend",
-  "code_python": "# @param arr, array of integers k, integer\n# @return integer\ndef kth_element(arr, k):",
-  "code_lua": "-- @param arr, array of integers k, integer\n-- @return integer\nfunction kth_element(arr, k)\nend",
-  
-  "in_type_cpp": [
-    "vector<int>",
-    "int"
-  ],
-  "ret_type_cpp": "int",
-  "out_type_cpp": "int",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "int[]",
-    "int"
-  ],
-  "ret_type_java": "int",
-  "out_type_java": "int",
-  "judge_type_java": "equal",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  "judge_type_lua": "equal",
-  
-  "judge_call": "kth_element(@)",
-  
-  "difficulty": "Medium",
-  "time": "2015-01-29 16:16:39",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Find Kth Smallest Element",
+    "id": "find-kth-smallest-element",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/find-kth-smallest-element/",
+    "desc": "<p>Find the k-th (zero-based) smallest element in an unordered array.<br><br>Can you provide an <code>O(N)</code> solution?</p>",
+    "difficulty": "Medium",
+    "source": "CLRS",
+    "time": "2015-01-29 16:16:39",
+    "tags": [],
+    "code_cpp": "int kth_element(vector<int>& arr, int k) {\n}",
+    "code_java": "public class Solution {\n    public int kth_element(int[] arr, int k) {\n    }\n}",
+    "code_ruby": "# @param arr, array of integers k, integer\n# @return integer\ndef kth_element(arr, k)\nend",
+    "code_python": "# @param arr, array of integers k, integer\n# @return integer\ndef kth_element(arr, k):",
+    "code_lua": "-- @param arr, array of integers k, integer\n-- @return integer\nfunction kth_element(arr, k)\nend",
+    "in_type_cpp": [
+        "vector<int>",
+        "int"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]",
+        "int"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "kth_element(@)"
 }

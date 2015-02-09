@@ -1,40 +1,33 @@
 {
-  "name": "Valid Tree",
-  "id": "valid-tree",
-  "discuss_link": "http://www.fgdsb.com/2015/01/25/valid-tree/",
-  "desc": "<p>There are <code>n</code> nodes numbered from <code>0</code> to <code>n-1</code> and a set of edges (undirected). Please determine if it is a valid tree.<br><br>For example: <br><code>n = 5</code>, edge set = <code>[[0,1], [0,2], [2,3], [2,4]]</code><br>Result: <code>true</code><br><br><code>n = 5</code>, edge set = <code>[[0,1], [1,2], [0,2], [2,3], [2,4]]</code><br>Result: <code>false</code><br><br><code>n = 4</code>, edge set = <code>[[0,1], [2,3]]</code><br>Result: <code>false</code><br><br><strong>Node:</strong> The input would be an array of edges, each edge is represented as an array which contains two vertices.</p>",
-  
-  "code_cpp": "bool valid_tree(vector<vector<int>>& edges, int n) {\n}",
-  "code_java": "public class Solution {\n    public boolean valid_tree(int[][] edges, int n) {\n    }\n}",
-  "code_ruby": "# @param edges, array of array of integers n, integer\n# @return boolean\ndef valid_tree(edges, n)\nend",
-  "code_python": "# @param edges, list of list of integers n, integer\n# @return boolean\ndef valid_tree(edges, n):",
-  "code_lua": "-- @param edges, table of table of integers n, integer\n-- @return boolean\nfunction valid_tree(edges, n)\nend",
-  
-  "in_type_cpp": [
-    "vector<vector<int>>",
-    "int"
-  ],
-  "ret_type_cpp": "bool",
-  "out_type_cpp": "bool",
-  "judge_type_cpp": "equal",
-  
-  "in_type_java": [
-    "int[][]",
-    "int"
-  ],
-  "ret_type_java": "boolean",
-  "out_type_java": "boolean",
-  "judge_type_java": "equal",
-  "judge_type_ruby": "equal",
-  "judge_type_python": "equal",
-  "judge_type_lua": "equal",
-  
-  "judge_call": "valid_tree(@)",
-  
-  "difficulty": "Hard",
-  "time": "2015-01-31 18:00:39",
-  "source": "Unknown",
-  "tags": [
-
-  ]
+    "name": "Valid Tree",
+    "id": "valid-tree",
+    "discuss_link": "http://www.fgdsb.com/2015/01/25/valid-tree/",
+    "desc": "<p>There are <code>n</code> nodes numbered from <code>0</code> to <code>n-1</code> and a set of edges (undirected). Please determine if it is a valid tree.<br><br>For example: <br><code>n = 5</code>, edge set = <code>[[0,1], [0,2], [2,3], [2,4]]</code><br>Result: <code>true</code><br><br><code>n = 5</code>, edge set = <code>[[0,1], [1,2], [0,2], [2,3], [2,4]]</code><br>Result: <code>false</code><br><br><code>n = 4</code>, edge set = <code>[[0,1], [2,3]]</code><br>Result: <code>false</code><br><br><strong>Node:</strong> The input would be an array of edges, each edge is represented as an array which contains two vertices.</p>",
+    "difficulty": "Hard",
+    "source": "Google",
+    "time": "2015-01-31 18:00:39",
+    "tags": [],
+    "code_cpp": "bool valid_tree(vector<vector<int>>& edges, int n) {\n}",
+    "code_java": "public class Solution {\n    public boolean valid_tree(int[][] edges, int n) {\n    }\n}",
+    "code_ruby": "# @param edges, array of array of integers n, integer\n# @return boolean\ndef valid_tree(edges, n)\nend",
+    "code_python": "# @param edges, list of list of integers n, integer\n# @return boolean\ndef valid_tree(edges, n):",
+    "code_lua": "-- @param edges, table of table of integers n, integer\n-- @return boolean\nfunction valid_tree(edges, n)\nend",
+    "in_type_cpp": [
+        "vector<vector<int>>",
+        "int"
+    ],
+    "ret_type_cpp": "bool",
+    "out_type_cpp": "bool",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[][]",
+        "int"
+    ],
+    "ret_type_java": "boolean",
+    "out_type_java": "boolean",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "valid_tree(@)"
 }

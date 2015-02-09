@@ -6,22 +6,33 @@ struct TreeNode {
     TreeNode* right{ nullptr };
 };
 */
-vector<vector<int>> all_path(TreeNode* root) {
+
+vector<vector<int>> vertical_traversal(TreeNode* root) {
     vector<vector<int>> ret;
-    
-    function<void(TreeNode*, vector<int>&)> dfs = [&](TreeNode* node, vector<int>& cur) {
+    function<void(TreeNode*, int&, int&, int)> minmax =
+            [&](TreeNode* node, int& min, int& max, int d){
         if(!node) return;
-        cur.push_back(node->val);
-        if(!node->left && !node->right) {
-            ret.push_back(cur);
-        } else {
-            dfs(node->left,cur);
-            dfs(node->right,cur);
-        }
-        cur.pop_back();
+        min = std::min(min, d);
+        max = std::max(max, d);
+        minmax(node->left,min,max,d-1);
+        minmax(node->right,min,max,d+1);
     };
     
-    vector<int> cur;
-    dfs(root,cur);
+    function<void(TreeNode*, int, int, vector<int>&)> print =
+        [&](TreeNode* node, int d, int cur, vector<int>& sln) {
+        if(!node) return;
+        if(d == cur) sln.push_back(node->val);
+        print(node->left, d, cur-1, sln);
+        print(node->right, d, cur+1, sln);
+    };
+    
+    int min_hd = INT_MAX, max_hd = INT_MIN;
+    minmax(root,min_hd,max_hd,0);
+    
+    for(int i = min_hd; i <= max_hd; ++i) {
+        vector<int> sln;
+        print(root, i, 0, sln);
+        ret.push_back(sln);
+    }
     return ret;
 }
