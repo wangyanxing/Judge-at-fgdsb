@@ -1,0 +1,18 @@
+{
+    "name": "Find Islands",
+    "id": "find-islands",
+    "discuss_link": "",
+    "desc": "<p>\n    Given a 2D matrix with 0s and 1s, write a function to count the number of islands.\n</p>\n<p>\n    A group of connected 1s forms an island. For example, the below matrix contains 4 islands\n</p>\n<pre>\n0011010\n0010010\n1000110\n0000001\n</pre>",
+    "difficulty": "Medium",
+    "source": "Google",
+    "time": "2015-02-09 15:32:32",
+    "tags": [
+        "DFS",
+        "BFS"
+    ],
+    "code_cpp": "int num_islands(vector<vector<int>>& mat) {\n}",
+    "code_java": "public class Solution {\n    public int num_islands(int[][] mat) {\n    }\n}",
+    "code_ruby": "# @param mat, integer matrix\n# @return integer\ndef num_islands(mat)\nend",
+    "code_python": "# @param mat, integer matrix\n# @return integer\ndef num_islands(mat):",
+    "code_lua": "-- @param mat, integer matrix\n-- @return integer\nfunction num_islands(mat)\nend"
+}

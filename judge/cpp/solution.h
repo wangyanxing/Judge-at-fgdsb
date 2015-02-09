@@ -3,7 +3,7 @@ struct Point {
     int x{ 0 }, y{ 0 };
 };
 */
-void search(Point pt, unordered_map<Point, bool>& visited, vector<vector<int>> mat) {
+void search(Point pt, unordered_map<Point, bool>& visited, vector<vector<int>>& mat) {
     vector<Point> dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
     for(auto dir : dirs) {
         Point newp = { dir.x + pt.x, dir.y + pt.y };
@@ -18,7 +18,7 @@ void search(Point pt, unordered_map<Point, bool>& visited, vector<vector<int>> m
     }
 }
 
-vector<Point> flowing_water(vector<vector<int>> mat) {
+vector<Point> flowing_water(vector<vector<int>>& mat) {
     int n = mat.size();
     
     unordered_map<Point, bool> visited_pac;

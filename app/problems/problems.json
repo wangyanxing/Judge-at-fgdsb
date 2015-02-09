@@ -222,5 +222,12 @@
         "name": "Flowing Water",
         "difficulty": "Hard",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-09 15:32:32",
+        "id": "find-islands",
+        "name": "Find Islands",
+        "difficulty": "Medium",
+        "source": "Google"
     }
 ]
