@@ -1,0 +1,19 @@
+{
+    "name": "Binary Tree Vertical Traversal",
+    "id": "tree-vertical-traversal",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/print-binary-tree-vertically/",
+    "desc": "<p>\n<p>Given a binary tree, traverse it vertically.</p>\n<p>\n    For example:\n    <pre>\n     5 \n   /   \\\n  2     7\n / \\   / \\\n1   3 6   8\n     \\     \\\n      4     9</pre>\n</p>\n<p>\n    Should return as:\n<pre>\n[\n  [1],\n  [2],\n  [5, 3, 6],\n  [4, 7],\n  [8],\n  [9]\n]</pre>    \n</p>\n</p>",
+    "difficulty": "Medium",
+    "source": "Facebook",
+    "time": "2015-02-08 16:59:46",
+    "tags": [
+        "Binary Tree",
+        "DFS",
+        "Hash Table"
+    ],
+    "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\n\nvector<int> vertical_traversal(TreeNode* root) {\n}",
+    "code_java": "/*\npublic class TreeNode {\n    public int val;\n    public TreeNode left, right;\n    public TreeNode(int x) { val = x; }\n}\n*/\npublic class Solution {\n    public List<Integer> vertical_traversal(TreeNode root) {\n    }\n}",
+    "code_ruby": "# class TreeNode\n#    attr_accessor :left, :right, :val\n#    def initialize(v)\n#        @val, @left, @right = v, nil, nil\n#    end\n\n# @param root, TreeNode\n# @return array of integers\ndef vertical_traversal(root)\nend",
+    "code_python": "# class TreeNode:\n#     def initialize(self, v=0):\n#         self.val, self.left, self.right = v, None, None\n\n# @param root, TreeNode\n# @return list of integers\ndef vertical_traversal(root):",
+    "code_lua": "-- Definition for a binary tree node\n-- TreeNode = {\n--     new = function(v)\n--         return {val = v, left = nil, right = nil}\n--     end\n-- }\n\n-- @param root, TreeNode\n-- @return table of integers\nfunction vertical_traversal(root)\nend\n"
+}

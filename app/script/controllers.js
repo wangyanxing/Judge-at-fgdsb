@@ -67,62 +67,64 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         $scope.question.code_python = "";
         $scope.question.code_lua = "";
 
-
         $scope.judge_obj = {};
         $scope.judge_json = "";
 
         var script_tempalte = "require './common'\nrequire '../ruby/common'\n\nclass Test_class < TestBase\n  def initialize(name)\n    super(name)\n  end\n\n  def add_test\n  end\n\n  def gen_tests\n    @test_in, @test_out = [[]], []\n  end\nend\n\nTest_class.new 'ID'";
 
-        if ($scope.question.id != '') {
-            $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
-                var excluded_key = ["name", "id", "discuss_link", "desc",
-                    "code_cpp", "code_java", "code_ruby", "code_python", "code_lua"];
+        $scope.problems = Problem.query();
+        $scope.problems.$promise.then(function (result) {
+            if ($scope.question.id != '') {
+                $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
+                    var excluded_key = ["name", "id", "discuss_link", "desc",
+                        "code_cpp", "code_java", "code_ruby", "code_python", "code_lua", "difficulty", "source", "time", "tags"];
 
-                for (var prop in $scope.problem) {
-                    if(excluded_key.indexOf(prop) >= 0) continue;
-                    $scope.judge_obj[prop] = $scope.problem[prop];
-                }
+                    for (var prop in $scope.problem) {
+                        if(excluded_key.indexOf(prop) >= 0) continue;
+                        $scope.judge_obj[prop] = $scope.problem[prop];
+                    }
 
-                $scope.judge_json = JSON.stringify($scope.judge_obj, null, '    ')
-                    .replace(/"judge_type_cpp"/, '\n    $&')
-                    .replace(/"judge_type_java"/, '\n    $&')
-                    .replace(/"judge_type_lua"/, '\n    $&');
+                    $scope.judge_json = JSON.stringify($scope.judge_obj, null, '    ')
+                        .replace(/"judge_type_cpp"/, '\n    $&')
+                        .replace(/"judge_type_java"/, '\n    $&')
+                        .replace(/"judge_type_lua"/, '\n    $&');
 
-                $scope.$judge_editor.setValue($scope.judge_json);
-                $scope.$judge_editor.clearSelection();
+                    $scope.$judge_editor.setValue($scope.judge_json);
+                    $scope.$judge_editor.clearSelection();
 
-                $scope.question.name = $scope.problem.name;
-                $scope.question.discuss_link = $scope.problem.discuss_link;
-                $scope.question.difficulty = $scope.problem.difficulty;
+                    $scope.question.name = $scope.problem.name;
+                    $scope.question.discuss_link = $scope.problem.discuss_link;
+                    $scope.question.difficulty = $scope.problem.difficulty;
 
-                $scope.question.desc = $scope.problem.desc;
-                $scope.$desc_editor.setValue($scope.problem.desc);
-                $scope.$desc_editor.clearSelection();
+                    $scope.question.desc = $scope.problem.desc;
+                    $scope.$desc_editor.setValue($scope.problem.desc);
+                    $scope.$desc_editor.clearSelection();
 
-                for(var i in langs) {
-                    var lang = langs[i];
-                    $scope.question[codes[lang]] = $scope.problem[codes[lang]];
-                }
+                    for(var i in langs) {
+                        var lang = langs[i];
+                        $scope.question[codes[lang]] = $scope.problem[codes[lang]];
+                    }
 
-                $scope.$default_code_editor.setValue($scope.question[codes[$scope.cur_lang]]);
-                $scope.$default_code_editor.clearSelection();
+                    $scope.$default_code_editor.setValue($scope.question[codes[$scope.cur_lang]]);
+                    $scope.$default_code_editor.clearSelection();
 
-                if ($scope.problem.source) {
-                    $scope.question.source = $scope.problem.source;
-                }
+                    if ($scope.problem.source) {
+                        $scope.question.source = $scope.problem.source;
+                    }
 
-                var script_file = 'judge/build_tests/' + $scope.question.id + '.rb';
-                var text = fs.readFileSync(script_file,'utf8');
-                $scope.$script_editor.setValue(text);
-                $scope.$script_editor.clearSelection();
+                    var script_file = 'judge/build_tests/' + $scope.question.id + '.rb';
+                    var text = fs.readFileSync(script_file,'utf8');
+                    $scope.$script_editor.setValue(text);
+                    $scope.$script_editor.clearSelection();
 
-                $scope.question.time = $scope.problem.time;
+                    $scope.question.time = $scope.problem.time;
 
-                for(var i in $scope.problem.tags) {
-                    $("#problem-tags").tagsinput('add', $scope.problem.tags[i]);
-                }
-            });
-        }
+                    for(var i in $scope.problem.tags) {
+                        $("#problem-tags").tagsinput('add', $scope.problem.tags[i]);
+                    }
+                });
+            }
+        });
 
         $scope.onSave = function(e) {
             if ($scope.question.id == '') {
@@ -184,6 +186,10 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             // 1. save json
             $scope.question.tags = $("#problem-tags").tagsinput('items');
 
+            if($scope.question.time == "") {
+                $scope.question.time = moment().format('YYYY-MM-DD HH:mm:ss');
+            }
+
             var judge_obj = JSON.parse($scope.$judge_editor.getValue());
             var save_obj = $scope.question;
             angular.extend(save_obj, judge_obj);
@@ -199,6 +205,34 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
 
             // 2. save ruby script
             fs.writeFile('judge/build_tests/' + save_obj.id + '.rb', $scope.$script_editor.getValue(), function (err) {
+                if (err) {
+                    alert(err);
+                    return;
+                }
+            });
+
+            // 3. append to problems.json
+            var found = null;
+            for(var i in $scope.problems) {
+                if($scope.problems[i].id == save_obj.id) {
+                    found = $scope.problems[i];
+                    found.difficulty = save_obj.difficulty;
+                    found.source = save_obj.source;
+                    found.name = save_obj.name;
+                }
+            }
+            if (!found) {
+                found = {
+                    "time" : save_obj.time,
+                    "id" : save_obj.id,
+                    "name" : save_obj.name,
+                    "difficulty" : save_obj.difficulty,
+                    "source" : save_obj.source
+                };
+                $scope.problems.push(found);
+            }
+            str = JSON.stringify($scope.problems, null, '    ');
+            fs.writeFile('app/problems/problems.json', str, function (err) {
                 if (err) {
                     alert(err);
                     return;

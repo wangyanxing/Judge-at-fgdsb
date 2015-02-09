@@ -1,38 +1,33 @@
 {
-  "name": "Wiggle Sort",
-  "id": "wiggle-sort",
-  "discuss_link": "http://www.fgdsb.com/2015/01/20/special-sorting/",
-  "desc": "<p>Write a function to convert the array into alternate increasing decreasing numbers: <br><br><code>a[0] <= a[1] >= a[2] <= a[3] >=...</code><br><br><b>Note</b>: You should solve it in place and one pass.</p>",
-  
-  "code_cpp": "void wiggle_sort(vector<int>& arr) {\n}",
-  "code_java": "public class Solution {\n    public void wiggle_sort(int[] arr) {\n    }\n}",
-  "code_ruby": "# @pram arr, array of integers\ndef wiggle_sort(arr)\nend",
-  "code_python": "# @pram arr, list of integers\ndef wiggle_sort(arr):",
-  "code_lua": "-- @pram arr, table of integers\nfunction wiggle_sort(arr)\nend",
-  
-  "in_type_cpp": [
-    "vector<int>"
-  ],
-  "ret_type_cpp": "void",
-  "out_type_cpp": "vector<int>",
-  "judge_type_cpp": "!test_wiggle(in_0[i])",
-  
-  "in_type_java": [
-    "int[]"
-  ],
-  "ret_type_java": "void",
-  "out_type_java": "int[]",
-  "judge_type_java": "!common.test_wiggle(wiggle_sort.in_0[i])",
-  "judge_type_ruby": "!test_wiggle(@in_0[i])",
-  "judge_type_python": "not test_wiggle(in_0[i])",
-  "judge_type_lua": "not test_wiggle(in_0[i])",
-  
-  "judge_call": "wiggle_sort(@)",
-  
-  "difficulty": "Medium",
-  "time": "2015-01-27 17:30:01",
-  "source": "Unknown",
-  "tags": [
-    "Array"
-  ]
+    "name": "Wiggle Sort",
+    "id": "wiggle-sort",
+    "discuss_link": "http://www.fgdsb.com/2015/01/20/special-sorting/",
+    "desc": "<p>Write a function to convert the array into alternate increasing decreasing numbers: <br><br><code>a[0] <= a[1] >= a[2] <= a[3] >=...</code><br><br><b>Note</b>: You should solve it in place and one pass.</p>",
+    "difficulty": "Medium",
+    "source": "Unknown",
+    "time": "2015-01-27 17:30:01",
+    "tags": [
+        "Array"
+    ],
+    "code_cpp": "void wiggle_sort(vector<int>& arr) {\n}",
+    "code_java": "public class Solution {\n    public void wiggle_sort(int[] arr) {\n    }\n}",
+    "code_ruby": "# @pram arr, array of integers\ndef wiggle_sort(arr)\nend",
+    "code_python": "# @pram arr, list of integers\ndef wiggle_sort(arr):",
+    "code_lua": "-- @pram arr, table of integers\nfunction wiggle_sort(arr)\nend",
+    "in_type_cpp": [
+        "vector<int>"
+    ],
+    "ret_type_cpp": "void",
+    "out_type_cpp": "vector<int>",
+    "judge_type_cpp": "!test_wiggle(in_0[i])",
+    "in_type_java": [
+        "int[]"
+    ],
+    "ret_type_java": "void",
+    "out_type_java": "int[]",
+    "judge_type_java": "!common.test_wiggle(wiggle_sort.in_0[i])",
+    "judge_type_ruby": "!test_wiggle(@in_0[i])",
+    "judge_type_python": "not test_wiggle(in_0[i])",
+    "judge_type_lua": "not test_wiggle(in_0[i])",
+    "judge_call": "wiggle_sort(@)"
 }
