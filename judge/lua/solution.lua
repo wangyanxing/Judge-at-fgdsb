@@ -1,31 +1,12 @@
--- Definition for a binary tree node
--- TreeNode = {
---     new = function(v)
---         return {val = v, left = nil, right = nil}
---     end
+-- Definition of Point
+-- Point = {
+-- 	new = function(_x, _y)
+-- 		return {x = _x, y = _y}
+-- 	end
 -- }
 
-function dfs(ret, node, cur)
-    if not node then
-        return
-    end
-    
-    cur[#cur + 1] = node.val
-    
-    if not node.left and not node.right then
-        ret[#ret + 1] = copy(cur)
-    else
-        dfs(ret, node.left, cur)
-        dfs(ret, node.right, cur)
-    end
-    
-    table.remove(cur, #cur)
-end
-
--- @param root, TreeNode
--- @return table of table of integers
-function all_path(root)
-    local ret = {}
-    dfs(ret, root, {})
-    return ret
+-- @param mat, integer matrix
+-- @return table of points
+function flowing_water(mat)
+    return {}
 end

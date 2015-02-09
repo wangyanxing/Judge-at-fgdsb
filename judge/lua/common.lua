@@ -296,6 +296,35 @@ function read_interval_matrix_arr(f)
 	return ret
 end
 
+function read_point_array(f)
+	local num = tonumber(f:read())
+	local ret = {}
+	for i = 1, num do
+		local b = tonumber(f:read())
+		local e = tonumber(f:read())
+		ret[i] = Point.new(b, e)
+	end
+	return ret
+end
+
+function read_point_matrix(f)
+	local num = tonumber(f:read())
+	local ret = {}
+	for i = 1, num do
+		ret[i] = read_interval_array(f)
+	end
+	return ret
+end
+
+function read_point_matrix_arr(f)
+	local num = tonumber(f:read())
+	local ret = {}
+	for i = 1, num do
+		ret[i] = read_interval_matrix(f)
+	end
+	return ret
+end
+
 function read_num_array(f)
 	local num = tonumber(f:read())
 	local ret = {}

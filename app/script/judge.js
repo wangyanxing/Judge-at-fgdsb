@@ -312,8 +312,9 @@ var judge_ruby = function($scope, callback, msg) {
 var judge_python = function($scope, callback, msg) {
     var py_out = generate_python($scope.problem);
 
+    var sln = "from common import *\n" + $scope.$editor.getValue()
     // write source
-    fs.writeFile('judge/python/solution.py', $scope.$editor.getValue(), function (err) {
+    fs.writeFile('judge/python/solution.py', sln, function (err) {
         if (err) {
             ret = {"result": "Internal Error", "details": err};
             callback(ret);

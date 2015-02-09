@@ -54,23 +54,22 @@ struct UndirectedGraphNode {
     UndirectedGraphNode(int x) : label(x) {};
 };
 
+////////////////////////////////////////////////////////////////////////
+
 struct Point {
     Point(int _x = 0, int _y = 0): x(_x), y(_y){}
     int x, y;
 };
 
-struct Interval {
-    Interval(int b = 0, int e = 0): begin(b), end(e){}
-    int begin, end;
+namespace std {
+    template <>
+    class hash<Point>{
+        public :
+        size_t operator()(const Point &c ) const {
+            return std::hash<int>()(c.x * 100000 + c.y);
+        }
+    };
 };
-
-bool operator== (Interval &i1, Interval &i2){
-    return i1.begin == i2.begin && i1.end == i2.end;
-}
-
-bool operator== (const Interval &i1, const Interval &i2){
-    return i1.begin == i2.begin && i1.end == i2.end;
-}
 
 bool operator== (Point &i1, Point &i2){
     return i1.x == i2.x && i1.y == i2.y;
@@ -88,6 +87,30 @@ bool operator< (const Point &__x, const Point &__y){
     return __x.x < __y.x || (!(__y.x < __x.x) && __x.y < __y.y);
 }
 
+////////////////////////////////////////////////////////////////////////
+
+struct Interval {
+    Interval(int b = 0, int e = 0): begin(b), end(e){}
+    int begin, end;
+};
+
+bool operator== (Interval &i1, Interval &i2){
+    return i1.begin == i2.begin && i1.end == i2.end;
+}
+
+bool operator== (const Interval &i1, const Interval &i2){
+    return i1.begin == i2.begin && i1.end == i2.end;
+}
+
+namespace std {
+    template <>
+    class hash<Interval>{
+        public :
+        size_t operator()(const Interval &c ) const {
+            return std::hash<int>()(c.begin * 100000 + c.end);
+        }
+    };
+};
 
 ////////////////////////////////////////////////////////////////////////
 

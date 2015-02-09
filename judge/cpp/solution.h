@@ -3,39 +3,55 @@ struct Point {
     int x{ 0 }, y{ 0 };
 };
 */
+void search(Point pt, unordered_map<Point, bool>& visited, vector<vector<int>> mat) {
+    vector<Point> dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+    for(auto dir : dirs) {
+        Point newp = { dir.x + pt.x, dir.y + pt.y };
+        if( newp.x < 0 || newp.x >= mat.size() || newp.y < 0 || newp.y >= mat.size() ) {
+            continue;
+        }
+        if( mat[newp.x][newp.y] < mat[pt.x][pt.y] || visited.count(newp) ) {
+            continue;
+        }
+        visited[newp] = true;
+        search(newp, visited, mat);
+    }
+}
+
 vector<Point> flowing_water(vector<vector<int>> mat) {
-    set<Point> visited, leftOK, rightOK;
     int n = mat.size();
     
-    function<void(int,int,Point)> search = [&](int i, int j, Point origin) {
-        if (j == 0 || i == 0) leftOK.insert(origin);
-        if (j == n-1 || i == n-1) rightOK.insert(origin);
-        if(visited.size() == n*n) return;
-        //cout <<Point(i,j)<<endl;
-        vector<Point> dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}}; 
-        for(auto dir : dirs) {
-            Point new_pt(dir.x + i, dir.y + j);
-            if (new_pt.x < 0 || new_pt.x >= n || new_pt.y < 0 || new_pt.y >= n) {
-                continue;
-            }
-            if (mat[new_pt.x][new_pt.y] > mat[i][j] || visited.count(new_pt)) {
-                continue;
-            }
-            visited.insert(new_pt);
-            search(new_pt.x, new_pt.y, origin);
-            //visited.erase({newI,newJ});
-        }
-    };
+    unordered_map<Point, bool> visited_pac;
+    
+    for(int i = 0; i < n; ++i) {
+        visited_pac[{0,i}] = true;
+        search({0,i}, visited_pac, mat);
+    }
+    
+    for(int i = 0; i < n; ++i) {
+        visited_pac[{i,0}] = true;
+        search({i,0}, visited_pac, mat);
+    }
+    
+    unordered_map<Point, bool> visited_alt;
+    
+    for(int i = 0; i < n; ++i) {
+        visited_alt[{n-1,i}] = true;
+        search({n-1,i}, visited_alt, mat);
+    }
+    
+    for(int i = 0; i < n; ++i) {
+        visited_alt[{i,n-1}] = true;
+        search({i,n-1}, visited_alt, mat);
+    }
     
     vector<Point> ret;
-    for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < n; ++j) {
-            Point pt(i,j);
-            visited = {pt};
-            search(i,j,pt);
-            if (leftOK.count(pt) && rightOK.count(pt))
-                ret.push_back(pt);
+    for(auto p : visited_alt) {
+        if(visited_pac.count(p.first)) {
+            ret.push_back(p.first);
         }
     }
+    
+    sort(ret.begin(), ret.end());
     return ret;
 }

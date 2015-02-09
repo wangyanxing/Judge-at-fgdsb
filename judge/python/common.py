@@ -24,11 +24,36 @@ class Point:
     def __str__(self):
         return "(" + str(self.x) + ", " + str(self.y) + ")"
     
+    def __hash__(self):
+        return hash(self.x * 100000 + self.y)
+    
     def __repr__(self):
         return self.__str__()
     
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
+
+    def compare(self, other):
+        if self.x == other.x: return self.y - other.y
+        return self.x - other.x
+
+    def __lt__(self, other):
+        return self.compare(other) < 0
+        
+    def __gt__(self, other):
+        return self.compare(other) > 0
+
+    def __eq__(self, other):
+        return self.compare(other) == 0
+
+    def __le__(self, other):
+        return self.compare(other) <= 0
+
+    def __ge__(self, other):
+        return self.compare(other) >= 0
+
+    def __ne__(self, other):
+        return self.compare(other) != 0
 
 def serial(root):
     if root == None: return "# "

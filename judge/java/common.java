@@ -112,6 +112,7 @@ public class common {
     }
     
     public static boolean compare_point_arraylist(Point[] array, List<Point> al) {
+        if(array.length != al.size()) return false;
         for(int i = 0; i < array.length; ++i) {
             if(array[i].x != al.get(i).x || array[i].y != al.get(i).y) return false;
         }
@@ -119,6 +120,7 @@ public class common {
     }
     
     public static boolean compare_arr_arraylist(int[] array, List<Integer> al) {
+        if(array.length != al.size()) return false;        
         for(int i = 0; i < array.length; ++i) {
             if(array[i] != al.get(i)) return false;
         }

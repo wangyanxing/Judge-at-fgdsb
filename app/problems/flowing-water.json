@@ -12,7 +12,7 @@
         "Backtracking"
     ],
     "code_cpp": "/*\nstruct Point {\n    int x{ 0 }, y{ 0 };\n};\n*/\nvector<Point> flowing_water(vector<vector<int>> mat) {\n}",
-    "code_java": "/*\npublic class Point {\n    public int x = 0, y = 0;\n    public Point() {}\n    public Point(int x, int y) {\n        this.x = x;\n        this.y = y;\n    }\n}\n*/\nList<Point> flowing_water(int[][] mat) {\n}",
+    "code_java": "/*\npublic class Point {\n    public int x = 0, y = 0;\n    public Point() {}\n    public Point(int x, int y) {\n        this.x = x;\n        this.y = y;\n    }\n}\n*/\npublic class Solution {\n    public List<Point> flowing_water(int[][] mat) {\n    }\n}",
     "code_ruby": "# Definition of Point\n# class Point\n#     attr_accessor :x, :y\n#     def initialize(x = 0, y = 0)\n#         @x, @y = x, y\n#     end\n# end\n\n# @param mat, integer matrix\n# @return Point array\ndef flowing_water(mat)\nend",
     "code_python": "# Definition of Point\n# class Point:\n#     def __init__(self, x=0, y=0):\n#         self.x = x\n#         self.y = y\n\n# @param mat, integer matrix\n# @return Point list\ndef flowing_water(mat):",
     "code_lua": "-- Definition of Point\n-- Point = {\n-- \tnew = function(_x, _y)\n-- \t\treturn {x = _x, y = _y}\n-- \tend\n-- }\n\n-- @param mat, integer matrix\n-- @return table of points\nfunction flowing_water(mat)\nend",
