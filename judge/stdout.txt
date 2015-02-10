@@ -68,3 +68,5 @@ Testing case #67
 Testing case #68
 Testing case #69
 Testing case #70
+Testing case #71
+Testing case #72

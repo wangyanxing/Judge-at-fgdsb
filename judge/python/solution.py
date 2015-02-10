@@ -1,49 +1,22 @@
 from common import *
-# Definition of Point
-# class Point:
-#     def __init__(self, x=0, y=0):
-#         self.x = x
-#         self.y = y
+def dfs(i,j,mat):
+  m,n = len(mat), len(mat[0])
+  dirs = [[0,1], [0,-1], [1,0], [-1,0]]
+  for _, dir in enumerate(dirs):
+    newi, newj = i + dir[0], j + dir[1]
+    if newi < 0 or newj < 0 or newi >= m or newj >= n: continue
+    if mat[newi][newj] != 1: continue
 
-def search(pt, visited, mat):
-    dirs = [[0,1], [0,-1], [1,0], [-1,0]]
-    for i, dir in enumerate(dirs) :
-        new_pt = Point(dir[0] + pt.x, dir[1] + pt.y)
-        if new_pt.x < 0 or new_pt.x >= len(mat) or new_pt.y < 0 or new_pt.y >= len(mat): continue
-        if mat[new_pt.x][new_pt.y] < mat[pt.x][pt.y] or visited.has_key(new_pt): continue
-        visited[new_pt] = True
-        search(new_pt, visited, mat)
+    mat[newi][newj] = mat[i][j]
+    dfs(newi,newj,mat)
 
-
-def flowing_water(mat):
-    n = len(mat)
-    
-    visited_pac = {}
-    
-    for i in range(0, n):
-        p = Point(0, i)
-        visited_pac[p] = True
-        search(p, visited_pac, mat)
-        
-    for i in range(0, n):
-        p = Point(i, 0)
-        visited_pac[p] = True
-        search(p, visited_pac, mat)
-        
-    visited_alt = {}
-    
-    for i in range(0, n):
-        p = Point(n - 1, i)
-        visited_alt[p] = True
-        search(p, visited_alt, mat)
-        
-    for i in range(0, n):
-        p = Point(i, n - 1)
-        visited_alt[p] = True
-        search(p, visited_alt, mat)
-        
-    ret = []
-    for k, v in visited_alt.iteritems() :
-        if visited_pac.has_key(k): ret.append(k)
-    ret.sort()
-    return ret
+def num_islands(mat):
+  m,n = len(mat), len(mat[0])
+  count = 2
+  for i in range(m):
+    for j in range(n):
+      if mat[i][j] != 1: continue
+      mat[i][j] = count
+      count += 1
+      dfs(i,j,mat)
+  return count - 2

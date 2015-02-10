@@ -1,69 +1,29 @@
-package judge;import java.util.*;import java.lang.*;import java.io.*;import datastruct.*; /*
-public class Point {
-    public int x = 0, y = 0;
-    public Point() {}
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-*/
-public class Solution {
-    void search(Point pt, HashMap<Point,Boolean> visited, int[][] mat) {
-        int[][] dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
-        for(int i = 0; i < 4; ++i) {
-            int[] dir = dirs[i];
-            Point new_pt = new Point(dir[0] + pt.x, dir[1] + pt.y);
-            if( new_pt.x < 0 || new_pt.x >= mat.length || new_pt.y < 0 || new_pt.y >= mat.length ) {
-                continue;
+package judge;import java.util.*;import java.lang.*;import java.io.*;import datastruct.*; public class Solution {
+    private int[][] mat;
+    
+    public int num_islands(int[][] mat) {
+        this.mat = mat;
+        int count = 2;
+        for(int i = 0; i < mat.length; ++i) {
+            for(int j = 0; j < mat[0].length; ++j) {
+                if(mat[i][j] == 1) {
+                    mat[i][j] = count++;
+                    dfs(i,j);
+                }
             }
-            if( mat[new_pt.x][new_pt.y] < mat[pt.x][pt.y] || visited.containsKey(new_pt) ) {
-                continue;
-            }
-            visited.put(new_pt, true);
-            search(new_pt, visited, mat);
         }
+        return count - 2;
     }
     
-    public List<Point> flowing_water(int[][] mat) {
-        int n = mat.length;
-        
-        HashMap<Point, Boolean> visited_pac = new HashMap<Point, Boolean>();
-        
-        for(int i = 0; i < n; ++i) {
-            Point p = new Point(0,i);
-            visited_pac.put(p, true);
-            search(p, visited_pac, mat);
+    private void dfs(int i, int j) {
+        int m = mat.length, n = mat[0].length;
+        int[][] dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+        for(int id = 0; id < 4; ++id) {
+            int newi = i + dirs[id][0], newj = j + dirs[id][1];
+            if (newi < 0 || newj < 0 || newi >= m || newj >= n) continue;
+            if (mat[newi][newj] != 1) continue;
+            mat[newi][newj] = mat[i][j];
+            dfs(newi,newj);
         }
-        
-        for(int i = 0; i < n; ++i) {
-            Point p = new Point(i,0);
-            visited_pac.put(p, true);
-            search(p, visited_pac, mat);
-        }
-        
-        HashMap<Point, Boolean> visited_alt = new HashMap<Point, Boolean>();
-        
-        for(int i = 0; i < n; ++i) {
-            Point p = new Point(n-1,i);
-            visited_alt.put(p, true);
-            search(p, visited_alt, mat);
-        }
-        
-        for(int i = 0; i < n; ++i) {
-            Point p = new Point(i,n-1);
-            visited_alt.put(p, true);
-            search(p, visited_alt, mat);
-        }
-        
-        ArrayList<Point> ret = new ArrayList<Point>();
-        for(Point key : visited_alt.keySet()) {
-            if(visited_pac.containsKey(key)) {
-                ret.add(key);
-            }
-        }
-        
-        Collections.sort(ret);
-        return ret;
     }
 }

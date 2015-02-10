@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/flowing-water.h"
+#include "tests/find-islands.h"
 
 int main() {
     judge();

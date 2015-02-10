@@ -8,10 +8,11 @@ class Test_find_islands < TestBase
 
   def dfs(i,j,mat)
     m,n = mat.length, mat[0].length
-    return if mat[i][j] != 1
+
     [[0, 1], [0, -1], [1, 0], [-1, 0]].each do |x,y|
-      newi, newj = i + x, i + y
+      newi, newj = i + x, j + y
       next if newi < 0 || newj < 0 || newi >= m || newj >= n
+      next if mat[newi][newj] != 1
       mat[newi][newj] = mat[i][j]
       dfs(newi,newj,mat)
     end
@@ -27,13 +28,13 @@ class Test_find_islands < TestBase
       count += 1
       dfs(i,j,mat)
     end
-    count - 1
+    count - 2
   end
 
   def add_test(m,n)
-    mat = gen_matrix(m,n,2)
-    @test_in[0] << mat
-    @test_out << num_islands(mat)
+    r = gen_matrix(m,n,2)
+    @test_in[0] << r
+    @test_out << num_islands(r.map(&:dup))
   end
 
   def gen_tests
@@ -44,7 +45,11 @@ class Test_find_islands < TestBase
     end
 
     50.times do
-      add_test rand(3...5),rand(30...50)
+      add_test rand(30...50),rand(30...50)
+    end
+
+    2.times do
+      add_test rand(100...200),rand(100...200)
     end
   end
 end

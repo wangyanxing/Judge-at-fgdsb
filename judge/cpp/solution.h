@@ -1,57 +1,23 @@
-/*
-struct Point {
-    int x{ 0 }, y{ 0 };
-};
-*/
-void search(Point pt, unordered_map<Point, bool>& visited, vector<vector<int>>& mat) {
-    vector<Point> dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
-    for(auto dir : dirs) {
-        Point newp = { dir.x + pt.x, dir.y + pt.y };
-        if( newp.x < 0 || newp.x >= mat.size() || newp.y < 0 || newp.y >= mat.size() ) {
-            continue;
-        }
-        if( mat[newp.x][newp.y] < mat[pt.x][pt.y] || visited.count(newp) ) {
-            continue;
-        }
-        visited[newp] = true;
-        search(newp, visited, mat);
+int num_islands(vector<vector<int>>& mat) {
+  function<void(int,int)> dfs = [&](int i, int j) {
+    int m = mat.size(), n = mat[0].size();
+    vector<pair<int,int>> dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+    for(auto& d : dirs) {
+      int newi = i + d.first, newj = j + d.second;
+      if (newi < 0 || newj < 0 || newi >= m || newj >= n) continue;
+      if (mat[newi][newj] != 1) continue;
+      mat[newi][newj] = mat[i][j];
+      dfs(newi,newj);
     }
-}
-
-vector<Point> flowing_water(vector<vector<int>>& mat) {
-    int n = mat.size();
-    
-    unordered_map<Point, bool> visited_pac;
-    
-    for(int i = 0; i < n; ++i) {
-        visited_pac[{0,i}] = true;
-        search({0,i}, visited_pac, mat);
+  };
+  int count = 2;
+  for(int i = 0; i < mat.size(); ++i) {
+    for(int j = 0; j < mat[0].size(); ++j) {
+      if(mat[i][j] == 1) {
+        mat[i][j] = count++;
+        dfs(i,j);
+      }
     }
-    
-    for(int i = 0; i < n; ++i) {
-        visited_pac[{i,0}] = true;
-        search({i,0}, visited_pac, mat);
-    }
-    
-    unordered_map<Point, bool> visited_alt;
-    
-    for(int i = 0; i < n; ++i) {
-        visited_alt[{n-1,i}] = true;
-        search({n-1,i}, visited_alt, mat);
-    }
-    
-    for(int i = 0; i < n; ++i) {
-        visited_alt[{i,n-1}] = true;
-        search({i,n-1}, visited_alt, mat);
-    }
-    
-    vector<Point> ret;
-    for(auto p : visited_alt) {
-        if(visited_pac.count(p.first)) {
-            ret.push_back(p.first);
-        }
-    }
-    
-    sort(ret.begin(), ret.end());
-    return ret;
+  }
+  return count - 2;
 }
