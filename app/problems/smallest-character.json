@@ -1,0 +1,37 @@
+{
+    "name": "Smallest Character",
+    "id": "smallest-character",
+    "discuss_link": "",
+    "desc": "<p>\n    Given a sorted character array and a character, return the smallest character that is strictly larger than the search character.\n</p>\n<p>\n    If no such character exists, return the smallest character in the array.\n</p>\n<p>\n    For example:\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'a'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'c'</code>\n    <br>\n    Output: <code>'f'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'z'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'k']</code>, <code>'f'</code>\n    <br>\n    Output: <code>'k'</code>\n</p>\n\n<p>\n<strong>Note</strong>: Your solution should be in logarithmic complexity.\n</p>\n",
+    "difficulty": "Medium",
+    "source": "LinkedIn",
+    "time": "2015-02-09 21:52:02",
+    "tags": [
+        "Binary Search",
+        "Array",
+        "String"
+    ],
+    "code_cpp": "char smallest_character(string& str, char c) {\n}",
+    "code_java": "public class Solution {\n    public char smallest_character(String str, char c) {\n    }\n}",
+    "code_ruby": "def smallest_character(str, c)\nend",
+    "code_python": "def smallest_character(str, c):",
+    "code_lua": "function smallest_character(str, c)\nend",
+    "in_type_cpp": [
+        "string",
+        "char"
+    ],
+    "ret_type_cpp": "char",
+    "out_type_cpp": "char",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "String",
+        "char"
+    ],
+    "ret_type_java": "char",
+    "out_type_java": "char",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "smallest_character(@)"
+}

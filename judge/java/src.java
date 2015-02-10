@@ -4,10 +4,10 @@ import java.lang.*;
 import java.io.*;
 import tests.test_common;
 import datastruct.*;
-import tests.find_islands;
+import tests.smallest_character;
 
 public class src {
     public static void main (String[] args) throws java.lang.Exception {
-        find_islands.judge();
+        smallest_character.judge();
     }
 }

@@ -229,5 +229,12 @@
         "name": "Find Islands",
         "difficulty": "Medium",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-09 21:52:02",
+        "id": "smallest-character",
+        "name": "Smallest Character",
+        "difficulty": "Medium",
+        "source": "LinkedIn"
     }
 ]

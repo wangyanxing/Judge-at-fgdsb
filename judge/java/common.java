@@ -35,12 +35,20 @@ public class common {
         return Arrays.toString(arr);
     }
     
+    public static String to_string(char[] arr) {
+        return Arrays.toString(arr);
+    }
+    
     public static String to_string(String[] arr) {
         return Arrays.toString(arr);
     }
     
     public static String to_string(int num) {
         return Integer.toString(num);
+    }
+    
+    public static String to_string(char num) {
+        return Character.toString(num);
     }
     
     public static String to_string(double num) {
@@ -347,8 +355,6 @@ public class common {
         return ret;
     }
     
-    //
-    
     public static Point[] read_point_array(BufferedReader in) throws IOException {
         String s = in.readLine();
         int number = Integer.parseInt(s);
@@ -407,7 +413,6 @@ public class common {
         }
         return ret;
     }
-    //
     
     public static boolean[] read_bool_array(BufferedReader in) throws IOException {
         String s = in.readLine();
@@ -439,6 +444,40 @@ public class common {
         boolean[][][] ret = new boolean[number][][];
         for(int i = 0; i < number; ++i) {
             ret[i] = read_bool_matrix(in);
+        }
+        return ret;
+    }
+    
+    public static char[] read_char_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        char[] ret = new char[number];
+        for(int i = 0; i < number; ++i) {
+            s = in.readLine();
+            ret[i] = s.charAt(0);
+        }
+        return ret;
+    }
+    
+    public static char[][] read_char_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        char[][] ret = new char[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_char_array(in);
+        }
+        return ret;
+    }
+    
+    public static char[][][] read_char_matrix_arr(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        char[][][] ret = new char[number][][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_char_matrix(in);
         }
         return ret;
     }

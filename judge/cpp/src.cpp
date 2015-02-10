@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/find-islands.h"
+#include "tests/smallest-character.h"
 
 int main() {
     judge();

@@ -45,7 +45,15 @@ public class test_common {
         }
         return target;
     }
-    
+
+    public static char[] copy(char[] input) {
+        char[] target = new char[input.length];
+        for (int i=0; i <input.length; i++) {
+            target[i] = input[i];
+        }
+        return target;
+    }
+
     public static TreeNode copy(TreeNode input) {
         if(input == null) return null;
         TreeNode r = new TreeNode(input.val);

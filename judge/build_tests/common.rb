@@ -48,12 +48,14 @@ class TestBase
         'int' => '1D',
         'double' => '1D',
         'string' => '1D',
+        'char' => '1D',
         'TreeNode*' => '1D_bt',
         'TreeNodeWithParent*' => '1D_bt_p',
         'vector<bool>' => '2D',
         'vector<int>' => '2D',
         'vector<double>' => '2D',
         'vector<string>' => '2D',
+        'vector<char>' => '2D',
         'vector<Interval>' => '2D_interval',
         'vector<Point>' => '2D_point',
         'vector<TreeNode*>' => '2D_bt',
@@ -62,6 +64,7 @@ class TestBase
         'vector<vector<int>>' => '3D',
         'vector<vector<double>>' => '3D',
         'vector<vector<string>>' => '3D',
+        'vector<vector<char>>' => '3D',
         'vector<vector<Interval>>' => '3D_interval',
         'vector<vector<Point>>' => '3D_point',
     }
@@ -336,6 +339,7 @@ class TestBase
         'bool' => 'common.read_bool_array',
         'int' => 'common.read_int_array',
         'double' => 'common.read_double_array',
+        'char' => 'common.read_char_array',
         'string' => 'common.read_string_array',
         'Interval' => 'common.read_interval_array',
         'Point' => 'common.read_point_array',
@@ -343,6 +347,7 @@ class TestBase
         'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
         'vector<bool>' => 'common.read_bool_matrix',
         'vector<int>' => 'common.read_int_matrix',
+        'vector<char>' => 'common.read_char_matrix',
         'vector<double>' => 'common.read_double_matrix',
         'vector<string>' => 'common.read_string_matrix',
         'vector<Interval>' => 'common.read_interval_matrix',
@@ -350,6 +355,7 @@ class TestBase
         'vector<TreeNode*>' => 'common.read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
+        'vector<vector<char>>' => 'common.read_char_matrix_arr',
         'vector<vector<int>>' => 'common.read_int_matrix_arr',
         'vector<vector<double>>' => 'common.read_double_matrix_arr',
         'vector<vector<string>>' => 'common.read_string_matrix_arr'
@@ -483,6 +489,7 @@ class TestBase
     ruby_funcs = {
         'bool' => 'read_bool_array',
         'int' => 'read_int_array',
+        'char' => 'read_string_array',
         'double' => 'read_double_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
@@ -491,6 +498,7 @@ class TestBase
         'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
+        'vector<char>' => 'read_string_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
@@ -498,6 +506,7 @@ class TestBase
         'vector<TreeNode*>' => 'read_tree_matrix',
         'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
+        'vector<vector<char>>' => 'read_string_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
         'vector<vector<string>>' => 'read_string_matrix_arr'
@@ -593,6 +602,7 @@ class TestBase
     python_funcs = {
         'bool' => 'read_bool_array',
         'int' => 'read_int_array',
+        'char' => 'read_string_array',
         'double' => 'read_double_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
@@ -601,6 +611,7 @@ class TestBase
         'TreeNodeWithParent*' => 'read_tree_with_p_array',
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_int_matrix',
+        'vector<char>' => 'read_string_matrix',
         'vector<double>' => 'read_double_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
@@ -609,6 +620,7 @@ class TestBase
         'vector<TreeNodeWithParent*>' => 'read_tree_with_p_matrix',
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_int_matrix_arr',
+        'vector<vector<char>>' => 'read_string_matrix_arr',
         'vector<vector<double>>' => 'read_double_matrix_arr',
         'vector<vector<string>>' => 'read_string_matrix_arr'
     }
@@ -704,6 +716,7 @@ class TestBase
     lua_funcs = {
         'bool' => 'read_bool_array',
         'int' => 'read_num_array',
+        'char' => 'read_string_array',
         'double' => 'read_num_array',
         'string' => 'read_string_array',
         'Interval' => 'read_interval_array',
@@ -713,6 +726,7 @@ class TestBase
         'vector<bool>' => 'read_bool_matrix',
         'vector<int>' => 'read_num_matrix',
         'vector<double>' => 'read_num_matrix',
+        'vector<char>' => 'read_string_matrix',
         'vector<string>' => 'read_string_matrix',
         'vector<Interval>' => 'read_interval_matrix',
         'vector<Point>' => 'read_point_matrix',
@@ -721,7 +735,8 @@ class TestBase
         'vector<vector<bool>>' => 'read_bool_matrix_arr',
         'vector<vector<int>>' => 'read_num_matrix_arr',
         'vector<vector<double>>' => 'read_num_matrix_arr',
-        'vector<vector<string>>' => 'read_string_matrix_arr'
+        'vector<vector<string>>' => 'read_string_matrix_arr',
+        'vector<vector<char>>' => 'read_string_matrix_arr'
     }
 
     file = File.open("../lua/tests/#{@name}.lua", 'w')

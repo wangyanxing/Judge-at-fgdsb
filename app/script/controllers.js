@@ -84,6 +84,8 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                         $scope.judge_obj[prop] = $scope.problem[prop];
                     }
 
+                    $('#problem-id').prop('disabled', true);
+
                     $scope.judge_json = JSON.stringify($scope.judge_obj, null, '    ')
                         .replace(/"judge_type_cpp"/, '\n    $&')
                         .replace(/"judge_type_java"/, '\n    $&')
@@ -123,6 +125,10 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                         $("#problem-tags").tagsinput('add', $scope.problem.tags[i]);
                     }
                 });
+            } else {
+                var judge_template = '{\n    \"in_type_cpp\": [\n        \"\"\n    ],\n    \"ret_type_cpp\": \"\",\n    \"out_type_cpp\": \"\",    \n    \"judge_type_cpp\": \"equal\",\n\n    \"in_type_java\": [\n        \"\"\n    ],\n    \"ret_type_java\": \"\",\n    \"out_type_java\": \"\",\n    \n    \"judge_type_java\": \"equal\",\n    \"judge_type_ruby\": \"equal\",\n    \"judge_type_python\": \"equal\",   \n    \"judge_type_lua\": \"equal\",\n\n    \"judge_call\": \"function(@)\"\n}';
+                $scope.$judge_editor.setValue(judge_template);
+                $scope.$judge_editor.clearSelection();
             }
         });
 

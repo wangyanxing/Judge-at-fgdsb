@@ -2,7 +2,7 @@
     "name": "Binary Tree Vertical Traversal",
     "id": "tree-vertical-traversal",
     "discuss_link": "http://www.fgdsb.com/2015/01/03/print-binary-tree-vertically/",
-    "desc": "<p>\n<p>Given a binary tree, traverse it vertically.</p>\n<p>\n    For example:\n    <pre>\n     5 \n   /   \\\n  2     7\n / \\   / \\\n1   3 6   8\n     \\     \\\n      4     9</pre>\n</p>\n<p>\n    Should return as:\n<pre>\n[\n  [1],\n  [2],\n  [5, 3, 6],\n  [4, 7],\n  [8],\n  [9]\n]</pre>    \n</p>\n</p>",
+    "desc": "<p>\n<p>Given a binary tree, traverse it vertically.</p>\n<p>\n    For example:\n    <pre>\n     5 \n   /   \\\n  2     7\n / \\   / \\\n1   3 6   8\n     \\     \\\n      4     9</pre>\n</p>\n<p>\n    Should return as:\n<pre>\n[\n  [1],\n  [2],\n  [5, 3, 6],\n  [7, 4],\n  [8],\n  [9]\n]</pre>    \n</p>\n</p>",
     "difficulty": "Medium",
     "source": "Facebook",
     "time": "2015-02-08 16:59:46",
