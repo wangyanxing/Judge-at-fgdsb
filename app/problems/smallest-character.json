@@ -2,7 +2,7 @@
     "name": "Smallest Character",
     "id": "smallest-character",
     "discuss_link": "",
-    "desc": "<p>\n    Given a sorted character array and a character, return the smallest character that is strictly larger than the search character.\n</p>\n<p>\n    If no such character exists, return the smallest character in the array.\n</p>\n<p>\n    For example:\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'a'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'c'</code>\n    <br>\n    Output: <code>'f'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'z'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'k']</code>, <code>'f'</code>\n    <br>\n    Output: <code>'k'</code>\n</p>\n\n<p>\n<strong>Note</strong>: Your solution should be in logarithmic complexity.\n</p>\n",
+    "desc": "<p>\n    Given a sorted character array and a character, return the smallest character that is strictly larger than the search character.\n</p>\n<p>\n    If no such character exists, return the smallest character in the array.\n</p>\n\n<hr>\n<p>\n    For example:\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'a'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'c'</code>\n    <br>\n    Output: <code>'f'</code>\n</p>\n<p>\n    Input: <code>['c', 'f', 'j', 'p', 'v']</code>, <code>'z'</code>\n    <br>\n    Output: <code>'c'</code>\n</p>\n<p>\n    Input: <code>['c', 'c', 'k']</code>, <code>'f'</code>\n    <br>\n    Output: <code>'k'</code>\n</p>\n",
     "difficulty": "Medium",
     "source": "LinkedIn",
     "time": "2015-02-09 21:52:02",

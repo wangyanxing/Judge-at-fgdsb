@@ -42,6 +42,7 @@ $(window).on('drop', function (e) {
     e.preventDefault();
 });
 
+console.log('app inited');
 
 ///////////////////////////////////////////////////////////////////////////
 
