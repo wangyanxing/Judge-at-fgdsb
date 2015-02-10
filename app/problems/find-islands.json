@@ -14,5 +14,21 @@
     "code_java": "public class Solution {\n    public int num_islands(int[][] mat) {\n    }\n}",
     "code_ruby": "# @param mat, integer matrix\n# @return integer\ndef num_islands(mat)\nend",
     "code_python": "# @param mat, integer matrix\n# @return integer\ndef num_islands(mat):",
-    "code_lua": "-- @param mat, integer matrix\n-- @return integer\nfunction num_islands(mat)\nend"
+    "code_lua": "-- @param mat, integer matrix\n-- @return integer\nfunction num_islands(mat)\nend",
+    "in_type_cpp": [
+        "vector<vector<int>>"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[][]"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "num_islands(@)"
 }
