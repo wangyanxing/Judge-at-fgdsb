@@ -1,7 +1,13 @@
 function smallest_character(str, c)
-    for i = 1, #str do
-        local ch = str:sub(i,i)
-        if ch > c then return ch end
+    local l, r, ret = 1, #str, str:sub(1,1)
+    while l <= r do
+        local m = math.floor(l + (r - l) / 2)
+        local mid = str:sub(m, m)
+        if mid > c then
+            ret,r = mid,m - 1
+        else
+            l = m + 1
+        end
     end
-    return str:sub(1,1)
+    return ret
 end

@@ -1,6 +1,14 @@
 char smallest_character(string& str, char c) {
-    for(auto ch : str) {
-        if (ch > c) return ch;
+    int l = 0, r = str.length() - 1;
+    char ret = str[0];
+    while(l <= r) {
+        int m = l + (r-l) / 2;
+        if(str[m] > c) {
+            ret = str[m];
+            r = m - 1;
+        } else {
+            l = m + 1;
+        }
     }
-    return str[0];
+    return ret;
 }
