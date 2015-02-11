@@ -1,54 +1,11 @@
-var gui = require('nw.gui');
 var fs = require('fs');
 var util = require('util');
 var exec = require('child_process').exec;
 var cur_dir = process.cwd();
 
-//change directory settings per user platform
-if (process.platform === 'darwin') {
-    gui.Window.get().menu = new gui.Menu({ type: 'menubar' });
-    //console.log('mac')
-    baseDIR = process.env.HOME
-
-} else if (process.platform === 'win32') {
-    gui.Window.get().menu = new gui.Menu({ type: 'menubar' });
-    //console.log('windows')
-    baseDIR = process.env.HOME
-
-} else {
-    var user_menu = new gui.Menu({ type: 'menubar' });
-    gui.Window.get().menu = user_menu;
-    //console.log('not windows or mac')
-    baseDIR = process.env.HOME
-}
-
-var win = gui.Window.get();
-var nativeMenuBar = new gui.Menu({ type: "menubar" });
-try {
-    nativeMenuBar.createMacBuiltin("fgdsb@Judge");
-    win.menu = nativeMenuBar;
-} catch (ex) {
-    console.log(ex.message);
-}
-
-win.show();
-//win.maximize();
-
-$(window).on('dragover', function (e) {
-    e.preventDefault();
-    e.originalEvent.dataTransfer.dropEffect = 'none';
-});
-$(window).on('drop', function (e) {
-    e.preventDefault();
-});
-
-console.log('app inited');
-
-///////////////////////////////////////////////////////////////////////////
-
 var beginsWith = function(needle, haystack){
     return (haystack.substr(0, needle.length) == needle);
-}
+};
 
 var generate_cpp = function(problem) {
     var out_file = "#include \"common.h\"\n";
