@@ -1,7 +1,4 @@
 var fs = require('fs');
-var util = require('util');
-var exec = require('child_process').exec;
-var cur_dir = process.cwd();
 
 var beginsWith = function(needle, haystack){
     return (haystack.substr(0, needle.length) == needle);

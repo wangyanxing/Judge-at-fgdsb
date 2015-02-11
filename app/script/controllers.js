@@ -244,6 +244,13 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                     return;
                 }
             });
+
+            $("#save-question").notify("Saved!",
+                {
+                    autoHideDelay: 1000,
+                    elementPosition: 'top',
+                    className: 'success'
+                });
         };
 
         $scope.onCommit = function () {
@@ -257,6 +264,12 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                         alert(stderr);
                     }
                     console.log(stdout);
+                    $("#commit-question").notify("Committed!",
+                        {
+                            autoHideDelay: 1000,
+                            elementPosition: 'top',
+                            className: 'success'
+                        });
                 });
         }
 

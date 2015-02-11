@@ -58,5 +58,6 @@
     "win": {
       "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/nw.pak"
     }
-  }
+  },
+  "update_log": "New questions added and bug fixes."
 }
