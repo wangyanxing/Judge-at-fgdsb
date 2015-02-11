@@ -23,12 +23,18 @@ var update = function() {
     upd.download(function(error, filename) {
         if (!error) {
             console.log(filename);
+            $('#down-progress').css('width', '100%').attr('aria-valuenow', 100);
+            $('#down-msg').text('Download finished! Please restart the app.');
+            $('#btn-update').prop("disabled",false).text('Restart');
             //gui.App.quit();
         } else {
             console.log(error);
         }
     }, function (state) {
-        console.log('percent', state.percent);
+        var rec = Math.round(state.received/1024);
+        var tpt = Math.round(state.total/1024);
+        $('#down-msg').text(rec + 'K /' + tpt + 'K downloaded');
+        $('#down-progress').css('width', state.percent+'%').attr('aria-valuenow', state.percent);
     });
 };
 
@@ -46,29 +52,33 @@ upd.checkNewVersion(function(error, newVersionExists, manifest) {
             manifest.update_log + '</td> </tr></table>\
             </div>\
             <div id="download-panel" style="display: none;">\
-                <br>\
                 <div class="progress sm progress-striped active"> \
-                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"> \
-                  <span class="sr-only">20% Complete</span> \
+                  <div class="progress-bar progress-bar-success" id="down-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> \
                   </div> \
                 </div>\
+                <p id="down-msg"></p>\
             </div>';
 
         bootbox.dialog({
             message: msg,
             title: "Update info",
             buttons: {
-                success: {
+                default: {
                     label: "Ignore",
                     className: "btn-default",
                     callback: function() {}
                 },
-                danger: {
+                success: {
                     label: "Update",
                     className: "btn-success",
-                    callback: function() {
-                        $('#download-panel').show("slow");
-                        update();
+                    callback: function(e) {
+                        if($(e.target).text() == 'Restart') {
+
+                        } else {
+                            $('#download-panel').show("slow");
+                            $(e.target).prop("disabled",true).attr("id","btn-update");
+                            update();
+                        }
                         return false;
                     }
                 }
