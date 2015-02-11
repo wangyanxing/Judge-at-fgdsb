@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
+  "dev": true,
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,9 +27,6 @@
     "semver": "4.2.2",
     "request": "2.53.0",
     "request-progress": "0.3.1"
-  },
-  "scripts": {
-    "prestart": "npm install"    
   },
   "platformOverrides": {
     "win32": {
