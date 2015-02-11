@@ -4,18 +4,36 @@ var util = require('util');
 var exec = require('child_process').exec;
 var cur_dir = process.cwd();
 
+/*
+var splashwin = gui.Window.open('splash/loading.html', {
+    'frame': false,  // frameless
+    'position': 'center', // centered
+    'always-on-top': true // always on top
+});
+*/
+
 var pkg = require('../package.json');
-var updater = require('node-webkit-updater');
 var upd = new updater(pkg);
+
+var update = function() {
+    upd.download(function(error, filename) {
+        if (!error) {
+            console.log(filename);
+        } else {
+            console.log(error);
+        }
+    }, function (state) {
+        console.log('percent', state.percent);
+    });
+
+};
 
 upd.checkNewVersion(function(error, newVersionExists, manifest) {
     if (error) {
         console.log(error);
         return;
     }
-    if (newVersionExists) {
-        console.log("New version exists!");
-    } else {
+    if (!newVersionExists) {
         var msg = "<table style=\"width:100%; font-size: 15px;\"><tr><td>Current version:</td><td>" +
             pkg.version + "</td> </tr><tr><td>New version:</td><td>" +
             manifest.version + "</td> </tr><tr><td>Update log:</td><td>" +
@@ -34,6 +52,7 @@ upd.checkNewVersion(function(error, newVersionExists, manifest) {
                     label: "Update",
                     className: "btn-success",
                     callback: function() {
+                        update();
                     }
                 }
             }
@@ -41,7 +60,7 @@ upd.checkNewVersion(function(error, newVersionExists, manifest) {
     }
 });
 
-//change directory settings per user platform
+// change directory settings per user platform
 if (process.platform === 'darwin') {
     gui.Window.get().menu = new gui.Menu({ type: 'menubar' });
     baseDIR = process.env.HOME
@@ -75,5 +94,3 @@ $(window).on('dragover', function (e) {
 $(window).on('drop', function (e) {
     e.preventDefault();
 });
-
-//console.log('app inited');

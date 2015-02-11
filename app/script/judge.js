@@ -1,4 +1,3 @@
-var fs = require('fs');
 
 var beginsWith = function(needle, haystack){
     return (haystack.substr(0, needle.length) == needle);

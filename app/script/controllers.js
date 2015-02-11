@@ -245,8 +245,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                 }
             });
 
-            $("#save-question").notify("Saved!",
-                {
+            $("#save-question").notify("Saved!", {
                     autoHideDelay: 1000,
                     elementPosition: 'top',
                     className: 'success'
@@ -264,8 +263,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
                         alert(stderr);
                     }
                     console.log(stdout);
-                    $("#commit-question").notify("Committed!",
-                        {
+                    $("#commit-question").notify("Committed!", {
                             autoHideDelay: 1000,
                             elementPosition: 'top',
                             className: 'success'
