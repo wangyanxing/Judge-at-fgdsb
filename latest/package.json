@@ -1,0 +1,62 @@
+{
+  "name": "judge_fgdsb",
+  "version": "0.0.1",
+  "author": "Yanxing Wang <demiwangya@gmail.com>",
+  "main": "app/index.html",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangyanxing/fgdsb_judge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangyanxing/fgdsb_judge/issues"
+  },
+  "homepage": "https://github.com/wangyanxing/fgdsb_judge",
+  "window": {
+    "position": "center",
+    "width": 1280,
+    "height": 720
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+    "moment": "2.9.0"
+  },
+  "scripts": {
+    "prestart": "npm install"    
+  },
+  "platformOverrides": {
+    "win32": {
+      "window": {
+        "frame": true,
+        "toolbar": false
+      }
+    },
+    "win64": {
+      "window": {
+        "frame": true,
+        "toolbar": false
+      }
+    },
+    "osx32": {
+      "window": {
+        "toolbar": false
+      }
+    },
+    "osx64": {
+      "window": {
+        "toolbar": false
+      }
+    }
+  },
+  "manifestUrl": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/package.json",
+  "packages": {
+    "mac": {
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/app.nw"
+    },
+    "win": {
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/nw.pak"
+    }
+  }
+}
