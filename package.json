@@ -1,8 +1,16 @@
 {
   "name": "judge_at_fgdsb",
-  "private": true,
+  "version": "0.0.1",
+  "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
-  "repository": "https://github.com/wangyanxing/fgdsb_judge",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangyanxing/fgdsb_judge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangyanxing/fgdsb_judge/issues"
+  },
+  "homepage": "https://github.com/wangyanxing/fgdsb_judge",
   "window": {
     "position": "center",
     "width": 1280,
@@ -16,5 +24,29 @@
   },
   "scripts": {
     "prestart": "npm install"    
+  },
+  "platformOverrides": {
+    "win32": {
+      "window": {
+        "frame": true,
+        "toolbar": false
+      }
+    },
+    "win64": {
+      "window": {
+        "frame": true,
+        "toolbar": false
+      }
+    },
+    "osx32": {
+      "window": {
+        "toolbar": false
+      }
+    },
+    "osx64": {
+      "window": {
+        "toolbar": false
+      }
+    }
   }
 }
