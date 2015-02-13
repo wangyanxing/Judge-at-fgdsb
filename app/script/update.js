@@ -3,11 +3,15 @@
 // https://github.com/edjafarov/node-webkit-updater
 
 var fs = require('fs');
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 var os = require('os');
 var path = require('path');
 var request = require('request');
 var progress = require('request-progress');
 var semver = require('semver');
+var ncp = require('ncp');
+var del = require('del');
 
 var platform = process.platform;
 platform = /^win/.test(platform)? 'win' : /^darwin/.test(platform)? 'mac' : 'linux' + (process.arch == 'ia32' ? '32' : '64');
@@ -125,3 +129,123 @@ updater.prototype.getAppExec = function(){
     };
     return path.join(execFolder, exec[platform]);
 };
+
+/**
+ * Runs installer
+ * @param {string} appPath
+ * @param {array} args - Arguments which will be passed when running the new app
+ * @param {object} options - Optional
+ * @returns {function}
+ */
+updater.prototype.runInstaller = function(appPath, args, options){
+    return pRun[platform].apply(this, arguments);
+};
+
+var pRun = {
+    /**
+     * @private
+     */
+    mac: function(appPath, args, options){
+        //spawn
+        if(args && args.length) {
+            args = [appPath].concat('--args', args);
+        } else {
+            args = [appPath];
+        }
+        return run('open', args, options);
+    },
+    /**
+     * @private
+     */
+    win: function(appPath, args, options, cb){
+        return run(appPath, args, options, cb);
+    },
+    /**
+     * @private
+     */
+    linux32: function(appPath, args, options, cb){
+        var appExec = path.join(appPath, path.basename(this.getAppExec()));
+        fs.chmodSync(appExec, 0755)
+        if(!options) options = {};
+        options.cwd = appPath;
+        return run(appPath + "/"+path.basename(this.getAppExec()), args, options, cb);
+    }
+};
+
+pRun.linux64 = pRun.linux32;
+
+/**
+ * @private
+ */
+function run(path, args, options){
+    var opts = {
+        detached: true
+    };
+    for(var key in options){
+        opts[key] = options[key];
+    }
+    console.log("path:" + path);
+    console.log("args:" + args);
+    var sp = spawn(path, args, opts);
+    sp.unref();
+    return sp;
+}
+
+/**
+ * Installs the app (copies current application to `copyPath`)
+ * @param {string} copyPath
+ * @param {function} cb - Callback arguments: error
+ */
+updater.prototype.install = function(copyPath, cb){
+    pInstall[platform].apply(this, arguments);
+};
+
+var pInstall = {
+    /**
+     * @private
+     */
+    mac: function(to, cb){
+        //ncp(this.getAppPath(), to, cb);
+    },
+    /**
+     * @private
+     */
+    win: function(to, cb){
+        var self = this;
+        var errCounter = 50;
+        deleteApp(appDeleted);
+
+        function appDeleted(err){
+            if(err){
+                errCounter--;
+                if(errCounter > 0) {
+                    setTimeout(function(){
+                        deleteApp(appDeleted);
+                    }, 100);
+                } else {
+                    return cb(err);
+                }
+            }
+            else {
+                ncp(self.getAppPath(), to, appCopied);
+            }
+        }
+        function deleteApp(cb){
+            del(to, {force: true}, cb);
+        }
+        function appCopied(err){
+            if(err){
+                setTimeout(deleteApp, 100, appDeleted);
+                return
+            }
+            cb();
+        }
+    },
+    /**
+     * @private
+     */
+    linux32: function(to, cb){
+        ncp(this.getAppPath(), to, cb);
+    }
+};
+pInstall.linux64 = pInstall.linux32;

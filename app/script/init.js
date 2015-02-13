@@ -20,15 +20,28 @@ var upd = new updater(pkg);
 //alert(cur_dir);
 
 var update = function() {
+    var update_mac = function (filename) {
+    };
+
+    var update_win = function (filename) {
+        upd.runInstaller(upd.getAppPath() + "\\judge_fgdsb.exe", [filename], {});
+    };
+
     upd.download(function(error, filename) {
         if (!error) {
             console.log(filename);
             $('#down-progress').css('width', '100%').attr('aria-valuenow', 100);
             $('#down-msg').text('Download finished! Please restart the app.');
             $('#btn-update').prop("disabled",false).text('Restart');
-            //gui.App.quit();
+
+            var platform = process.platform;
+            if(/^win/.test(platform)) {
+                update_win(filename);
+            } else {
+                update_mac(filename);
+            }
         } else {
-            console.log(error);
+            $('#down-msg').text('Download failed: ' + error);
         }
     }, function (state) {
         var rec = Math.round(state.received/1024);
@@ -38,54 +51,83 @@ var update = function() {
     });
 };
 
-upd.checkNewVersion(function(error, newVersionExists, manifest) {
-    if (error) {
-        console.log(error);
-        return;
-    }
-    if (!newVersionExists) {
-        var msg = '<div class="callout callout-info">\
+if(gui.App.argv.length) {
+    /*
+    copyPath = gui.App.argv[0];
+    execPath = gui.App.argv[1];
+
+    // Replace old app, Run updated app from original location and close temp instance
+    upd.install(copyPath, function(err) {
+        if(!err) {
+
+            // ------------- Step 6 -------------
+            upd.run(execPath, null);
+            gui.App.quit();
+        }
+    });
+    */
+
+    /*
+    del([upd.getAppPath() + "\\nw.pak"], {force: true}, function (err, deletedFiles) {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log('Files deleted:' + deletedFiles);
+        }
+    });
+    */
+    console.log(gui.App.argv);
+} else if (!pkg.dev) {
+
+    upd.checkNewVersion(function(error, newVersionExists, manifest) {
+        if (error) {
+            console.log(error);
+            return;
+        }
+        if (!newVersionExists) {
+            var msg = '<div class="callout callout-info">\
                 <h4>New version available!</h4>\
                 <table style=\"width:100%; font-size: 15px;\"><tr><td>Current version:</td><td>' +
-            pkg.version + '</td> </tr><tr><td>New version:</td><td>' +
-            manifest.version + '</td> </tr><tr><td>Update log:</td><td>' +
-            manifest.update_log + '</td> </tr></table>\
-            </div>\
-            <div id="download-panel" style="display: none;">\
+                pkg.version + '</td> </tr><tr><td>New version:</td><td>' +
+                manifest.version + '</td> </tr><tr><td>Update log:</td><td>' +
+                manifest.update_log + '</td> </tr></table>\
+            </div><div id="download-panel" style="display: none;">\
                 <div class="progress sm progress-striped active"> \
-                  <div class="progress-bar progress-bar-success" id="down-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> \
+                  <div class="progress-bar progress-bar-success" id="down-progress" role="progressbar" \
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> \
                   </div> \
                 </div>\
                 <p id="down-msg"></p>\
             </div>';
 
-        bootbox.dialog({
-            message: msg,
-            title: "Update info",
-            buttons: {
-                default: {
-                    label: "Ignore",
-                    className: "btn-default",
-                    callback: function() {}
-                },
-                success: {
-                    label: "Update",
-                    className: "btn-success",
-                    callback: function(e) {
-                        if($(e.target).text() == 'Restart') {
-
-                        } else {
-                            $('#download-panel').show("slow");
-                            $(e.target).prop("disabled",true).attr("id","btn-update");
-                            update();
+            bootbox.dialog({
+                message: msg,
+                title: "Update info",
+                buttons: {
+                    default: {
+                        label: "Ignore",
+                        className: "btn-default",
+                        callback: function() {}
+                    },
+                    success: {
+                        label: "Update",
+                        className: "btn-success",
+                        callback: function(e) {
+                            if($(e.target).text() == 'Restart') {
+                                //gui.App.quit();
+                            } else {
+                                $('#download-panel').show("slow");
+                                $(e.target).prop("disabled",true).attr("id","btn-update");
+                                update();
+                            }
+                            return false;
                         }
-                        return false;
                     }
                 }
-            }
-        });
-    }
-});
+            });
+        }
+    });
+}
 
 // change directory settings per user platform
 if (process.platform === 'darwin') {

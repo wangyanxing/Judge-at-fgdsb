@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/wangyanxing/fgdsb_judge",
   "window": {
-    "show": false,
+    "show": true,
     "position": "center",
     "width": 1280,
     "height": 720
@@ -26,13 +26,15 @@
     "moment": "2.9.0",
     "semver": "4.2.2",
     "request": "2.53.0",
-    "request-progress": "0.3.1"
+    "request-progress": "0.3.1",
+    "ncp": "1.0.1",
+    "del": "1.1.1"
   },
   "platformOverrides": {
     "win32": {
       "window": {
         "frame": true,
-        "toolbar": false
+        "toolbar": true
       }
     },
     "win64": {
