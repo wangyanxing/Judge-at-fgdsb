@@ -114,7 +114,7 @@ if(gui.App.argv.length) {
                         className: "btn-success",
                         callback: function(e) {
                             if($(e.target).text() == 'Restart') {
-                                //gui.App.quit();
+                                gui.App.restart();
                             } else {
                                 $('#download-panel').show("slow");
                                 $(e.target).prop("disabled",true).attr("id","btn-update");
