@@ -19,12 +19,43 @@ var upd = new updater(pkg);
 //alert(upd.getAppExec());
 //alert(cur_dir);
 
+function copyFile(source, target, cb) {
+    var cbCalled = false;
+
+    var rd = fs.createReadStream(source);
+    rd.on("error", function(err) {
+        done(err);
+    });
+    var wr = fs.createWriteStream(target);
+    wr.on("error", function(err) {
+        done(err);
+    });
+    wr.on("close", function(ex) {
+        done();
+    });
+    rd.pipe(wr);
+
+    function done(err) {
+        if (!cbCalled) {
+            cb(err);
+            cbCalled = true;
+        }
+    }
+}
+
 var update = function() {
     var update_mac = function (filename) {
     };
 
     var update_win = function (filename) {
-        upd.runInstaller(upd.getAppPath() + "\\judge_fgdsb.exe", [filename], {});
+        //upd.runInstaller(upd.getAppPath() + "\\judge_fgdsb.exe", [filename], {});
+
+        copyFile(filename, upd.getAppPath() + "\\nw.pak", function (err) {
+            if (err) {
+                return console.error(err);
+            }
+            console.log('done!');
+        });
     };
 
     upd.download(function(error, filename) {
@@ -76,7 +107,7 @@ if(gui.App.argv.length) {
         }
     });
     */
-    console.log(gui.App.argv);
+    //console.log(gui.App.argv);
 } else if (!pkg.dev) {
 
     upd.checkNewVersion(function(error, newVersionExists, manifest) {
@@ -114,7 +145,7 @@ if(gui.App.argv.length) {
                         className: "btn-success",
                         callback: function(e) {
                             if($(e.target).text() == 'Restart') {
-                                //gui.App.quit();
+                                gui.App.quit();
                             } else {
                                 $('#download-panel').show("slow");
                                 $(e.target).prop("disabled",true).attr("id","btn-update");
