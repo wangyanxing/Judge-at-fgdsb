@@ -156,7 +156,7 @@ def generate_app
       FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}.app/Contents/Resources/app.nw"
     elsif p.start_with? 'win'
       FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}", "#{folder}/#{p}/#{@app_name}"
-      FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}/app.nw"
+      FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}/package.nw"
     end    
   end
 end
