@@ -14,8 +14,13 @@ require 'zip/zip'
 @cache_dir = 'cache'
 @build_dir = 'release'
 @url = 'http://dl.nwjs.io/'
-@platforms = ['osx-x64', 'win-ia32', 'win-x64']
+#@platforms = ['osx-x64', 'win-ia32', 'win-x64']
+@platforms = ['osx-x64', 'win-ia32']
 @menifest = '../package.json'
+@app_name = 'judge_fgdsb'
+
+# global variables
+@latest_version = ''
 
 # download a URL to path
 def download_file(url, path)  
@@ -53,11 +58,13 @@ end
 # download the latest version if necessary
 def download_new_ver
   latest = get_ver_list.max
-  local_latest = Dir.glob("./#{@cache_dir}/*").select{ |e| File.directory? e }.map { |v| File.basename(v).to_version }.max
+  local_latest = Dir.glob("./#{@cache_dir}/*").select{ |e| File.directory? e }.map { |v| File.basename(v).to_version }.max  
   if !local_latest.nil? && local_latest >= latest    
-    return puts 'Already latest version of nw.js, let\'s build!'
+    @latest_version = local_latest
+    return puts 'Already latest version of nw.js, let\'s build!'    
   end
   
+  @latest_version = latest.to_s
   puts 'Latest version of nw.js found: ' + latest.to_s
 
   # do each platform
@@ -118,7 +125,7 @@ def compress_app
         subdir = Dir.entries(diskFilePath).reject! {|dir| dir == '.' or dir == '..'}
         write_entries subdir, zip_file_path, io
       else
-        io.get_output_stream(zip_file_path) { |f| f.print(File.open(diskFilePath, 'rb').read)}
+        io.get_output_stream(zip_file_path){ |f| f.print(File.open(diskFilePath, 'rb').read) }
       end
     end
   end
@@ -136,12 +143,31 @@ def compress_app
   puts ' Done!'
 end
 
+# generate the target app
+def generate_app
+  folder = "#{@build_dir}/#{@app_name}"
+  FileUtils.rm_rf folder
+  FileUtils::mkdir_p folder
+
+  @platforms.each do |p|    
+    FileUtils::mkdir_p folder + "/#{p}"
+    if p.start_with? 'osx'
+      FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}/nwjs.app", "#{folder}/#{p}/#{@app_name}.app"
+      FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}.app/Contents/Resources/app.nw"
+    elsif p.start_with? 'win'
+      FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}", "#{folder}/#{p}/#{@app_name}"
+      FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}/app.nw"
+    end    
+  end
+end
+
 # build a release
 def build
   download_new_ver
   modify_package_json do
     puts 'Building...'
     compress_app
+    generate_app
   end
 end
 
