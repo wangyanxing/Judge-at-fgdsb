@@ -3,8 +3,6 @@ var util = require('util');
 var exec = require('child_process').exec;
 var cur_dir = process.cwd();
 
-require('utils');
-
 /*
 var splashwin = gui.Window.open('splash/loading.html', {
     'frame': false,  // frameless
@@ -16,24 +14,7 @@ var splashwin = gui.Window.open('splash/loading.html', {
 var pkg = require('../package.json');
 var upd = new updater(pkg);
 
-//alert(upd.getAppPath());
-//alert(upd.getAppExec());
-//alert(cur_dir);
-
 var update = function() {
-    var update_mac = function (filename) {
-    };
-
-    var update_win = function (filename) {
-        copy_file(filename, upd.getAppPath() + "\\package.nw", function(err) {
-            if (err) {
-                console.log("Failed to copy the update file: " + err);
-            } else {
-                console.log("Successfully copied the update files.");
-            }
-        });
-    };
-
     upd.download(function(error, filename) {
         if (!error) {
             console.log(filename);
@@ -41,12 +22,7 @@ var update = function() {
             $('#down-msg').text('Download finished! Please restart the app.');
             $('#btn-update').prop("disabled",false).text('Restart');
 
-            var platform = process.platform;
-            if(/^win/.test(platform)) {
-                update_win(filename);
-            } else {
-                update_mac(filename);
-            }
+            upd.doUpdate(filename);
         } else {
             $('#down-msg').text('Download failed: ' + error);
         }
@@ -59,7 +35,6 @@ var update = function() {
 };
 
 if (!pkg.dev) {
-
     upd.checkNewVersion(function(error, newVersionExists, manifest) {
         if (error) {
             console.log(error);
@@ -95,7 +70,7 @@ if (!pkg.dev) {
                         className: "btn-success",
                         callback: function(e) {
                             if($(e.target).text() == 'Restart') {
-                                gui.App.restart();
+                                upd.restart();
                             } else {
                                 $('#download-panel').show("slow");
                                 $(e.target).prop("disabled",true).attr("id","btn-update");

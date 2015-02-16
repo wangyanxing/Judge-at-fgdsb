@@ -16,7 +16,7 @@ require 'zip/zip'
 @build_dir = 'release'
 @url = 'http://dl.nwjs.io/'
 #@platforms = ['osx-x64', 'win-ia32', 'win-x64']
-@platforms = ['osx-x64', 'win-ia32']
+@platforms = []
 @menifest = '../package.json'
 @app_name = 'judge_fgdsb'
 @update_branch_path = '../../fgdsb_updates'
@@ -26,10 +26,17 @@ require 'zip/zip'
 @latest_version = ''
 
 # params
-if not ARGV.empty?
-  if ARGV[0] == '-b'
-    @release = true
-  end
+@release = true if ARGV.include? '-b'
+
+if ARGV.include? '-osx64'
+  puts 'Build to osx64'
+  @platforms = ['osx-x64']
+elsif ARGV.include? '-win32'
+  puts 'Build to win32'
+  @platforms = ['win-ia32']
+else
+  puts 'Build to all platforms'
+  @platforms = ['osx-x64', 'win-ia32']
 end
 
 ########################################################################

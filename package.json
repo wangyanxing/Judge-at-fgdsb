@@ -57,10 +57,10 @@
   "manifestUrl": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/package.json",
   "packages": {
     "mac": {
-      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/app.nw"
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/$ver/app.nw"
     },
     "win": {
-      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/nw.pak"
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/$ver/app.nw"
     }
   },
   "update_log": "New questions added and bug fixes."

@@ -62,7 +62,8 @@ updater.prototype.checkNewVersion = function(cb){
  */
 updater.prototype.download = function(cb, prog_cb, newManifest){
     var manifest = newManifest || this.manifest;
-    var url = manifest.packages[platform].url;
+    var new_ver = manifest['version'];
+    var url = manifest.packages[platform].url.replace(/\$ver/, new_ver);
     var pkg = progress(request(url, function(err, response){
         if(err){
             cb(err);
@@ -131,121 +132,72 @@ updater.prototype.getAppExec = function(){
 };
 
 /**
- * Runs installer
- * @param {string} appPath
- * @param {array} args - Arguments which will be passed when running the new app
- * @param {object} options - Optional
- * @returns {function}
+ * Restart the app
  */
-updater.prototype.runInstaller = function(appPath, args, options){
-    return pRun[platform].apply(this, arguments);
-};
-
-var pRun = {
-    /**
-     * @private
-     */
-    mac: function(appPath, args, options){
-        //spawn
-        if(args && args.length) {
-            args = [appPath].concat('--args', args);
-        } else {
-            args = [appPath];
-        }
-        return run('open', args, options);
-    },
-    /**
-     * @private
-     */
-    win: function(appPath, args, options, cb){
-        return run(appPath, args, options, cb);
-    },
-    /**
-     * @private
-     */
-    linux32: function(appPath, args, options, cb){
-        var appExec = path.join(appPath, path.basename(this.getAppExec()));
-        fs.chmodSync(appExec, 0755)
-        if(!options) options = {};
-        options.cwd = appPath;
-        return run(appPath + "/"+path.basename(this.getAppExec()), args, options, cb);
+updater.prototype.restart = function() {
+    console.log('restarting app...');
+    var child,
+        child_process = require("child_process"),
+        gui = require('nw.gui'),
+        win = gui.Window.get();
+    if (process.platform == "darwin")  {
+        child = child_process.spawn("open", ["-n", "-a", process.execPath.match(/^([^\0]+?\.app)\//)[1]], {detached:true});
+    } else {
+        child = child_process.spawn(process.execPath, [], {detached: true});
     }
-};
-
-pRun.linux64 = pRun.linux32;
-
-/**
- * @private
- */
-function run(path, args, options){
-    var opts = {
-        detached: true
-    };
-    for(var key in options){
-        opts[key] = options[key];
-    }
-    console.log("path:" + path);
-    console.log("args:" + args);
-    var sp = spawn(path, args, opts);
-    sp.unref();
-    return sp;
+    child.unref();
+    win.hide();
+    gui.App.quit();
 }
 
-/**
- * Installs the app (copies current application to `copyPath`)
- * @param {string} copyPath
- * @param {function} cb - Callback arguments: error
- */
-updater.prototype.install = function(copyPath, cb){
-    pInstall[platform].apply(this, arguments);
-};
 
-var pInstall = {
-    /**
-     * @private
-     */
-    mac: function(to, cb){
-        //ncp(this.getAppPath(), to, cb);
-    },
-    /**
-     * @private
-     */
-    win: function(to, cb){
-        var self = this;
-        var errCounter = 50;
-        deleteApp(appDeleted);
+updater.prototype.doUpdate = function(filename) {
+    var copy_file = function(source, target, cb) {
+        var cbCalled = false;
 
-        function appDeleted(err){
-            if(err){
-                errCounter--;
-                if(errCounter > 0) {
-                    setTimeout(function(){
-                        deleteApp(appDeleted);
-                    }, 100);
-                } else {
-                    return cb(err);
-                }
-            }
-            else {
-                ncp(self.getAppPath(), to, appCopied);
+        var rd = fs.createReadStream(source);
+        rd.on("error", done);
+
+        var wr = fs.createWriteStream(target);
+        wr.on("error", done);
+        wr.on("close", function(ex) {
+            done();
+        });
+        rd.pipe(wr);
+
+        function done(err) {
+            if (!cbCalled) {
+                cb(err);
+                cbCalled = true;
             }
         }
-        function deleteApp(cb){
-            del(to, {force: true}, cb);
-        }
-        function appCopied(err){
-            if(err){
-                setTimeout(deleteApp, 100, appDeleted);
-                return
-            }
-            cb();
-        }
-    },
-    /**
-     * @private
-     */
-    linux32: function(to, cb){
-        ncp(this.getAppPath(), to, cb);
     }
-};
-pInstall.linux64 = pInstall.linux32;
+
+    var update_mac = function (filename) {
+        var exepath = path.dirname( process.execPath );
+        var apppath = exepath.substring(0, exepath.indexOf('.app/Contents/Frameworks')) + ".app";
+        copy_file(filename, apppath + "/Contents/Resources/app.nw", function(err) {
+            if (err) {
+                console.log("Failed to copy the update file: " + err);
+            } else {
+                console.log("Successfully copied the update files.");
+            }
+        });
+    };
+
+    var update_win = function (filename) {
+        copy_file(filename, upd.getAppPath() + "\\package.nw", function(err) {
+            if (err) {
+                console.log("Failed to copy the update file: " + err);
+            } else {
+                console.log("Successfully copied the update files.");
+            }
+        });
+    };
+
+    if(/^win/.test(process.platform)) {
+        update_win(filename);
+    } else {
+        update_mac(filename);
+    }
+}
