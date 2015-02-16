@@ -1,0 +1,33 @@
+{
+    "name": "Maximum Sum of Non-consecutive Elements",
+    "id": "max-sum-nonconsecutive-elements",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/find-max-values/",
+    "desc": "<p>\n    Given an array of whose elements are positive numbers. Find the maximum sum of a subsequence with all the constraint that no two numbers in the sequence should be adjacent in the array.\n</p>\n<p>\n    For example:\n</p>\n<p>\n<p><code>[3, 2, 7, 10]</code> should return <code>3 + 10 = 13</code>.</p>\n<p><code>[3, 2, 5, 10, 7]</code> should return <code>3 + 5 +7 = 15</code>.</p>\n<p><code>[1, 5, 4, 3, 2]</code> should return <code>5 + 3 + 8</code>.</p>\n</p>",
+    "difficulty": "Medium",
+    "source": "Facebook",
+    "time": "2015-02-16 00:37:07",
+    "tags": [
+        "DP"
+    ],
+    "code_cpp": "int max_values(vector<int>& nums) {\n}",
+    "code_java": "public class Solution {\n    public int max_values(int[] nums) {\n    }\n}",
+    "code_ruby": "# @param nums: array of integers\n# @return integer\ndef max_values(nums)\nend",
+    "code_python": "# @param nums: list of integers\n# @return integer\ndef max_values(nums):",
+    "code_lua": "-- @param nums: table of integers\n-- @return integer\nfunction max_values(nums):\nend",
+    "in_type_cpp": [
+        "vector<int>"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "max_values(@)"
+}

@@ -257,5 +257,12 @@
         "name": "Coin Change Problem II",
         "difficulty": "Medium",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-16 00:37:07",
+        "id": "max-sum-nonconsecutive-elements",
+        "name": "Maximum Sum of Non-consecutive Elements",
+        "difficulty": "Medium",
+        "source": "Facebook"
     }
 ]
