@@ -1,0 +1,34 @@
+{
+    "name": "Maximum Sum Rectangle",
+    "id": "max-sum-rect",
+    "discuss_link": "http://www.fgdsb.com/2015/01/05/maximum-sum-rectangle-in-matrix/",
+    "desc": "<p>Given a 2D array, find the maximum sum subarray in it.</p>\n<p>For example, given a matrix:</p>\n<p>\n<pre> 1,   2,  -1,  -4, -20\n-8,  -3,   4,   2,   1\n 3,   8,  10,   1,   3\n-4,  -1,   1,   7,  -6</pre>\nThe result is <code>29</code>.    \n</p>",
+    "difficulty": "Hard",
+    "source": "Google",
+    "time": "2015-02-16 12:38:34",
+    "tags": [
+        "DP",
+        "Array"
+    ],
+    "code_cpp": "int max_sum_rect(vector<vector<int>>& mat) {\n}",
+    "code_java": "public class Solution {\n    public int max_sum_rect(int[][] mat) {\n    }\n}",
+    "code_ruby": "# @param mat, integer matrix\n# @return integer\ndef max_sum_rect(mat)\nend",
+    "code_python": "# @param mat, integer matrix\n# @return integer\ndef max_sum_rect(mat):",
+    "code_lua": "-- @param mat, integer matrix\n-- @return integer\nfunction max_sum_rect(mat)\nend",
+    "in_type_cpp": [
+        "vector<vector<int>>"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[][]"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "max_sum_rect(@)"
+}

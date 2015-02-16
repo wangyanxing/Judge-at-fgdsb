@@ -122,7 +122,7 @@ def modify_package_json
 
   # set dev flag to false
   pkg['dev'] = false
-  pkg['window']['toolbar'] = false
+  pkg['window']['toolbar'] = true
   @app_version = pkg['version']
 
   f = File.new(@menifest, 'w')
@@ -144,13 +144,14 @@ end
 # compress the whole app folder to a zip file (app.nw)
 def compress_app
   def write_entries(entries, path, io)
+    excludes = ['run.command']
     entries.each do |e|
       zip_file_path = path.empty? ? e : File.join(path, e)
       diskFilePath = File.join '..', zip_file_path
       if File.directory? diskFilePath        
         subdir = Dir.entries(diskFilePath).reject! {|dir| dir == '.' or dir == '..'}
         write_entries subdir, zip_file_path, io
-      else
+      elsif not excludes.include? File.basename(diskFilePath)
         io.get_output_stream(zip_file_path){ |f| f.print(File.open(diskFilePath, 'rb').read) }
       end
     end
