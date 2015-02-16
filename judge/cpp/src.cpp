@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/longest-inc-seq-matrix.h"
+#include "tests/coin-change.h"
 
 int main() {
     judge();

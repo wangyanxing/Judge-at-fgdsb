@@ -2,7 +2,7 @@
     "name": "Coin Change Problem",
     "id": "coin-change",
     "discuss_link": "http://www.fgdsb.com/2015/01/03/coin-change-problem/",
-    "desc": "<p>Given a set of currency denominations, find the minimum number of coins needed to represent an amount.</p>\n<p>For example:</p>\n<p>Suppose you have two kinds of coins: <code>1, 2</code>. In order to represent <code>3</code>, you have two options:</p>\n<p><code>1 + 1 + 1 = 3</code> or</p>\n<p><code>1 + 2 = 3</code> </p>\n<p>So the minimum number of coins is <code>2</code>.</p>",
+    "desc": "<p>Given a set of currency denominations, find the minimum number of coins needed to represent an amount.</p>\n<p>Return <code>0</code> if you can't use your coins to represent the target amount.</p>\n<p>For example:</p>\n<p>Suppose you have two kinds of coins: <code>1, 2</code>. In order to represent <code>3</code>, you have two options:</p>\n<p><code>1 + 1 + 1 = 3</code> or</p>\n<p><code>1 + 2 = 3</code> </p>\n<p>So the minimum number of coins is <code>2</code>.</p>",
     "difficulty": "Medium",
     "source": "Google",
     "time": "2015-02-15 23:46:09",
