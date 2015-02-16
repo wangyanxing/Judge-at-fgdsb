@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
+  "dev": false,
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,6 +14,7 @@
   },
   "homepage": "https://github.com/wangyanxing/fgdsb_judge",
   "window": {
+    "show": true,
     "position": "center",
     "width": 1280,
     "height": 720
@@ -21,16 +23,18 @@
     "plugin": true
   },
   "dependencies": {
-    "moment": "2.9.0"
-  },
-  "scripts": {
-    "prestart": "npm install"    
+    "moment": "2.9.0",
+    "semver": "4.2.2",
+    "request": "2.53.0",
+    "request-progress": "0.3.1",
+    "ncp": "1.0.1",
+    "del": "1.1.1"
   },
   "platformOverrides": {
     "win32": {
       "window": {
         "frame": true,
-        "toolbar": false
+        "toolbar": true
       }
     },
     "win64": {
