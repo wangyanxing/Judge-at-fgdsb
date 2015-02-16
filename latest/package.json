@@ -1,6 +1,6 @@
 {
   "name": "judge_fgdsb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
   "dev": false,
@@ -17,7 +17,8 @@
     "show": true,
     "position": "center",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "toolbar": false
   },
   "webkit": {
     "plugin": true
@@ -30,37 +31,13 @@
     "ncp": "1.0.1",
     "del": "1.1.1"
   },
-  "platformOverrides": {
-    "win32": {
-      "window": {
-        "frame": true,
-        "toolbar": true
-      }
-    },
-    "win64": {
-      "window": {
-        "frame": true,
-        "toolbar": false
-      }
-    },
-    "osx32": {
-      "window": {
-        "toolbar": false
-      }
-    },
-    "osx64": {
-      "window": {
-        "toolbar": false
-      }
-    }
-  },
   "manifestUrl": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/package.json",
   "packages": {
     "mac": {
-      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/app.nw"
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/$ver/app.nw"
     },
     "win": {
-      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/nw.pak"
+      "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/$ver/app.nw"
     }
   },
   "update_log": "New questions added and bug fixes."
