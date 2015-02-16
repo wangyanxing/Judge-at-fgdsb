@@ -1,0 +1,35 @@
+{
+    "name": "Search Sorted Matrix",
+    "id": "search-sorted-mat",
+    "discuss_link": "",
+    "desc": "<p>\n    Given an M x N matrix, where every row and column is sorted. Write an efficient function that searches a number in this matrix. \n</p>\n<p>\n    For example, given matrix:\n<pre>\n1, 2, 4\n2, 6, 8\n3, 7, 9\n</pre>\nThe result of searching <code>6</code> is <code>true</code>.\n</p>",
+    "difficulty": "Medium",
+    "source": "CC150",
+    "time": "2015-02-16 13:34:01",
+    "tags": [
+        "Binary Search"
+    ],
+    "code_cpp": "bool search_matrix(vector<vector<int>>& mat, int target) {\n}",
+    "code_java": "public class Solution {\n    public boolean search_matrix(int[][] mat, int target) {\n    }\n}",
+    "code_ruby": "# @param mat: integer matrix, target: integer\n# @return boolean\ndef search_matrix(mat, target)\nend",
+    "code_python": "# @param mat: integer matrix, target: integer\n# @return boolean\ndef search_matrix(mat, target):",
+    "code_lua": "-- @param mat: integer matrix, target: integer\n-- @return boolean\nfunction search_matrix(mat, target)\nend",
+    "in_type_cpp": [
+        "vector<vector<int>>",
+        "int"
+    ],
+    "ret_type_cpp": "bool",
+    "out_type_cpp": "bool",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[][]",
+        "int"
+    ],
+    "ret_type_java": "boolean",
+    "out_type_java": "boolean",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "search_matrix(@)"
+}

@@ -271,5 +271,12 @@
         "name": "Maximum Sum Rectangle",
         "difficulty": "Hard",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-16 13:34:01",
+        "id": "search-sorted-mat",
+        "name": "Search Sorted Matrix",
+        "difficulty": "Medium",
+        "source": "CC150"
     }
 ]

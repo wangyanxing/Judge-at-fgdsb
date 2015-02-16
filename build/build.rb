@@ -122,7 +122,7 @@ def modify_package_json
 
   # set dev flag to false
   pkg['dev'] = false
-  pkg['window']['toolbar'] = true
+  pkg['window']['toolbar'] = false
   @app_version = pkg['version']
 
   f = File.new(@menifest, 'w')
