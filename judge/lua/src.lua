@@ -1,4 +1,4 @@
 package.path = package.path .. ';/Users/yanxingwang/Projects/node_proj/fgdsb_judge/judge/lua/?.lua;'
 require "common"
-require "tests/search-sorted-mat"
+require "tests/longest-zero-subarray"
 judge()

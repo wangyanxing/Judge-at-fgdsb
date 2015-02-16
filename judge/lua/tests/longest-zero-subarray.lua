@@ -30,7 +30,7 @@ function judge()
     for i = 1, num_test do
         print("Testing case #" .. i)
         local answer = longest_subarray(in_0[i]) 
-        if not test_ret(out[i], #answer) then
+        if not test_ret(answer, #out[i]) then
             io.write(string.format("%d / %d;", i, num_test))
             io.write(to_string(in_org_0[i]))
             io.write(";")

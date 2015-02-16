@@ -11,11 +11,10 @@ in_org_0 = []
 out = []
 
 def test_ret(arr, answer_len):
-    if len(arr) != answer_len:
-        return False
+    if len(arr) != answer_len: return False
     sum = 0
     for i in range(len(arr)):
-				sum += arr[i]
+        sum += arr[i]
     return sum == 0
 
 def load_test():
@@ -34,7 +33,7 @@ def judge():
     for i in range(num_test):
         print ('Testing case #' + str(i+1))
         answer = longest_subarray(in_0[i]) 
-        if (not test_ret(out[i], len(answer))):
+        if (not test_ret(answer, len(out[i]))):
             release_stdout()
             out_str = str(i+1) + " / " + str(num_test) + ";"
             out_str += str(in_org_0[i])

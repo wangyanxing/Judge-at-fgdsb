@@ -1,109 +1,67 @@
-class SegmentTree {
-public:
-    struct Node {
-        Node* left{ nullptr };
-        Node* right{ nullptr };
-        int begin{ 0 };
-        int end{ 0 };
-        int cover{ 0 };
-        
-        bool is_leaf() { return begin == end; }
-        
-        Node(int l, int r) :begin(l), end(r), cover(r-l+1) {}
-        ~Node() {
-            if(left) delete left;
-            if(right) delete right;
-        }
+/*
+struct TreeNode {
+    TreeNode(int v = 0) :val(v){}
+    int val{ 0 };
+    TreeNode* left{ nullptr };
+    TreeNode* right{ nullptr };
+};
+*/
+
+vector<vector<int>> vertical_traversal(TreeNode* root) {
+    vector<vector<int>> ret;
+    vector<int> sln;
+    /*
+    function<void(TreeNode*, int&, int&, int)> minmax =
+            [&](TreeNode* node, int& min, int& max, int d){
+        if(!node) return;
+        min = std::min(min, d);
+        max = std::max(max, d);
+        minmax(node->left,min,max,d-1);
+        minmax(node->right,min,max,d+1);
     };
     
-    SegmentTree(int range) : _range(range) {
-        _root = build(0, range - 1);
-    }
-    
-    ~SegmentTree() {
-        delete _root;
-    }
-    
-    void remove_leaf(int val) {
-        if(!find_leaf(val)) return;
-        remove_impl(_root, val);
-    }
-    
-    bool find_leaf(int val) {
-        Node* cur = _root;
-        while(cur) {
-            if(cur->begin == val && cur->end == val) return true;
-            int mid = cur->begin + (cur->end - cur->begin) / 2;
-            
-            if(val <= mid) {
-                cur = cur->left;
-            } else {
-                cur = cur->right;
-            }
+    function<void(TreeNode*, int, int)> print = [&](TreeNode* node, int d, int cur) {
+        if(!node) return;
+        if(d == cur) {
+            sln.push_back(node->val);
         }
-        return false;
-    }
+        print(node->left, d, cur-1);
+        print(node->right, d, cur+1);
+    };
     
-    int get_kth(int k) {
-        Node* cur = _root;
-        while(cur) {
-            if(k == 0 && cur->is_leaf()) return cur->begin;
-            
-            int left_cover = cur->left ? cur->left->cover : 0;
-            if(k < left_cover) {
-                cur = cur->left;
-            } else {
-                k -= left_cover;
-                cur = cur->right;
-            }
-        }
-        return -1;
-    }
+    int min_hd = INT_MAX, max_hd = INT_MIN;
+    minmax(root,min_hd,max_hd,0);
+    cout << min_hd << "," << max_hd << endl;
     
-private:
-    Node* build(int left, int right) {
-        if(left > right) return nullptr;
-        auto ret = new Node(left, right);
-        if(left == right) return ret;
+    for(int i = min_hd; i <= max_hd; ++i) {
+        print(root, i, 0);
+        ret.push_back(sln);
+        sln.clear();
+    }
+    cout << ret << endl;
+    return ret;
+    */
+    unordered_map<int,vector<int>> result;
+    
+    function<void(TreeNode*, int&, int&, int)> minmax =
+    [&](TreeNode* node, int& min, int& max, int d){
+        if(!node) return;
+        result[d].push_back(node->val);
         
-        int mid = left + (right - left) / 2;
-        ret->left = build(left, mid);
-        ret->right = build(mid+1, right);
+        min = std::min(min, d);
+        max = std::max(max, d);
         
-        return ret;
+        minmax(node->left,min,max,d-1);
+        minmax(node->right,min,max,d+1);
+    };
+    
+    int min_hd = INT_MAX, max_hd = INT_MIN;
+    minmax(root,min_hd,max_hd,0);
+    
+    for(int i = min_hd; i <= max_hd; ++i) {
+        for(auto n : result[i]) sln.push_back(n);
+        ret.push_back(sln);
+        sln.clear();
     }
-    
-    void remove_impl(Node* root, int val) {
-        if(!root) return;
-        --root->cover;
-        
-        if(root->left && root->left->begin == val && root->left->end == val) {
-            delete root->left;
-            root->left = nullptr;
-        } else if(root->right && root->right->begin == val && root->right->end == val) {
-            delete root->right;
-            root->right = nullptr;
-        }
-        int mid = root->begin + (root->end - root->begin) / 2;
-        if(val <= mid) {
-            remove_impl(root->left, val);
-        } else {
-            remove_impl(root->right, val);
-        }
-    }
-    
-    Node* _root{ nullptr };
-    int _range{ 0 };
-};
-
-vector<int> recover(const vector<int>& arr) {
-    SegmentTree st((int)arr.size());
-    
-    vector<int> ret;
-    for (auto n : arr) {
-        int kth = st.get_kth(n);
-        ret.push_back(kth + 1);
-        st.remove_leaf(kth);
-    }    
     return ret;
 }

@@ -5,7 +5,9 @@
 
 def test_ret(arr, answer_len)
 		return false if arr.length != answer_len
-    arr.inject{|sum, x| sum + x } == 0
+		sum = 0
+		arr.each { |num| sum += num }
+    sum == 0
 end
 
 def load_test
@@ -25,7 +27,7 @@ def judge
     (0...@num_test).each do |i|
        puts 'Testing case #' + (i+1).to_s
         answer = longest_subarray(@in_0[i]) 
-        if (!test_ret(@out[i], answer.length))
+        if (!test_ret(answer, @out[i].length))
             release_stdout
             print "#{i+1} / #{@num_test};"
             print @in_org_0[i].to_s

@@ -17,15 +17,15 @@
     ],
     "ret_type_cpp": "vector<int>",
     "out_type_cpp": "vector<int>",
-    "judge_type_cpp": "!test_ret(out[i], answer.size())",
+    "judge_type_cpp": "!test_ret(answer, out[i].size())",
     "in_type_java": [
         "int[]"
     ],
     "ret_type_java": "List<Integer>",
     "out_type_java": "int[]",
-    "judge_type_java": "!common.test_ret(out[i], answer.length)",
-    "judge_type_ruby": "!test_ret(@out[i], answer.length)",
-    "judge_type_python": "not test_ret(out[i], len(answer))",
-    "judge_type_lua": "not test_ret(out[i], #answer)",
+    "judge_type_java": "!test_ret(answer, out[i].length)",
+    "judge_type_ruby": "!test_ret(answer, @out[i].length)",
+    "judge_type_python": "not test_ret(answer, len(out[i]))",
+    "judge_type_lua": "not test_ret(answer, #out[i])",
     "judge_call": "longest_subarray(@)"
 }

@@ -1,5 +1,5 @@
--- @param mat: integer matrix, target: integer
--- @return boolean
-function search_matrix(mat, target)
-    return false
+-- @param arr, table of integers
+-- @return table of integers
+function longest_subarray(arr)
+    return {12,3}
 end
