@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/coin-change-2.h"
+#include "tests/max-sum-nonconsecutive-elements.h"
 
 int main() {
     judge();

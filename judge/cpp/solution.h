@@ -1,10 +1,10 @@
-int count_changes(vector<int>& coins, int target) {
-    vector<int> table(target+1, 0);
-    table[0] = 1;
-   
-    for(int i=0; i<coins.size(); i++)
-        for(int j=coins[i]; j<=target; j++)
-            table[j] += table[j-coins[i]];
-   
-    return table[target];
+int max_values(vector<int>& nums) {
+    if(nums.empty()) return 0;
+    int prev_prev = 0, prev = nums[0];   
+    for(int i = 1; i < nums.size(); ++i) {
+        int old_prev = prev;
+        prev = max(prev, max(nums[i] + prev_prev, prev));
+        prev_prev = old_prev;
+    }   
+    return prev;
 }

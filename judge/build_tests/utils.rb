@@ -80,4 +80,8 @@ module Utils
 		end
 		ret
 	end
+
+	def gen_array(size, range)
+		(0...size).map { rand(range) }
+	end
 end
