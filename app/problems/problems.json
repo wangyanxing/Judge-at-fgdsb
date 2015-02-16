@@ -243,5 +243,12 @@
         "name": "Longest Increasing Sequence in Matrix",
         "difficulty": "Hard",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-15 23:46:09",
+        "id": "coin-change",
+        "name": "Coin Change Problem",
+        "difficulty": "Medium",
+        "source": "Google"
     }
 ]
