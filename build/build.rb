@@ -11,6 +11,7 @@ require 'fileutils'
 require 'zip/zip'
 
 # configs
+@release = false
 @cache_dir = 'cache'
 @build_dir = 'release'
 @url = 'http://dl.nwjs.io/'
@@ -18,10 +19,20 @@ require 'zip/zip'
 @platforms = ['osx-x64', 'win-ia32']
 @menifest = '../package.json'
 @app_name = 'judge_fgdsb'
+@update_branch_path = '../../fgdsb_updates'
+@app_version = ''
 
 # global variables
 @latest_version = ''
 
+# params
+if not ARGV.empty?
+  if ARGV[0] == '-b'
+    @release = true
+  end
+end
+
+########################################################################
 # download a URL to path
 def download_file(url, path)  
   url_base, url_path = url.split('/')[2], '/'+url.split('/')[3..-1].join('/')
@@ -48,6 +59,7 @@ def download_file(url, path)
   end
 end
 
+########################################################################
 # get available nw.js versions
 def get_ver_list
   Nokogiri::HTML(open(@url)).css('table tr td a').select do |el|
@@ -55,6 +67,7 @@ def get_ver_list
   end.map {|e| e.text.slice(1, e.text.length-2).to_version}
 end
 
+########################################################################
 # download the latest version if necessary
 def download_new_ver
   latest = get_ver_list.max
@@ -93,6 +106,7 @@ def download_new_ver
   end
 end
 
+########################################################################
 # modify some flags for release version
 def modify_package_json
   # read and parse package.json
@@ -101,6 +115,8 @@ def modify_package_json
 
   # set dev flag to false
   pkg['dev'] = false
+  @app_version = pkg['version']
+
   f = File.new(@menifest, 'w')
   f.write JSON.pretty_generate(pkg)
   f.close
@@ -115,6 +131,7 @@ def modify_package_json
   f.close
 end
 
+########################################################################
 # compress the whole app folder to a zip file (app.nw)
 def compress_app
   def write_entries(entries, path, io)
@@ -143,13 +160,27 @@ def compress_app
   puts ' Done!'
 end
 
+########################################################################
+# release to github
+def release_to_github
+  # copy files
+  FileUtils::mkdir_p "#{@update_branch_path}/#{@app_version}"
+  FileUtils::cp "#{@build_dir}/app.nw", "#{@update_branch_path}/#{@app_version}/app.nw"
+  FileUtils::cp @menifest, "#{@update_branch_path}/latest/package.json"
+
+  # commit
+  puts 'Commiting...'
+  `./commit.sh #{@update_branch_path} "#{@app_version}"`
+end
+
+########################################################################
 # generate the target app
 def generate_app
   folder = "#{@build_dir}/#{@app_name}"
   FileUtils.rm_rf folder
   FileUtils::mkdir_p folder
 
-  @platforms.each do |p|    
+  @platforms.each do |p|
     FileUtils::mkdir_p folder + "/#{p}"
     if p.start_with? 'osx'
       FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}/nwjs.app", "#{folder}/#{p}/#{@app_name}.app"
@@ -161,13 +192,24 @@ def generate_app
   end
 end
 
+########################################################################
 # build a release
 def build
   download_new_ver
   modify_package_json do
     puts 'Building...'
+
+    # compress the whole folder
     compress_app
+
+    # genrate
     generate_app
+
+    # copy file to update branch folder and push to github
+    release_to_github if @release
+
+    # delete the temp file
+    FileUtils::rm_rf "#{@build_dir}/app.nw"
   end
 end
 

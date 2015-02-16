@@ -1,8 +1,9 @@
 var gui = require('nw.gui');
-
 var util = require('util');
 var exec = require('child_process').exec;
 var cur_dir = process.cwd();
+
+require('utils');
 
 /*
 var splashwin = gui.Window.open('splash/loading.html', {
@@ -24,7 +25,13 @@ var update = function() {
     };
 
     var update_win = function (filename) {
-        upd.runInstaller(upd.getAppPath() + "\\judge_fgdsb.exe", [filename], {});
+        copy_file(filename, upd.getAppPath() + "\\package.nw", function(err) {
+            if (err) {
+                console.log("Failed to copy the update file: " + err);
+            } else {
+                console.log("Successfully copied the update files.");
+            }
+        });
     };
 
     upd.download(function(error, filename) {
@@ -51,40 +58,14 @@ var update = function() {
     });
 };
 
-if(gui.App.argv.length) {
-    /*
-    copyPath = gui.App.argv[0];
-    execPath = gui.App.argv[1];
-
-    // Replace old app, Run updated app from original location and close temp instance
-    upd.install(copyPath, function(err) {
-        if(!err) {
-
-            // ------------- Step 6 -------------
-            upd.run(execPath, null);
-            gui.App.quit();
-        }
-    });
-    */
-
-    /*
-    del([upd.getAppPath() + "\\nw.pak"], {force: true}, function (err, deletedFiles) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log('Files deleted:' + deletedFiles);
-        }
-    });
-    */
-    console.log(gui.App.argv);
-} else if (!pkg.dev) {
+if (!pkg.dev) {
 
     upd.checkNewVersion(function(error, newVersionExists, manifest) {
         if (error) {
             console.log(error);
             return;
         }
-        if (!newVersionExists) {
+        if (newVersionExists) {
             var msg = '<div class="callout callout-info">\
                 <h4>New version available!</h4>\
                 <table style=\"width:100%; font-size: 15px;\"><tr><td>Current version:</td><td>' +
