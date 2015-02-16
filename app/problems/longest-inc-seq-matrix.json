@@ -2,7 +2,7 @@
     "name": "Longest Increasing Sequence in Matrix",
     "id": "longest-inc-seq-matrix",
     "discuss_link": "http://www.fgdsb.com/2015/01/07/longest-increasing-sequence-in-matrix/",
-    "desc": "<p>Write a function to find the longest increasing(increasing means <strong>one step</strong>) sequence in an integer matrix in 4 directions.</p>\n<p>For example:</p>\n<p>The following matrix:</p>\n<pre>\n[\n  [1, 2, 3, 4]\n  [8, 7, 6, 5]\n]\n</pre>\n<p>should return:</p>\n<code>[1, 2, 3, 4, 5, 6, 7, 8]</code>",
+    "desc": "<p>Write a function to find the longest increasing(increasing means <strong>one step</strong>) sequence in an integer matrix in 4 directions.</p>\n<hr>\n<p>For example:</p>\n<p>\n<pre>\n[\n  [1, 2, 3, 4]\n  [8, 7, 6, 5]\n]\n</pre>\n<p>should return:</p>\n<code>[1, 2, 3, 4, 5, 6, 7, 8]</code>\n</br></br>\n</p>\n<p>\n<pre>\n[\n  [1, 2, 3, 9]\n  [8, 7, 6, 5]\n]\n</pre>\n<p>should return:</p>\n<code>[5, 6, 7, 8]</code>\n</p>",
     "difficulty": "Hard",
     "source": "Google",
     "time": "2015-02-15 20:53:32",
@@ -12,7 +12,7 @@
         "DFS"
     ],
     "code_cpp": "vector<int> longest_seq(const vector<vector<int>>& mat) {\n}",
-    "code_java": "public class Solution {\n    List<Integer> longest_seq(int[][] mat) {\n    }\n}",
+    "code_java": "public class Solution {\n    public List<Integer> longest_seq(int[][] mat) {\n    }\n}",
     "code_ruby": "# @param mat, matrix of integers\n# @return array\ndef longest_seq(mat)\nend",
     "code_python": "# @param mat, matrix of integers\n# @return array\ndef longest_seq(mat):",
     "code_lua": "-- @param mat, matrix of integers\n-- @return array\nfunction longest_seq(mat)\nend",

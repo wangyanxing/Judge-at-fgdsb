@@ -1,24 +1,32 @@
-def dfs(i,j,mat)
-  m,n = mat.length, mat[0].length
-  [[0, 1], [0, -1], [1, 0], [-1, 0]].each do |x,y|
-    newi, newj = i + x, j + y
-    next if newi < 0 || newj < 0 || newi >= m || newj >= n
-    next if mat[newi][newj] != 1
-    mat[newi][newj] = mat[i][j]
-    dfs(newi,newj,mat)
-  end
-end
+# @param mat, matrix of integers
+# @return array
+def longest_seq(mat)
+    def dfs(mat, mem, i, j)
+      return mem[i][j] if mem[i][j] != 0
 
-def num_islands(mat)
-  m,n = mat.length, mat[0].length
-  count = 2
-  (0...m).each do |i|
-    (0...n).each do |j|
-      next if mat[i][j] != 1
-      mat[i][j] = count
-      count += 1
-      dfs(i,j,mat)
+      [[-1,0],[1,0],[0,-1],[0,1]].each do |d|
+        newi, newj = i + d[0], j + d[1]
+        next if newi < 0 or newj < 0 or newi >= mat.length or newj >= mat[0].length
+        if mat[newi][newj] == mat[i][j] + 1
+          new_val = dfs(mat, mem, newi, newj)
+          mem[i][j] = [mem[i][j], new_val].max
+        end
+      end
+      mem[i][j] += 1
     end
-  end
-  count - 2
+
+    m, n = mat.length, mat[0].length
+    mem = Array.new(m) { Array.new(n, 0) }
+    max_start, max_path = 0, 0
+    (0...m).each do |i|
+      (0...n).each do |j|
+        path = dfs(mat, mem, i, j)
+        if path > max_path
+          max_start = mat[i][j]
+          max_path = path
+        end
+      end
+    end
+
+    (max_start...(max_start + max_path)).to_a
 end

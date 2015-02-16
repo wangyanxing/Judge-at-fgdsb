@@ -7,7 +7,7 @@ class Test_second_largest_num < TestBase
 
 	def second_largest(arr)
 		return 0 if arr.length < 2
-		second_max, max_val = arr[0], arr[0]
+		second_max, max_val = Integer::MIN, arr[0]
 		(1...arr.length).each do |i|
 			if arr[i] > max_val
 				second_max = max_val
@@ -16,7 +16,7 @@ class Test_second_largest_num < TestBase
 				second_max = arr[i]
 			end
 		end
-		if second_max == max_val
+		if second_max == max_val or second_max == Integer::MIN
 			0
 		else
 			second_max
