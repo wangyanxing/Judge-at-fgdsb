@@ -1,6 +1,6 @@
 {
   "name": "judge_fgdsb",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
   "dev": true,

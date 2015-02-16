@@ -5,6 +5,14 @@ local in_0 = {}
 local in_org_0 = {}
 local out = {}
 
+function test_ret(arr, answer_len)
+    if #arr ~= answer_len then return false end
+    local sum = 0
+    for i = 1, #arr do
+        sum = sum + arr[i]
+    end
+    return true
+end
 
 function load_test()
     local f = io.open("./judge/tests/longest-zero-subarray.txt", "r")
@@ -22,7 +30,7 @@ function judge()
     for i = 1, num_test do
         print("Testing case #" .. i)
         local answer = longest_subarray(in_0[i]) 
-        if not arr_equals(out[i], answer) then
+        if not test_ret(out[i], #answer) then
             io.write(string.format("%d / %d;", i, num_test))
             io.write(to_string(in_org_0[i]))
             io.write(";")

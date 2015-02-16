@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/search-sorted-mat.h"
+#include "tests/recover-count-array.h"
 
 int main() {
     judge();

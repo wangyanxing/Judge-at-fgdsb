@@ -3,6 +3,12 @@ vector<vector<int>> in_0;
 vector<vector<int>> in_org_0;
 vector<vector<int>> out;
 
+void test_ret(vector<int>& arr, int answer_len) {
+		if(arr.size() != answer_len) return false;
+    int sum = 0;
+		for(int i = 0; i < arr.size(); ++i) sum += arr[i];
+		return sum == 0;
+}
 
 void load_test() {
     ifstream in("judge/tests/longest-zero-subarray.txt");
@@ -22,7 +28,7 @@ void judge() {
     for(int i = 0; i < num_test; ++i) {
         printf("Testing case #%d\n", i+1);
         auto answer = longest_subarray(in_0[i]);
-        if(answer != out[i]) {
+        if(!test_ret(out[i], answer.size())) {
             release_stdout();
             cout << i+1 << "/" << num_test << ";";
             cout << in_org_0[i] << ";";

@@ -60,6 +60,46 @@ class Test_longest_zero_subarray < TestBase
 			end
 			add_test(cur)
 		end
+
+		@extra_test_code_cpp = '
+void test_ret(vector<int>& arr, int answer_len) {
+		if(arr.size() != answer_len) return false;
+    int sum = 0;
+		for(int i = 0; i < arr.size(); ++i) sum += arr[i];
+		return sum == 0;
+}'
+		@extra_test_code_java = '
+public static void test_ret(List<Integer> arr, int answer_len) {
+		if(arr.size() != answer_len) return false;
+    int sum = 0;
+		for(int i = 0; i < arr.size(); ++i) sum += arr.get(i);
+		return sum == 0;
+}'
+
+		@extra_test_code_ruby = '
+def test_ret(arr, answer_len)
+		return false if arr.length != answer_len
+    arr.inject{|sum, x| sum + x } == 0
+end'
+
+		@extra_test_code_lua = '
+function test_ret(arr, answer_len)
+    if #arr ~= answer_len then return false end
+    local sum = 0
+    for i = 1, #arr do
+        sum = sum + arr[i]
+    end
+    return true
+end'
+
+		@extra_test_code_python = '
+def test_ret(arr, answer_len):
+    if len(arr) != answer_len:
+        return False
+    sum = 0
+    for i in range(len(arr)):
+				sum += arr[i]
+    return sum == 0'
 	end
 
 end
