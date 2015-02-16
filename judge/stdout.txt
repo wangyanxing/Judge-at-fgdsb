@@ -300,3 +300,4 @@ Testing case #299
 Testing case #300
 Testing case #301
 Testing case #302
+Testing case #303
