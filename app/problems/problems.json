@@ -250,5 +250,12 @@
         "name": "Coin Change Problem",
         "difficulty": "Medium",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-16 00:14:42",
+        "id": "coin-change-2",
+        "name": "Coin Change Problem II",
+        "difficulty": "Medium",
+        "source": "Google"
     }
 ]

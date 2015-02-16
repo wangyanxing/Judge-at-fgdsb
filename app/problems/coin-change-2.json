@@ -1,0 +1,35 @@
+{
+    "name": "Coin Change Problem II",
+    "id": "coin-change-2",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/coin-change-problem/",
+    "desc": "<p>Follow up for \"Coin Change Problem\":</p>\n<p>Please write a function and return how many ways can we make the change.</p>",
+    "difficulty": "Medium",
+    "source": "Google",
+    "time": "2015-02-16 00:14:42",
+    "tags": [
+        "DP"
+    ],
+    "code_cpp": "int count_changes(vector<int>& coins, int target) {\n}",
+    "code_java": "public class Solution {\n    public int count_changes(int[] coins, int target) {\n    }\n}",
+    "code_ruby": "# @param coins: array of integers, target: integer\n# @return integer\ndef count_changes(coins, target)\nend",
+    "code_python": "# @param coins: list of integers, target: integer\n# @return integer\ndef count_changes(coins, target):",
+    "code_lua": "-- @param coins: table of integers, target: integer\n-- @return integer\nfunction count_changes(coins, target)\nend",
+    "in_type_cpp": [
+        "vector<int>",
+        "int"
+    ],
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]",
+        "int"
+    ],
+    "ret_type_java": "int",
+    "out_type_java": "int",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "count_changes(@)"
+}

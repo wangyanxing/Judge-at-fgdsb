@@ -6,7 +6,7 @@ import judge.*;
 import datastruct.*;
 
 public class coin_change {
-    public static int num_test = 5;
+    public static int num_test = 302;
     public static int[][] in_0;
     public static int[][] in_org_0;
     public static int[] in_1;

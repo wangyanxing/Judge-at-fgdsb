@@ -1,6 +1,6 @@
 require("../solution")
 
-local num_test = 5
+local num_test = 302
 local in_0 = {}
 local in_org_0 = {}
 local in_1 = {}

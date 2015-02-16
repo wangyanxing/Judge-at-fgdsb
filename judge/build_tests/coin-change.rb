@@ -32,9 +32,22 @@ class Test_coin_change < TestBase
     @test_in, @test_out = [[],[]], []
     add_test [1,2], 3
     add_test [1,2], 2
-    add_test [1,2,5], 4
-    add_test [1,2,5], 5
-    add_test [1,2,5], 10
+
+    (1..100).each do |i|
+      add_test [1,2,5], i
+    end
+
+    (1..100).each do |i|
+      add_test [2,5,10], i
+    end
+
+    (1..50).each do |i|
+      add_test [2,4,6,8], i
+    end
+
+    (1..50).each do |i|
+      add_test [1,3,5,7], i
+    end
   end
 end
 

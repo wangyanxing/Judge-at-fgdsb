@@ -1,5 +1,5 @@
--- @param mat, matrix of integers
--- @return array
-function longest_seq(mat)
-    return {1,2,3,4}
+-- @param coins: table of integers, target: integer
+-- @return integer
+function min_coins(coins, target)
+    return 0
 end
