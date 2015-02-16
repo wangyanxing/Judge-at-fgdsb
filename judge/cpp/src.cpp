@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/max-sum-rect.h"
+#include "tests/search-sorted-mat.h"
 
 int main() {
     judge();

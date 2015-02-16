@@ -1,5 +1,5 @@
--- @param coins: table of integers, target: integer
--- @return integer
-function min_coins(coins, target)
-    return 0
+-- @param mat: integer matrix, target: integer
+-- @return boolean
+function search_matrix(mat, target)
+    return false
 end

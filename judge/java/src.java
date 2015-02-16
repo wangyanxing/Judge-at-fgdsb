@@ -4,10 +4,10 @@ import java.lang.*;
 import java.io.*;
 import tests.test_common;
 import datastruct.*;
-import tests.coin_change;
+import tests.search_sorted_mat;
 
 public class src {
     public static void main (String[] args) throws java.lang.Exception {
-        coin_change.judge();
+        search_sorted_mat.judge();
     }
 }
