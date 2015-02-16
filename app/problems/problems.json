@@ -278,5 +278,12 @@
         "name": "Search Sorted Matrix",
         "difficulty": "Medium",
         "source": "CC150"
+    },
+    {
+        "time": "2015-02-16 14:34:50",
+        "id": "recover-count-array",
+        "name": "Recover Count Array",
+        "difficulty": "Hard",
+        "source": "Google"
     }
 ]

@@ -1,0 +1,34 @@
+{
+    "name": "Recover Count Array",
+    "id": "recover-count-array",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/recover-count-array/",
+    "desc": "<p>\nGiven a random permutation of <code>[1,n]</code> as the original array, we can easily construct a <strong>count array</strong> using the following rule:\n</p>\n<p>\n<code>counts[i]</code> = number of element which is smaller than <code>original[i]</code> from <code>original[i+1]</code> to <code>original[n-1]</code>.<br><br>\n</p>\n<p>For example:<br>\nOriginal array is <code>original = [4, 1, 3, 2]</code><br>\n<p>\nFor <code>original[0]</code>, there are 3 elements smaller than it from the right, so <code>counts[0]</code> should be <code>3</code>.<br>\nFor <code>original[1]</code>, there is no element smaller than it from the right, so <code>counts[1]</code> should be <code>0</code>.<br>\nFor <code>original[2]</code>, there is only 1 element smaller than it from the right, so <code>counts[2]</code> should be <code>1</code>.<br>\nFor <code>original[3]</code>, there is no elements smaller than it from the right, so <code>counts[3]</code> should be <code>0</code>.<br>\n</p>\n<p>\nThus the count array is: <code>[3, 0, 1, 0]</code></p>\n</p>\n<hr>\n<p>\nNow given the count array, please write a function to recover the original array.\n</p>",
+    "difficulty": "Hard",
+    "source": "Google",
+    "time": "2015-02-16 14:34:50",
+    "tags": [
+        "BST",
+        "Array"
+    ],
+    "code_cpp": "vector<int> recover(const vector<int>& arr) {\n}",
+    "code_java": "public class Solution {\n    public int[] recover(int[] arr) {\n    }\n}",
+    "code_ruby": "# @param arr: integer array\n# @return integer array\ndef recover(arr)\nend",
+    "code_python": "# @param arr: integer list\n# @return integer list\ndef recover(arr):",
+    "code_lua": "-- @param arr: integer table\n-- @return integer table\nfunction recover(arr)\nend",
+    "in_type_cpp": [
+        "vector<int>"
+    ],
+    "ret_type_cpp": "vector<int>",
+    "out_type_cpp": "vector<int>",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]"
+    ],
+    "ret_type_java": "int[]",
+    "out_type_java": "int[]",
+    "judge_type_java": "!common.equals(out[i], answer)",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "not arr_equals(out[i], answer)",
+    "judge_call": "recover(@)"
+}
