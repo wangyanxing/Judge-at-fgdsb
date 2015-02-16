@@ -14,7 +14,9 @@ var splashwin = gui.Window.open('splash/loading.html', {
 var pkg = require('../package.json');
 var upd = new updater(pkg);
 
-var update = function() {
+console.log('Current version:' + pkg['version']);
+
+var update = function(manifest) {
     upd.download(function(error, filename) {
         if (!error) {
             console.log(filename);
@@ -31,7 +33,7 @@ var update = function() {
         var tpt = Math.round(state.total/1024);
         $('#down-msg').text(rec + 'K /' + tpt + 'K downloaded');
         $('#down-progress').css('width', state.percent+'%').attr('aria-valuenow', state.percent);
-    });
+    }, manifest);
 };
 
 if (!pkg.dev) {
@@ -74,7 +76,7 @@ if (!pkg.dev) {
                             } else {
                                 $('#download-panel').show("slow");
                                 $(e.target).prop("disabled",true).attr("id","btn-update");
-                                update();
+                                update(manifest);
                             }
                             return false;
                         }

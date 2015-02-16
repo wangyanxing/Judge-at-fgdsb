@@ -64,6 +64,7 @@ updater.prototype.download = function(cb, prog_cb, newManifest){
     var manifest = newManifest || this.manifest;
     var new_ver = manifest['version'];
     var url = manifest.packages[platform].url.replace(/\$ver/, new_ver);
+    console.log('Downloading: ' + url);
     var pkg = progress(request(url, function(err, response){
         if(err){
             cb(err);
