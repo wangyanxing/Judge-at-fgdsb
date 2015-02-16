@@ -122,6 +122,7 @@ def modify_package_json
 
   # set dev flag to false
   pkg['dev'] = false
+  pkg['window']['toolbar'] = false
   @app_version = pkg['version']
 
   f = File.new(@menifest, 'w')
@@ -133,6 +134,7 @@ def modify_package_json
 
   # set dev flag back to true
   pkg['dev'] = true
+  pkg['window']['toolbar'] = true
   f = File.new(@menifest, 'w')
   f.write JSON.pretty_generate(pkg)
   f.close

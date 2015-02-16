@@ -236,5 +236,12 @@
         "name": "Smallest Character",
         "difficulty": "Medium",
         "source": "LinkedIn"
+    },
+    {
+        "time": "2015-02-15 20:53:32",
+        "id": "longest-inc-seq-matrix",
+        "name": "Longest Increasing Sequence in Matrix",
+        "difficulty": "Hard",
+        "source": "Google"
     }
 ]

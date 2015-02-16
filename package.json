@@ -17,7 +17,8 @@
     "show": true,
     "position": "center",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "toolbar": true
   },
   "webkit": {
     "plugin": true
@@ -29,30 +30,6 @@
     "request-progress": "0.3.1",
     "ncp": "1.0.1",
     "del": "1.1.1"
-  },
-  "platformOverrides": {
-    "win32": {
-      "window": {
-        "frame": true,
-        "toolbar": true
-      }
-    },
-    "win64": {
-      "window": {
-        "frame": true,
-        "toolbar": false
-      }
-    },
-    "osx32": {
-      "window": {
-        "toolbar": false
-      }
-    },
-    "osx64": {
-      "window": {
-        "toolbar": false
-      }
-    }
   },
   "manifestUrl": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/latest/package.json",
   "packages": {
