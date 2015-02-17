@@ -2,7 +2,7 @@
     "name": "Peek Iterator",
     "id": "peek-iterator",
     "discuss_link": "http://www.fgdsb.com/2015/01/25/peek-iterator/",
-    "desc": "",
+    "desc": "<p>\nSuppose you have a <strong>Iterator</strong> class with <code>has_next()</code> and <code>get_next()</code> methods.\n</p>\n<p>\nPlease design and implement a <strong>PeekIterator</strong> class as a wrapper of Iterator and provide a <code>peek()</code> method.\n</p>\n<p>\nWhen calling <code>peek()</code>, the user will only get the current element without moving forward the iterator.\n</p>    ",
     "difficulty": "Easy",
     "source": "Google",
     "time": "2015-02-16 20:33:00",
