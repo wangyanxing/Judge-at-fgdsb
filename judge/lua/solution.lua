@@ -1,3 +1,15 @@
+-- Definition for an iterator
+--
+-- Iterator = class()
+-- 
+-- function Iterator:has_next()
+-- 	...
+-- end
+-- 
+-- function Iterator:get_next()
+-- 	...
+-- end
+
 PeekIterator = class()
 
 function PeekIterator:ctor(it)
@@ -25,3 +37,4 @@ function PeekIterator:get_next()
         return ret
     end
 end
+
