@@ -4,11 +4,11 @@
 local _class={}
  
 function class(super)
-	local class_type={}
-	class_type.ctor=false
-	class_type.super=super
-	class_type.new=function(...) 
-			local obj={}
+	local class_type = {}
+	class_type.ctor = false
+	class_type.super = super
+	class_type.new = function(...) 
+			local obj = {}
 			do
 				local create
 				create = function(c,...)
@@ -22,20 +22,20 @@ function class(super)
  
 				create(class_type,...)
 			end
-			setmetatable(obj,{ __index=_class[class_type] })
+			setmetatable(obj,{ __index = _class[class_type] })
 			return obj
 		end
 	local vtbl={}
 	_class[class_type]=vtbl
  
-	setmetatable(class_type,{__newindex=
+	setmetatable(class_type,{__newindex =
 		function(t,k,v)
 			vtbl[k]=v
 		end
 	})
  
 	if super then
-		setmetatable(vtbl,{__index=
+		setmetatable(vtbl,{__index =
 			function(t,k)
 				local ret=_class[super][k]
 				vtbl[k]=ret
@@ -77,6 +77,7 @@ TreeNode = {
 	end
 }
 
+------------------------------------------------------------------------
 -- Definition for an iterator
 Iterator = class()
 
