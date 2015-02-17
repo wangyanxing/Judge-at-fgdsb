@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/valid-tree.h"
+#include "tests/peek-iterator.h"
 
 int main() {
     judge();

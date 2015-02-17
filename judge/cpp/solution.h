@@ -1,32 +1,39 @@
-bool solve(vector<vector<int>> & edges, int n, int parent,  unordered_set<int> & visited, unordered_set<int> & path) {
-    if(path.count(n)) return false;
-    path.insert(n);
-    visited.insert(n);
-    for(int i = 0; i < edges[n].size(); i++) {
-        
-        if(parent != edges[n][i] && !solve(edges, edges[n][i], n, visited, path)) {
-            return false;
-        }
-    }
-    path.erase(n);
-    return true;
-}
+/*
+class Iterator {
+public:
+    int get_next();
+    bool has_next();
+};
+*/
 
-bool valid_tree(vector<vector<int>>& edges, int n) {
-    vector<vector<int>> neighbors(n);
-    for(int i = 0; i < edges.size(); i++) {
-        neighbors[edges[i][0]].push_back(edges[i][1]);
-        neighbors[edges[i][1]].push_back(edges[i][0]);
-    }
-    
-    unordered_set<int> visited;
-    unordered_set<int> path;
-
-    if(!solve(neighbors, 0, -1, visited, path)) return false;
-
-    for(int i = 0; i < n; i++) {
-        if(!visited.count(i)) return false;
-    }
-    
-    return true;    
-}
+class PeekIterator {
+public:
+    PeekIterator(Iterator& it): _it(it) {}
+    
+    int peek() {
+        if(_peeks.empty()) {
+            int cur = _it.get_next();
+            _peeks.push_back(cur);
+            return cur;
+        } else {
+            return _peeks.back();
+        }
+    }
+    
+    bool has_next() {
+        return _it.has_next() || !_peeks.empty();
+    }
+    
+    int get_next() {
+        if(_peeks.empty()) {
+            return _it.get_next();
+        } else {
+            int ret = _peeks.back();
+            _peeks.pop_back();
+            return ret;
+        }
+    }
+private:
+    vector<int> _peeks;
+    Iterator _it;
+};

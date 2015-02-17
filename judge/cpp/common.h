@@ -56,6 +56,19 @@ struct UndirectedGraphNode {
 
 ////////////////////////////////////////////////////////////////////////
 
+class Iterator {
+public:
+    Iterator(vector<int>& data) : _data(data) {}
+    int get_next() { return _data[_pointer++]; }
+    bool has_next() { return _pointer < _data.size(); }
+    
+private:
+    vector<int> _data;
+    size_t _pointer{ 0 };
+};
+
+////////////////////////////////////////////////////////////////////////
+
 struct Point {
     Point(int _x = 0, int _y = 0): x(_x), y(_y){}
     int x, y;
