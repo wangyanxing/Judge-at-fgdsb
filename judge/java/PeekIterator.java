@@ -7,17 +7,34 @@ public class Iterator {
 
 public class PeekIterator {
     public PeekIterator(Iterator it) {
+        this.it = it;
+        this.peeks = new ArrayList<Integer>();
     }
     
     public int peek() {
-        return 1;
+        if(peeks.isEmpty()) {
+            Integer cur = (Integer)it.next();
+            peeks.add(cur);
+            return cur;
+        } else {
+            return peeks.get(peeks.size() - 1);
+        }
     }
     
     public boolean has_next() {
-        return false;
+        return it.hasNext() || !peeks.isEmpty();
     }
     
     public int get_next() {
-        return 2;
+        if(peeks.isEmpty()) {
+            return (Integer)it.next();
+        } else {
+            Integer ret = peeks.get(peeks.size() - 1);
+            peeks.remove(peeks.size() - 1);
+            return ret;
+        }
     }
+    
+    private ArrayList<Integer> peeks;
+    private Iterator it;
 }

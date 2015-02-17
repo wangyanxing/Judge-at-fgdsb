@@ -40,7 +40,12 @@ public class peek_iterator {
         for(int i = 0; i < num_test; ++i) {
             System.out.printf("Testing case #%d\n", i+1);
             
-            Iterator it = Arrays.asList(in_0[i]).iterator();
+            Integer[] itgArr = new Integer[in_0[i].length];
+            for(int ctr = 0; ctr < itgArr.length; ctr++) {
+                itgArr[ctr] = Integer.valueOf(in_0[i][ctr]);
+            }
+            
+            Iterator it = new ArrayIterator<Integer>(itgArr);
             PeekIterator pi = new PeekIterator(it);
             
             for(int j = 0; j < in_0[i].length; ++j) {
@@ -59,12 +64,19 @@ public class peek_iterator {
                     if(has_next_wrong) msg += "has_next() == false, ";
                     if(peek_wrong) msg += "peek() == " + Integer.toString(pi.peek()) + ", ";
                     if(get_next_wrong) msg += "get_next() == " + Integer.toString(nxt) + ", ";
+                    msg = msg.substring(0,msg.length() - 2);
+                    
+                    String expmsg = "";
+                    if(has_next_wrong) expmsg += "has_next() == false, ";
+                    if(peek_wrong) expmsg += "peek() == " + Integer.toString(num) + ", ";
+                    if(get_next_wrong) expmsg += "get_next() == " + Integer.toString(num) + ", ";
+                    expmsg = expmsg.substring(0,expmsg.length() - 2);
                     
                     System.out.printf("%d / %d;", i+1, num_test);
-                    String outs = common.to_string(peek_iterator.in_org_0[i]);
+                    String outs = common.to_string(peek_iterator.in_org_0[i]) + ", current number: " + Integer.toString(num);
                     System.out.print(outs + ";");
                     System.out.print(msg + ";");
-                    System.out.println("");
+                    System.out.println(expmsg);
                     return;
                 }
             }
