@@ -1,0 +1,33 @@
+{
+    "name": "Peek Iterator",
+    "id": "peek-iterator",
+    "discuss_link": "http://www.fgdsb.com/2015/01/25/peek-iterator/",
+    "desc": "",
+    "difficulty": "Easy",
+    "source": "Google",
+    "time": "2015-02-16 20:33:00",
+    "tags": [
+        "Design"
+    ],
+    "code_cpp": "/*\nclass Iterator {\npublic:\n    int get_next();\n    bool has_next();\n};\n*/\n\nclass PeekIterator {\npublic:\n    PeekIterator(Iterator& it) {\n    }\n    \n    int peek() {\n    }\n    \n    bool has_next() {\n    }\n    \n    int get_next() {\n    }\n};",
+    "code_java": "/*\npublic class Iterator {\n    public int get_next();\n    public boolean has_next();\n}\n*/\n\npublic class PeekIterator {\n    public PeekIterator(Iterator& it) {\n    }\n    \n    public int peek() {\n    }\n    \n    public boolean has_next() {\n    }\n    \n    public int get_next() {\n    }\n}",
+    "code_ruby": "# class Iterator\n#   def get_next()\n#       ...\n#   end   \n#\n#   def has_next()\n#       ...\n#   end\n# end\n\nclass PeekIterator\n    # @param it: Iterator object\n    def initialize(it)\n    end\n    \n    # @return integer\n    def peek()\n    end\n    \n    # @return boolean\n    def has_next()\n    end\n    \n    # @return integer\n    def get_next()\n    end\nend",
+    "code_python": "# class Iterator:\n#   def get_next(self):\n#       ...\n#\n#   def has_next(self):\n#       ...\n\nclass PeekIterator:\n    # @param it: Iterator object\n    def __init__(self, it):\n    \n    # @return integer\n    def peek(self):\n    \n    # @return boolean\n    def has_next(self):\n    \n    # @return integer\n    def get_next(self):",
+    "code_lua": "-- Iterator = {\n--     -- @return boolean\n--     has_next = function(self, it)\n--         ...\n--     end,\n--     \n--     -- @return integer\n--     get_next = function(self)\n--         ...\n--     end\n-- }\n\nPeekIterator = {\n    -- @param it: Iterator object\n    new = function(self, it)\n    end,\n    \n    -- @return integer\n    peek = function(self)\n    end,\n    \n    -- @return boolean\n    has_next = function(self)\n    end,\n    \n    -- @return integer\n    get_next = function(self)\n    end\n}",
+    "in_type_cpp": [
+        ""
+    ],
+    "ret_type_cpp": "",
+    "out_type_cpp": "",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        ""
+    ],
+    "ret_type_java": "",
+    "out_type_java": "",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "function(@)"
+}

@@ -285,5 +285,12 @@
         "name": "Recover Count Array",
         "difficulty": "Hard",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-16 20:33:00",
+        "id": "peek-iterator",
+        "name": "Peek Iterator",
+        "difficulty": "Easy",
+        "source": "Google"
     }
 ]
