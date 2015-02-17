@@ -1,5 +1,5 @@
 from common import *
 from solution import *
-from tests.longest_zero_subarray import *
+from tests.peek_iterator import *
 
 judge()

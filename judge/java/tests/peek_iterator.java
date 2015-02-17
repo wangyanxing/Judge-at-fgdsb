@@ -67,7 +67,7 @@ public class peek_iterator {
                     msg = msg.substring(0,msg.length() - 2);
                     
                     String expmsg = "";
-                    if(has_next_wrong) expmsg += "has_next() == false, ";
+                    if(has_next_wrong) expmsg += "has_next() == true, ";
                     if(peek_wrong) expmsg += "peek() == " + Integer.toString(num) + ", ";
                     if(get_next_wrong) expmsg += "get_next() == " + Integer.toString(num) + ", ";
                     expmsg = expmsg.substring(0,expmsg.length() - 2);

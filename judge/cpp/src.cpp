@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/peek-iterator.h"
+#include "tests/query-intervals-1.h"
 
 int main() {
     judge();

@@ -20,6 +20,23 @@ class Interval
     end
 end
 
+class Iterator
+    def initialize(data)
+        @data = data
+        @pointer = 0
+    end
+    
+    def has_next()
+        @pointer < @data.length
+    end
+    
+    def get_next()
+        ret = @data[@pointer]
+        @pointer += 1
+        ret
+    end
+end
+
 class Point
     attr_accessor :x, :y
     

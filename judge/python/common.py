@@ -16,6 +16,19 @@ class Interval:
     def __eq__(self, other):
         return self.begin == other.begin and self.end == other.end
 
+class Iterator:
+    def __init__(self, data):
+        self.data = data
+        self.pointer = 0
+    
+    def has_next(self):
+        return self.pointer < len(self.data)
+    
+    def get_next(self):
+        ret = self.data[self.pointer]
+        self.pointer += 1
+        return ret
+
 class Point:
     def __init__(self, x=0, y=0):
         self.x = x

@@ -1,39 +1,18 @@
 /*
-class Iterator {
-public:
-    int get_next();
-    bool has_next();
+struct Interval {
+    int begin{ 0 }, end{ 0 };
 };
 */
-
-class PeekIterator {
+class Intervals {
 public:
-    PeekIterator(Iterator& it): _it(it) {}
-    
-    int peek() {
-        if(_peeks.empty()) {
-            int cur = _it.get_next();
-            _peeks.push_back(cur);
-            return cur;
-        } else {
-            return _peeks.back();
-        }
+    Intervals(vector<Interval>& data) {
     }
     
-    bool has_next() {
-        return _it.has_next() || !_peeks.empty();
+    void preprocess() {
     }
     
-    int get_next() {
-        if(_peeks.empty()) {
-            return _it.get_next();
-        } else {
-            int ret = _peeks.back();
-            _peeks.pop_back();
-            return ret;
-        }
+    bool query(int time) {
     }
 private:
-    vector<int> _peeks;
-    Iterator _it;
+    vector<Interval> intervals;
 };

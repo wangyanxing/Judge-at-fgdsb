@@ -1,5 +1,31 @@
 from common import *
-# @param arr, list of integers
-# @return list array of integers
-def longest_subarray(arr):
-    return [-8, 1, 4, 9, -9, -7, 0, -8, -6, 4, 10, 7, 3]
+# class Iterator:
+#   def get_next(self):
+#       ...
+#
+#   def has_next(self):
+#       ...
+
+class PeekIterator:
+    # @param it: Iterator object
+    def __init__(self, it):
+        self.it, self.peeks = it, None
+    
+    # @return integer
+    def peek(self):
+        if self.peeks == None:
+            self.peeks = self.it.get_next()
+        return self.peeks
+    
+    # @return boolean
+    def has_next(self):
+        return self.it.has_next() or self.peeks != None
+    
+    # @return integer
+    def get_next(self):
+        if self.peeks == None:
+            return self.it.get_next()
+        else:
+            ret = self.peeks
+            self.peeks = None
+            return ret
