@@ -292,5 +292,12 @@
         "name": "Peek Iterator",
         "difficulty": "Easy",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-17 14:05:23",
+        "id": "zigzag-iterator",
+        "name": "Zigzag Iterator",
+        "difficulty": "Easy",
+        "source": "Google"
     }
 ]

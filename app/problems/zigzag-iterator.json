@@ -1,0 +1,36 @@
+{
+    "name": "Zigzag Iterator",
+    "id": "zigzag-iterator",
+    "discuss_link": "http://www.fgdsb.com/2015/01/30/zigzag-iterator/",
+    "desc": "<p>\nSuppose you have a <strong>Iterator</strong> class with <code>has_next()</code> and <code>get_next()</code> methods.\n</p>\n<p>\nPlease design and implement a <strong>ZigzagIterator</strong> class as a wrapper of two iterators.\n</p>\n<hr>\n<p>\nFor example, given two iterators:<br>\ni0 = <code>[1,2,3,4]</code><br>\ni1 = <code>[5,6]</code><br>\n</p>\n<pre>\nZigzagIterator it(i0, i1);\n\nwhile(it.has_next()) {\n    print(it.get_next());\n}\n</pre>\n<p>\nThe output of the above pseudocode would be <code>[1,5,2,6,3,4]</code>.\n</p>\n<br>\n<p><strong>Note:</strong> For Java solution we will use JDK's Iterator class, so the methods would be <code>hasNext()</code> and <code>next()</code>.</p>",
+    "difficulty": "Easy",
+    "source": "Google",
+    "time": "2015-02-17 14:05:23",
+    "tags": [
+        "Design"
+    ],
+    "code_cpp": "/*\nclass Iterator {\npublic:\n    int get_next();\n    bool has_next();\n};\n*/\n\nclass ZigzagIterator {\npublic:\n    ZigzagIterator(Iterator& i0, Iterator& i1) {\n    }\n\n    bool has_next() {\n    }\n    \n    int get_next() {\n    }\n};",
+    "code_java": "/*\npublic class Iterator {\n    public int get_next();\n    public boolean has_next();\n}\n*/\n\npublic class ZigzagIterator {\n    public ZigzagIterator(Iterator i0, Iterator i1) {\n    }\n    \n    public boolean has_next() {\n    }\n    \n    public int get_next() {\n    }\n}",
+    "code_ruby": "# class Iterator\n#   def get_next()\n#       ...\n#   end   \n#\n#   def has_next()\n#       ...\n#   end\n# end\n\nclass ZigzagIterator\n    # @param i0: Iterator object, i1: Iterator object\n    def initialize(i0, i1)\n    end\n\n    # @return boolean\n    def has_next()\n    end\n    \n    # @return integer\n    def get_next()\n    end\nend",
+    "code_python": "# class Iterator:\n#   def get_next(self):\n#       ...\n#\n#   def has_next(self):\n#       ...\n\nclass ZigzagIterator:\n    # @param i0: Iterator object, i1: Iterator object\n    def __init__(self, i0, i1):\n    \n    # @return boolean\n    def has_next(self):\n    \n    # @return integer\n    def get_next(self):",
+    "code_lua": "-- Definition for an iterator\n--\n-- Iterator = class()\n-- \n-- function Iterator:has_next()\n-- end\n-- \n-- function Iterator:get_next()\n-- end\n\nZigzagIterator = class()\n\nfunction ZigzagIterator: ctor(i0, i1)\n    self.i0, self.i1 = i0, i1\nend\n\nfunction ZigzagIterator: has_next()\nend\n\nfunction ZigzagIterator: get_next()\nend",
+    "in_type_cpp": [
+        "vector<int>",
+        "vector<int>"
+    ],
+    "ret_type_cpp": "bool",
+    "out_type_cpp": "bool",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]",
+        "int[]"
+    ],
+    "ret_type_java": "boolean",
+    "out_type_java": "boolean",
+    "judge_type_java": "equal",
+    "class_name_java": "ZigzagIterator",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "function(@)"
+}
