@@ -15,7 +15,7 @@ We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
 ### Build and run
 
-#### Build for development version
+##### Build for development version
 
 Judge@fgdsb was developed based on [nw.js](https://github.com/nwjs/nw.js/tree/master).
 
@@ -23,7 +23,7 @@ Copy all Node-webkit files to the root folder, run ```npm install``` to install 
 
 Then you can just open the node-webkit app.
 
-#### Build for release version
+##### Build for release version
 
 Please run the following build script to download the latest version of nw.js and pack releases for different platforms.
 
