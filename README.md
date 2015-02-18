@@ -19,9 +19,7 @@ We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
 Judge@fgdsb was developed based on [nw.js](https://github.com/nwjs/nw.js/tree/master).
 
-Copy all Node-webkit files to the root folder, run ```npm install``` to install node modules and bowers. 
-
-Then you can just open the node-webkit app.
+Copy all nw.js files to the root folder, run ```npm install``` to install node modules and bowers. Then you can just open the nw.js executable file.
 
 ##### Build for shipping
 
