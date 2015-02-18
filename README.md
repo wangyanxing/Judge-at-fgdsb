@@ -35,7 +35,7 @@ Then you can just open the node-webkit app. Enjoy it!
 
 ![screenshot1](https://farm8.staticflickr.com/7283/15945406904_8456a5a4d2_h.jpg)
 
-##### Add or edit question (temporal function)
+##### Add or edit question (temporal feature)
 
 ![screenshot1](https://farm8.staticflickr.com/7410/15945406874_06302458a6_h.jpg)
 
