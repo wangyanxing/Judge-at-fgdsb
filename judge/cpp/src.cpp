@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/query-intervals-1.h"
+#include "tests/zigzag-iterator.h"
 
 int main() {
     judge();

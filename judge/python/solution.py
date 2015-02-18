@@ -6,26 +6,21 @@ from common import *
 #   def has_next(self):
 #       ...
 
-class PeekIterator:
-    # @param it: Iterator object
-    def __init__(self, it):
-        self.it, self.peeks = it, None
-    
-    # @return integer
-    def peek(self):
-        if self.peeks == None:
-            self.peeks = self.it.get_next()
-        return self.peeks
+class ZigzagIterator:
+    # @param i0: Iterator object, i1: Iterator object
+    def __init__(self, i0, i1):
+        self.its = [i0,i1]
+        if i0.has_next(): self.pointer = 0
+        else: self.pointer = 1
     
     # @return boolean
     def has_next(self):
-        return self.it.has_next() or self.peeks != None
+        return self.its[self.pointer].has_next()
     
     # @return integer
     def get_next(self):
-        if self.peeks == None:
-            return self.it.get_next()
-        else:
-            ret = self.peeks
-            self.peeks = None
-            return ret
+        ret, old = self.its[self.pointer].get_next(), self.pointer;
+        while True:
+            self.pointer = (self.pointer + 1) % 2
+            if self.its[self.pointer].has_next() or self.pointer == old: break
+        return ret

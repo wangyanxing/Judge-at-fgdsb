@@ -13,10 +13,9 @@ void load_test() {
 
 void judge() {
     cout.setf(ios::boolalpha);
-
     capture_stdout();
-
     load_test();
+    
     auto start = chrono::steady_clock::now();
     for(int i = 0; i < num_test; ++i) {
         printf("Testing case #%d\n", i+1);

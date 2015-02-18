@@ -6,6 +6,9 @@ public class ArrayIterator<T> implements Iterator<T> {
     private T array[];
     private int pos = 0;
     
+    public ArrayIterator() {
+    }
+    
     public ArrayIterator(T anArray[]) {
         array = anArray;
     }

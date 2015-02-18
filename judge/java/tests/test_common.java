@@ -104,6 +104,22 @@ public class test_common {
         return target;
     }
     
+    public static Integer[][] copy(Integer[][] input) {
+        Integer[][] target = new Integer[input.length][];
+        for (int i=0; i <input.length; i++) {
+            target[i] = Arrays.copyOf(input[i], input[i].length);
+        }
+        return target;
+    }
+    
+    public static Integer[] copy(Integer[] input) {
+        Integer[] target = new Integer[input.length];
+        for (int i=0; i <input.length; i++) {
+            target[i] = input[i];
+        }
+        return target;
+    }
+    
     public static ArrayList<Interval> copy_al(ArrayList<Interval> input) {
         ArrayList<Interval> target = new ArrayList<Interval>();
         for (int i=0; i <input.size(); i++) {

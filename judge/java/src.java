@@ -4,10 +4,10 @@ import java.lang.*;
 import java.io.*;
 import tests.test_common;
 import datastruct.*;
-import tests.peek_iterator;
+import tests.zigzag_iterator;
 
 public class src {
     public static void main (String[] args) throws java.lang.Exception {
-        peek_iterator.judge();
+        zigzag_iterator.judge();
     }
 }

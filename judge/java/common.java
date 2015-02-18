@@ -145,6 +145,16 @@ public class common {
         return true;
     }
     
+    public static <T> boolean compare_arraylist(List<T> a0, List<T> a1) {
+        if(a0.size() != a1.size()) return false;
+        for(int i = 0; i < a0.size(); ++i) {
+            if(!a0.get(i).equals(a1.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public static boolean test_wiggle(int[] arr) {
         if(arr.length == 0) return true;
         boolean test_flag = true;
@@ -174,7 +184,7 @@ public class common {
         }
         return target;
     }
-    
+
     public static boolean equals(int[] a0, int[] a1) {
         if(a0.length != a1.length) return false;
         for (int i=0; i <a0.length; i++) {
@@ -505,6 +515,7 @@ public class common {
         return ret;
     }
     
+    
     public static int[][][] read_int_matrix_arr(BufferedReader in) throws IOException {
         String s = in.readLine();
         int number = Integer.parseInt(s);
@@ -512,6 +523,29 @@ public class common {
         int[][][] ret = new int[number][][];
         for(int i = 0; i < number; ++i) {
             ret[i] = read_int_matrix(in);
+        }
+        return ret;
+    }
+    
+    public static Integer[] read_integer_array(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Integer[] ret = new Integer[number];
+        for(int i = 0; i < number; ++i) {
+            s = in.readLine();
+            ret[i] = Integer.parseInt(s);
+        }
+        return ret;
+    }
+    
+    public static Integer[][] read_integer_matrix(BufferedReader in) throws IOException {
+        String s = in.readLine();
+        int number = Integer.parseInt(s);
+        
+        Integer[][] ret = new Integer[number][];
+        for(int i = 0; i < number; ++i) {
+            ret[i] = read_integer_array(in);
         }
         return ret;
     }

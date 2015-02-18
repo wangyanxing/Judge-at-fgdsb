@@ -8,31 +8,24 @@
 #   end
 # end
 
-class PeekIterator
-    # @param it: Iterator object
-    def initialize(it)
-        @it, @peeks = it, nil
+class ZigzagIterator
+    # @param i0: Iterator object, i1: Iterator object
+    def initialize(i0, i1)
+        @its, @pointer = [i0,i1], i0.has_next() ? 0 : 1
     end
-    
-    # @return integer
-    def peek()
-        @peeks = @it.get_next if @peeks.nil?
-        @peeks
-    end
-    
+
     # @return boolean
     def has_next()
-        @it.has_next or not @peeks.nil?
+        @its[@pointer].has_next()
     end
     
     # @return integer
     def get_next()
-        if @peeks.nil?
-            @it.get_next
-        else
-            ret = @peeks
-            @peeks = nil
-            ret
+        ret, old = @its[@pointer].get_next, @pointer;
+        loop do 
+            @pointer = (@pointer + 1) % 2
+            break if @its[@pointer].has_next or @pointer == old
         end
+        ret
     end
 end

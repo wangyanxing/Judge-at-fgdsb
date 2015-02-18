@@ -3,6 +3,7 @@ require '../ruby/common'
 
 class Test_zigzag_iterator < TestBase
   def initialize(name)
+    #@manual_test = true
     super(name)
   end
 
@@ -13,6 +14,12 @@ class Test_zigzag_iterator < TestBase
 
   def gen_tests
     @test_in, @test_out = [[],[]], []
+
+    add_test [1,2,3], [4,5,6]
+    add_test [1], [4,5,6]
+    add_test [1,2,3], [4]
+    add_test [], [4,5,6]
+    add_test [1,2,3], []
     
     20.times do
       add_test gen_array(rand(1...20), 1..20), gen_array(rand(1...20), 1..20)
