@@ -3,7 +3,7 @@ Judge@fgdsb
 
 ### Features
 
-Judge@fgdsb is a desktop app to help you learn algorithms and practice real interview coding questions.
+Judge@fgdsb is a desktop app that helps you to learn algorithms and practice real interview coding questions.
 
 The app will call the local compilers or virtual machines to compile, run and judge your solutions.
 
@@ -15,11 +15,22 @@ We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
 ### Build and run
 
-Judge@fgdsb was developed based on [Node-webkit](https://github.com/nwjs/nw.js/tree/master).
+#### Build for development version
+
+Judge@fgdsb was developed based on [nw.js](https://github.com/nwjs/nw.js/tree/master).
 
 Copy all Node-webkit files to the root folder, run ```npm install``` to install node modules and bowers. 
 
-Then you can just open the node-webkit app. Enjoy it!
+Then you can just open the node-webkit app.
+
+#### Build for release version
+
+Please run the following build script to download the latest version of nw.js and pack releases for different platforms.
+
+``` bash
+cd build
+ruby build.rb -b
+```
 
 ### Some Screenshots
 
