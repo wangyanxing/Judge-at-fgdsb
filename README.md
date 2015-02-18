@@ -23,10 +23,19 @@ Then you can just open the node-webkit app. Enjoy it!
 
 ### Some Screenshots
 
-![screenshot1](https://farm8.staticflickr.com/7290/15776311024_629fd6a6ad_h.jpg)
+#### Coding questions
 
-![screenshot1](https://farm8.staticflickr.com/7440/16211374810_766908d8cb_h.jpg)
+![screenshot1](https://farm9.staticflickr.com/8683/15947699073_6a3f232c91_h.jpg)
 
-![screenshot1](https://farm8.staticflickr.com/7428/16212867557_9740abd95a_h.jpg)
+#### Code, judge and debug
+
+![screenshot1](https://farm8.staticflickr.com/7317/16381963857_90ceda4d37_h.jpg)
+
+#### View history
 
 ![screenshot1](https://farm8.staticflickr.com/7444/15776558304_7d20a776a1_h.jpg)
+
+#### Add or edit question (temporal function)
+
+![screenshot1](https://farm8.staticflickr.com/7448/16380223688_12f4a385e4_h.jpg)
+
