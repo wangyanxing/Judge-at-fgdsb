@@ -4,7 +4,7 @@
     "discuss_link": "http://www.fgdsb.com/2015/01/03/lowest-common-ancestor/",
     "desc": "<p>Follow up for \"Lowest Common Ancestor\":<br><br>How if the given binary tree are binary search tree?</p>",
     "difficulty": "Medium",
-    "source": "CC150",
+    "source": "LinkedIn",
     "time": "2015-02-03 22:21:15",
     "tags": [],
     "code_cpp": "/*\nstruct TreeNode {\n    TreeNode(int v = 0) :val(v){}\n    int val{ 0 };\n    TreeNode* left{ nullptr };\n    TreeNode* right{ nullptr };\n};\n*/\nTreeNode* lca(TreeNode* root, int m, int n) {\n}",

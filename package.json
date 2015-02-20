@@ -1,6 +1,6 @@
 {
   "name": "judge_fgdsb",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Yanxing Wang <demiwangya@gmail.com>",
   "main": "app/index.html",
   "dev": true,
@@ -40,5 +40,5 @@
       "url": "https://github.com/wangyanxing/fgdsb_judge/raw/updates/$ver/app.nw"
     }
   },
-  "update_log": "New questions added and bug fixes."
+  "update_log": "New questions added."
 }

@@ -200,14 +200,14 @@
         "id": "lca-1",
         "name": "Lowest Common Ancestor",
         "difficulty": "Medium",
-        "source": "CC150"
+        "source": "LinkedIn"
     },
     {
         "time": "2015-02-03 22:21:15",
         "id": "lca-2",
         "name": "Lowest Common Ancestor II",
         "difficulty": "Medium",
-        "source": "CC150"
+        "source": "LinkedIn"
     },
     {
         "time": "2015-02-08 16:59:46",
@@ -299,5 +299,12 @@
         "name": "Zigzag Iterator",
         "difficulty": "Easy",
         "source": "Google"
+    },
+    {
+        "time": "2015-02-19 22:14:25",
+        "id": "hamming-distance",
+        "name": "Hamming Distance",
+        "difficulty": "Easy",
+        "source": "Microsoft"
     }
 ]

@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/zigzag-iterator.h"
+#include "tests/longest-zero-subarray.h"
 
 int main() {
     judge();

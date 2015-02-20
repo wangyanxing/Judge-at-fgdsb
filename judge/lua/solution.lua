@@ -8,27 +8,30 @@
 -- function Iterator:get_next()
 -- end
 
-ZigzagIterator = class()
+PeekIterator = class()
 
-function ZigzagIterator: ctor(i0, i1)
-    self.its = {i0,i1}
-    if i0:has_next() then 
-        self.pointer = 1
-    else 
-        self.pointer = 2 
-    end
+function PeekIterator: ctor(it)
+	self.it = it
+    self.peeks = nil
 end
 
-function ZigzagIterator: has_next()
-    return self.its[self.pointer]:has_next()
+function PeekIterator: peek()
+	if self.peeks == nil then
+        self.peeks = self.it:get_next()
+    end
+    return self.peeks
 end
 
-function ZigzagIterator: get_next()
-    local ret, old = self.its[self.pointer]:get_next(), self.pointer;
-    while true do
-        self.pointer = self.pointer + 1
-        if self.pointer > 2 then self.pointer = 1 end
-        if self.its[self.pointer]:has_next() or self.pointer == old then break end
+function PeekIterator: has_next()
+	return self.it:has_next() or self.peeks
+end
+
+function PeekIterator: get_next()
+	if self.peeks == nil then
+        return self.it:get_next()
+    else
+        ret = self.peeks
+        self.peeks = nil
+        return ret
     end
-    return ret
 end

@@ -1,0 +1,33 @@
+{
+    "name": "Hamming Distance",
+    "id": "hamming-distance",
+    "discuss_link": "http://www.fgdsb.com/2015/01/03/hamming-distance/",
+    "desc": "<p>Write a function to calculate Hamming distance between two integers</p>",
+    "difficulty": "Easy",
+    "source": "Microsoft",
+    "time": "2015-02-19 22:14:25",
+    "tags": [
+        "Math"
+    ],
+    "code_cpp": "int hamming(int a , int b) {\n}",
+    "code_java": "public class Solution {\n    public int hamming(int a , int b) {\n    }\n}",
+    "code_ruby": "# @param a: integer, b: integer\n# @return integer\ndef hamming(a, b)\nend",
+    "code_python": "# @param a: integer, b: integer\n# @return integer\ndef hamming(a, b):",
+    "code_lua": "-- @param a: integer, b: integer\n-- @return integer\nfunction hamming(a, b)\nend",
+    "in_type_cpp": [
+        ""
+    ],
+    "ret_type_cpp": "",
+    "out_type_cpp": "",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        ""
+    ],
+    "ret_type_java": "",
+    "out_type_java": "",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_call": "function(@)"
+}
