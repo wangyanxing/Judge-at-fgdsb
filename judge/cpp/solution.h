@@ -1,10 +1,19 @@
-int hamming(int a , int b) {
-    int res = 0, i, j;
-    while (a >0 || b > 0) {
-        i = a % 10, j = b % 10;
-        if (a == 0 || b == 0 || i != j)
-            res++;
-        a /= 10, b /= 10;
+/*
+struct Interval {
+    int begin{ 0 }, end{ 0 };
+};
+*/
+int max_intervals(vector<Interval>& intervals) {
+    sort(intervals.begin(), intervals.end(), [&](Interval& a, Interval& b) {
+        return a.end < b.end;
+    });
+    
+    int ret = 1, i = 0;
+    for(int l = i + 1; l < intervals.size(); ++l) {
+        if(intervals[l].begin >= intervals[i].end) {
+            ret++;
+            i = l;
+        }
     }
-    return res;
+    return ret;
 }

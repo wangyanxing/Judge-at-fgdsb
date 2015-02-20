@@ -89,12 +89,3 @@ Testing case #88
 Testing case #89
 Testing case #90
 Testing case #91
-Testing case #92
-Testing case #93
-Testing case #94
-Testing case #95
-Testing case #96
-Testing case #97
-Testing case #98
-Testing case #99
-Testing case #100

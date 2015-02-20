@@ -34,3 +34,7 @@ judge/build_tests/.idea
 
 # temp scripts
 run.command
+
+*.class
+*.pyc
+judge/stdout.txt
