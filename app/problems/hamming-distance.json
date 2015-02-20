@@ -2,7 +2,7 @@
     "name": "Hamming Distance",
     "id": "hamming-distance",
     "discuss_link": "http://www.fgdsb.com/2015/01/03/hamming-distance/",
-    "desc": "<p>Write a function to calculate Hamming distance between two integers</p>",
+    "desc": "<p>Write a function to calculate <a href=\"http://en.wikipedia.org/wiki/Hamming_distance\">Hamming distance</a> between two integers.</p>\n<hr>\n<p>\nHamming distance between two numbers is the number of positions at which the corresponding digits are different. Examples:\n</p>\n<p>\nThe Hamming distance between:\n<p>\n<li><b>2<span style=\"color:#0082ff\">17</span>3<span style=\"color:#0082ff\">8</span>96</b> and <b>2<span style=\"color:red;\">23</span>3<span style=\"color:red;\">7</span>96</b> is 3.</li>\n<li><b><span style=\"color:#0082ff\">10</span>0</b> and <b><span style=\"color:red;\">(0)1</span>0</b> is 2.</li>\n</p>\n</p>",
     "difficulty": "Easy",
     "source": "Microsoft",
     "time": "2015-02-19 22:14:25",

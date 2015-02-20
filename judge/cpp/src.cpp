@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/longest-zero-subarray.h"
+#include "tests/hamming-distance.h"
 
 int main() {
     judge();

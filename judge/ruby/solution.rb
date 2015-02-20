@@ -1,16 +1,10 @@
-# class TreeNode
-#    attr_accessor :left, :right, :val
-#    def initialize(v)
-#        @val, @left, @right = v, nil, nil
-#    end
-
-# @param root, TreeNode
-# @param m,n, integer
-# @return TreeNode
-def lca(root, m, n)
-    return nil if root.nil?
-    return root if root.val == m or root.val == n
-    l, r = lca(root.left, m, n), lca(root.right, m, n)
-    return root if l and r
-    return l ? l : r
+# @param a: integer, b: integer
+# @return integer
+def hamming(a, b)
+    res = 0
+    while a >0 or b > 0
+        res += 1 if a == 0 or b == 0 or a % 10 != b % 10
+        a, b = a / 10, b / 10
+    end
+    res
 end
