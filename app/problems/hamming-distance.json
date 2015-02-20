@@ -15,19 +15,21 @@
     "code_python": "# @param a: integer, b: integer\n# @return integer\ndef hamming(a, b):",
     "code_lua": "-- @param a: integer, b: integer\n-- @return integer\nfunction hamming(a, b)\nend",
     "in_type_cpp": [
-        ""
+        "int",
+        "int"
     ],
-    "ret_type_cpp": "",
-    "out_type_cpp": "",
+    "ret_type_cpp": "int",
+    "out_type_cpp": "int",
     "judge_type_cpp": "equal",
     "in_type_java": [
-        ""
+        "int",
+        "int"
     ],
-    "ret_type_java": "",
-    "out_type_java": "",
+    "ret_type_java": "int",
+    "out_type_java": "int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
     "judge_type_lua": "equal",
-    "judge_call": "function(@)"
+    "judge_call": "hamming(@)"
 }
