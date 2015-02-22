@@ -468,7 +468,8 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
             "Java" : judge_java,
             "Ruby" : judge_ruby,
             "Python" : judge_python,
-            "Lua" : judge_lua
+            "Lua" : judge_lua,
+            "Scala" : judge_scala
         };
 
         $scope.problem = Problem.get({problemId: $routeParams.problemId, 'foo':new Date().getTime()}, function(problem) {

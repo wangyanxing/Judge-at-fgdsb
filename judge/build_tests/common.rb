@@ -875,7 +875,7 @@ end'
       type = type_map.has_key?(in_type) ? type_map[in_type] : in_type
       file.puts indent(1) + "var in_#{i} = List[#{type}]();"
     end
-    out_type = @problem['out_type_java']
+    out_type = @problem['out_type_scala']
     if type_map.has_key? out_type
       out_type = type_map[out_type]
     end

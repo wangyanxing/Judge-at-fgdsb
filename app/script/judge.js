@@ -35,7 +35,7 @@ var generate_scala = function(problem) {
     var test_class = problem['id'].replace(new RegExp('-', 'g'), '_');
 
     var out_file = "package judge;\n";
-    out_file += "import tests." + test_class + ";\n\n";
+    out_file += "import test." + test_class + ";\n\n";
 
     out_file += "object src {\n";
 
@@ -424,7 +424,8 @@ var judge_scala = function($scope, callback, msg) {
             var test_file_name = class_name + '.scala';
             msg('Compiling');
             var cmd = 'scalac -cp judge/scala -d judge/scala/bin judge/scala/common.scala judge/scala/' + solution_file + ' judge/scala/src.scala ';
-            cmd += "judge/scala/tests/" + test_file_name;
+            cmd += "judge/scala/tests/" + test_file_name + ' -nowarn';
+            console.log(cmd);
             exec(cmd,
                 function (error, stdout, stderr) {
                     if (stderr != undefined && stderr != "") {

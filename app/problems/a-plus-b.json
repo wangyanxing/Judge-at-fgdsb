@@ -26,6 +26,7 @@
     ],
     "ret_type_java": "int",
     "out_type_java": "int",
+    "out_type_scala": "int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
