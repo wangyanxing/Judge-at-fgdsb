@@ -107,6 +107,11 @@ end'
                 return False
         test_flag = not test_flag
     return True'
+
+		@extra_test_code_scala = '
+    def test_wiggle(arr: List[Int]): Boolean = {
+		    return false
+	  }'
 	end
 end
 

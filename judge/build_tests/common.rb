@@ -858,17 +858,17 @@ end'
       'int' => 'Int',
       'double' => 'Double',
       'char' => 'Char',
-      'boolean' => 'Bool',
+      'boolean' => 'Boolean',
 
       'int[]' => 'List[Int]',
       'double[]' => 'List[Double]',
       'char[]' => 'List[Char]',
-      'boolean[]' => 'List[Bool]',
+      'boolean[]' => 'List[Boolean]',
 
       'int[][]' => 'List[List[Int]]',
       'double[][]' => 'List[List[Double]]',
       'char[][]' => 'List[List[Char]]',
-      'boolean[][]' => 'List[List[Bool]]'
+      'boolean[][]' => 'List[List[Boolean]]'
     }
 
     class_name = @name.gsub(/-/, '_')
@@ -892,11 +892,11 @@ end'
     file.print indent(1) + "var out = List[#{out_type}]();"
 
     file.puts
-    file.puts @extra_test_code_java
+    file.puts @extra_test_code_scala
     file.puts
 
     file.puts '    def load_test() = {'
-    file.puts "        val in = Source.fromFile(\"judge/tests/a-plus-b.txt\").getLines;"
+    file.puts "        val in = Source.fromFile(\"./judge/tests/#{@name}.txt\").getLines;"
 
     @problem['in_type_cpp'].each_with_index do |in_type, i|
       file.puts "        in_#{i} = #{scala_funcs[in_type]}(in);"
@@ -923,11 +923,7 @@ end'
     caller = 'Solution.' + @problem['judge_call'] if caller.nil?
     judge_call = '        '
     judge_inputs = ''
-    if(@problem['ret_type_java'] != 'void')
-      judge_call += "    val answer = #{caller}"
-    else
-      judge_call += caller
-    end
+    judge_call += "    val answer = #{caller}"
     judge_call += ';'
 
     @problem['in_type_java'].each_with_index do |in_type, i|
@@ -937,14 +933,11 @@ end'
 
     file.puts judge_call.gsub(/@/, judge_inputs)
 
-    if @problem['ret_type_java'] == 'void'
-      file.puts '        val answer = in_0(i);'
-    end
 
-    if @problem['judge_type_java'] == 'equal'
+    if @problem['judge_type_scala'] == 'equal'
       file.puts '            if(answer != out(i)) {'
     else
-      file.puts "            if(#{@problem['judge_type_java']}) {"
+      file.puts "            if(#{@problem['judge_type_scala']}) {"
     end
 
     file.puts '                common.release_stdout();'
@@ -958,10 +951,10 @@ end'
     file.puts ';'
     file.puts '                print(outs + ";");'
 
-    vis_answer = @problem['vis_answer_java']
+    vis_answer = @problem['vis_answer_scala']
     vis_answer = 'answer.toString' if vis_answer.nil?
 
-    vis_out = @problem['vis_out_java']
+    vis_out = @problem['vis_out_scala']
     vis_out = 'out(i).toString' if vis_out.nil?
 
     file.puts "                print(#{vis_answer} + \";\");"

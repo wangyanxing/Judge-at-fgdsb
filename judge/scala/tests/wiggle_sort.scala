@@ -8,9 +8,12 @@ object wiggle_sort {
     var in_0 = List[List[Int]]();
     var out = List[List[Int]]();
 
+    def test_wiggle(arr: List[Int]): Boolean = {
+		    return false
+	  }
 
     def load_test() = {
-        val in = Source.fromFile("judge/tests/a-plus-b.txt").getLines;
+        val in = Source.fromFile("./judge/tests/wiggle-sort.txt").getLines;
         in_0 = common.read_int_matrix(in);
         out = common.read_int_matrix(in);
     }
@@ -24,9 +27,8 @@ object wiggle_sort {
 
         while(i < num_test) {
             printf("Testing case #%d\n", i+1);
-        Solution.wiggle_sort(in_0(i));
-        val answer = in_0(i);
-            if(!common.test_wiggle(wiggle_sort.in_0[i])) {
+            val answer = Solution.wiggle_sort(in_0(i));
+            if(!test_wiggle(answer)) {
                 common.release_stdout();
                 printf("%d / %d;", i+1, num_test);
                 var outs = wiggle_sort.in_0(i).toString;
