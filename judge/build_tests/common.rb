@@ -20,6 +20,7 @@ class TestBase
       gen_ruby_test
       gen_python_test
       gen_lua_test
+      gen_scala_test
     end
   end
 
@@ -820,6 +821,154 @@ class TestBase
     local elapsed = math.floor((os.clock() - start) * 1000)
 	print("Accepted;" .. elapsed)
 end'
+
+    file.close
+  end
+
+  def gen_scala_test
+    scala_funcs = {
+        'bool' => 'common.read_bool_array',
+        'int' => 'common.read_int_array',
+        'double' => 'common.read_double_array',
+        'char' => 'common.read_char_array',
+        'string' => 'common.read_string_array',
+        'Interval' => 'common.read_interval_array',
+        'Point' => 'common.read_point_array',
+        'TreeNode*' => 'common.read_tree_array',
+        'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
+        'vector<bool>' => 'common.read_bool_matrix',
+        'vector<int>' => 'common.read_int_matrix',
+        'vector<char>' => 'common.read_char_matrix',
+        'vector<double>' => 'common.read_double_matrix',
+        'vector<string>' => 'common.read_string_matrix',
+        'vector<Interval>' => 'common.read_interval_matrix',
+        'vector<Point>' => 'common.read_point_matrix',
+        'vector<TreeNode*>' => 'common.read_tree_matrix',
+        'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
+        'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
+        'vector<vector<char>>' => 'common.read_char_matrix_arr',
+        'vector<vector<int>>' => 'common.read_int_matrix_arr',
+        'vector<vector<double>>' => 'common.read_double_matrix_arr',
+        'vector<vector<string>>' => 'common.read_string_matrix_arr'
+    }
+
+    type_map = {
+        'int' => 'Int',
+        'double' => 'Double',
+        'char' => 'Char',
+        'boolean' => 'Bool'
+    }
+
+    class_name = @name.gsub(/-/, '_')
+    file = File.open("../scala/tests/#{class_name}.scala", 'w')
+
+    file.puts 'package test'
+    file.puts 'import scala.io.Source'
+    file.puts 'import judge.common'
+    file.puts 'import judge.Solution'
+    file.puts
+
+    file.puts "object #{class_name} {"
+    file.puts indent(1) + "val num_test = #{@test_in[0].length};"
+
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      type = type_map.has_key?(in_type) ? type_map[in_type] : in_type
+      file.puts indent(1) + "var in_#{i} = List[#{type}]();"
+    end
+    out_type = @problem['out_type_java']
+    if type_map.has_key? out_type
+      out_type = type_map[out_type]
+    end
+    file.print indent(1) + "var out = List[#{out_type}]();";
+
+    file.puts
+    file.puts @extra_test_code_java
+    file.puts
+
+    file.puts '    def load_test() = {'
+    file.puts "        val in = Source.fromFile(\"judge/tests/a-plus-b.txt\").getLines;"
+
+    @problem['in_type_cpp'].each_with_index do |in_type, i|
+      file.puts "        in_#{i} = #{scala_funcs[in_type]}(in);"
+    end
+    file.puts "        out = #{scala_funcs[@problem['out_type_cpp']]}(in);"
+    file.puts '    }'
+
+    solution_class = @problem['class_name_java']
+    solution_class = 'Solution' if solution_class.nil?
+
+    file.puts
+    file.puts '    def judge(): Int = {'
+    file.puts '        load_test();'
+    file.puts '        common.capture_stdout();'
+
+    file.puts
+    file.puts '        val startTime = System.currentTimeMillis();'
+    file.puts '        var i = 0;'
+    file.puts
+    file.puts '        while(i < num_test) {'
+    file.puts '            printf("Testing case #%d\n", i+1);'
+
+    caller = @problem['judge_call_java']
+    caller = 'Solution.' + @problem['judge_call'] if caller.nil?
+    judge_call = '        '
+    judge_inputs = ''
+    if(@problem['ret_type_java'] != 'void')
+      judge_call += "    val answer = #{caller}"
+    else
+      judge_call += caller
+    end
+    judge_call += ';'
+
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      judge_inputs += ', ' if i != 0
+      judge_inputs += "in_#{i}(i)"
+    end
+
+    file.puts judge_call.gsub(/@/, judge_inputs)
+
+    if @problem['ret_type_java'] == 'void'
+      file.puts '        val answer = in_0(i);'
+    end
+
+    if @problem['judge_type_java'] == 'equal'
+      file.puts '            if(answer != out(i)) {'
+    else
+      file.puts "            if(#{@problem['judge_type_java']}) {"
+    end
+
+    file.puts '                common.release_stdout();'
+    file.puts '                printf("%d / %d;", i+1, num_test);'
+
+    file.print '                var outs = '
+    @problem['in_type_java'].each_with_index do |in_type, i|
+      file.print ' + ", " + ' if i != 0
+      file.print "#{class_name}.in_#{i}(i).toString"
+    end
+    file.puts ';'
+    file.puts '                print(outs + ";");'
+
+    vis_answer = @problem['vis_answer_java']
+    vis_answer = 'answer.toString' if vis_answer.nil?
+
+    vis_out = @problem['vis_out_java']
+    vis_out = 'out(i).toString' if vis_out.nil?
+
+    file.puts "                print(#{vis_answer} + \";\");"
+    file.puts "                println(#{vis_out});"
+    file.puts '                return 1;'
+    file.puts '            }'
+    file.puts '            i += 1;'
+    file.puts '        }'
+    file.puts
+    file.puts '        common.release_stdout();'
+    file.puts '        val estimatedTime = System.currentTimeMillis - startTime;'
+    file.puts '        print("Accepted;");'
+    file.puts '        println(estimatedTime);'
+    file.puts '        return 0;'
+    file.puts '    }'
+
+    file.puts '}'
 
     file.close
   end

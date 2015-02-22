@@ -31,6 +31,22 @@ var generate_java = function(problem) {
     return out_file;
 };
 
+var generate_scala = function(problem) {
+    var test_class = problem['id'].replace(new RegExp('-', 'g'), '_');
+
+    var out_file = "package judge;\n";
+    out_file += "import tests." + test_class + ";\n\n";
+
+    out_file += "object src {\n";
+
+    out_file += "    def main(args: Array[String]) {\n";
+    out_file += "        " + test_class + ".judge();\n";
+    out_file += "    }\n"
+
+    out_file += "}\n";
+    return out_file;
+};
+
 var generate_ruby = function(problem) {
     var out_file = "require './judge/ruby/common'\n";
     out_file += "require './judge/ruby/solution'\n";
@@ -123,7 +139,7 @@ var judge_cpp = function($scope, callback, msg) {
             );
         });
     });
-}
+};
 
 var judge_java = function($scope, callback, msg) {
     var java_out = generate_java($scope.problem);
@@ -203,7 +219,7 @@ var judge_java = function($scope, callback, msg) {
             );
         });
     });
-}
+};
 
 var judge_ruby = function($scope, callback, msg) {
     var ruby_out = generate_ruby($scope.problem).
@@ -376,4 +392,84 @@ var judge_lua = function($scope, callback, msg) {
             );
         });
     });
-}
+};
+
+var judge_scala = function($scope, callback, msg) {
+    var scala_out = generate_scala($scope.problem);
+
+    var class_name = $scope.problem['id'].replace(new RegExp('-', 'g'), '_');
+
+    var solution_file = $scope.problem['class_name_java'];
+    if (!solution_file) solution_file = 'Solution';
+    solution_file += '.scala';
+
+    var solution = "package judge; " + $scope.$editor.getValue();
+
+    // write source
+    fs.writeFile('judge/scala/' + solution_file, solution, function (err) {
+        if (err) {
+            ret = {"result": "Internal Error", "details": err};
+            callback(ret);
+            return;
+        }
+
+        fs.writeFile('judge/scala/src.scala', scala_out, function (err) {
+            if (err) {
+                ret = {"result": "Internal Error", "details": err};
+                callback(ret);
+                return;
+            }
+
+            // compile
+            var test_file_name = class_name + '.scala';
+            msg('Compiling');
+            var cmd = 'scalac -cp judge/scala -d judge/scala/bin judge/scala/common.scala judge/scala/' + solution_file + ' judge/scala/src.scala ';
+            cmd += "judge/scala/tests/" + test_file_name;
+            exec(cmd,
+                function (error, stdout, stderr) {
+                    if (stderr != undefined && stderr != "") {
+                        // Compile error
+                        var errors = stderr.replace(new RegExp('judge/scala/src.scala:', 'g'), '');
+                        var ret = {"result": "Compile Error", "details": errors};
+                        callback(ret);
+                        return;
+                    }
+
+                    if (error !== null) {
+                        // Internal error
+                        var ret = {"result": "Internal Error", "details": error};
+                        callback(ret);
+                        return;
+                    }
+
+                    msg('Judging');
+                    // execute and judge
+                    exec('scala -cp judge/scala/bin judge.src',
+                        function (error, stdout, stderr) {
+                            if (error !== null) {
+                                var ret = {"result": "Runtime Error", "details": error};
+                                callback(ret);
+                                return;
+                            }
+                            var results = stdout.trim();
+                            if (beginsWith('Accepted', results)) {
+                                var ret = {"result": "Accepted", "runtime": results.split(";")[1]};
+                                callback(ret);
+                            } else {
+                                var res = results.split(";");
+                                var ret = {
+                                    "result": "Wrong Answer",
+                                    "tests": res[0],
+                                    "input": res[1],
+                                    "output": res[2],
+                                    "expected": res[3]
+                                };
+                                callback(ret);
+                            }
+                        }
+                    );
+                }
+            );
+        });
+    });
+};

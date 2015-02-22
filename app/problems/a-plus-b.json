@@ -12,6 +12,7 @@
     "code_ruby": "def plus_num(a, b)\nend",
     "code_python": "def plus_num(a, b):",
     "code_lua": "function plus_num(a, b)\nend",
+    "code_scala": "object Solution {\n\tdef plus_num(a: Int, b: Int): Int = {\n\t}\n}",
     "in_type_cpp": [
         "int",
         "int"
@@ -29,5 +30,6 @@
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
     "judge_type_lua": "equal",
+    "judge_type_scala": "equal",
     "judge_call": "plus_num(@)"
 }

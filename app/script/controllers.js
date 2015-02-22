@@ -7,7 +7,8 @@ var modes = {
     "Java" : "ace/mode/java",
     "Ruby" : "ace/mode/ruby",
     "Python" : "ace/mode/python",
-    "Lua" : "ace/mode/lua"
+    "Lua" : "ace/mode/lua",
+    "Scala" : "ace/mode/scala"
 };
 
 var codes = {
@@ -15,7 +16,8 @@ var codes = {
     "Java" : "code_java",
     "Ruby" : "code_ruby",
     "Python" : "code_python",
-    "Lua" : "code_lua"
+    "Lua" : "code_lua",
+    "Scala" : "code_scala"
 };
 
 var langs = [
@@ -23,7 +25,8 @@ var langs = [
     'Java',
     'Ruby',
     'Python',
-    'Lua'
+    'Lua',
+    'Scala'
 ];
 
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);
