@@ -18,16 +18,18 @@ object a_plus_b {
     }
 
     def judge(): Int = {
-        load_test
-        val startTime = System.currentTimeMillis
+        load_test        
+        common.capture_stdout
 
+        val startTime = System.currentTimeMillis
         var i = 0
         while(i < num_test) {
-            //printf("Testing case #%d\n", i+1)
+            printf("Testing case #%d\n", i+1)
 
             val answer = Solution.plus_num(in_0(i), in_1(i))
 
             if (answer != out(i)) {
+                common.release_stdout
                 printf("%d / %d;", i+1, num_test);
                 var outs = a_plus_b.in_0(i).toString + ", " + a_plus_b.in_1(i).toString
                 print(outs + ";")
@@ -39,6 +41,7 @@ object a_plus_b {
             i += 1
         }
 
+        common.release_stdout
         val estimatedTime = System.currentTimeMillis - startTime;
         print("Accepted;");
         println(estimatedTime);

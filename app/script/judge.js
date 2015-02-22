@@ -206,7 +206,7 @@ var judge_java = function($scope, callback, msg) {
 }
 
 var judge_ruby = function($scope, callback, msg) {
-    var ruby_out = generate_ruby($scope.problem);
+    var ruby_out = generate_ruby($scope.problem).
 
     fs.writeFile('judge/ruby/solution.rb', $scope.$editor.getValue(), function (err) {
         if (err) {
