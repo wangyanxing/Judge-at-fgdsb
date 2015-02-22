@@ -827,36 +827,48 @@ end'
 
   def gen_scala_test
     scala_funcs = {
-        'bool' => 'common.read_bool_array',
-        'int' => 'common.read_int_array',
-        'double' => 'common.read_double_array',
-        'char' => 'common.read_char_array',
-        'string' => 'common.read_string_array',
-        'Interval' => 'common.read_interval_array',
-        'Point' => 'common.read_point_array',
-        'TreeNode*' => 'common.read_tree_array',
-        'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
-        'vector<bool>' => 'common.read_bool_matrix',
-        'vector<int>' => 'common.read_int_matrix',
-        'vector<char>' => 'common.read_char_matrix',
-        'vector<double>' => 'common.read_double_matrix',
-        'vector<string>' => 'common.read_string_matrix',
-        'vector<Interval>' => 'common.read_interval_matrix',
-        'vector<Point>' => 'common.read_point_matrix',
-        'vector<TreeNode*>' => 'common.read_tree_matrix',
-        'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
-        'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
-        'vector<vector<char>>' => 'common.read_char_matrix_arr',
-        'vector<vector<int>>' => 'common.read_int_matrix_arr',
-        'vector<vector<double>>' => 'common.read_double_matrix_arr',
-        'vector<vector<string>>' => 'common.read_string_matrix_arr'
+      'bool' => 'common.read_bool_array',
+      'int' => 'common.read_int_array',
+      'double' => 'common.read_double_array',
+      'char' => 'common.read_char_array',
+      'string' => 'common.read_string_array',
+      'Interval' => 'common.read_interval_array',
+      'Point' => 'common.read_point_array',
+      'TreeNode*' => 'common.read_tree_array',
+      'TreeNodeWithParent*' => 'common.read_tree_with_p_array',
+
+      'vector<bool>' => 'common.read_bool_matrix',
+      'vector<int>' => 'common.read_int_matrix',
+      'vector<char>' => 'common.read_char_matrix',
+      'vector<double>' => 'common.read_double_matrix',
+      'vector<string>' => 'common.read_string_matrix',
+      'vector<Interval>' => 'common.read_interval_matrix',
+      'vector<Point>' => 'common.read_point_matrix',
+      'vector<TreeNode*>' => 'common.read_tree_matrix',
+      'vector<TreeNodeWithParent*>' => 'common.read_tree_with_p_matrix',
+
+      'vector<vector<bool>>' => 'common.read_bool_matrix_arr',
+      'vector<vector<char>>' => 'common.read_char_matrix_arr',
+      'vector<vector<int>>' => 'common.read_int_matrix_arr',
+      'vector<vector<double>>' => 'common.read_double_matrix_arr',
+      'vector<vector<string>>' => 'common.read_string_matrix_arr'
     }
 
     type_map = {
-        'int' => 'Int',
-        'double' => 'Double',
-        'char' => 'Char',
-        'boolean' => 'Bool'
+      'int' => 'Int',
+      'double' => 'Double',
+      'char' => 'Char',
+      'boolean' => 'Bool',
+
+      'int[]' => 'List[Int]',
+      'double[]' => 'List[Double]',
+      'char[]' => 'List[Char]',
+      'boolean[]' => 'List[Bool]',
+
+      'int[][]' => 'List[List[Int]]',
+      'double[][]' => 'List[List[Double]]',
+      'char[][]' => 'List[List[Char]]',
+      'boolean[][]' => 'List[List[Bool]]'
     }
 
     class_name = @name.gsub(/-/, '_')
@@ -876,10 +888,8 @@ end'
       file.puts indent(1) + "var in_#{i} = List[#{type}]();"
     end
     out_type = @problem['out_type_scala']
-    if type_map.has_key? out_type
-      out_type = type_map[out_type]
-    end
-    file.print indent(1) + "var out = List[#{out_type}]();";
+
+    file.print indent(1) + "var out = List[#{out_type}]();"
 
     file.puts
     file.puts @extra_test_code_java

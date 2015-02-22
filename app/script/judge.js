@@ -425,7 +425,6 @@ var judge_scala = function($scope, callback, msg) {
             msg('Compiling');
             var cmd = 'scalac -cp judge/scala -d judge/scala/bin judge/scala/common.scala judge/scala/' + solution_file + ' judge/scala/src.scala ';
             cmd += "judge/scala/tests/" + test_file_name + ' -nowarn';
-            console.log(cmd);
             exec(cmd,
                 function (error, stdout, stderr) {
                     if (stderr != undefined && stderr != "") {

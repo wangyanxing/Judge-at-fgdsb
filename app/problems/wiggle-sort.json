@@ -25,6 +25,7 @@
     ],
     "ret_type_java": "void",
     "out_type_java": "int[]",
+    "out_type_scala": "List[Int]",
     "judge_type_java": "!common.test_wiggle(wiggle_sort.in_0[i])",
     "judge_type_ruby": "!test_wiggle(@in_0[i])",
     "judge_type_python": "not test_wiggle(in_0[i])",
