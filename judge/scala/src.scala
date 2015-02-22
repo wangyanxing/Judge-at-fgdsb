@@ -1,8 +1,8 @@
 package judge;
-import test.a_plus_b;
+import test.wiggle_sort;
 
 object src {
     def main(args: Array[String]) {
-        a_plus_b.judge();
+        wiggle_sort.judge();
     }
 }

@@ -1,5 +1,5 @@
 package judge; object Solution {
-	def plus_num(a: Int, b: Int): Int = {
-	    a + b
+	def wiggle_sort(arr: List[Int]): List[Int] = {
+	    return List[Int]()
 	}
 }

@@ -69,6 +69,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
         $scope.question.code_ruby = "";
         $scope.question.code_python = "";
         $scope.question.code_lua = "";
+        $scope.question.code_scala = "";
 
         $scope.judge_obj = {};
         $scope.judge_json = "";
@@ -80,7 +81,8 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             if ($scope.question.id != '') {
                 $scope.problem = Problem.get({problemId: $scope.question.id, 'foo':new Date().getTime()}, function(problem) {
                     var excluded_key = ["name", "id", "discuss_link", "desc",
-                        "code_cpp", "code_java", "code_ruby", "code_python", "code_lua", "difficulty", "source", "time", "tags"];
+                        "code_cpp", "code_java", "code_ruby", "code_python", "code_lua", "code_scala",
+                        "difficulty", "source", "time", "tags"];
 
                     for (var prop in $scope.problem) {
                         if(excluded_key.indexOf(prop) >= 0) continue;
@@ -203,6 +205,7 @@ fgdsbControllers.controller('AddNewCtrl', ['$scope', '$q', '$routeParams', 'Prob
             var save_obj = $scope.question;
             angular.extend(save_obj, judge_obj);
 
+            console.log($scope.question['code_scala']);
             var str = JSON.stringify(save_obj, null, '    ');
 
             fs.writeFile('app/problems/' + save_obj.id + '.json', str, function (err) {

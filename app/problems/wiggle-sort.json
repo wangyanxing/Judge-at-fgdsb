@@ -14,6 +14,7 @@
     "code_ruby": "# @pram arr, array of integers\ndef wiggle_sort(arr)\nend",
     "code_python": "# @pram arr, list of integers\ndef wiggle_sort(arr):",
     "code_lua": "-- @pram arr, table of integers\nfunction wiggle_sort(arr)\nend",
+    "code_scala": "object Solution {\n\tdef wiggle_sort(arr: List[Int]): List[Int] = {\n\t}\n}",
     "in_type_cpp": [
         "vector<int>"
     ],
