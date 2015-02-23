@@ -5,10 +5,10 @@ import judge.Solution
 
 object wiggle_sort {
     val num_test = 100;
-    var in_0 = List[List[Int]]();
-    var out = List[List[Int]]();
+    var in_0 = Array[Array[Int]]();
+    var out = Array[Array[Int]]();
 
-    def test_wiggle(arr: List[Int], len: Int): Boolean = {
+    def test_wiggle(arr: Array[Int], len: Int): Boolean = {
         if(arr.length != len) return false;
         else if(arr.length == 0) return true;
 

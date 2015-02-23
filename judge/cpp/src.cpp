@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/activity-selection.h"
+#include "tests/wiggle-sort.h"
 
 int main() {
     judge();
