@@ -45,10 +45,10 @@ object wiggle_sort {
             if(!test_wiggle(answer, out(i).length)) {
                 common.release_stdout();
                 printf("%d / %d;", i+1, num_test);
-                var outs = wiggle_sort.in_0(i).toString;
+                var outs = common.to_string(wiggle_sort.in_0(i));
                 print(outs + ";");
-                print(answer.toString + ";");
-                println(out(i).toString);
+                print(common.to_string(answer) + ";");
+                println(common.to_string(out(i)));
                 return 1;
             }
             i += 1;

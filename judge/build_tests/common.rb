@@ -946,16 +946,16 @@ end'
     file.print '                var outs = '
     @problem['in_type_java'].each_with_index do |in_type, i|
       file.print ' + ", " + ' if i != 0
-      file.print "#{class_name}.in_#{i}(i).toString"
+      file.print "common.to_string(#{class_name}.in_#{i}(i))"
     end
     file.puts ';'
     file.puts '                print(outs + ";");'
 
     vis_answer = @problem['vis_answer_scala']
-    vis_answer = 'answer.toString' if vis_answer.nil?
+    vis_answer = 'common.to_string(answer)' if vis_answer.nil?
 
     vis_out = @problem['vis_out_scala']
-    vis_out = 'out(i).toString' if vis_out.nil?
+    vis_out = 'common.to_string(out(i))' if vis_out.nil?
 
     file.puts "                print(#{vis_answer} + \";\");"
     file.puts "                println(#{vis_out});"
