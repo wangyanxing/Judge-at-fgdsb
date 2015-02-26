@@ -12,7 +12,7 @@
     "code_ruby": "# @param arr, array of integers\n# @return integer\ndef second_largest(arr)\nend",
     "code_python": "# @param arr, list of integers\n# @return integer\ndef second_largest(arr):",
     "code_lua": "-- @param arr, table of integers\n-- @return integer\nfunction second_largest(arr)\nend",
-    "code_scala": "object Solution {\n    def second_largest(arr: List[Int]):Int {\n    }\n}",
+    "code_scala": "object Solution {\n    def second_largest(arr: List[Int]):Int = {\n    }\n}",
     "in_type_cpp": [
         "vector<int>"
     ],
@@ -24,7 +24,7 @@
     ],
     "ret_type_java": "int",
     "out_type_java": "int",
-    "out_type_scala": "int",
+    "out_type_scala": "Int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
