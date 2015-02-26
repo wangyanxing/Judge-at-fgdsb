@@ -12,6 +12,7 @@
     "code_ruby": "# @param n, integer k, integer\n# @return integer\ndef num_colors(n, k)\nend",
     "code_python": "# @param n, integer k, integer\n# @return integer\ndef num_colors(n, k):",
     "code_lua": "-- @param n, integer k, integer\n-- @return integer\nfunction num_colors(n, k)\nend",
+    "code_scala": "object Solution {\n    def num_colors(n: Int, k: Int):Int = {\n    }\n}",
     "in_type_cpp": [
         "int",
         "int"
@@ -25,6 +26,7 @@
     ],
     "ret_type_java": "int",
     "out_type_java": "int",
+    "out_type_scala": "Int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
