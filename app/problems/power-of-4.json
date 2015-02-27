@@ -12,6 +12,7 @@
     "code_ruby": "# @param number, integer\n# @return boolean\ndef power_of_4(number)\nend",
     "code_python": "# @param number, integer\n# @return boolean\ndef power_of_4(number):",
     "code_lua": "-- @param number, integer\n-- @return boolean\nfunction power_of_4(number)\nend",
+    "code_scala": "object Solution {\n    def power_of_4(number: Int): Boolean = {\n    }\n}",
     "in_type_cpp": [
         "int"
     ],
@@ -22,7 +23,7 @@
         "int"
     ],
     "ret_type_java": "boolean",
-    "out_type_java": "boolean",
+    "out_type_java": "Boolean",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
