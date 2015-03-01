@@ -12,6 +12,7 @@
     "code_ruby": "# @param k, integer\n# @return integer\ndef kth_ugly_number(k)\nend",
     "code_python": "# @param k, integer\n# @return integer\ndef kth_ugly_number(k):",
     "code_lua": "-- @param k, integer\n-- @return integer\nfunction kth_ugly_number(k)\nend",
+    "code_scala": "object Solution {\n    def kth_ugly_number(k: Int): Int = {\n    }\n}",
     "in_type_cpp": [
         "int"
     ],
@@ -23,6 +24,7 @@
     ],
     "ret_type_java": "int",
     "out_type_java": "int",
+    "out_type_scala": "Int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
