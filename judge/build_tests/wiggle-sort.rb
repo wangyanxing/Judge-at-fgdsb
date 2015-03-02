@@ -110,22 +110,15 @@ end'
 
 		@extra_test_code_scala = '
     def test_wiggle(arr: List[Int], len: Int): Boolean = {
-        if(arr.length != len) return false;
-        else if(arr.length == 0) return true;
-
-				var test_flag = true;
-				var i = 0;
-				while(i < arr.length - 1) {
-					if (test_flag) {
-            if (arr(i) > arr(i+1)) return false;
-          } else {
-            if (arr(i) < arr(i+1)) return false;
-          }
-          test_flag = !test_flag;
-				  i = i + 1;
-				}
-		    true
-	  }'
+			def solve(as: List[Int], flag: Boolean): Boolean = as match {
+				case h1::h2::t =>
+					if((flag && h1 > h2) || (!flag && h1 < h2)) false
+					else solve(h2::t, !flag)
+				case _ => true
+			}
+			if (arr.length != len) false
+			else solve(arr, true)
+		}'
 	end
 end
 

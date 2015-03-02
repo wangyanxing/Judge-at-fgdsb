@@ -29,5 +29,6 @@
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
     "judge_type_lua": "equal",
+    "judge_type_scala": "equal",
     "judge_call": "second_largest(@)"
 }
