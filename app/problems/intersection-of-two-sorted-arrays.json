@@ -12,6 +12,7 @@
     "code_ruby": "# @param a, array of integers b, array of integers\n# @return array of integers\ndef intersection(a, b)\nend",
     "code_python": "# @param a, list of integers b, list of integers\n# @return array of integers\ndef intersection(a, b):",
     "code_lua": "-- @param a, list of integers b, list of integers\n-- @return array of integers\nfunction intersection(a, b)\nend",
+    "code_scala": "object Solution {\n    def intersection(a: List[Int], b: List[Int]): List[Int] {\n    }\n}",
     "in_type_cpp": [
         "vector<int>",
         "vector<int>"
@@ -25,6 +26,7 @@
     ],
     "ret_type_java": "List<Integer>",
     "out_type_java": "int[]",
+    "out_type_scala": "List[Int]",
     "judge_type_java": "!common.compare_arr_arraylist(out[i], answer)",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
