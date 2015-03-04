@@ -12,6 +12,7 @@
     "code_ruby": "# @param arr, array of integers\ndef num_inverse_pairs(arr)\nend",
     "code_python": "# @param arr, list of integers\ndef num_inverse_pairs(arr):",
     "code_lua": "-- @param arr, table of integers\nfunction num_inverse_pairs(arr)\nend",
+    "code_scala": "object Solution {\n    def num_inverse_pairs(arr: List[Int]) = {\n    }\n}",
     "in_type_cpp": [
         "vector<int>"
     ],
@@ -23,6 +24,7 @@
     ],
     "ret_type_java": "int",
     "out_type_java": "int",
+    "out_type_scala": "Int",
     "judge_type_java": "equal",
     "judge_type_ruby": "equal",
     "judge_type_python": "equal",
