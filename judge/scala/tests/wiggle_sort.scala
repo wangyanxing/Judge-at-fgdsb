@@ -29,28 +29,29 @@ object wiggle_sort {
         load_test();
         common.capture_stdout();
 
-        val startTime = System.currentTimeMillis();
-        var i = 0;
-
-        while(i < num_test) {
-            printf("Testing case #%d\n", i+1);
-            val answer = Solution.wiggle_sort(in_0(i));
-            if(!test_wiggle(answer, out(i).length)) {
+        def do_judge(i0: List[List[Int]], ot: List[List[Int]], count: Int):Boolean = {
+            if(i0 == Nil) return true;
+            val answer = Solution.wiggle_sort(i0.head);
+            if(!test_wiggle(answer, ot.head.length)) {
                 common.release_stdout();
-                printf("%d / %d;", i+1, num_test);
-                var outs = common.to_string(wiggle_sort.in_0(i));
-                print(outs + ";");
+                printf("%d / %d;", count, num_test);
+                print(common.to_string(i0.head) + ";");
                 print(common.to_string(answer) + ";");
-                println(common.to_string(out(i)));
-                return 1;
+                println(common.to_string(ot.head));
+                return false;
+            } else {
+                return do_judge(i0.tail, ot.tail, count+1);
             }
-            i += 1;
         }
 
-        common.release_stdout();
-        val estimatedTime = System.currentTimeMillis - startTime;
-        print("Accepted;");
-        println(estimatedTime);
+        val startTime = System.currentTimeMillis();
+        
+        if(do_judge(in_0, out, 1)) {
+            common.release_stdout();
+            val estimatedTime = System.currentTimeMillis - startTime;
+            print("Accepted;");
+            println(estimatedTime);
+        }
         return 0;
     }
 }

@@ -1,8 +1,8 @@
 package judge;
-import test.second_largest_number;
+import test.wiggle_sort;
 
 object src {
     def main(args: Array[String]) {
-        second_largest_number.judge();
+        wiggle_sort.judge();
     }
 }
