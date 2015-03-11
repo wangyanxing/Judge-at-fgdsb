@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/wiggle-sort.h"
+#include "tests/subarray-sum.h"
 
 int main() {
     judge();

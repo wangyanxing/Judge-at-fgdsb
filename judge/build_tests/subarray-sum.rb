@@ -26,15 +26,15 @@ class Test_subarray_sum < TestBase
   def gen_tests
     @test_in, @test_out = [[],[]], []
     20.times do
-        gen_array(rand(2...20), 1...100)
+      add_test(gen_array(rand(2...10), 1...10), rand(5..20))
     end
     
     50.times do
-        gen_array(rand(20...50), 1...500)
+      add_test(gen_array(rand(20...50), 1...50), rand(50..500))
     end
     
     30.times do
-        gen_array(rand(200...500), 1...5000)
+      add_test(gen_array(rand(200...500), 1...100), rand(100..5000))
     end
   end
 end

@@ -1,17 +1,14 @@
-void wiggle_sort(vector<int>& s) {
-    int n = (int)s.size();
-    if(n == 0) return;
-    
-    bool flag = true;
-    int current = s[0];
-    for (int i = 0; i < n-1; i++) {
-        if ((flag && current > s[i+1]) || (!flag && current < s[i+1])) {
-            s[i] = s[i+1];
-        } else {
-            s[i] = current;
-            current = s[i+1];
+bool subarray_sum(vector<int>& arr, int t) {
+    int curr_sum = arr[0], start = 0, i;
+   
+    for (i = 1; i <= arr.size(); i++) {
+        while (curr_sum > t && start < i-1) {
+            curr_sum = curr_sum - arr[start];
+            start++;
         }
-        flag = !flag;
+        
+        if (curr_sum == t) return true;
+        if (i < arr.size()) curr_sum = curr_sum + arr[i];
     }
-    s[n-1] = current;
+    return false;
 }
