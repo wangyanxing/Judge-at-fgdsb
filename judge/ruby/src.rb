@@ -1,5 +1,5 @@
 require './judge/ruby/common'
 require './judge/ruby/solution'
-require './judge/ruby/tests/hamming-distance'
+require './judge/ruby/tests/subarray-sum'
 
 judge

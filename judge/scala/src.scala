@@ -1,8 +1,8 @@
 package judge;
-import test.wiggle_sort;
+import test.subarray_sum;
 
 object src {
     def main(args: Array[String]) {
-        wiggle_sort.judge();
+        subarray_sum.judge();
     }
 }

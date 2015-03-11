@@ -1,5 +1,5 @@
 from common import *
-def plus_num(a, b):
-    print a
-    print b
-    return a + b
+# @param arr, list of integers
+# @param t, integer
+def subarray_sum(arr, t):
+    return False
