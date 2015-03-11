@@ -306,5 +306,12 @@
         "name": "Hamming Distance",
         "difficulty": "Easy",
         "source": "Microsoft"
+    },
+    {
+        "time": "2015-03-10 19:31:50",
+        "id": "subarray-sum",
+        "name": "Find Subarray with Given Sum",
+        "difficulty": "Medium",
+        "source": "Facebook"
     }
 ]
