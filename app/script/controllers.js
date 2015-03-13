@@ -26,7 +26,7 @@ var langs = [
     'Ruby',
     'Python',
     'Lua',
-    'Scala'
+    //'Scala'
 ];
 
 var fgdsbControllers = angular.module('fgdsbControllers', ['ui.bootstrap']);

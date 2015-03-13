@@ -4,10 +4,10 @@ import java.lang.*;
 import java.io.*;
 import tests.test_common;
 import datastruct.*;
-import tests.subarray_sum;
+import tests.subarray_sum2;
 
 public class src {
     public static void main (String[] args) throws java.lang.Exception {
-        subarray_sum.judge();
+        subarray_sum2.judge();
     }
 }

@@ -2,7 +2,7 @@
     "name": "Find Subarray with Given Sum II",
     "id": "subarray-sum2",
     "discuss_link": "",
-    "desc": "<p>\nFollow up for \"Find Subarray with Given Sum\":\n<br><br>\nIf the input array contains negative numbers?\n</p>",
+    "desc": "<p>\nFollow up for \"Find Subarray with Given Sum\":\n<br><br>\nIf the input array contains <strong>negative</strong> numbers?\n</p>",
     "difficulty": "Medium",
     "source": "Facebook",
     "time": "2015-03-12 20:50:10",
@@ -15,7 +15,7 @@
     "code_ruby": "# @param arr, array of integers\n# @param t, integer\ndef subarray_sum(arr, t)\nend",
     "code_python": "# @param arr, list of integers\n# @param t, integer\ndef subarray_sum(arr, t):",
     "code_lua": "-- @param arr, table of integers\n-- @param t, integer\nfunction subarray_sum(arr, t)\nend",
-    "code_scala": "object Solution {\n    def subarray_sum(arr: List[Int], t: Int): Boolean = {\n    }\n}",
+    "code_scala": "",
     "in_type_cpp": [
         "vector<int>",
         "int"
