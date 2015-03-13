@@ -313,5 +313,12 @@
         "name": "Find Subarray with Given Sum",
         "difficulty": "Medium",
         "source": "Facebook"
+    },
+    {
+        "time": "2015-03-12 20:50:10",
+        "id": "subarray-sum2",
+        "name": "Find Subarray with Given Sum II",
+        "difficulty": "Medium",
+        "source": "Facebook"
     }
 ]

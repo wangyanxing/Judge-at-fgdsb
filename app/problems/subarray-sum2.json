@@ -1,0 +1,39 @@
+{
+    "name": "Find Subarray with Given Sum II",
+    "id": "subarray-sum2",
+    "discuss_link": "",
+    "desc": "<p>\nFollow up for \"Find Subarray with Given Sum\":\n<br><br>\nIf the input array contains negative numbers?\n</p>",
+    "difficulty": "Medium",
+    "source": "Facebook",
+    "time": "2015-03-12 20:50:10",
+    "tags": [
+        "Array",
+        "Two Pointers"
+    ],
+    "code_cpp": "bool subarray_sum(vector<int>& arr, int t) {\n}",
+    "code_java": "public class Solution {\n    public boolean subarray_sum(int[] array, int t) {\n        \n    }\n}",
+    "code_ruby": "# @param arr, array of integers\n# @param t, integer\ndef subarray_sum(arr, t)\nend",
+    "code_python": "# @param arr, list of integers\n# @param t, integer\ndef subarray_sum(arr, t):",
+    "code_lua": "-- @param arr, table of integers\n-- @param t, integer\nfunction subarray_sum(arr, t)\nend",
+    "code_scala": "object Solution {\n    def subarray_sum(arr: List[Int], t: Int): Boolean = {\n    }\n}",
+    "in_type_cpp": [
+        "vector<int>",
+        "int"
+    ],
+    "ret_type_cpp": "bool",
+    "out_type_cpp": "bool",
+    "judge_type_cpp": "equal",
+    "in_type_java": [
+        "int[]",
+        "int"
+    ],
+    "ret_type_java": "boolean",
+    "out_type_java": "boolean",
+    "scala_type_java": "Boolean",
+    "judge_type_java": "equal",
+    "judge_type_ruby": "equal",
+    "judge_type_python": "equal",
+    "judge_type_lua": "equal",
+    "judge_type_scala": "equal",
+    "judge_call": "subarray_sum(@)"
+}
