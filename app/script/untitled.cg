@@ -1,0 +1,146 @@
+#include <iostream>
+#include <vector>
+#include <functional>
+using namespace std;
+
+void TEST(bool val, bool answer) {
+    string s_val = val ? "true" : "false";
+    string a_val = answer ? "true" : "false";
+    if(val == answer) {
+        cout << "PASS: " << s_val << endl;
+    } else {
+        cout << "FAIL: should be [ " << a_val << " ] but given [ " << s_val << " ]" << endl;
+    }
+}
+
+class Iterator {
+public:
+    Iterator(const vector<int>& data) : _data(data) {}
+    int get_next() { return _data[_pointer++]; }
+    bool has_next() { return _pointer < _data.size(); }
+private:
+    vector<int> _data;
+    size_t _pointer{ 0 };
+};
+
+/////////////////////////////////////////////////////////////////////////////////
+
+bool one_dist(Iterator&& i0, Iterator&& i1) {
+     function<bool(Iterator&,Iterator&,int)> solve = [&](Iterator& i0, Iterator& i1, int dist) {
+          if(dist > 1) return false;
+          while(i0.has_next() || i1.has_next()) {
+               if(!i0.has_next() || !i1.has_next()) {
+                    if(i0.has_next()) i0.get_next();
+                    if(i1.has_next()) i1.get_next();
+                    return solve(i0, i1, dist+1);
+               }
+               int v0 = i0.get_next(), v1 = i1.get_next();
+               if(v0 != v1) {
+                    if(!i0.has_next() && !i1.has_next()) return dist == 0;
+                    else if(!i0.has_next() || !i1.has_next()) return false;
+                    
+                    int next0 = i0.get_next(), next1 = i1.get_next();
+                    if(next0 == next1) return solve(i0, i1, dist + 1);
+                    
+                    if(v0 == next1 || v1 == next0) {
+                         if(v0 == next1 && i1.has_next() && i1.get_next() != next0) return false;
+                         if(v1 == next0 && i0.has_next() && i0.get_next() != next1) return false;
+                         return solve(i0,i1,dist+1);
+                    }
+                    return false;
+               }
+          }
+          return true;
+     };
+     return solve(i0,i1,0);
+}
+
+bool one_dist(Iterator&& a, Iterator&& b) {
+    bool insertA = false, insertB = false;
+    bool replace = false, diff = false;
+    char preA, preB;
+    while (!a.has_next(), !b.has_next()) {
+    	int cur_a = a.get_next(), cur_b = b.get_next();
+        if (!insertA && !insertB && !replace) {
+            if (cur_a != cur_b) {
+                insertA = true;
+                insertB = true;
+                replace = true;
+                diff = true;
+            }
+        } else {        	
+            if (insertA && preB != cur_a) insertA = false;           
+            if (insertB && preA != cur_b) insertB = false;
+            if (replace && cur_a != cur_b)  replace = false; 
+            if (!insertA && !insertB && !replace) return false;
+        }
+
+        preA = cur_a;
+        preB = cur_b;
+    }
+
+    if (!a.has_next() && !b.has_next()) {
+        return !diff || replace;
+    } else if (a.has_next()) {
+    	int cur_a = a.get_next();
+        return (!diff || (insertA && preB == cur_a)) && !a.has_next();
+    } else if (b.has_next()) {
+    	int cur_b = b.get_next();
+        return (!diff || (insertB && preA == cur_b)) && !b.has_next();
+    }
+}
+
+bool one_dist_rec(Iterator&& i0, Iterator&& i1) {
+    function<bool(Iterator&,Iterator&,int)> solve = [&](Iterator& i0, Iterator& i1, int dist) {
+        if(dist > 1) return false;
+        while(i0.has_next() || i1.has_next()) {
+            if(!i0.has_next() || !i1.has_next()) {
+                if(i0.has_next()) i0.get_next();
+                if(i1.has_next()) i1.get_next();
+                return solve(i0, i1, dist+1);
+            }
+            int v0 = i0.get_next(), v1 = i1.get_next();
+            if(v0 != v1) {
+                if(!i0.has_next() && !i1.has_next()) return dist == 0;
+                else if(!i0.has_next() || !i1.has_next()) return false;
+                
+                int next0 = i0.get_next(), next1 = i1.get_next();
+                if(next0 == next1) return solve(i0, i1, dist + 1);
+                
+                if(v0 == next1 || v1 == next0) {
+                    if(v0 == next1 && i1.has_next() && i1.get_next() != next0) return false;
+                    if(v1 == next0 && i0.has_next() && i0.get_next() != next1) return false;
+                    return solve(i0, i1, dist + 1);
+                }
+                return false;
+            }
+        }
+        return true;
+    };
+    return solve(i0,i1,0);
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+int main() {
+	TEST(one_dist(Iterator({1,2,3}), Iterator({1,2,4})), true); // 1
+	TEST(one_dist(Iterator({1}), Iterator({2,3})), false); // 0
+	TEST(one_dist(Iterator({2,3}), Iterator({1})), false); // 0
+	TEST(one_dist(Iterator({1}), Iterator({1,2,3,4,5})), false); // 0
+	TEST(one_dist(Iterator({1}), Iterator({})), true); // 1
+	TEST(one_dist(Iterator({}), Iterator({1})), true); // 1
+	TEST(one_dist(Iterator({1,2,3}), Iterator({2,3})), true); // 1
+	TEST(one_dist(Iterator({1,3,4}), Iterator({2,3,4})), true); // 1
+	TEST(one_dist(Iterator({1,2,3}), Iterator({2,4})), false); // 0
+	TEST(one_dist(Iterator({1,2,3}), Iterator({2})), false); // 0
+	TEST(one_dist(Iterator({3,4}), Iterator({5})), false); // 0
+	TEST(one_dist(Iterator({3,4}), Iterator({5,6})), false); // 0
+	TEST(one_dist(Iterator({1,2,3}), Iterator({1,2,3})), true); // 1
+	TEST(one_dist(Iterator({}), Iterator({})), true); // 1
+	TEST(one_dist(Iterator({1}), Iterator({2})), true); // 1
+	TEST(one_dist(Iterator({1,3,4,5,6,7}), Iterator({1,2})), false); // 0
+	TEST(one_dist(Iterator({1,3,4,5,6,7}), Iterator({1,4,5,6,7})), true); // 1
+	TEST(one_dist(Iterator({2,3,4,5,6,7}), Iterator({3,4,5,6,7})), true); // 1
+	
+	return 0;
+}
