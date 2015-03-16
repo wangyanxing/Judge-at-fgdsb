@@ -1,6 +1,6 @@
 #include "common.h"
 #include "solution.h"
-#include "tests/subarray-sum2.h"
+#include "tests/happy-number.h"
 
 int main() {
     judge();

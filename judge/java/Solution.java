@@ -1,16 +1,17 @@
 package judge;import java.util.*;import java.lang.*;import java.io.*;import datastruct.*; public class Solution {
-    public boolean subarray_sum(int[] num, int target) {
-        Map<Integer, Integer> map = new HashMap<Integer,Integer>();
-        map.put(0, -1);
-        for(int i = 0, sum = 0; i < num.length; ++i){
-            sum += num[i];
-            if(!map.containsKey(sum)){
-                map.put(sum, i);
+    public boolean happy(int number) {
+        int m = 0;
+        int digit = 0;
+        HashSet<Integer> cycle = new HashSet<Integer>();
+        while(number != 1 && cycle.add(number)){
+            m = 0;
+            while(number > 0){
+               digit = (int)(number % 10);
+               m += digit*digit;
+               number /= 10;
             }
-            if(map.containsKey(sum - target)){
-                return true;
-            }
-        }
-        return false;
+            number = m;
+       }
+       return number == 1;
     }
 }

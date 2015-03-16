@@ -1,9 +1,23 @@
-bool subarray_sum(vector<int>& arr, int t) {
-    unordered_map<int,int> map = {{0,-1}};
-    for(int i = 0, sum = 0; i < arr.size(); ++i){
-        sum += arr[i];
-        if(!map.count(sum)) map[sum] = i;
-        if(map.count(sum - t)) return true;
+bool happy(int number) {
+  map<int, bool> cache;
+  set<int> cycle;
+  
+  while (number != 1 && !cycle.count(number)) {
+    if (cache.count(number)) {
+      number = cache[number] ? 1 : 0;
+      break;
     }
-    return false;
+    cycle.insert(number);
+    int newnumber = 0;
+    while (number > 0) {
+      int digit = number % 10;
+      newnumber += digit * digit;
+      number /= 10;
+    }
+    number = newnumber;
+  }
+  bool happiness = number == 1;
+  for (auto it = cycle.begin(); it != cycle.end(); it++)
+    cache[*it] = happiness;
+  return happiness;
 }

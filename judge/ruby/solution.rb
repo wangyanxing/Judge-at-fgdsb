@@ -1,14 +1,19 @@
-# @param arr, array of integers
-# @param t, integer
-def subarray_sum(arr, t)
-    sum, last = arr[0], 0
-    (1...arr.length).each do |i|
-        while sum > t 
-            sum -= arr[last]
-            last += 1
+require 'set'
+
+# @param n,integer
+# @return boolean
+def happy(n)
+    m, digit = 0, 0
+    cycle = Set.new
+    while n != 1 and !cycle.include?(n)
+        cycle << n
+        m = 0
+        while n > 0
+            digit = n % 10
+            m += digit ** 2
+            n /= 10
         end
-        return true if sum == t
-        sum += arr[i]
+        n = m
     end
-    sum == t
+    n == 1
 end

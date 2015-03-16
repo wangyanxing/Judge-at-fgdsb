@@ -1,12 +1,10 @@
 from common import *
-# @param arr, list of integers
-# @param t, integer
-def subarray_sum(arr, t):
-    sum, last = arr[0], 0
-    for i in range(1, len(arr)):
-        while sum > t:
-            sum -= arr[last]
-            last += 1
-        if sum == t: return True
-        sum += arr[i]
-    return sum == t
+# @param n,integer
+# @return boolean
+def happy(n):
+    past = set()			
+    while n != 1:
+        n = sum(int(i)**2 for i in str(n))
+        if n in past: return False
+        past.add(n)
+    return True
