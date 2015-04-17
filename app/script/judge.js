@@ -98,7 +98,13 @@ var judge_cpp = function($scope, callback, msg) {
             }
             // compile
             msg('Compiling');
-            exec('clang++ -std=c++11 -stdlib=libc++ -w -Ofast judge/cpp/src.cpp -o judge/cpp/out',
+            var exec_cmd = 'clang++ -std=c++11 -stdlib=libc++ -w -Ofast judge/cpp/src.cpp -o judge/cpp/out';
+            var exec_ret = 'judge/cpp/out';
+            if (process.platform === 'win32') {
+                exec_cmd = 'g++ -std=gnu++11 -D__NO_INLINE__ -w -Ofast judge/cpp/src.cpp -o judge/cpp/out';
+                exec_ret = 'judge\\cpp\\out.exe';
+            }
+            exec(exec_cmd,
                 function (error, stdout, stderr) {
                     if(stderr != undefined && stderr != "") {
                         // Compile error
@@ -117,7 +123,7 @@ var judge_cpp = function($scope, callback, msg) {
 
                     msg('Judging');
                     // execute and judge
-                    exec('judge/cpp/out',
+                    exec(exec_ret,
                         function (error, stdout, stderr) {
                             if (error !== null) {
                                 var ret = { "result" : "Runtime Error", "details" : error };
@@ -125,6 +131,9 @@ var judge_cpp = function($scope, callback, msg) {
                                 return;
                             }
                             var results = stdout.trim();
+                            console.log(stdout);
+                            console.log(stderr);
+                            console.log(exec_ret);
                             if (beginsWith('Accepted', results)) {
                                 var ret = { "result" : "Accepted", "runtime": results.split(";")[1]};
                                 callback(ret);

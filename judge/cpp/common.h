@@ -17,6 +17,7 @@
 #include <iomanip>
 #include <fstream>
 #include <unistd.h>
+#include <chrono>
 
 using namespace std;
 
@@ -412,7 +413,7 @@ void capture_stdout() {
     freopen("judge/stdout.txt", "w", stdout);
 }
 
-void release_stdout() {
+void release_stdout() {    
     fclose(stdout);
     *stdout = *fdopen(g_old_stdout, "w");
 }
