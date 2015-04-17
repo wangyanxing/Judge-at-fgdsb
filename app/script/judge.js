@@ -177,7 +177,7 @@ var judge_java = function($scope, callback, msg) {
             // compile
             var test_file_name = class_name + '.java';
             msg('Compiling');
-            var cmd = 'javac -Xlint:unchecked -cp judge/java -d judge/java/. judge/java/common.java judge/java/' + solution_file + ' judge/java/src.java judge/java/tests/test_common.java ';
+            var cmd = 'javac -Xlint:none -cp judge/java -d judge/java/. judge/java/common.java judge/java/' + solution_file + ' judge/java/src.java judge/java/tests/test_common.java ';
             cmd += "judge/java/tests/" + test_file_name;
             exec(cmd,
                 function (error, stdout, stderr) {
