@@ -132,9 +132,6 @@ var judge_cpp = function($scope, callback, msg) {
                                 return;
                             }
                             var results = stdout.trim();
-                            console.log(stdout);
-                            console.log(stderr);
-                            console.log(exec_ret);
                             if (beginsWith('Accepted', results)) {
                                 var ret = { "result" : "Accepted", "runtime": results.split(";")[1]};
                                 callback(ret);
