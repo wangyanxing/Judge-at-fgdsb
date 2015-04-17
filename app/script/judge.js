@@ -100,9 +100,10 @@ var judge_cpp = function($scope, callback, msg) {
             msg('Compiling');
             var exec_cmd = 'clang++ -std=c++11 -stdlib=libc++ -w -Ofast judge/cpp/src.cpp -o judge/cpp/out';
             var exec_ret = 'judge/cpp/out';
-            if (process.platform === 'win32') {
+            if (process.platform != 'darwin') {
                 exec_cmd = 'g++ -std=gnu++11 -D__NO_INLINE__ -w -Ofast judge/cpp/src.cpp -o judge/cpp/out';
-                exec_ret = 'judge\\cpp\\out.exe';
+
+                exec_ret = process.platform === 'linux' ? 'judge/cpp/out': 'judge\\cpp\\out';
             }
             exec(exec_cmd,
                 function (error, stdout, stderr) {
