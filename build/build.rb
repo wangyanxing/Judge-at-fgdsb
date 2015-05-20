@@ -9,13 +9,15 @@ require 'semantic'
 require 'semantic/core_ext'
 require 'fileutils'
 require 'zip/zip'
+require 'rubygems/package'
+require 'zlib'
 
 # configs
 @release = false
 @cache_dir = 'cache'
 @build_dir = 'release'
 @url = 'http://dl.nwjs.io/'
-#@platforms = ['osx-x64', 'win-ia32', 'win-x64']
+# @platforms = ['osx-x64', 'win-ia32', 'linux-x64', 'linux-ia32']
 @platforms = []
 @menifest = '../package.json'
 @app_name = 'judge_fgdsb'
@@ -34,9 +36,15 @@ if ARGV.include? '-osx64'
 elsif ARGV.include? '-win32'
   puts 'Build to win32'
   @platforms = ['win-ia32']
+elsif ARGV.include? '-linux32'
+  puts 'Build to linux32'
+  @platforms = ['linux-ia32']
+elsif ARGV.include? '-linux64'
+  puts 'Build to linux64'
+  @platforms = ['linux-x64']
 else
   puts 'Build to all platforms'
-  @platforms = ['osx-x64', 'win-ia32']
+  @platforms = ['osx-x64', 'win-ia32', 'linux-x64', 'linux-ia32']
 end
 
 ########################################################################
@@ -89,19 +97,51 @@ def download_new_ver
 
   # do each platform
   @platforms.each do |p|
+    is_linux = p.start_with?('linux')
+
+    # ext name
+    ext = is_linux ? 'tar.gz' : 'zip'
+
     # download
-    file = download_file "#{@url}v#{latest.to_s}/nwjs-v#{latest.to_s}-#{p}.zip", "cache/#{latest.to_s}/#{p}"
+    file = download_file "#{@url}v#{latest.to_s}/nwjs-v#{latest.to_s}-#{p}.#{ext}", "cache/#{latest.to_s}/#{p}"
     
     # extract zip file
     puts
     $stdout.flush
-    puts 'Extracting zip files...'
+    puts 'Extracting zip/tar files...'
 
-    Zip::ZipFile.open(file) do |zip_file|
-      zip_file.each do |f|
-        f_path = File.join("cache/#{latest.to_s}", f.name)
-        FileUtils.mkdir_p(File.dirname(f_path))
-        zip_file.extract(f, f_path) unless File.exist?(f_path)        
+    if is_linux      
+      destination = "cache/#{latest.to_s}"
+      Gem::Package::TarReader.new( Zlib::GzipReader.open file ) do |tar|
+        dest = nil
+        tar.each do |entry|
+          if entry.full_name == '././@LongLink'
+            dest = File.join destination, entry.read.strip
+            next
+          end
+          dest ||= File.join destination, entry.full_name
+          if entry.directory?
+            File.delete dest if File.file? dest
+            FileUtils.mkdir_p dest, :mode => entry.header.mode, :verbose => false
+          elsif entry.file?
+            FileUtils.rm_rf dest if File.directory? dest
+            File.open dest, "wb" do |f|
+              f.print entry.read
+            end
+            FileUtils.chmod entry.header.mode, dest, :verbose => false
+          elsif entry.header.typeflag == '2' #Symlink!
+            File.symlink entry.header.linkname, dest
+          end
+          dest = nil
+        end
+      end
+    else
+      Zip::ZipFile.open(file) do |zip_file|
+        zip_file.each do |f|
+          f_path = File.join("cache/#{latest.to_s}", f.name)
+          FileUtils.mkdir_p(File.dirname(f_path))
+          zip_file.extract(f, f_path) unless File.exist?(f_path)        
+        end
       end
     end
 
@@ -198,7 +238,10 @@ def generate_app
     elsif p.start_with? 'win'
       FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}", "#{folder}/#{p}/#{@app_name}"
       FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}/package.nw"
-    end    
+    elsif p.start_with? 'linux'
+      FileUtils::copy_entry "#{@cache_dir}/#{@latest_version}/#{p}", "#{folder}/#{p}/#{@app_name}"
+      FileUtils::cp "#{@build_dir}/app.nw", "#{folder}/#{p}/#{@app_name}/package.nw"
+    end
   end
 end
 

@@ -104,7 +104,7 @@ def test_anagram(a0, a1):
     t0, t1 = copy.deepcopy(a0), copy.deepcopy(a1)
     t0.sort()
     t1.sort()
-    return cmp(t0, t1) == 0
+    return (t0 > t1) - (t0 < t1) == 0
 
 # loaders
 def read_tree(f, nums):
