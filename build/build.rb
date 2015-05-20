@@ -26,6 +26,8 @@ require 'zlib'
 
 # global variables
 @latest_version = ''
+@prefix_alpha0 = ''
+@folder_prefix_alpha0 = ''
 
 # params
 @release = true if ARGV.include? '-b'
@@ -93,7 +95,14 @@ def download_new_ver
   end
   
   @latest_version = latest.to_s
-  puts 'Latest version of nw.js found: ' + latest.to_s
+
+  if @latest_version == '0.13.0'
+    @latest_version = '0.12.1'
+    #@prefix_alpha0 = '-alpha0'
+    #@folder_prefix_alpha0 = '/alpha0'
+  end
+
+  puts 'Latest version of nw.js found: ' + @latest_version
 
   # do each platform
   @platforms.each do |p|
@@ -103,7 +112,10 @@ def download_new_ver
     ext = is_linux ? 'tar.gz' : 'zip'
 
     # download
-    file = download_file "#{@url}v#{latest.to_s}/nwjs-v#{latest.to_s}-#{p}.#{ext}", "cache/#{latest.to_s}/#{p}"
+    down_url = "#{@url}v#{@latest_version.to_s}#{@folder_prefix_alpha0}/nwjs-v#{@latest_version.to_s}#{@prefix_alpha0}-#{p}.#{ext}"
+    
+    puts "Downloading #{down_url}"
+    file = download_file down_url, "cache/#{@latest_version.to_s}/#{p}"
     
     # extract zip file
     puts
@@ -111,7 +123,7 @@ def download_new_ver
     puts 'Extracting zip/tar files...'
 
     if is_linux      
-      destination = "cache/#{latest.to_s}"
+      destination = "cache/#{@latest_version.to_s}"
       Gem::Package::TarReader.new( Zlib::GzipReader.open file ) do |tar|
         dest = nil
         tar.each do |entry|
@@ -138,7 +150,7 @@ def download_new_ver
     else
       Zip::ZipFile.open(file) do |zip_file|
         zip_file.each do |f|
-          f_path = File.join("cache/#{latest.to_s}", f.name)
+          f_path = File.join("cache/#{@latest_version.to_s}", f.name)
           FileUtils.mkdir_p(File.dirname(f_path))
           zip_file.extract(f, f_path) unless File.exist?(f_path)        
         end
@@ -146,10 +158,10 @@ def download_new_ver
     end
 
     # remove temp files
-    FileUtils.rm_rf "cache/#{latest.to_s}/#{p}"
+    FileUtils.rm_rf "cache/#{@latest_version.to_s}/#{p}"
 
-    # rename extracted folder
-    FileUtils.mv "cache/#{latest.to_s}/nwjs-v#{latest.to_s}-#{p}", "cache/#{latest.to_s}/#{p}"
+    # rename extracted folder    
+    FileUtils.mv "cache/#{@latest_version.to_s}/nwjs-v#{@latest_version.to_s}#{@prefix_alpha0}-#{p}", "cache/#{@latest_version.to_s}/#{p}"
   end
 end
 

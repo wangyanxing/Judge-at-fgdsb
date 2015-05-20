@@ -612,7 +612,8 @@ fgdsbControllers.controller('ProblemDetailCtrl', ['$scope', '$routeParams', 'Pro
                     $('#error-msg-panel').show();
                     $("#error-msg-div").hide();
                     $("#wrong-answer-div").hide();
-                    if (ret['result'] == 'Compile Error' || ret['result'] == 'Runtime Error') {
+                    if (ret['result'] == 'Compile Error' || ret['result'] == 'Runtime Error'
+                        || ret['result'] == 'Time Out' || ret['result'] == 'Internal Error') {
                         $("#error-msg-div").show();
                         $('#error-msg').text(ret['details']);
                     } else if (ret['result'] == 'Wrong Answer') {

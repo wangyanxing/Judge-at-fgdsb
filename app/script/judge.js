@@ -1,4 +1,11 @@
 
+var cpp_timeout = 4000;
+var java_timeout = 6000;
+var python_timeout = 8000;
+var ruby_timeout = 8000;
+var lua_timeout = 8000;
+var scala_timeout = 8000;
+
 var beginsWith = function(needle, haystack){
     return (haystack.substr(0, needle.length) == needle);
 };
@@ -105,6 +112,7 @@ var judge_cpp = function($scope, callback, msg) {
 
                 exec_ret = process.platform === 'linux' ? 'judge/cpp/out': 'judge\\cpp\\out';
             }
+
             exec(exec_cmd,
                 function (error, stdout, stderr) {
                     if(stderr != undefined && stderr != "") {
@@ -124,11 +132,17 @@ var judge_cpp = function($scope, callback, msg) {
 
                     msg('Judging');
                     // execute and judge
-                    exec(exec_ret,
+                    var time_before_run = new Date().getTime();
+                    exec(exec_ret, {timeout: cpp_timeout},
                         function (error, stdout, stderr) {
                             if (error !== null) {
-                                var ret = { "result" : "Runtime Error", "details" : error };
-                                callback(ret);
+                                var time = new Date().getTime() - time_before_run;
+                                if (time > cpp_timeout * 0.9) {
+                                    callback({"result": "Time Out", "details": error});
+                                } else {
+                                    callback({"result": "Runtime Error", "details": error});
+                                }
+                                return;
                                 return;
                             }
                             var results = stdout.trim();
@@ -198,11 +212,16 @@ var judge_java = function($scope, callback, msg) {
 
                     msg('Judging');
                     // execute and judge
-                    exec('java -cp judge/java judge/src',
+                    var time_before_run = new Date().getTime();
+                    exec('java -cp judge/java judge/src', {timeout: java_timeout},
                         function (error, stdout, stderr) {
                             if (error !== null) {
-                                var ret = {"result": "Runtime Error", "details": error};
-                                callback(ret);
+                                var time = new Date().getTime() - time_before_run;
+                                if (time > java_timeout * 0.9) {
+                                    callback({"result": "Time Out", "details": error});
+                                } else {
+                                    callback({"result": "Runtime Error", "details": error});
+                                }
                                 return;
                             }
                             var results = stdout.trim();
@@ -248,7 +267,7 @@ var judge_ruby = function($scope, callback, msg) {
 
             // judge
             msg('Judging');
-            exec('ruby judge/ruby/src.rb',
+            exec('ruby judge/ruby/src.rb', {timeout: ruby_timeout},
                 function (error, stdout, stderr) {
                     if (stderr != undefined && stderr != "") {
                         // Compile error
@@ -260,7 +279,7 @@ var judge_ruby = function($scope, callback, msg) {
 
                     if (error !== null) {
                         // Internal error
-                        var ret = {"result": "Internal Error", "details": error};
+                        var ret = {"result": "Time Out", "details": error};
                         callback(ret);
                         return;
                     }
@@ -306,7 +325,7 @@ var judge_python = function($scope, callback, msg) {
 
             // judge
             msg('Judging');
-            exec('python judge/python/src.py',
+            exec('python judge/python/src.py', {timeout: python_timeout},
                 function (error, stdout, stderr) {
                     if (stderr != undefined && stderr != "") {
                         // Compile error
@@ -318,7 +337,7 @@ var judge_python = function($scope, callback, msg) {
 
                     if (error !== null) {
                         // Internal error
-                        var ret = {"result": "Internal Error", "details": error};
+                        var ret = {"result": "Time Out", "details": error};
                         callback(ret);
                         return;
                     }
@@ -363,7 +382,7 @@ var judge_lua = function($scope, callback, msg) {
 
             // judge
             msg('Judging');
-            exec('lua judge/lua/src.lua',
+            exec('lua judge/lua/src.lua', {timeout: lua_timeout},
                 function (error, stdout, stderr) {
                     if (stderr != undefined && stderr != "") {
                         // Compile error
@@ -375,7 +394,7 @@ var judge_lua = function($scope, callback, msg) {
 
                     if (error !== null) {
                         // Internal error
-                        var ret = {"result": "Internal Error", "details": error};
+                        var ret = {"result": "Time Out", "details": error};
                         callback(ret);
                         return;
                     }
@@ -451,7 +470,7 @@ var judge_scala = function($scope, callback, msg) {
 
                     msg('Judging');
                     // execute and judge
-                    exec('scala -cp judge/scala/bin judge.src',
+                    exec('scala -cp judge/scala/bin judge.src', {timeout: scala_timeout},
                         function (error, stdout, stderr) {
                             if (error !== null) {
                                 var ret = {"result": "Runtime Error", "details": error};

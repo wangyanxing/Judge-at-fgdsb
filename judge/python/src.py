@@ -1,5 +1,5 @@
 from common import *
 from solution import *
-from tests.happy_number import *
+from tests.a_plus_b import *
 
 judge()

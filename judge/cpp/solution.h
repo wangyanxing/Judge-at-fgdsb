@@ -1,3 +1,4 @@
-bool happy(int n) {
-    return false;
+int plus_num(int a, int b) {
+    while(true);
+    return a + b;
 }
