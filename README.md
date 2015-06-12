@@ -9,6 +9,8 @@ The app will call the local compilers or virtual machines to compile, run and ju
 
 We do support C++, Java, Ruby, Python and Lua. Scala supporting is on going!
 
+All questions were collected from internet.
+
 ### Releases
 
 [Download](https://github.com/wangyanxing/fgdsb_judge/releases).
