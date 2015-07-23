@@ -6,21 +6,32 @@ class Test_coin_change < TestBase
     super(name)
   end
 
-  def min_coins(a, t)
-    dp = Array.new(t+1, 0)
-    (1..t).each do |i|
-      minVal = i
-      (0...a.length).each do |j|
-        if a[j] <= i
-          minVal = [dp[i-a[j]]+1, minVal].min
-        else
-          break
+  def dfs(index, stack, a, t)
+    if stack[0] == t
+        return true
         end
-      end
-      dp[i] = minVal
+    if stack[0] > t
+        return false
+        end
+    for i in (index).downto(0) do
+        stack[0] += a[i]
+        stack.push(a[i])
+        if dfs(i, stack, a, t)
+            return true
+            end
+        stack[0] -= a[i]
+        stack.pop()
+        end
+    false
     end
-    dp[t]
-  end
+    
+  def min_coins(a, t)
+    stack = [0]
+    a.sort()
+    dfs(a.length - 1, stack, a, t)
+    print stack.length - 1
+    stack.length - 1
+    end
 
   def add_test(a, t)
     @test_in[0] << a
